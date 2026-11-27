@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-27T15:52:28.636Z",
+  "generatedAt": "2026-11-27T16:24:47.096Z",
   "india": {
     "NIFTYBEES": {
       "symbol": "NIFTYBEES.NS",
@@ -467,10 +467,437 @@
       "marketTime": "2026-11-27T09:36:35.000Z",
       "candles": [
         {
+          "time": "2026-08-27",
+          "open": 893.44,
+          "high": 894.81,
+          "low": 886.04,
+          "close": 886.04
+        },
+        {
+          "time": "2026-08-28",
+          "open": 888.28,
+          "high": 890.92,
+          "low": 886.67,
+          "close": 889.85
+        },
+        {
+          "time": "2026-08-31",
+          "open": 888.31,
+          "high": 888.84,
+          "low": 883.94,
+          "close": 886.31
+        },
+        {
+          "time": "2026-09-01",
+          "open": 886.73,
+          "high": 889.47,
+          "low": 882.84,
+          "close": 886.16
+        },
+        {
+          "time": "2026-09-02",
+          "open": 880.71,
+          "high": 881.85,
+          "low": 876.85,
+          "close": 881.85
+        },
+        {
+          "time": "2026-09-03",
+          "open": 883.63,
+          "high": 885.93,
+          "low": 877.04,
+          "close": 877.04
+        },
+        {
+          "time": "2026-09-04",
+          "open": 882.85,
+          "high": 885.46,
+          "low": 881.22,
+          "close": 881.22
+        },
+        {
+          "time": "2026-09-07",
+          "open": 880.42,
+          "high": 880.78,
+          "low": 874.94,
+          "close": 876.81
+        },
+        {
+          "time": "2026-09-08",
+          "open": 874.94,
+          "high": 875.42,
+          "low": 870.14,
+          "close": 870.42
+        },
+        {
+          "time": "2026-09-09",
+          "open": 866.26,
+          "high": 866.66,
+          "low": 861.05,
+          "close": 861.05
+        },
+        {
+          "time": "2026-09-10",
+          "open": 860.8,
+          "high": 862.74,
+          "low": 859.14,
+          "close": 862.65
+        },
+        {
+          "time": "2026-09-11",
+          "open": 855.81,
+          "high": 862.81,
+          "low": 854.1,
+          "close": 861.25
+        },
+        {
+          "time": "2026-09-15",
+          "open": 868.02,
+          "high": 868.79,
+          "low": 852.18,
+          "close": 852.29
+        },
+        {
+          "time": "2026-09-16",
+          "open": 855.12,
+          "high": 858.08,
+          "low": 852.04,
+          "close": 856.13
+        },
+        {
+          "time": "2026-09-17",
+          "open": 854.35,
+          "high": 860.05,
+          "low": 854.14,
+          "close": 855.87
+        },
+        {
+          "time": "2026-09-18",
+          "open": 858.88,
+          "high": 860.64,
+          "low": 855.65,
+          "close": 855.65
+        },
+        {
+          "time": "2026-09-21",
+          "open": 858.41,
+          "high": 863.62,
+          "low": 857.48,
+          "close": 862.14
+        },
+        {
+          "time": "2026-09-22",
+          "open": 862.63,
+          "high": 864.22,
+          "low": 857.13,
+          "close": 858.34
+        },
+        {
+          "time": "2026-09-23",
+          "open": 859.72,
+          "high": 863.47,
+          "low": 859.16,
+          "close": 861.79
+        },
+        {
+          "time": "2026-09-24",
+          "open": 855.39,
+          "high": 856.42,
+          "low": 847.23,
+          "close": 847.42
+        },
+        {
+          "time": "2026-09-25",
+          "open": 846.79,
+          "high": 851.88,
+          "low": 846.24,
+          "close": 851.05
+        },
+        {
+          "time": "2026-09-28",
+          "open": 849.2,
+          "high": 849.27,
+          "low": 837.47,
+          "close": 838.1
+        },
+        {
+          "time": "2026-09-29",
+          "open": 836.51,
+          "high": 837.1,
+          "low": 829.95,
+          "close": 835.31
+        },
+        {
+          "time": "2026-09-30",
+          "open": 834.3,
+          "high": 841.45,
+          "low": 833.44,
+          "close": 834.75
+        },
+        {
+          "time": "2026-10-01",
+          "open": 831.44,
+          "high": 835.81,
+          "low": 821.07,
+          "close": 828.18
+        },
+        {
+          "time": "2026-10-05",
+          "open": 833.14,
+          "high": 836.49,
+          "low": 827.38,
+          "close": 833.62
+        },
+        {
+          "time": "2026-10-06",
+          "open": 835.07,
+          "high": 841.51,
+          "low": 833.65,
+          "close": 841.51
+        },
+        {
+          "time": "2026-10-07",
+          "open": 840.34,
+          "high": 840.95,
+          "low": 834.62,
+          "close": 836.57
+        },
+        {
+          "time": "2026-10-08",
+          "open": 836.91,
+          "high": 837.21,
+          "low": 821.47,
+          "close": 824.53
+        },
+        {
+          "time": "2026-10-09",
+          "open": 826.64,
+          "high": 836.92,
+          "low": 826.22,
+          "close": 834.66
+        },
+        {
+          "time": "2026-10-12",
+          "open": 838.1,
+          "high": 839.4,
+          "low": 825.49,
+          "close": 828.35
+        },
+        {
+          "time": "2026-10-13",
+          "open": 828.66,
+          "high": 841.26,
+          "low": 825.8,
+          "close": 841.12
+        },
+        {
+          "time": "2026-10-14",
+          "open": 841.31,
+          "high": 842.98,
+          "low": 835.88,
+          "close": 838.22
+        },
+        {
+          "time": "2026-10-15",
+          "open": 840.34,
+          "high": 856.05,
+          "low": 839.54,
+          "close": 855.89
+        },
+        {
+          "time": "2026-10-16",
+          "open": 856.18,
+          "high": 861.22,
+          "low": 852.4,
+          "close": 860.65
+        },
+        {
+          "time": "2026-10-19",
+          "open": 862.03,
+          "high": 862.04,
+          "low": 848.89,
+          "close": 850.56
+        },
+        {
+          "time": "2026-10-21",
+          "open": 856.14,
+          "high": 860.11,
+          "low": 843.38,
+          "close": 848.91
+        },
+        {
+          "time": "2026-10-22",
+          "open": 844.69,
+          "high": 849.04,
+          "low": 840.79,
+          "close": 843.61
+        },
+        {
+          "time": "2026-10-23",
+          "open": 848.4,
+          "high": 849.56,
+          "low": 834.43,
+          "close": 842.16
+        },
+        {
+          "time": "2026-10-26",
+          "open": 840.62,
+          "high": 847.72,
+          "low": 835.14,
+          "close": 847.72
+        },
+        {
+          "time": "2026-10-27",
+          "open": 846.31,
+          "high": 849.52,
+          "low": 842.8,
+          "close": 847.63
+        },
+        {
+          "time": "2026-10-28",
+          "open": 843.65,
+          "high": 846.79,
+          "low": 836.17,
+          "close": 843.57
+        },
+        {
+          "time": "2026-10-29",
+          "open": 843.83,
+          "high": 854.16,
+          "low": 842.83,
+          "close": 853.99
+        },
+        {
+          "time": "2026-10-30",
+          "open": 854.55,
+          "high": 860.8,
+          "low": 853.2,
+          "close": 857.54
+        },
+        {
+          "time": "2026-11-02",
+          "open": 865.82,
+          "high": 871.75,
+          "low": 863.52,
+          "close": 871.75
+        },
+        {
+          "time": "2026-11-03",
+          "open": 878.61,
+          "high": 885.86,
+          "low": 875.67,
+          "close": 885.86
+        },
+        {
+          "time": "2026-11-04",
+          "open": 885.11,
+          "high": 891.36,
+          "low": 882.25,
+          "close": 890.27
+        },
+        {
+          "time": "2026-11-05",
+          "open": 908.81,
+          "high": 915.25,
+          "low": 904.31,
+          "close": 913.41
+        },
+        {
+          "time": "2026-11-06",
+          "open": 914.6,
+          "high": 933.19,
+          "low": 910.02,
+          "close": 933.19
+        },
+        {
+          "time": "2026-11-09",
+          "open": 936.64,
+          "high": 936.78,
+          "low": 927.33,
+          "close": 934.1
+        },
+        {
+          "time": "2026-11-11",
+          "open": 947.25,
+          "high": 950.38,
+          "low": 937.68,
+          "close": 943
+        },
+        {
+          "time": "2026-11-12",
+          "open": 941.65,
+          "high": 948.14,
+          "low": 939.5,
+          "close": 943.36
+        },
+        {
+          "time": "2026-11-13",
+          "open": 942.47,
+          "high": 943,
+          "low": 936.19,
+          "close": 939.69
+        },
+        {
+          "time": "2026-11-16",
+          "open": 942.21,
+          "high": 947.98,
+          "low": 941.65,
+          "close": 945.59
+        },
+        {
+          "time": "2026-11-17",
+          "open": 946.12,
+          "high": 954.72,
+          "low": 945.44,
+          "close": 950.52
+        },
+        {
+          "time": "2026-11-18",
+          "open": 948.72,
+          "high": 951.05,
+          "low": 941.86,
+          "close": 944.75
+        },
+        {
+          "time": "2026-11-19",
+          "open": 945.24,
+          "high": 956.41,
+          "low": 940.92,
+          "close": 956.15
+        },
+        {
+          "time": "2026-11-20",
+          "open": 950.82,
+          "high": 967.86,
+          "low": 949.03,
+          "close": 966.49
+        },
+        {
+          "time": "2026-11-23",
+          "open": 972.28,
+          "high": 975.05,
+          "low": 948.95,
+          "close": 949.41
+        },
+        {
+          "time": "2026-11-25",
+          "open": 960.93,
+          "high": 973.16,
+          "low": 960.29,
+          "close": 966.71
+        },
+        {
+          "time": "2026-11-26",
+          "open": 970.89,
+          "high": 973.77,
+          "low": 964.59,
+          "close": 971.2
+        },
+        {
           "time": "2026-11-27",
-          "open": 969.99,
-          "high": 969.99,
-          "low": 959.69,
+          "open": 968.49,
+          "high": 970.72,
+          "low": 958.3,
           "close": 959.81
         }
       ],
@@ -5893,16 +6320,16 @@
     "SPY": {
       "symbol": "SPY",
       "currency": "USD",
-      "price": 724.58,
+      "price": 724.96,
       "prevClose": 716.7,
-      "change": 7.88,
-      "changePct": 1.1,
+      "change": 8.26,
+      "changePct": 1.15,
       "dayLow": 719.62,
       "dayHigh": 726.62,
       "w52Low": 629.28,
       "w52High": 781.62,
-      "volume": 13411712,
-      "marketTime": "2026-11-27T15:52:26.000Z",
+      "volume": 16473050,
+      "marketTime": "2026-11-27T16:24:43.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -6357,7 +6784,7 @@
           "open": 725.86,
           "high": 726.62,
           "low": 719.62,
-          "close": 724.58
+          "close": 724.96
         }
       ],
       "isIndex": false
@@ -6365,16 +6792,16 @@
     "QQQ": {
       "symbol": "QQQ",
       "currency": "USD",
-      "price": 644.14,
+      "price": 644.97,
       "prevClose": 633.93,
-      "change": 10.21,
-      "changePct": 1.61,
+      "change": 11.04,
+      "changePct": 1.74,
       "dayLow": 636.72,
       "dayHigh": 646.61,
       "w52Low": 555.6,
       "w52High": 762.86,
-      "volume": 16677881,
-      "marketTime": "2026-11-27T15:52:26.000Z",
+      "volume": 19414448,
+      "marketTime": "2026-11-27T16:24:42.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -6829,7 +7256,7 @@
           "open": 645.72,
           "high": 646.61,
           "low": 636.72,
-          "close": 644.14
+          "close": 644.97
         }
       ],
       "isIndex": false
@@ -6837,16 +7264,16 @@
     "DIA": {
       "symbol": "DIA",
       "currency": "USD",
-      "price": 506.06,
+      "price": 506.13,
       "prevClose": 501.27,
-      "change": 4.79,
-      "changePct": 0.96,
+      "change": 4.86,
+      "changePct": 0.97,
       "dayLow": 503.46,
       "dayHigh": 506.78,
       "w52Low": 450.44,
       "w52High": 546.75,
-      "volume": 974108,
-      "marketTime": "2026-11-27T15:52:23.000Z",
+      "volume": 1226787,
+      "marketTime": "2026-11-27T16:24:41.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -7301,7 +7728,7 @@
           "open": 506.75,
           "high": 506.78,
           "low": 503.46,
-          "close": 506.06
+          "close": 506.13
         }
       ],
       "isIndex": false
@@ -7309,16 +7736,16 @@
     "IWM": {
       "symbol": "IWM",
       "currency": "USD",
-      "price": 272.45,
+      "price": 272.49,
       "prevClose": 268.87,
-      "change": 3.58,
-      "changePct": 1.33,
+      "change": 3.62,
+      "changePct": 1.35,
       "dayLow": 270.69,
       "dayHigh": 272.81,
       "w52Low": 238.69,
       "w52High": 305.18,
-      "volume": 4773624,
-      "marketTime": "2026-11-27T15:52:26.000Z",
+      "volume": 5781370,
+      "marketTime": "2026-11-27T16:24:41.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -7773,7 +8200,7 @@
           "open": 271.82,
           "high": 272.81,
           "low": 270.68,
-          "close": 272.45
+          "close": 272.49
         }
       ],
       "isIndex": false
@@ -7781,16 +8208,16 @@
     "NVDA": {
       "symbol": "NVDA",
       "currency": "USD",
-      "price": 147.1,
+      "price": 148.43,
       "prevClose": 149.3,
-      "change": -2.21,
-      "changePct": -1.48,
+      "change": -0.87,
+      "changePct": -0.59,
       "dayLow": 145.39,
       "dayHigh": 151.98,
       "w52Low": 124.5,
       "w52High": 243.37,
-      "volume": 94334229,
-      "marketTime": "2026-11-27T15:52:26.000Z",
+      "volume": 109414802,
+      "marketTime": "2026-11-27T16:24:44.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -8245,7 +8672,7 @@
           "open": 151.94,
           "high": 151.98,
           "low": 145.39,
-          "close": 147.1
+          "close": 148.43
         }
       ],
       "isIndex": false
@@ -8253,16 +8680,16 @@
     "AAPL": {
       "symbol": "AAPL",
       "currency": "USD",
-      "price": 358.85,
+      "price": 357.41,
       "prevClose": 355.58,
-      "change": 3.27,
-      "changePct": 0.92,
+      "change": 1.83,
+      "changePct": 0.51,
       "dayLow": 355.64,
-      "dayHigh": 359.41,
+      "dayHigh": 359.5,
       "w52Low": 243.42,
       "w52High": 360.83,
-      "volume": 7532977,
-      "marketTime": "2026-11-27T15:52:26.000Z",
+      "volume": 9316264,
+      "marketTime": "2026-11-27T16:24:44.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -8715,9 +9142,9 @@
         {
           "time": "2026-11-27",
           "open": 358.44,
-          "high": 359.41,
+          "high": 359.5,
           "low": 355.64,
-          "close": 358.85
+          "close": 357.41
         }
       ],
       "isIndex": false
@@ -8725,16 +9152,16 @@
     "MSFT": {
       "symbol": "MSFT",
       "currency": "USD",
-      "price": 491.16,
+      "price": 489.62,
       "prevClose": 489.93,
-      "change": 1.22,
-      "changePct": 0.25,
-      "dayLow": 488.96,
+      "change": -0.31,
+      "changePct": -0.06,
+      "dayLow": 488.83,
       "dayHigh": 500.47,
       "w52Low": 349.2,
       "w52High": 559.15,
-      "volume": 3853754,
-      "marketTime": "2026-11-27T15:52:27.000Z",
+      "volume": 4627964,
+      "marketTime": "2026-11-27T16:24:42.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -9188,8 +9615,8 @@
           "time": "2026-11-27",
           "open": 499.48,
           "high": 500.46,
-          "low": 488.96,
-          "close": 491.15
+          "low": 488.83,
+          "close": 489.62
         }
       ],
       "isIndex": false
@@ -9197,16 +9624,16 @@
     "GOOGL": {
       "symbol": "GOOGL",
       "currency": "USD",
-      "price": 272.57,
+      "price": 272.49,
       "prevClose": 273.1,
-      "change": -0.53,
-      "changePct": -0.19,
+      "change": -0.61,
+      "changePct": -0.22,
       "dayLow": 270.03,
       "dayHigh": 279.52,
       "w52Low": 262.73,
       "w52High": 408.61,
-      "volume": 9338407,
-      "marketTime": "2026-11-27T15:52:26.000Z",
+      "volume": 11767579,
+      "marketTime": "2026-11-27T16:24:42.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -9661,7 +10088,7 @@
           "open": 279.16,
           "high": 279.52,
           "low": 270.03,
-          "close": 272.57
+          "close": 272.49
         }
       ],
       "isIndex": false
@@ -9669,16 +10096,16 @@
     "AMZN": {
       "symbol": "AMZN",
       "currency": "USD",
-      "price": 253.6,
+      "price": 254.12,
       "prevClose": 244.43,
-      "change": 9.17,
-      "changePct": 3.75,
+      "change": 9.69,
+      "changePct": 3.96,
       "dayLow": 248.45,
-      "dayHigh": 254.34,
+      "dayHigh": 254.5,
       "w52Low": 196,
       "w52High": 287.2,
-      "volume": 10275464,
-      "marketTime": "2026-11-27T15:52:27.000Z",
+      "volume": 12742307,
+      "marketTime": "2026-11-27T16:24:42.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -10131,9 +10558,9 @@
         {
           "time": "2026-11-27",
           "open": 250.45,
-          "high": 254.34,
+          "high": 254.5,
           "low": 248.45,
-          "close": 253.6
+          "close": 254.12
         }
       ],
       "isIndex": false
@@ -10141,16 +10568,16 @@
     "META": {
       "symbol": "META",
       "currency": "USD",
-      "price": 634.51,
+      "price": 630.87,
       "prevClose": 609.89,
-      "change": 24.62,
-      "changePct": 4.04,
+      "change": 20.98,
+      "changePct": 3.44,
       "dayLow": 620.8,
       "dayHigh": 636.62,
       "w52Low": 520.26,
       "w52High": 779.82,
-      "volume": 4820567,
-      "marketTime": "2026-11-27T15:52:27.000Z",
+      "volume": 5991236,
+      "marketTime": "2026-11-27T16:24:43.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -10605,7 +11032,7 @@
           "open": 627.83,
           "high": 636.62,
           "low": 620.8,
-          "close": 634.51
+          "close": 630.87
         }
       ],
       "isIndex": false
@@ -10613,16 +11040,16 @@
     "TSLA": {
       "symbol": "TSLA",
       "currency": "USD",
-      "price": 398.86,
+      "price": 398.36,
       "prevClose": 380.14,
-      "change": 18.72,
-      "changePct": 4.92,
+      "change": 18.22,
+      "changePct": 4.79,
       "dayLow": 384.66,
       "dayHigh": 401.18,
       "w52Low": 297.38,
       "w52High": 498.83,
-      "volume": 13490059,
-      "marketTime": "2026-11-27T15:52:27.000Z",
+      "volume": 15541890,
+      "marketTime": "2026-11-27T16:24:44.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -11077,7 +11504,7 @@
           "open": 391.33,
           "high": 401.18,
           "low": 384.66,
-          "close": 398.86
+          "close": 398.36
         }
       ],
       "isIndex": false
@@ -11085,16 +11512,16 @@
     "SP500": {
       "symbol": "^GSPC",
       "currency": "USD",
-      "price": 7261.78,
+      "price": 7265.87,
       "prevClose": 7182.78,
-      "change": 79,
-      "changePct": 1.1,
+      "change": 83.09,
+      "changePct": 1.16,
       "dayLow": 7211.46,
       "dayHigh": 7281.17,
       "w52Low": 6316.91,
       "w52High": 7844.52,
-      "volume": 658534225,
-      "marketTime": "2026-11-27T15:52:26.000Z",
+      "volume": 811286951,
+      "marketTime": "2026-11-27T16:24:43.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -11549,7 +11976,7 @@
           "open": 7262.61,
           "high": 7281.17,
           "low": 7211.46,
-          "close": 7261.78
+          "close": 7265.87
         }
       ],
       "isIndex": true
@@ -11557,16 +11984,16 @@
     "VIX": {
       "symbol": "^VIX",
       "currency": "USD",
-      "price": 25.89,
+      "price": 25.33,
       "prevClose": 26.8,
-      "change": -0.91,
-      "changePct": -3.4,
+      "change": -1.47,
+      "changePct": -5.49,
       "dayLow": 24.52,
       "dayHigh": 27.52,
       "w52Low": 13.38,
       "w52High": 40.03,
       "volume": 0,
-      "marketTime": "2026-11-27T15:37:16.000Z",
+      "marketTime": "2026-11-27T16:09:31.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -12035,7 +12462,7 @@
           "open": 24.89,
           "high": 27.52,
           "low": 24.52,
-          "close": 25.89
+          "close": 25.33
         }
       ],
       "isIndex": true
@@ -12045,16 +12472,16 @@
     "GOLD": {
       "symbol": "GC=F",
       "currency": "USD",
-      "price": 3656.4,
+      "price": 3648.7,
       "prevClose": 3535.8,
-      "change": 120.6,
-      "changePct": 3.41,
+      "change": 112.9,
+      "changePct": 3.19,
       "dayLow": 3578.8,
       "dayHigh": 3712.8,
       "w52Low": 3425.2,
       "w52High": 5586.2,
-      "volume": 200367,
-      "marketTime": "2026-11-27T15:42:25.000Z",
+      "volume": 205320,
+      "marketTime": "2026-11-27T16:14:38.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -12509,7 +12936,7 @@
           "open": 3619.8,
           "high": 3712.8,
           "low": 3578.8,
-          "close": 3656.4
+          "close": 3648.7
         }
       ],
       "isIndex": false
@@ -12517,16 +12944,16 @@
     "BRENT": {
       "symbol": "BZ=F",
       "currency": "USD",
-      "price": 90.81,
+      "price": 90.21,
       "prevClose": 94.61,
-      "change": -3.8,
-      "changePct": -4.02,
+      "change": -4.4,
+      "changePct": -4.65,
       "dayLow": 89.77,
       "dayHigh": 93.14,
       "w52Low": 58.72,
       "w52High": 126.1,
-      "volume": 32949,
-      "marketTime": "2026-11-27T15:42:03.000Z",
+      "volume": 33749,
+      "marketTime": "2026-11-27T16:14:33.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -12981,7 +13408,7 @@
           "open": 90.57,
           "high": 93.14,
           "low": 89.77,
-          "close": 90.81
+          "close": 90.21
         }
       ],
       "isIndex": false
@@ -12989,16 +13416,16 @@
     "WTI": {
       "symbol": "CL=F",
       "currency": "USD",
-      "price": 83.61,
+      "price": 83.3,
       "prevClose": 83.68,
-      "change": -0.07,
-      "changePct": -0.08,
+      "change": -0.38,
+      "changePct": -0.45,
       "dayLow": 83.16,
       "dayHigh": 86.6,
       "w52Low": 54.98,
       "w52High": 119.48,
-      "volume": 191837,
-      "marketTime": "2026-11-27T15:42:25.000Z",
+      "volume": 201822,
+      "marketTime": "2026-11-27T16:14:41.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -13453,7 +13880,7 @@
           "open": 84.09,
           "high": 86.6,
           "low": 83.16,
-          "close": 83.61
+          "close": 83.3
         }
       ],
       "isIndex": false
@@ -13461,16 +13888,16 @@
     "SILVER": {
       "symbol": "SI=F",
       "currency": "USD",
-      "price": 43.81,
+      "price": 43.56,
       "prevClose": 40.05,
-      "change": 3.76,
-      "changePct": 9.38,
+      "change": 3.51,
+      "changePct": 8.75,
       "dayLow": 41.08,
-      "dayHigh": 44.84,
+      "dayHigh": 44.86,
       "w52Low": 40.05,
       "w52High": 121.3,
-      "volume": 84883,
-      "marketTime": "2026-11-27T15:42:21.000Z",
+      "volume": 88528,
+      "marketTime": "2026-11-27T16:14:38.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -13923,9 +14350,9 @@
         {
           "time": "2026-11-27",
           "open": 41.71,
-          "high": 44.83,
+          "high": 44.86,
           "low": 41.08,
-          "close": 43.81
+          "close": 43.56
         }
       ],
       "isIndex": false
@@ -13933,16 +14360,16 @@
     "NATGAS": {
       "symbol": "NG=F",
       "currency": "USD",
-      "price": 3.513,
+      "price": 3.503,
       "prevClose": 3.269,
-      "change": 0.244,
-      "changePct": 7.46,
+      "change": 0.234,
+      "changePct": 7.16,
       "dayLow": 3.454,
       "dayHigh": 3.696,
       "w52Low": 2.483,
       "w52High": 7.827,
-      "volume": 97145,
-      "marketTime": "2026-11-27T15:42:25.000Z",
+      "volume": 103795,
+      "marketTime": "2026-11-27T16:14:38.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -14397,7 +14824,7 @@
           "open": 3.675,
           "high": 3.696,
           "low": 3.454,
-          "close": 3.513
+          "close": 3.503
         }
       ],
       "isIndex": false
@@ -14405,16 +14832,16 @@
     "COPPER": {
       "symbol": "HG=F",
       "currency": "USD",
-      "price": 5.6,
+      "price": 5.59,
       "prevClose": 5.33,
-      "change": 0.27,
-      "changePct": 5.07,
+      "change": 0.26,
+      "changePct": 4.82,
       "dayLow": 5.43,
       "dayHigh": 5.76,
       "w52Low": 5.06,
       "w52High": 6.83,
-      "volume": 77992,
-      "marketTime": "2026-11-27T15:42:21.000Z",
+      "volume": 80541,
+      "marketTime": "2026-11-27T16:14:44.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -14869,7 +15296,7 @@
           "open": 5.48,
           "high": 5.76,
           "low": 5.43,
-          "close": 5.6
+          "close": 5.59
         }
       ],
       "isIndex": false
@@ -14880,10 +15307,10 @@
       "BTC": {
         "id": "bitcoin",
         "symbol": "BTC-USD",
-        "price": 59957,
-        "changePct": -0.95,
-        "marketCap": 1206204543423.4185,
-        "volume24h": 27262210031.058247,
+        "price": 59979,
+        "changePct": -0.73,
+        "marketCap": 1206542160798.6536,
+        "volume24h": 28833911528.076687,
         "candles": [
           {
             "time": "2026-08-30",
@@ -15513,7 +15940,7 @@
             "open": 60495.95,
             "high": 62085.71,
             "low": 59007.89,
-            "close": 59935.79
+            "close": 59981.81
           }
         ],
         "dayLow": 59007.89,
@@ -15522,10 +15949,10 @@
       "ETH": {
         "id": "ethereum",
         "symbol": "ETH-USD",
-        "price": 1671.05,
-        "changePct": -1.03,
-        "marketCap": 204240441802.28598,
-        "volume24h": 11172028318.131815,
+        "price": 1669.96,
+        "changePct": -0.85,
+        "marketCap": 204162365400.3354,
+        "volume24h": 11330861976.479223,
         "candles": [
           {
             "time": "2026-08-30",
@@ -16155,7 +16582,7 @@
             "open": 1687.75,
             "high": 1744.08,
             "low": 1640.96,
-            "close": 1668.23
+            "close": 1670.18
           }
         ],
         "dayLow": 1640.96,
@@ -16164,10 +16591,10 @@
       "SOL": {
         "id": "solana",
         "symbol": "SOL-USD",
-        "price": 72.01,
-        "changePct": 1.56,
-        "marketCap": 42648524490.097565,
-        "volume24h": 2601480780.8738723,
+        "price": 71.96,
+        "changePct": 1.62,
+        "marketCap": 42615658655.32164,
+        "volume24h": 2639688928.5407953,
         "candles": [
           {
             "time": "2026-08-30",
@@ -16797,7 +17224,7 @@
             "open": 70.93,
             "high": 73.74,
             "low": 70.55,
-            "close": 71.83
+            "close": 72
           }
         ],
         "dayLow": 70.55,
@@ -16806,10 +17233,10 @@
       "BNB": {
         "id": "binancecoin",
         "symbol": "BNB-USD",
-        "price": 552.96,
-        "changePct": 0.59,
-        "marketCap": 72720260842.08937,
-        "volume24h": 513739623.8226709,
+        "price": 553.46,
+        "changePct": 0.57,
+        "marketCap": 72781628238.5315,
+        "volume24h": 579042667.7560958,
         "candles": [
           {
             "time": "2026-08-30",
@@ -17439,7 +17866,7 @@
             "open": 553.16,
             "high": 566.87,
             "low": 545.18,
-            "close": 552.34
+            "close": 553.58
           }
         ],
         "dayLow": 545.18,
@@ -17448,10 +17875,10 @@
       "XRP": {
         "id": "ripple",
         "symbol": "XRP-USD",
-        "price": 0.95,
-        "changePct": 0.32,
-        "marketCap": 60328106111.86965,
-        "volume24h": 1704795060.4806874,
+        "price": 0.9477,
+        "changePct": -0.04,
+        "marketCap": 60186020524.075775,
+        "volume24h": 1829318524.741386,
         "candles": [
           {
             "time": "2026-08-30",
@@ -18081,7 +18508,7 @@
             "open": 0.9429,
             "high": 0.9835,
             "low": 0.9351,
-            "close": 0.9494
+            "close": 0.9473
           }
         ],
         "dayLow": 0.9351,
@@ -18090,10 +18517,10 @@
       "DOGE": {
         "id": "dogecoin",
         "symbol": "DOGE-USD",
-        "price": 0.0576,
-        "changePct": 1.97,
-        "marketCap": 9043786985.541254,
-        "volume24h": 439671300.33708817,
+        "price": 0.0577,
+        "changePct": 1.99,
+        "marketCap": 9053881182.331005,
+        "volume24h": 445647597.5020726,
         "candles": [
           {
             "time": "2026-08-30",
@@ -18723,7 +19150,7 @@
             "open": 0.0564,
             "high": 0.059,
             "low": 0.0564,
-            "close": 0.0575
+            "close": 0.0577
           }
         ],
         "dayLow": 0.0564,
@@ -18732,10 +19159,10 @@
       "ADA": {
         "id": "cardano",
         "symbol": "ADA-USD",
-        "price": 0.1487,
-        "changePct": 0.36,
-        "marketCap": 5589006326.587563,
-        "volume24h": 231191408.48688117,
+        "price": 0.1491,
+        "changePct": 0.51,
+        "marketCap": 5603627732.815374,
+        "volume24h": 233471183.70209834,
         "candles": [
           {
             "time": "2026-08-30",
@@ -19365,7 +19792,7 @@
             "open": 0.1484,
             "high": 0.1534,
             "low": 0.1465,
-            "close": 0.1484
+            "close": 0.149
           }
         ],
         "dayLow": 0.1465,
@@ -19375,9 +19802,9 @@
         "id": "chainlink",
         "symbol": "LINK-USD",
         "price": 9.32,
-        "changePct": 1.62,
-        "marketCap": 7145821205.963561,
-        "volume24h": 282143499.5384961,
+        "changePct": 1.48,
+        "marketCap": 7146455328.766348,
+        "volume24h": 285957347.1048955,
         "candles": [
           {
             "time": "2026-08-30",
@@ -20007,7 +20434,7 @@
             "open": 9.27,
             "high": 9.69,
             "low": 9.14,
-            "close": 9.3
+            "close": 9.32
           }
         ],
         "dayLow": 9.14,
@@ -20048,7 +20475,7 @@
       "tag": "BBC WORLD",
       "title": "John Simpson: Ukraine is bowed but still unbroken as freezing weather sets in",
       "summary": "Ukraine settles in for another devastating winter as the questions persists: how will it all end?",
-      "time": "34m ago",
+      "time": "1h ago",
       "link": "https://www.bbc.co.uk/news/articles/c3pw4yrr8kz9o?at_medium=RSS&at_campaign=rss"
     },
     {
@@ -20056,7 +20483,7 @@
       "tag": "BBC WORLD",
       "title": "Marching bands scramble to cover costs after Thanksgiving parade rearranged",
       "summary": "Stormy weather in New York City prompted organisers to push back the Macy's parade by two days - leaving some musicians stuck.",
-      "time": "37m ago",
+      "time": "1h ago",
       "link": "https://www.bbc.co.uk/news/articles/ckd71ypy9e8eo?at_medium=RSS&at_campaign=rss"
     },
     {
@@ -20072,7 +20499,7 @@
       "tag": "U.S. NEWS",
       "title": "Hundreds of thousands still without power after storms hit US on Thanksgiving",
       "summary": "Pennsylvania and neighbouring states remain badly affected on Friday after both coasts were lashed with wind and rain.",
-      "time": "1h ago",
+      "time": "2h ago",
       "link": "https://www.bbc.co.uk/news/articles/cre3dj5n7dpwo?at_medium=RSS&at_campaign=rss"
     },
     {
@@ -20080,7 +20507,7 @@
       "tag": "U.S. NEWS",
       "title": "Marching bands scramble to cover NYC costs after parade rearranged",
       "summary": "Stormy weather in New York City prompted organisers to push back the Macy's parade by two days - leaving some musicians stuck.",
-      "time": "37m ago",
+      "time": "1h ago",
       "link": "https://www.bbc.co.uk/news/articles/ckd71ypy9e8eo?at_medium=RSS&at_campaign=rss"
     },
     {
@@ -20088,7 +20515,7 @@
       "tag": "U.S. NEWS",
       "title": "Watch: Roofs torn off and streets under water as severe weather hits US",
       "summary": "Hundreds of thousands have been affected by storms in the country as the Thanksgiving holiday weekend begins.",
-      "time": "20h ago",
+      "time": "21h ago",
       "link": "https://www.bbc.co.uk/news/videos/cq808d704m22o?at_medium=RSS&at_campaign=rss"
     },
     {
@@ -20096,14 +20523,14 @@
       "tag": "U.S. NEWS",
       "title": "Canada's top court largely upholds Quebec ban on religious symbols for public servants",
       "summary": "The law faced legal challenges from a range of groups, including female Muslim, Sikh and Catholic teachers, who argued it violated their funadamental rights.",
-      "time": "14m ago",
+      "time": "47m ago",
       "link": "https://www.bbc.co.uk/news/articles/cq3dgpy9lem3o?at_medium=RSS&at_campaign=rss"
     },
     {
       "cat": "INDIA",
       "tag": "THE HINDU",
       "title": "Union Cabinet clears delimitation bill - The Hindu",
-      "summary": "Union Cabinet clears delimitation bill &nbsp;&nbsp; The Hindu INDIA bloc to chalk out Parliament strategy as Opposition rallies against delimitation Bills &nbsp;&nbsp; The Hindu \"Will Support Delim...",
+      "summary": "Union Cabinet clears delimitation bill &nbsp;&nbsp; The Hindu Karnataka’s voice in Parliament a serious concern: Dy.CM &nbsp;&nbsp; The Hindu \"Whether We Have Numbers Or Not...\": Rahul Gandhi On Op...",
       "time": "6h ago",
       "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNWmdfYjFZSHU5ZHhWZUEwU0VsbjI3ZnYxOFp4ZEY3V2djcE5aUVRzcENfaGtheGYyUndCR215WWVwUTEwdVNmLVJTTFUycDdqRlZVRGltZC1EVEhuTjNDeWJOc3Q3LUZPbDc0enhVZ042eE5Ock9ueXlndmh5eUNITTAyMkh1UV9hRHRCNVVMWExFOWtIeUtQQ1BGenp5QQ?oc=5"
     },
@@ -20112,38 +20539,38 @@
       "tag": "LIVE LAW",
       "title": "Thiruparankundram Row | Supreme Court Orders Lamp Lighting At Deepathoon Tomorrow; Issues Contempt Notice ... - Live Law",
       "summary": "Thiruparankundram Row | Supreme Court Orders Lamp Lighting At Deepathoon Tomorrow; Issues Contempt Notice ... &nbsp;&nbsp; Live Law Supreme Court orders Karthigai Deepam to be lit on ‘deepathoon’ o...",
-      "time": "6h ago",
+      "time": "7h ago",
       "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxQWU8xV2FaYlp2MHBXRzFGYUdwU1VYQkRMX0lWUENjb2lxVTI1U2JETGg5Y2FVQWN1ZzRMSEhFemRPbHcyWWZSVE5TZ1JUSjA4MHEzX1hJdWxKTG9oaHpJdGpDVHcyblVjbHZaa0tWdGlWaTNJQ1kxcXJBSW0wVUpQaDlzRGJycGQxUzJBSk1rMmgwT3F0VEZxaGMyQWtpVTFWd0ZwRmF5bFNfR3N6ZzI5ajZmZjRQRzBtUDFJZ3pKeDU2MlR5dXpuci1QWmpRSEVFZXlweWlTbkFIWnlmaEczamgzZHoycDFESEllLU04c0RpN1dN0gH6AUFVX3lxTE1tVU9rUzktTE5WdjVPdTI0QWhPZ1M2VDJ0OHFlMEI4YzVpV0RZR21TSlVDT2pSUnFiMVhkbk5WUW03eV9nel9EODNCSzN4cE1oT1NPQncwMUViWm4tbUN0UEs3a25VcnBmenNXdVZ6bG12b0YtakpfREIxX01iZm5Ea3hwbU5RRlR5RTE5S2dwZGdjT0ZVWm40eXRFX1R4S28tUWpaVVRRbXowN1htWk96TkxwMzVSWHloMWlTdU5MSXRfN2RnN0gwVVluR1RKYVowanlpODZUTHVHaDBCSEZtU3F3dDJaSlp1X01zN2htWmFHd25rWWg4T3c?oc=5"
     },
     {
       "cat": "INDIA",
-      "tag": "THE HINDU",
-      "title": "DMK sets conditions to support Delimitation Bill - The Hindu",
-      "summary": "DMK sets conditions to support Delimitation Bill &nbsp;&nbsp; The Hindu Delimitation Bill: DMK Sets Terms for Tamil Nadu Support &nbsp;&nbsp; Frontline Magazine MK Stalin, Sharad Pawar's Parties Be...",
-      "time": "7h ago",
-      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQOC1FNXdZWmhkRVg0UGU2V3FTRUt0bS01LXdGd0RoT2N1ZlZPNmM5Mmxmdjh2RjJwcExhVDc3THFySmhfbjFiSDl4a2k2cUxyOVh2bzd0WDNMLURhLV84dV9lRHg3U2hxYVlqWGFFZXJkWjUwSm1VSHBqaWxiNXh1eThSeXhRMVhHd3h6Qk1IVjlkaDVkazlvVTBKTlVTUHEwU203bkhPUEV0MEnSAbIBQVVfeXFMUGJ3eHFCU3FNUXA2bC1OQklLMS10d1VUc19MUUhJYUZvbm9EZERZdTI2bEJhRlp4RmFRU01JQW8wSWhnZGJ3MWROQmhPZUtVYXdqMk1HVzgwRGhNdzlaaVRGN2NIY0xiUjk0TDJKTG1EaTdRMEdUZkdoMnlUYXlrNU5nUVViRFRQM0diUmxadFVkMkppUmdGSnhMc0g3YjcxRFJLSklKekJCOXl4Xy1RbjBhZw?oc=5"
+      "tag": "AL ARABIYA ENGLISH",
+      "title": "Israel preparing for potential Iran-linked attacks on its soil: Report - Al Arabiya English",
+      "summary": "Israel preparing for potential Iran-linked attacks on its soil: Report &nbsp;&nbsp; Al Arabiya English Israel divided over whether to strike Iran without US backing &nbsp;&nbsp; The Arab Weekly Cou...",
+      "time": "6h ago",
+      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOUWdOanI2YklndF96RWRGRDR4bjdnVE1BSk4zai10bTZZdk5YZXpoTXpLcndzTzRUM1k4aUhXLWlQUWFWN1hWVHdFQk1OcHRZU2pxVlo3UUVaUGxFNkNnVnY2Q29YSGhhV0NpQVhHZTdxbVN6dElSX1VEenZqUE02aW81bVBWUkNQc2dkUFdNc2thenpacXV0TDlobGJrek05YUVpVVdIa0sxTlZhR0FxeG1sckt1RndTT29ud0JjR1o5THI20gHKAUFVX3lxTE1hZzBQOV96MHRuRG1ZclYxTGhOaEF4OWx3eGoxQ2hsaUZjSVZaQjdTVGtRNWxvM1pmY1lUUU0wYXZjRFF6ZnlWdC16Y2d6cE5IVDRBVVJiSWF1VUNnQzVXanVEMFR3VWctRzF4SHZEYkVWR19aQS1vNmRXbjFPREtCUXVhWWY3djBFYV9uaTZMMklqZS13MlVaM2wtbHZfRWdNX3RKN2lTTmd2MDRSNU1Fcm1FdzZ1eVZsNm1aclhlZXVOTkdZb1ZDUFE?oc=5"
     },
     {
       "cat": "INDIA",
-      "tag": "NDTV",
-      "title": "20 Rebel Trinamool MPs Free To Vote In Parliament Special Session: Sources - NDTV",
-      "summary": "20 Rebel Trinamool MPs Free To Vote In Parliament Special Session: Sources &nbsp;&nbsp; NDTV Rebel TMC MPs face crucial test as Delimitation Bill threatens to deepen defection battle &nbsp;&nbsp; U...",
-      "time": "5h ago",
-      "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPRS1NRTBmajdJV3hzQkd6WG9POTBVQ1JXQlptYW9MaThwUDBENDNBam4wNTdEMjlhSWl1TkZic19zU0NFWnRrTGtzMjR1TVZSckg5NWxsZzNHVmkwYTNON1AwSXlyb0tEbnFsdWJRNmJEUFBPNTBOTmVidG9hUk9CN1hHRGt1NUVFZ1JQdFV4QVp4WGtvbVgxWjg5V2M5NmdDcEM3MWlWUkVubTBzaVNoMERuVXJNR0xzQVFBbGZjMjB1dmdjdngyaENBbVE?oc=5"
+      "tag": "BBC",
+      "title": "Sheikh Hasina: Why her planned return from India has Bangladesh on edge - BBC",
+      "summary": "Sheikh Hasina: Why her planned return from India has Bangladesh on edge &nbsp;&nbsp; BBC MEA separates Sheikh Hasina’s plans to return to Bangladesh from issue of extradition &nbsp;&nbsp; The Hindu...",
+      "time": "16h ago",
+      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1BaXpGUk5KWTAweGxGT2RLSXUxMjdqMGdjdW5RZnJGZ3lmZWttaWZDT2UzcEFHNDFrQWZmelM2bWNaV0pqVmg4UVhUMFFLc3FhaDZ2Tzhtd3dXWjQ?oc=5"
     },
     {
       "cat": "STEM",
       "tag": "JANLUKAS.BLOG",
       "title": "AI made self-hosting fun again",
-      "summary": "Trending on Hacker News (920 pts, 445 comments).",
-      "time": "18h ago",
+      "summary": "Trending on Hacker News (933 pts, 449 comments).",
+      "time": "19h ago",
       "link": "https://janlukas.blog/posts/ai-self-hosting"
     },
     {
       "cat": "STEM",
       "tag": "GITHUB.COM",
       "title": "Intel One Mono font (2023)",
-      "summary": "Trending on Hacker News (557 pts, 265 comments).",
+      "summary": "Trending on Hacker News (562 pts, 266 comments).",
       "time": "1d ago",
       "link": "https://github.com/intel/intel-one-mono"
     },
@@ -20151,16 +20578,16 @@
       "cat": "STEM",
       "tag": "CONSTRUCT22.COM",
       "title": "The group chat where your AI talks behind your back",
-      "summary": "Trending on Hacker News (506 pts, 221 comments).",
-      "time": "9h ago",
+      "summary": "Trending on Hacker News (525 pts, 233 comments).",
+      "time": "10h ago",
       "link": "https://construct22.com/"
     },
     {
       "cat": "STEM",
       "tag": "LIA.MG",
       "title": "Company Culture = Slack Emoji ÷ √Headcount",
-      "summary": "Trending on Hacker News (479 pts, 247 comments).",
-      "time": "19h ago",
+      "summary": "Trending on Hacker News (490 pts, 251 comments).",
+      "time": "20h ago",
       "link": "https://lia.mg/posts/measuring-company-culture-with-slack-emoji/"
     }
   ]
