@@ -1,0 +1,2447 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>India Markets — Daily Intelligence</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lightweight-charts@4.2.1/dist/lightweight-charts.standalone.production.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --bg-page: #090d16;
+      --bg-header: rgba(9, 13, 22, 0.94);
+      --bg-card: #111827;
+      --bg-inner: #0c121e;
+      --bg-pill: #080c14;
+      --bg-dropdown: #111827;
+      --border-subtle: #1f2937;
+      --border-hover: #374151;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --seg-active-bg: #1e293b;
+      --seg-active-text: #ffffff;
+      --nav-active-bg: #10b981;
+      --nav-active-text: #04130d;
+      --card-shadow: 0 22px 48px -20px rgba(0, 0, 0, 0.8), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+    }
+
+    html.light-beige {
+      --bg-page: #f4efe6;
+      --bg-header: rgba(244, 239, 230, 0.96);
+      --bg-card: #fcf9f2;
+      --bg-inner: #f0e9db;
+      --bg-pill: #e7decb;
+      --bg-dropdown: #fcf9f2;
+      --border-subtle: #d6cbb8;
+      --border-hover: #b8aa95;
+      --text-primary: #1c1917;
+      --text-secondary: #3d3832;
+      --text-muted: #696055;
+      --seg-active-bg: #1c1917;
+      --seg-active-text: #fcf9f2;
+      --nav-active-bg: #1c1917;
+      --nav-active-text: #fcf9f2;
+      --card-shadow: 0 18px 38px -18px rgba(68, 56, 38, 0.16), inset 0 1px 0 0 rgba(255, 255, 255, 0.85);
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      transition: background-color 0.25s ease, color 0.25s ease;
+      min-height: 100vh;
+    }
+
+    html.dark body {
+      background-image:
+        radial-gradient(circle at 15% 0%, rgba(16, 185, 129, 0.07), transparent 36%),
+        radial-gradient(circle at 85% 6%, rgba(245, 158, 11, 0.06), transparent 36%);
+    }
+
+    html.light-beige body {
+      background-image:
+        radial-gradient(circle at 15% 0%, rgba(180, 142, 82, 0.1), transparent 38%),
+        radial-gradient(circle at 85% 6%, rgba(16, 185, 129, 0.06), transparent 38%);
+    }
+
+    .tabular-nums { font-variant-numeric: tabular-nums; }
+    .terminal-header {
+      background-color: var(--bg-header);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .terminal-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--card-shadow);
+      transition: background-color 0.25s ease, border-color 0.2s ease;
+    }
+    .inner-panel {
+      background-color: var(--bg-inner);
+      border: 1px solid var(--border-subtle);
+    }
+    .pill-track {
+      background-color: var(--bg-pill);
+      border: 1px solid var(--border-subtle);
+    }
+    .dropdown-menu {
+      background-color: var(--bg-dropdown);
+      border: 1px solid var(--border-hover);
+      box-shadow: 0 18px 36px -12px rgba(0, 0, 0, 0.45);
+    }
+    .dropdown-item:hover {
+      background-color: var(--bg-inner);
+    }
+    .divider-line { border-color: var(--border-subtle); }
+    .txt-primary { color: var(--text-primary); }
+    .txt-secondary { color: var(--text-secondary); }
+    .txt-muted { color: var(--text-muted); }
+
+    .seg-btn {
+      transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+      color: var(--text-muted);
+    }
+    .seg-btn:hover { color: var(--text-primary); }
+    .seg-btn.active {
+      background-color: var(--seg-active-bg);
+      color: var(--seg-active-text);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.22);
+    }
+
+    .ticker-chip {
+      background-color: var(--bg-inner);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      transition: all 0.16s ease;
+    }
+    .ticker-chip:hover {
+      border-color: var(--border-hover);
+      color: var(--text-primary);
+    }
+    .ticker-chip.active {
+      background-color: var(--seg-active-bg);
+      color: var(--seg-active-text);
+      border-color: transparent;
+      font-weight: 700;
+    }
+
+    .nav-tab {
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      color: var(--text-secondary);
+      border: 1px solid transparent;
+    }
+    .nav-tab:hover {
+      color: var(--text-primary);
+      background-color: var(--bg-inner);
+      border-color: var(--border-subtle);
+    }
+    .nav-tab.active {
+      background-color: var(--nav-active-bg);
+      color: var(--nav-active-text);
+      font-weight: 700;
+      box-shadow: 0 6px 18px -6px rgba(16, 185, 129, 0.45);
+    }
+    html.light-beige .nav-tab.active {
+      box-shadow: 0 6px 18px -6px rgba(28, 25, 23, 0.28);
+    }
+
+    .card-panel {
+      display: none;
+      animation: fadeSlideIn 0.22s ease-out;
+    }
+    .card-panel.active { display: block; }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .pulse-live { animation: livePulse 2.4s infinite ease-in-out; }
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    input.search-input, select.custom-select {
+      background-color: var(--bg-inner);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+    }
+    input.search-input:focus, select.custom-select:focus {
+      outline: none;
+      border-color: #10b981;
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="antialiased selection:bg-emerald-500/30 selection:text-emerald-200 pb-16">
+
+  <!-- TOP HEADER BAR (DYNAMIC ACTIVE SECTION TITLE + USD BASE FOREX + THEME) -->
+  <header class="sticky top-0 z-40 terminal-header backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+      <!-- Dynamic Respective Section Title -->
+      <div class="flex items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div id="header-active-icon" class="w-10 h-10 rounded-xl inner-panel flex items-center justify-center shrink-0"></div>
+          <div>
+            <h1 id="header-active-title" class="font-bold text-lg sm:text-xl tracking-tight txt-primary leading-none">India Markets</h1>
+            <div class="mt-1 flex items-center gap-2 text-xs font-mono txt-muted tabular-nums">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 pulse-live shrink-0"></span>
+              <span id="live-clock">FRI 27 NOV 2026 &bull; 19:44 IST</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Theme Toggle -->
+        <button type="button" id="theme-toggle-mobile" class="md:hidden inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-mono font-semibold inner-panel txt-primary cursor-pointer">
+          <span class="theme-icon text-amber-500">☀</span>
+          <span class="theme-label">Light Mode</span>
+        </button>
+      </div>
+
+      <!-- USD-Base Live Forex Switcher + Desktop Theme Toggle -->
+      <div class="flex items-center justify-between md:justify-end gap-2.5 flex-wrap">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl inner-panel">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 shrink-0" title="Live Forex"></span>
+          <span class="text-xs sm:text-sm font-mono font-bold txt-primary">1 USD =</span>
+          <span id="fx-rate-value" class="text-sm font-mono font-bold text-emerald-600 dark:text-emerald-400 tabular-nums">₹92.96</span>
+          <label for="fx-target-select" class="sr-only">Select Target Currency</label>
+          <select id="fx-target-select" class="bg-transparent text-xs sm:text-sm font-mono font-bold txt-secondary focus:outline-none cursor-pointer border-l divider-line pl-2">
+            <option value="INR" class="text-slate-900">INR (₹)</option>
+            <option value="EUR" class="text-slate-900">EUR (€)</option>
+            <option value="GBP" class="text-slate-900">GBP (£)</option>
+            <option value="JPY" class="text-slate-900">JPY (¥)</option>
+            <option value="AED" class="text-slate-900">AED (د.إ)</option>
+            <option value="CHF" class="text-slate-900">CHF (Fr)</option>
+            <option value="CAD" class="text-slate-900">CAD (C$)</option>
+            <option value="AUD" class="text-slate-900">AUD (A$)</option>
+          </select>
+        </div>
+
+        <button type="button" id="theme-toggle-desktop" class="hidden md:inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-mono font-semibold inner-panel txt-primary hover:opacity-90 transition cursor-pointer">
+          <span class="theme-icon text-amber-500">☀</span>
+          <span class="theme-label">Light Mode</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- SINGLE-CARD NAVIGATION BAR -->
+    <nav class="border-t divider-line" aria-label="Briefing Modules">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 flex items-center gap-2 overflow-x-auto no-scrollbar" role="tablist">
+        <button type="button" data-card-tab="india" role="tab" aria-selected="true" class="nav-tab active inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer">
+          <svg class="w-5 h-3.5 rounded-[2px] border border-black/15 shrink-0" viewBox="0 0 24 16"><rect width="24" height="5.33" fill="#FF9933"/><rect width="24" height="5.34" y="5.33" fill="#FFF"/><rect width="24" height="5.33" y="10.67" fill="#138808"/><circle cx="12" cy="8" r="2.1" fill="none" stroke="#000080" stroke-width="0.7"/></svg>
+          <span>India Markets</span>
+        </button>
+
+        <button type="button" data-card-tab="us" role="tab" aria-selected="false" class="nav-tab inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer">
+          <svg class="w-5 h-3.5 rounded-[2px] border border-black/15 shrink-0" viewBox="0 0 24 16"><rect width="24" height="16" fill="#B22234"/><rect width="24" height="2.28" y="2.28" fill="#FFF"/><rect width="24" height="2.28" y="6.85" fill="#FFF"/><rect width="24" height="2.28" y="11.42" fill="#FFF"/><rect width="10.5" height="9.14" fill="#3C3B6E"/></svg>
+          <span>U.S. Markets</span>
+        </button>
+
+        <button type="button" data-card-tab="crypto" role="tab" aria-selected="false" class="nav-tab inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer">
+          <span class="font-mono font-bold text-amber-500">₿</span>
+          <span>Crypto Markets</span>
+        </button>
+
+        <button type="button" data-card-tab="commodities" role="tab" aria-selected="false" class="nav-tab inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer">
+          <span>🛢️</span>
+          <span>Commodities</span>
+        </button>
+
+        <button type="button" data-card-tab="astro" role="tab" aria-selected="false" class="nav-tab inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer">
+          <span>♉</span>
+          <span>Astro Daily</span>
+        </button>
+
+        <button type="button" data-card-tab="intel" role="tab" aria-selected="false" class="nav-tab inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer">
+          <span>🌐</span>
+          <span>World News</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- FOCUSED SINGLE-CARD VIEWPORT -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8">
+
+    <!-- =================================================================== -->
+    <!-- TAB 1: INDIA MARKETS                                                -->
+    <!-- =================================================================== -->
+    <section id="panel-india" class="card-panel active terminal-card rounded-3xl p-5 sm:p-7 space-y-6">
+      <div class="space-y-4 pb-5 border-b divider-line">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div class="flex items-center gap-3.5">
+            <svg class="w-9 h-6 rounded shadow-sm border border-black/15 shrink-0" viewBox="0 0 24 16" aria-label="India Flag">
+              <rect width="24" height="5.33" fill="#FF9933" />
+              <rect width="24" height="5.34" y="5.33" fill="#FFFFFF" />
+              <rect width="24" height="5.33" y="10.67" fill="#138808" />
+              <circle cx="12" cy="8" r="2.1" fill="none" stroke="#000080" stroke-width="0.65" />
+            </svg>
+            <div>
+              <span class="text-xs font-mono uppercase tracking-widest text-indigo-500 dark:text-indigo-400 font-semibold">NSE / BSE &bull; INDIA MARKETS</span>
+              <h2 id="india-etf-name" class="text-lg sm:text-xl font-bold txt-primary mt-0.5">Nippon India ETF Nifty 50 BeES</h2>
+            </div>
+          </div>
+
+          <!-- Search Box with Search Icon + Interactive Dropdown -->
+          <div class="relative w-full md:w-80" data-search-wrapper="india">
+            <form id="india-search-form" class="relative flex items-center">
+              <svg class="w-4 h-4 txt-muted absolute left-3.5 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z" />
+              </svg>
+              <input id="india-search-input" type="text" placeholder="Search NSE ticker..." class="search-input w-full pl-10 pr-10 py-2.5 rounded-xl text-sm font-mono" autocomplete="off" />
+              <button type="button" id="india-dropdown-toggle" class="absolute right-2.5 p-1 txt-muted hover:txt-primary cursor-pointer" aria-label="Toggle India tickers dropdown">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+            </form>
+            <div id="india-dropdown-menu" class="hidden dropdown-menu absolute left-0 right-0 mt-1.5 rounded-2xl max-h-64 overflow-y-auto z-30 p-1.5 space-y-0.5"></div>
+          </div>
+        </div>
+        <div id="india-chip-list" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1"></div>
+      </div>
+
+      <!-- Price Hero Strip (with Compact Regime Pill) -->
+      <div class="p-5 rounded-2xl inner-panel grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+        <div class="md:col-span-6">
+          <div class="flex items-center gap-3 flex-wrap">
+            <span class="text-xs font-mono uppercase txt-muted">Last Traded Price</span>
+            <span id="india-index-readout" class="text-xs font-mono txt-secondary tabular-nums">Nifty 50: <strong class="txt-primary">25,607.20</strong></span>
+          </div>
+          <div class="mt-1.5 flex items-center gap-2.5 flex-wrap">
+            <span id="india-price" class="text-4xl font-mono font-bold txt-primary tabular-nums">₹292.00</span>
+            <span id="india-change" class="px-2.5 py-1 rounded-lg text-sm font-mono font-bold bg-rose-500/15 text-rose-700 dark:text-rose-400 border border-rose-500/30 tabular-nums">-₹3.33 (-1.13%)</span>
+            <span id="india-regime-pill" class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/35">▼ LOSS</span>
+          </div>
+          <div id="india-subprice" class="mt-1.5 text-xs sm:text-sm font-mono txt-muted tabular-nums">27 Nov Close &bull; Vol: 7.65M &bull; Next Open Mon 09:15 IST</div>
+        </div>
+        <div class="md:col-span-6 grid grid-cols-2 gap-3 pt-3 md:pt-0 md:border-l divider-line md:pl-5 text-sm font-mono tabular-nums">
+          <div>
+            <span class="block text-xs txt-muted uppercase">Session Range</span>
+            <span id="india-day-range" class="txt-primary font-semibold mt-1 block">₹291.75 – ₹295.44</span>
+          </div>
+          <div class="border-l divider-line pl-3">
+            <span class="block text-xs txt-muted uppercase">52-Week Range</span>
+            <span id="india-52w-range" class="text-amber-600 dark:text-amber-300 font-semibold mt-1 block">₹251.70 – ₹302.25</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDE-BY-SIDE: FEAR & GREED DIAL + EXPECTED VOLATILITY -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
+        <div class="p-5 rounded-2xl inner-panel flex flex-col items-center justify-between text-center">
+          <div class="w-full flex items-center justify-between text-xs font-mono">
+            <span class="uppercase font-bold txt-muted">India Market Mood (MMI)</span>
+            <span class="px-2 py-0.5 rounded bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30 font-bold text-[10px]">SENTIMENT</span>
+          </div>
+          <div id="india-fg-dial" class="w-full max-w-[210px] my-1"></div>
+          <div class="space-y-0.5">
+            <div class="text-xs sm:text-sm font-mono font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wide">Neutral / Greed (56/100)</div>
+            <div class="text-xs txt-muted">Prev: 61 &bull; Cooled on pullback</div>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-amber-500/10 border border-amber-500/35 flex flex-col justify-between gap-3 font-mono tabular-nums">
+          <div class="flex items-center justify-between gap-2 flex-wrap">
+            <span class="text-xs uppercase tracking-wider text-amber-700 dark:text-amber-300 font-bold">Expected Volatility (±1&sigma;)</span>
+            <span id="india-vix-badge" class="px-2 py-0.5 rounded-md text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35 font-semibold">INDIA VIX 16.66</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="p-3 rounded-xl inner-panel">
+              <span class="block text-[11px] txt-muted uppercase">1D Implied</span>
+              <span id="india-vol-1d" class="text-lg font-bold text-emerald-700 dark:text-emerald-300 mt-1 block">±0.87%</span>
+              <span id="india-vol-1d-etf" class="text-xs txt-muted mt-0.5 block">±₹2.54</span>
+            </div>
+            <div class="p-3 rounded-xl inner-panel">
+              <span class="block text-[11px] txt-muted uppercase">1W Implied</span>
+              <span id="india-vol-1w" class="text-lg font-bold text-amber-700 dark:text-amber-300 mt-1 block">±2.31%</span>
+              <span id="india-vol-1w-pts" class="text-xs txt-muted mt-0.5 block">±591 pts</span>
+            </div>
+          </div>
+          <div class="text-xs txt-secondary flex items-center justify-between pt-2 border-t border-amber-500/20">
+            <span>Next Session Band:</span>
+            <strong id="india-vol-band" class="text-amber-700 dark:text-amber-300">₹289.45 – ₹294.55</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOSS / MIDDLE / GAIN STRIP (ABOVE THE CHART) -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono tabular-nums">
+        <div class="p-4 rounded-2xl bg-rose-500/15 border border-rose-500/35 flex items-center justify-between gap-2">
+          <div>
+            <div class="text-xs text-rose-700 dark:text-rose-400 font-bold uppercase">▼ Loss / Bear</div>
+            <div id="india-bear-idx" class="text-xs text-rose-700/80 dark:text-rose-400/80 mt-0.5">Support Floor</div>
+          </div>
+          <div id="india-bear" class="text-xl font-bold text-rose-800 dark:text-rose-300">₹288.20</div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-amber-500/15 border border-amber-500/35 flex items-center justify-between gap-2">
+          <div>
+            <div class="text-xs text-amber-700 dark:text-amber-400 font-bold uppercase">◆ Middle / Base</div>
+            <div id="india-base-idx" class="text-xs text-amber-700/80 dark:text-amber-400/80 mt-0.5">Consolidation</div>
+          </div>
+          <div id="india-base" class="text-xl font-bold text-amber-800 dark:text-amber-300">₹293.50</div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/35 flex items-center justify-between gap-2">
+          <div>
+            <div class="text-xs text-emerald-700 dark:text-emerald-400 font-bold uppercase">▲ Gain / Bull</div>
+            <div id="india-bull-idx" class="text-xs text-emerald-700/80 dark:text-emerald-400/80 mt-0.5">Upside Target</div>
+          </div>
+          <div id="india-bull" class="text-xl font-bold text-emerald-800 dark:text-emerald-300">₹298.50</div>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE LIGHTWEIGHT CHART (ZERO 403 ERRORS) -->
+      <div class="rounded-2xl inner-panel overflow-hidden">
+        <div class="px-4 py-2.5 border-b divider-line flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+          <div class="flex items-center gap-2">
+            <span id="india-chart-label" class="font-bold txt-primary">NSE:NIFTYBEES</span>
+            <span id="india-chart-ohlc" class="txt-muted hidden sm:inline">Interactive Candlestick</span>
+          </div>
+          <div class="flex items-center gap-1" data-tf-group="india">
+            <button type="button" data-tf="1W" class="tf-btn seg-btn px-2 py-1 rounded-lg cursor-pointer">1W</button>
+            <button type="button" data-tf="1M" class="tf-btn seg-btn active px-2 py-1 rounded-lg cursor-pointer">1M</button>
+            <button type="button" data-tf="3M" class="tf-btn seg-btn px-2 py-1 rounded-lg cursor-pointer">3M</button>
+            <button type="button" data-tf="1Y" class="tf-btn seg-btn px-2 py-1 rounded-lg cursor-pointer">1Y</button>
+          </div>
+        </div>
+        <div id="india-chart-container" class="w-full h-[340px] sm:h-[380px] relative"></div>
+      </div>
+
+      <!-- Market Drivers -->
+      <div class="pt-4 border-t divider-line space-y-2.5">
+        <div class="text-xs font-mono uppercase tracking-wider txt-muted font-bold">Key Market Drivers</div>
+        <ul id="india-catalysts" class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm txt-secondary leading-relaxed"></ul>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- TAB 2: U.S. MARKETS                                                 -->
+    <!-- =================================================================== -->
+    <section id="panel-us" class="card-panel terminal-card rounded-3xl p-5 sm:p-7 space-y-6">
+      <div class="space-y-4 pb-5 border-b divider-line">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div class="flex items-center gap-3.5">
+            <svg class="w-9 h-6 rounded shadow-sm border border-black/15 shrink-0" viewBox="0 0 24 16" aria-label="United States Flag">
+              <rect width="24" height="16" fill="#B22234" />
+              <rect width="24" height="2.28" y="2.28" fill="#FFFFFF" />
+              <rect width="24" height="2.28" y="6.85" fill="#FFFFFF" />
+              <rect width="24" height="2.28" y="11.42" fill="#FFFFFF" />
+              <rect width="10.5" height="9.14" fill="#3C3B6E" />
+            </svg>
+            <div>
+              <span class="text-xs font-mono uppercase tracking-widest text-sky-500 dark:text-sky-400 font-semibold">NYSE / NASDAQ &bull; U.S. MARKETS</span>
+              <h2 id="us-etf-name" class="text-lg sm:text-xl font-bold txt-primary mt-0.5">SPDR S&amp;P 500 ETF Trust</h2>
+            </div>
+          </div>
+
+          <div class="relative w-full md:w-80" data-search-wrapper="us">
+            <form id="us-search-form" class="relative flex items-center">
+              <svg class="w-4 h-4 txt-muted absolute left-3.5 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z" />
+              </svg>
+              <input id="us-search-input" type="text" placeholder="Search U.S. ticker..." class="search-input w-full pl-10 pr-10 py-2.5 rounded-xl text-sm font-mono" autocomplete="off" />
+              <button type="button" id="us-dropdown-toggle" class="absolute right-2.5 p-1 txt-muted hover:txt-primary cursor-pointer" aria-label="Toggle U.S. tickers dropdown">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+            </form>
+            <div id="us-dropdown-menu" class="hidden dropdown-menu absolute left-0 right-0 mt-1.5 rounded-2xl max-h-64 overflow-y-auto z-30 p-1.5 space-y-0.5"></div>
+          </div>
+        </div>
+        <div id="us-chip-list" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1"></div>
+      </div>
+
+      <!-- Price Hero Strip (with Compact Regime Pill) -->
+      <div class="p-5 rounded-2xl inner-panel grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+        <div class="md:col-span-6">
+          <div class="flex items-center gap-3 flex-wrap">
+            <span class="text-xs font-mono uppercase txt-muted">Pre-Market Quote</span>
+            <span id="us-index-readout" class="text-xs font-mono txt-secondary tabular-nums">S&amp;P 500: <strong class="txt-primary">7,182.78</strong></span>
+          </div>
+          <div class="mt-1.5 flex items-center gap-2.5 flex-wrap">
+            <span id="us-price" class="text-4xl font-mono font-bold txt-primary tabular-nums">$728.87</span>
+            <span id="us-change" class="px-2.5 py-1 rounded-lg text-sm font-mono font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 tabular-nums">+$10.09 (+1.40%)</span>
+            <span id="us-regime-pill" class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35">▲ GAIN</span>
+          </div>
+          <div id="us-subprice" class="mt-1.5 text-xs sm:text-sm font-mono txt-muted tabular-nums">Prev Close: $718.78 &bull; Short Session: 20:00–23:30 IST</div>
+        </div>
+        <div class="md:col-span-6 grid grid-cols-2 gap-3 pt-3 md:pt-0 md:border-l divider-line md:pl-5 text-sm font-mono tabular-nums">
+          <div>
+            <span class="block text-xs txt-muted uppercase">Pre-Market Range</span>
+            <span id="us-range" class="txt-primary font-semibold mt-1 block">$727.24 – $731.16</span>
+          </div>
+          <div class="border-l divider-line pl-3">
+            <span class="block text-xs txt-muted uppercase">Early Close</span>
+            <span class="text-amber-600 dark:text-amber-300 font-semibold mt-1 block">1:00 PM ET (23:30 IST)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDE-BY-SIDE: FEAR & GREED DIAL + EXPECTED VOLATILITY -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
+        <div class="p-5 rounded-2xl inner-panel flex flex-col items-center justify-between text-center">
+          <div class="w-full flex items-center justify-between text-xs font-mono">
+            <span class="uppercase font-bold txt-muted">U.S. Fear &amp; Greed</span>
+            <span class="px-2 py-0.5 rounded bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/30 font-bold text-[10px]">SENTIMENT</span>
+          </div>
+          <div id="us-fg-dial" class="w-full max-w-[210px] my-1"></div>
+          <div class="space-y-0.5">
+            <div class="text-xs sm:text-sm font-mono font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wide">Fear (34/100)</div>
+            <div class="text-xs txt-muted">Prev: 29 &bull; VIX Elevated</div>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-rose-500/10 border border-rose-500/35 flex flex-col justify-between gap-3 font-mono tabular-nums">
+          <div class="flex items-center justify-between gap-2 flex-wrap">
+            <span class="text-xs uppercase tracking-wider text-rose-700 dark:text-rose-300 font-bold">Expected Volatility (±1&sigma;)</span>
+            <span id="us-vix-badge" class="px-2 py-0.5 rounded-md text-xs bg-rose-500/20 text-rose-800 dark:text-rose-200 border border-rose-500/40 font-semibold">CBOE VIX 28.29</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="p-3 rounded-xl inner-panel">
+              <span class="block text-[11px] txt-muted uppercase">1D Implied</span>
+              <span id="us-vol-1d" class="text-lg font-bold text-rose-700 dark:text-rose-300 mt-1 block">±1.78%</span>
+              <span id="us-vol-1d-sub" class="text-xs txt-muted mt-0.5 block">±$12.97</span>
+            </div>
+            <div class="p-3 rounded-xl inner-panel">
+              <span class="block text-[11px] txt-muted uppercase">1W Implied</span>
+              <span id="us-vol-1w" class="text-lg font-bold text-rose-700 dark:text-rose-300 mt-1 block">±3.92%</span>
+              <span id="us-vol-1w-sub" class="text-xs txt-muted mt-0.5 block">3.8% PCE</span>
+            </div>
+          </div>
+          <div class="text-xs txt-secondary flex items-center justify-between pt-2 border-t border-rose-500/20">
+            <span>1D Implied Range:</span>
+            <strong id="us-vol-band" class="text-amber-700 dark:text-amber-300">$715.90 – $741.84</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOSS / MIDDLE / GAIN STRIP (ABOVE THE CHART) -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono tabular-nums">
+        <div class="p-4 rounded-2xl bg-rose-500/15 border border-rose-500/35 flex items-center justify-between gap-2">
+          <div>
+            <div class="text-xs text-rose-700 dark:text-rose-400 font-bold uppercase">▼ Loss / Bear</div>
+            <div id="us-bear-sub" class="text-xs text-rose-700/80 dark:text-rose-400/80 mt-0.5">Gap Fill Floor</div>
+          </div>
+          <div id="us-bear" class="text-xl font-bold text-rose-800 dark:text-rose-300">$718.78</div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-amber-500/15 border border-amber-500/35 flex items-center justify-between gap-2">
+          <div>
+            <div class="text-xs text-amber-700 dark:text-amber-400 font-bold uppercase">◆ Middle / Base</div>
+            <div id="us-base-sub" class="text-xs text-amber-700/80 dark:text-amber-400/80 mt-0.5">Consolidation</div>
+          </div>
+          <div id="us-base" class="text-xl font-bold text-amber-800 dark:text-amber-300">$728.00</div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/35 flex items-center justify-between gap-2">
+          <div>
+            <div class="text-xs text-emerald-700 dark:text-emerald-400 font-bold uppercase">▲ Gain / Bull</div>
+            <div id="us-bull-sub" class="text-xs text-emerald-700/80 dark:text-emerald-400/80 mt-0.5">Upside Target</div>
+          </div>
+          <div id="us-bull" class="text-xl font-bold text-emerald-800 dark:text-emerald-300">$736.50</div>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE CHART -->
+      <div class="rounded-2xl inner-panel overflow-hidden">
+        <div class="px-4 py-2.5 border-b divider-line flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+          <div class="flex items-center gap-2">
+            <span id="us-chart-label" class="font-bold txt-primary">AMEX:SPY</span>
+            <span id="us-chart-ohlc" class="txt-muted hidden sm:inline">Interactive Candlestick</span>
+          </div>
+          <div class="flex items-center gap-1" data-tf-group="us">
+            <button type="button" data-tf="1W" class="tf-btn seg-btn px-2 py-1 rounded-lg cursor-pointer">1W</button>
+            <button type="button" data-tf="1M" class="tf-btn seg-btn active px-2 py-1 rounded-lg cursor-pointer">1M</button>
+            <button type="button" data-tf="3M" class="tf-btn seg-btn px-2 py-1 rounded-lg cursor-pointer">3M</button>
+            <button type="button" data-tf="1Y" class="tf-btn seg-btn px-2 py-1 rounded-lg cursor-pointer">1Y</button>
+          </div>
+        </div>
+        <div id="us-chart-container" class="w-full h-[340px] sm:h-[380px] relative"></div>
+      </div>
+
+      <div class="pt-4 border-t divider-line space-y-2.5">
+        <div class="text-xs font-mono uppercase tracking-wider txt-muted font-bold">Session &amp; Macro Drivers</div>
+        <ul id="us-catalysts" class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm txt-secondary leading-relaxed"></ul>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- TAB 3: CRYPTO MARKETS (PURE USD)                                    -->
+    <!-- =================================================================== -->
+    <section id="panel-crypto" class="card-panel terminal-card rounded-3xl p-5 sm:p-7 space-y-6">
+      <div class="space-y-4 pb-5 border-b divider-line">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div class="flex items-center gap-3.5">
+            <div id="crypto-coin-icon" class="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center shrink-0"></div>
+            <div>
+              <span class="text-xs font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-semibold">24/7 GLOBAL SPOT (USD) &bull; CRYPTO MARKETS</span>
+              <h2 id="crypto-name" class="text-lg sm:text-xl font-bold txt-primary mt-0.5">Bitcoin (BTC / USD)</h2>
+            </div>
+          </div>
+
+          <div class="relative w-full md:w-80" data-search-wrapper="crypto">
+            <form id="crypto-search-form" class="relative flex items-center">
+              <svg class="w-4 h-4 txt-muted absolute left-3.5 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z" />
+              </svg>
+              <input id="crypto-search-input" type="text" placeholder="Search crypto..." class="search-input w-full pl-10 pr-10 py-2.5 rounded-xl text-sm font-mono" autocomplete="off" />
+              <button type="button" id="crypto-dropdown-toggle" class="absolute right-2.5 p-1 txt-muted hover:txt-primary cursor-pointer" aria-label="Toggle crypto tickers dropdown">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+            </form>
+            <div id="crypto-dropdown-menu" class="hidden dropdown-menu absolute left-0 right-0 mt-1.5 rounded-2xl max-h-64 overflow-y-auto z-30 p-1.5 space-y-0.5"></div>
+          </div>
+        </div>
+        <div id="crypto-chip-list" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1"></div>
+      </div>
+
+      <!-- Price Hero Strip (with Compact Regime Pill) -->
+      <div class="p-5 rounded-2xl inner-panel grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+        <div class="md:col-span-6">
+          <div class="flex items-center gap-3 flex-wrap">
+            <span class="text-xs font-mono uppercase txt-muted">Global Spot Price (USD)</span>
+            <span class="text-xs font-mono txt-muted">&bull; 24H Reset 00:00 UTC</span>
+          </div>
+          <div class="mt-1.5 flex items-center gap-2.5 flex-wrap">
+            <span id="crypto-price" class="text-4xl font-mono font-bold txt-primary tabular-nums">$61,484</span>
+            <span id="crypto-change" class="px-2.5 py-1 rounded-lg text-sm font-mono font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 tabular-nums">+1.63%</span>
+            <span id="crypto-regime-pill" class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/35">◆ BOUNCE</span>
+          </div>
+          <div id="crypto-subprice" class="mt-1.5 text-xs sm:text-sm font-mono txt-muted tabular-nums">Nov Performance: -22.85%</div>
+        </div>
+        <div class="md:col-span-6 grid grid-cols-2 gap-3 pt-3 md:pt-0 md:border-l divider-line md:pl-5 text-sm font-mono tabular-nums">
+          <div>
+            <span class="block text-xs txt-muted uppercase">24H Range</span>
+            <span id="crypto-band" class="txt-primary font-semibold mt-1 block">$60,459 – $61,806</span>
+          </div>
+          <div class="border-l divider-line pl-3">
+            <span class="block text-xs txt-muted uppercase">Market Share</span>
+            <span id="crypto-dominance" class="text-amber-600 dark:text-amber-300 font-semibold mt-1 block">BTC Dom: ~59.0%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDE-BY-SIDE: FEAR & GREED DIAL + EXPECTED VOLATILITY -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
+        <div class="p-5 rounded-2xl inner-panel flex flex-col items-center justify-between text-center">
+          <div class="w-full flex items-center justify-between text-xs font-mono">
+            <span class="uppercase font-bold txt-muted">Crypto Fear &amp; Greed</span>
+            <span class="px-2 py-0.5 rounded bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/30 font-bold text-[10px]">SENTIMENT</span>
+          </div>
+          <div id="crypto-fg-dial" class="w-full max-w-[210px] my-1"></div>
+          <div class="space-y-0.5">
+            <div id="crypto-fg-label" class="text-xs sm:text-sm font-mono font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wide">Extreme Fear (12/100)</div>
+            <div class="text-xs txt-muted">Yesterday: 10 &bull; Last Wk: 18</div>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-rose-500/10 border border-rose-500/35 flex flex-col justify-between gap-3 font-mono tabular-nums">
+          <div class="flex items-center justify-between gap-2 flex-wrap">
+            <span class="text-xs uppercase tracking-wider text-rose-700 dark:text-rose-300 font-bold">Expected Volatility (±1&sigma;)</span>
+            <span id="crypto-dvol-badge" class="px-2 py-0.5 rounded-md text-xs bg-rose-500/20 text-rose-800 dark:text-rose-200 border border-rose-500/40 font-semibold">DVOL 55.45</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="p-3 rounded-xl inner-panel">
+              <span class="block text-[11px] txt-muted uppercase">24H (±1&sigma;)</span>
+              <span id="crypto-vol-1d" class="text-lg font-bold text-rose-700 dark:text-rose-300 mt-1 block">±2.90%</span>
+              <span id="crypto-vol-1d-sub" class="text-xs txt-muted mt-0.5 block">±$1,783</span>
+            </div>
+            <div class="p-3 rounded-xl inner-panel">
+              <span class="block text-[11px] txt-muted uppercase">7D (±1&sigma;)</span>
+              <span id="crypto-vol-7d" class="text-lg font-bold text-amber-700 dark:text-amber-300 mt-1 block">±7.65%</span>
+              <span id="crypto-vol-7d-sub" class="text-xs txt-muted mt-0.5 block">$7.0B Expiry</span>
+            </div>
+          </div>
+          <div class="text-xs txt-secondary pt-2 border-t border-rose-500/20 flex justify-between">
+            <span>Put / Call Ratio:</span>
+            <strong class="text-amber-700 dark:text-amber-300">0.89 (Elevated)</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOSS / MIDDLE / GAIN STRIP (ABOVE THE CHART) -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono tabular-nums">
+        <div class="p-4 rounded-2xl bg-rose-500/15 border border-rose-500/35 flex items-center justify-between gap-2">
+          <div>
+            <div class="text-xs text-rose-700 dark:text-rose-400 font-bold uppercase">▼ Loss / Bear</div>
+            <div class="text-xs text-rose-700/80 dark:text-rose-400/80 mt-0.5">Downside Floor</div>
+          </div>
+          <div id="crypto-bear" class="text-xl font-bold text-rose-800 dark:text-rose-300">$56,830</div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-amber-500/15 border border-amber-500/35 flex items-center justify-between gap-2">
+          <div>
+            <div class="text-xs text-amber-700 dark:text-amber-400 font-bold uppercase">◆ Middle / Base</div>
+            <div class="text-xs text-amber-700/80 dark:text-amber-400/80 mt-0.5">Pivot Band</div>
+          </div>
+          <div id="crypto-base" class="text-xl font-bold text-amber-800 dark:text-amber-300">$61,750</div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/35 flex items-center justify-between gap-2">
+          <div>
+            <div class="text-xs text-emerald-700 dark:text-emerald-400 font-bold uppercase">▲ Gain / Bull</div>
+            <div class="text-xs text-emerald-700/80 dark:text-emerald-400/80 mt-0.5">Upside Target</div>
+          </div>
+          <div id="crypto-bull" class="text-xl font-bold text-emerald-800 dark:text-emerald-300">$64,650</div>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE CHART -->
+      <div class="rounded-2xl inner-panel overflow-hidden">
+        <div class="px-4 py-2.5 border-b divider-line flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+          <div class="flex items-center gap-2">
+            <span id="crypto-chart-label" class="font-bold txt-primary">BTC / USD</span>
+            <span id="crypto-chart-ohlc" class="txt-muted hidden sm:inline">Interactive Candlestick</span>
+          </div>
+          <div class="flex items-center gap-1" data-tf-group="crypto">
+            <button type="button" data-tf="1W" class="tf-btn seg-btn px-2 py-1 rounded-lg cursor-pointer">1W</button>
+            <button type="button" data-tf="1M" class="tf-btn seg-btn active px-2 py-1 rounded-lg cursor-pointer">1M</button>
+            <button type="button" data-tf="3M" class="tf-btn seg-btn px-2 py-1 rounded-lg cursor-pointer">3M</button>
+            <button type="button" data-tf="1Y" class="tf-btn seg-btn px-2 py-1 rounded-lg cursor-pointer">1Y</button>
+          </div>
+        </div>
+        <div id="crypto-chart-container" class="w-full h-[340px] sm:h-[380px] relative"></div>
+      </div>
+
+      <div class="pt-4 border-t divider-line space-y-2.5">
+        <div class="text-xs font-mono uppercase tracking-wider txt-muted font-bold">Crypto Market Drivers</div>
+        <ul id="crypto-catalysts" class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm txt-secondary leading-relaxed"></ul>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- TAB 4: COMMODITIES (GOLD, SILVER, BRENT OIL, WTI, NATGAS, COPPER)   -->
+    <!-- =================================================================== -->
+    <section id="panel-commodities" class="card-panel terminal-card rounded-3xl p-5 sm:p-7 space-y-6">
+      <div class="space-y-4 pb-5 border-b divider-line">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div class="flex items-center gap-3.5">
+            <div id="comm-icon" class="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-lg shrink-0">🥇</div>
+            <div>
+              <span class="text-xs font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-semibold">GLOBAL FUTURES &amp; SPOT &bull; COMMODITIES</span>
+              <h2 id="comm-name" class="text-lg sm:text-xl font-bold txt-primary mt-0.5">Gold Spot (XAU / USD)</h2>
+            </div>
+          </div>
+
+          <div class="relative w-full md:w-80" data-search-wrapper="commodities">
+            <form id="comm-search-form" class="relative flex items-center">
+              <svg class="w-4 h-4 txt-muted absolute left-3.5 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z" />
+              </svg>
+              <input id="comm-search-input" type="text" placeholder="Search commodity (GOLD, BRENT)..." class="search-input w-full pl-10 pr-10 py-2.5 rounded-xl text-sm font-mono" autocomplete="off" />
+              <button type="button" id="comm-dropdown-toggle" class="absolute right-2.5 p-1 txt-muted hover:txt-primary cursor-pointer" aria-label="Toggle commodities dropdown">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+            </form>
+            <div id="comm-dropdown-menu" class="hidden dropdown-menu absolute left-0 right-0 mt-1.5 rounded-2xl max-h-64 overflow-y-auto z-30 p-1.5 space-y-0.5"></div>
+          </div>
+        </div>
+        <div id="comm-chip-list" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1"></div>
+      </div>
+
+      <!-- Price Hero Strip (with Compact Regime Pill) -->
+      <div class="p-5 rounded-2xl inner-panel grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+        <div class="md:col-span-6">
+          <div class="flex items-center gap-3 flex-wrap">
+            <span class="text-xs font-mono uppercase txt-muted">Benchmark Price</span>
+            <span id="comm-unit-readout" class="text-xs font-mono txt-secondary tabular-nums">Unit: <strong class="txt-primary">USD / Troy Oz</strong></span>
+          </div>
+          <div class="mt-1.5 flex items-center gap-2.5 flex-wrap">
+            <span id="comm-price" class="text-4xl font-mono font-bold txt-primary tabular-nums">$3,842.50</span>
+            <span id="comm-change" class="px-2.5 py-1 rounded-lg text-sm font-mono font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 tabular-nums">+$44.20 (+1.16%)</span>
+            <span id="comm-regime-pill" class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35">▲ GAIN</span>
+          </div>
+          <div id="comm-subprice" class="mt-1.5 text-xs sm:text-sm font-mono txt-muted tabular-nums">MCX Equivalent: ~₹1,25,400 / 10g</div>
+        </div>
+        <div class="md:col-span-6 grid grid-cols-2 gap-3 pt-3 md:pt-0 md:border-l divider-line md:pl-5 text-sm font-mono tabular-nums">
+          <div>
+            <span class="block text-xs txt-muted uppercase">Session Range</span>
+            <span id="comm-day-range" class="txt-primary font-semibold mt-1 block">$3,795.00 – $3,858.40</span>
+          </div>
+          <div class="border-l divider-line pl-3">
+            <span class="block text-xs txt-muted uppercase">52-Week Range</span>
+            <span id="comm-52w-range" class="text-amber-600 dark:text-amber-300 font-semibold mt-1 block">$2,680.00 – $3,910.00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDE-BY-SIDE: SENTIMENT DIAL + EXPECTED VOLATILITY -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
+        <div class="p-5 rounded-2xl inner-panel flex flex-col items-center justify-between text-center">
+          <div class="w-full flex items-center justify-between text-xs font-mono">
+            <span class="uppercase font-bold txt-muted">Commodity Sentiment</span>
+            <span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">MOMENTUM</span>
+          </div>
+          <div id="comm-fg-dial" class="w-full max-w-[210px] my-1"></div>
+          <div class="space-y-0.5">
+            <div id="comm-fg-label" class="text-xs sm:text-sm font-mono font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide">Greed / Risk Bid (72/100)</div>
+            <div class="text-xs txt-muted">Central bank &amp; geopolitical inflows</div>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-amber-500/10 border border-amber-500/35 flex flex-col justify-between gap-3 font-mono tabular-nums">
+          <div class="flex items-center justify-between gap-2 flex-wrap">
+            <span class="text-xs uppercase tracking-wider text-amber-700 dark:text-amber-300 font-bold">Expected Volatility (±1&sigma;)</span>
+            <span id="comm-iv-badge" class="px-2 py-0.5 rounded-md text-xs bg-amber-500/20 text-amber-800 dark:text-amber-200 border border-amber-500/40 font-semibold">GVZ 18.40</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="p-3 rounded-xl inner-panel">
+              <span class="block text-[11px] txt-muted uppercase">1D Implied</span>
+              <span id="comm-vol-1d" class="text-lg font-bold text-amber-700 dark:text-amber-300 mt-1 block">±1.16%</span>
+              <span id="comm-vol-1d-sub" class="text-xs txt-muted mt-0.5 block">±$44.60</span>
+            </div>
+            <div class="p-3 rounded-xl inner-panel">
+              <span class="block text-[11px] txt-muted uppercase">1W Implied</span>
+              <span id="comm-vol-1w" class="text-lg font-bold text-amber-700 dark:text-amber-300 mt-1 block">±2.60%</span>
+              <span id="comm-vol-1w-sub" class="text-xs txt-muted mt-0.5 block">Macro Hedge</span>
+            </div>
+          </div>
+          <div class="text-xs txt-secondary flex items-center justify-between pt-2 border-t border-amber-500/20">
+            <span>1D Implied Band:</span>
+            <strong id="comm-vol-band" class="text-amber-700 dark:text-amber-300">$3,798 – $3,887</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOSS / MIDDLE / GAIN STRIP (ABOVE THE CHART) -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono tabular-nums">
+        <div class="p-4 rounded-2xl bg-rose-500/15 border border-rose-500/35 flex items-center justify-between gap-2">
+          <div>
+            <div class="text-xs text-rose-700 dark:text-rose-400 font-bold uppercase">▼ Loss / Bear</div>
+            <div class="text-xs text-rose-700/80 dark:text-rose-400/80 mt-0.5">Support Floor</div>
+          </div>
+          <div id="comm-bear" class="text-xl font-bold text-rose-800 dark:text-rose-300">$3,765.00</div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-amber-500/15 border border-amber-500/35 flex items-center justify-between gap-2">
+          <div>
+            <div class="text-xs text-amber-700 dark:text-amber-400 font-bold uppercase">◆ Middle / Base</div>
+            <div class="text-xs text-amber-700/80 dark:text-amber-400/80 mt-0.5">Range Pivot</div>
+          </div>
+          <div id="comm-base" class="text-xl font-bold text-amber-800 dark:text-amber-300">$3,845.00</div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/35 flex items-center justify-between gap-2">
+          <div>
+            <div class="text-xs text-emerald-700 dark:text-emerald-400 font-bold uppercase">▲ Gain / Bull</div>
+            <div class="text-xs text-emerald-700/80 dark:text-emerald-400/80 mt-0.5">Upside Target</div>
+          </div>
+          <div id="comm-bull" class="text-xl font-bold text-emerald-800 dark:text-emerald-300">$3,925.00</div>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE CHART -->
+      <div class="rounded-2xl inner-panel overflow-hidden">
+        <div class="px-4 py-2.5 border-b divider-line flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+          <div class="flex items-center gap-2">
+            <span id="comm-chart-label" class="font-bold txt-primary">XAU / USD</span>
+            <span id="comm-chart-ohlc" class="txt-muted hidden sm:inline">Interactive Candlestick</span>
+          </div>
+          <div class="flex items-center gap-1" data-tf-group="commodities">
+            <button type="button" data-tf="1W" class="tf-btn seg-btn px-2 py-1 rounded-lg cursor-pointer">1W</button>
+            <button type="button" data-tf="1M" class="tf-btn seg-btn active px-2 py-1 rounded-lg cursor-pointer">1M</button>
+            <button type="button" data-tf="3M" class="tf-btn seg-btn px-2 py-1 rounded-lg cursor-pointer">3M</button>
+            <button type="button" data-tf="1Y" class="tf-btn seg-btn px-2 py-1 rounded-lg cursor-pointer">1Y</button>
+          </div>
+        </div>
+        <div id="comm-chart-container" class="w-full h-[340px] sm:h-[380px] relative"></div>
+      </div>
+
+      <div class="pt-4 border-t divider-line space-y-2.5">
+        <div class="text-xs font-mono uppercase tracking-wider txt-muted font-bold">Commodity Drivers</div>
+        <ul id="comm-catalysts" class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm txt-secondary leading-relaxed"></ul>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- TAB 5: ASTRO DAILY                                                  -->
+    <!-- =================================================================== -->
+    <section id="panel-astro" class="card-panel terminal-card rounded-3xl p-5 sm:p-7 space-y-6 relative overflow-hidden">
+      <div class="pointer-events-none absolute -right-16 -top-16 w-64 h-64 rounded-full bg-amber-400/10 blur-3xl"></div>
+
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pb-5 border-b divider-line">
+        <div class="flex items-center gap-4">
+          <div id="astro-glyph" class="w-12 h-12 rounded-2xl bg-amber-500/15 border border-amber-500/35 flex items-center justify-center text-2xl text-amber-600 dark:text-amber-300 shrink-0">♉</div>
+          <div>
+            <span id="astro-system-kicker" class="text-xs font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-semibold">VEDIC MOON (ROHINI PADA 1) &bull; VAKYA PANCHANG</span>
+            <h2 id="astro-title" class="text-xl sm:text-2xl font-bold txt-primary mt-0.5">Vrishabha (Taurus) Rashi</h2>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 self-start md:self-auto">
+          <div class="px-4 py-2 rounded-2xl inner-panel text-center">
+            <div class="text-[11px] font-mono uppercase txt-muted">Lucky No</div>
+            <div id="astro-lucky-num" class="text-lg font-mono font-bold txt-primary tabular-nums">8</div>
+          </div>
+          <div class="px-4 py-2 rounded-2xl inner-panel flex items-center gap-2.5">
+            <span id="astro-color-swatch" class="w-5 h-5 rounded-full border border-stone-400/60 shrink-0" style="background-color: #f5f0dc;"></span>
+            <div>
+              <div class="text-[11px] font-mono uppercase txt-muted">Lucky Color</div>
+              <div id="astro-lucky-color" class="text-sm font-semibold txt-primary leading-tight">Light Cream</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div class="grid grid-cols-2 p-1.5 rounded-2xl pill-track" role="tablist" aria-label="Astrology System">
+          <button type="button" data-astro-sys="VEDIC" class="astro-sys-tab seg-btn active py-2 px-2.5 rounded-xl text-xs font-mono font-bold cursor-pointer">VEDIC MOON</button>
+          <button type="button" data-astro-sys="WESTERN" class="astro-sys-tab seg-btn py-2 px-2.5 rounded-xl text-xs font-mono font-bold cursor-pointer">WESTERN SUN</button>
+        </div>
+
+        <div class="flex items-center">
+          <label for="astro-sign-select" class="sr-only">Choose Zodiac Sign</label>
+          <select id="astro-sign-select" class="custom-select w-full px-4 py-2.5 rounded-2xl text-sm font-mono font-semibold cursor-pointer"></select>
+        </div>
+
+        <div class="grid grid-cols-2 p-1.5 rounded-2xl pill-track" role="tablist" aria-label="Forecast Day">
+          <button type="button" data-astro-day="TODAY" class="astro-day-tab seg-btn active py-2 px-2.5 rounded-xl text-xs font-mono font-bold cursor-pointer">TODAY • NOV 27</button>
+          <button type="button" data-astro-day="TOMORROW" class="astro-day-tab seg-btn py-2 px-2.5 rounded-xl text-xs font-mono font-bold cursor-pointer">TOMORROW • NOV 28</button>
+        </div>
+      </div>
+
+      <div id="astro-telemetry" class="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 rounded-2xl inner-panel text-xs sm:text-sm font-mono"></div>
+      <div id="astro-blocks" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+      <div id="astro-footer" class="pt-4 border-t divider-line text-xs sm:text-sm txt-muted"></div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- TAB 6: WORLD NEWS                                                   -->
+    <!-- =================================================================== -->
+    <section id="panel-intel" class="card-panel terminal-card rounded-3xl p-5 sm:p-7 space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pb-5 border-b divider-line">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-semibold">DAILY BRIEFING &bull; 06:30 IST</span>
+          <h2 class="text-xl sm:text-2xl font-bold txt-primary mt-0.5">World News, U.S., India &amp; STEM</h2>
+        </div>
+
+        <div class="inline-flex flex-wrap p-1.5 rounded-2xl pill-track self-start md:self-auto" role="tablist" aria-label="News Category Filter">
+          <button type="button" data-news-cat="ALL" class="news-tab seg-btn active px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono font-semibold cursor-pointer">ALL (16)</button>
+          <button type="button" data-news-cat="WORLD" class="news-tab seg-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono font-semibold cursor-pointer">WORLD (4)</button>
+          <button type="button" data-news-cat="US" class="news-tab seg-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono font-semibold cursor-pointer">U.S. (4)</button>
+          <button type="button" data-news-cat="INDIA" class="news-tab seg-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono font-semibold cursor-pointer">INDIA (4)</button>
+          <button type="button" data-news-cat="STEM" class="news-tab seg-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono font-semibold cursor-pointer">STEM (4)</button>
+        </div>
+      </div>
+
+      <div id="news-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+
+      <div class="pt-4 border-t divider-line flex flex-wrap items-center justify-between gap-2 text-xs font-mono txt-muted">
+        <span>BRIEFING WINDOW: FRI 27 NOV 2026 &bull; KEYS 1–6 SWITCH TABS</span>
+        <span id="news-count-label" class="txt-secondary font-semibold">Showing 16 briefs</span>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    /**
+     * =========================================================================
+     * 1. HEADER TAB METADATA & USD-BASE FOREX ENGINE
+     * =========================================================================
+     */
+    const TAB_META = {
+      india: {
+        title: 'India Markets',
+        icon: `<svg class="w-6 h-4 rounded-[2px] border border-black/15" viewBox="0 0 24 16"><rect width="24" height="5.33" fill="#FF9933"/><rect width="24" height="5.34" y="5.33" fill="#FFF"/><rect width="24" height="5.33" y="10.67" fill="#138808"/><circle cx="12" cy="8" r="2.1" fill="none" stroke="#000080" stroke-width="0.7"/></svg>`
+      },
+      us: {
+        title: 'U.S. Markets',
+        icon: `<svg class="w-6 h-4 rounded-[2px] border border-black/15" viewBox="0 0 24 16"><rect width="24" height="16" fill="#B22234"/><rect width="24" height="2.28" y="2.28" fill="#FFF"/><rect width="24" height="2.28" y="6.85" fill="#FFF"/><rect width="24" height="2.28" y="11.42" fill="#FFF"/><rect width="10.5" height="9.14" fill="#3C3B6E"/></svg>`
+      },
+      crypto: {
+        title: 'Crypto Markets',
+        icon: `<span class="font-mono font-bold text-amber-500 text-lg">₿</span>`
+      },
+      commodities: {
+        title: 'Commodities',
+        icon: `<span class="text-lg">🛢️</span>`
+      },
+      astro: {
+        title: 'Astro Daily',
+        icon: `<span class="text-lg text-amber-500">♉</span>`
+      },
+      intel: {
+        title: 'World News',
+        icon: `<span class="text-lg">🌐</span>`
+      }
+    };
+
+    const USD_FX = {
+      INR: { prefix: '₹', value: 92.96, decimals: 2 },
+      EUR: { prefix: '€', value: 0.947, decimals: 3 },
+      GBP: { prefix: '£', value: 0.791, decimals: 3 },
+      JPY: { prefix: '¥', value: 152.39, decimals: 2 },
+      AED: { prefix: 'AED ', value: 3.672, decimals: 3 },
+      CHF: { prefix: 'Fr ', value: 0.884, decimals: 3 },
+      CAD: { prefix: 'C$', value: 1.398, decimals: 3 },
+      AUD: { prefix: 'A$', value: 1.536, decimals: 3 }
+    };
+
+    let activeFxTarget = 'INR';
+    let activeTab = 'india';
+    let isLightMode = false;
+
+    const activeTickers = {
+      india: 'NIFTYBEES',
+      us: 'SPY',
+      crypto: 'BTC',
+      commodities: 'GOLD'
+    };
+
+    const activeTimeframes = {
+      india: '1M',
+      us: '1M',
+      crypto: '1M',
+      commodities: '1M'
+    };
+
+    const chartInstances = {};
+
+    function renderFxBadge() {
+      const fx = USD_FX[activeFxTarget];
+      const el = document.getElementById('fx-rate-value');
+      if (el && fx) {
+        el.textContent = `${fx.prefix}${fx.value.toFixed(fx.decimals)}`;
+      }
+    }
+
+    async function tryFetchLiveFx() {
+      try {
+        const res = await fetch('https://open.er-api.com/v6/latest/USD');
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data && data.rates) {
+          Object.keys(USD_FX).forEach((code) => {
+            if (typeof data.rates[code] === 'number') {
+              USD_FX[code].value = data.rates[code];
+            }
+          });
+          renderFxBadge();
+        }
+      } catch (e) { /* retain verified fallback */ }
+    }
+
+    /**
+     * =========================================================================
+     * 2. MARKET DATASETS (INDIA, U.S., CRYPTO, COMMODITIES)
+     * =========================================================================
+     */
+    const INDIA_ASSETS = {
+      NIFTYBEES: {
+        symbol: 'NSE:NIFTYBEES', name: 'Nippon India ETF Nifty 50 BeES',
+        price: 292.00, changeStr: '-₹3.33 (-1.13%)', isPositive: false, regimeType: 'BEARISH',
+        indexReadout: 'Nifty 50: <strong class="txt-primary">25,607.20</strong>',
+        subprice: '27 Nov Close • Vol: 7.65M • Next Open Mon 09:15 IST',
+        dayRange: '₹291.75 – ₹295.44', w52Range: '₹251.70 – ₹302.25',
+        vixBadge: 'INDIA VIX 16.66', vol1d: '±0.87%', vol1dSub: '±₹2.54', vol1w: '±2.31%', vol1wSub: '±591 pts', volBand: '₹289.45 – ₹294.55',
+        bear: '₹288.20', base: '₹293.50', bull: '₹298.50',
+        catalysts: [
+          'Brent crude rebound above $96/bbl weighed on energy importers and PSU financials into Friday close.',
+          'Proposed 25% U.S. tariff headlines triggered defensive rotation out of export-heavy IT and pharma.',
+          'India VIX held steady at 16.66 while domestic institutional dip-buying cushioned 25,550 index support.'
+        ]
+      },
+      SENSEXIETF: {
+        symbol: 'BSE:SENSEXIETF', name: 'ICICI Prudential BSE Sensex ETF',
+        price: 955.99, changeStr: '-₹11.41 (-1.18%)', isPositive: false, regimeType: 'BEARISH',
+        indexReadout: 'Sensex: <strong class="txt-primary">83,339.26</strong>',
+        subprice: '27 Nov Close • 30-Stock Mega-Cap Benchmark',
+        dayRange: '₹954.10 – ₹967.20', w52Range: '₹828.00 – ₹992.40',
+        vixBadge: 'INDIA VIX 16.66', vol1d: '±0.89%', vol1dSub: '±₹8.51', vol1w: '±2.35%', vol1wSub: '±1,958 pts', volBand: '₹947.50 – ₹964.50',
+        bear: '₹942.00', base: '₹960.00', bull: '₹976.50',
+        catalysts: [
+          'Private banking heavyweights saw profit-booking after a 10% November index rally.',
+          'Reliance Industries and Bharti Airtel provided partial downside cushion near 83,200.',
+          'Foreign institutional flows remained net positive for November despite Friday softness.'
+        ]
+      },
+      BANKBEES: {
+        symbol: 'NSE:BANKBEES', name: 'Nippon India ETF Bank BeES',
+        price: 538.40, changeStr: '-₹5.80 (-1.07%)', isPositive: false, regimeType: 'NEUTRAL',
+        indexReadout: 'Nifty Bank: <strong class="txt-primary">52,410.80</strong>',
+        subprice: '27 Nov Close • Banking Sector ETF',
+        dayRange: '₹536.90 – ₹544.50', w52Range: '₹468.20 – ₹559.00',
+        vixBadge: 'INDIA VIX 16.66', vol1d: '±1.05%', vol1dSub: '±₹5.65', vol1w: '±2.72%', vol1wSub: '±1,425 pts', volBand: '₹532.75 – ₹544.05',
+        bear: '₹529.00', base: '₹541.00', bull: '₹552.50',
+        catalysts: [
+          'RBI data confirmed FY26 bank bad-loan write-offs declined 8.2% YoY, underpinning asset quality.',
+          'HDFC Bank relative strength offset mild profit-taking in ICICI Bank and SBI.',
+          'Credit growth stability keeps 52,000 as a strong structural demand zone.'
+        ]
+      },
+      GOLDBEES: {
+        symbol: 'NSE:GOLDBEES', name: 'Nippon India ETF Gold BeES',
+        price: 102.85, changeStr: '+₹1.18 (+1.16%)', isPositive: true, regimeType: 'BULLISH',
+        indexReadout: 'MCX Gold: <strong class="txt-primary">₹1,25,400/10g</strong>',
+        subprice: '27 Nov Close • Domestic Gold Bullion Tracker',
+        dayRange: '₹101.90 – ₹103.20', w52Range: '₹72.40 – ₹104.50',
+        vixBadge: 'GOLD IV 18.4', vol1d: '±0.95%', vol1dSub: '±₹0.98', vol1w: '±2.40%', vol1wSub: '±₹2.47', volBand: '₹101.85 – ₹103.85',
+        bear: '₹100.40', base: '₹103.00', bull: '₹105.80',
+        catalysts: [
+          'Global spot gold rally above $3,840/oz combined with USD/INR near ₹92.96 lifted domestic prices.',
+          'Safe-haven hedging accelerated amid West Asia tensions and global tariff uncertainty.',
+          'Strong festive and central bank accumulation keeps dip buyers active near ₹101.'
+        ]
+      },
+      RELIANCE: {
+        symbol: 'NSE:RELIANCE', name: 'Reliance Industries Ltd',
+        price: 1348.60, changeStr: '+₹12.40 (+0.93%)', isPositive: true, regimeType: 'BULLISH',
+        indexReadout: 'Sector: <strong class="txt-primary">Energy / Telecom / Retail</strong>',
+        subprice: '27 Nov Close • Index Heavyweight',
+        dayRange: '₹1,334.00 – ₹1,355.80', w52Range: '₹1,195.00 – ₹1,540.00',
+        vixBadge: 'STOCK IV 21.4', vol1d: '±1.12%', vol1dSub: '±₹15.10', vol1w: '±2.85%', vol1wSub: '±₹38.40', volBand: '₹1,333 – ₹1,364',
+        bear: '₹1,318.00', base: '₹1,352.00', bull: '₹1,390.00',
+        catalysts: [
+          'Higher refining margins and Jio ARPU expansion drove relative outperformance.',
+          'New energy gigafactory milestones remain a medium-term re-rating trigger.',
+          'Institutional accumulation visible above the ₹1,330 pivot.'
+        ]
+      },
+      HDFCBANK: {
+        symbol: 'NSE:HDFCBANK', name: 'HDFC Bank Ltd',
+        price: 1784.20, changeStr: '+₹9.15 (+0.52%)', isPositive: true, regimeType: 'BULLISH',
+        indexReadout: 'Sector: <strong class="txt-primary">Private Banking</strong>',
+        subprice: '27 Nov Close • Top Nifty Weight',
+        dayRange: '₹1,769.50 – ₹1,794.00', w52Range: '₹1,480.00 – ₹1,835.00',
+        vixBadge: 'STOCK IV 18.9', vol1d: '±0.98%', vol1dSub: '±₹17.48', vol1w: '±2.45%', vol1wSub: '±₹43.70', volBand: '₹1,766 – ₹1,802',
+        bear: '₹1,745.00', base: '₹1,788.00', bull: '₹1,835.00',
+        catalysts: [
+          'Improving credit-deposit ratio and steady NIMs drew sustained FII inflows.',
+          'Relative strength leader within Nifty Bank over the past five sessions.',
+          'Breakout above ₹1,800 opens room toward fresh all-time highs.'
+        ]
+      },
+      TCS: {
+        symbol: 'NSE:TCS', name: 'Tata Consultancy Services Ltd',
+        price: 4218.50, changeStr: '-₹54.30 (-1.27%)', isPositive: false, regimeType: 'BEARISH',
+        indexReadout: 'Sector: <strong class="txt-primary">IT Services</strong>',
+        subprice: '27 Nov Close • Large-Cap Tech',
+        dayRange: '₹4,202.00 – ₹4,279.00', w52Range: '₹3,690.00 – ₹4,592.00',
+        vixBadge: 'STOCK IV 22.1', vol1d: '±1.16%', vol1dSub: '±₹48.90', vol1w: '±2.95%', vol1wSub: '±₹124.40', volBand: '₹4,169 – ₹4,267',
+        bear: '₹4,120.00', base: '₹4,230.00', bull: '₹4,340.00',
+        catalysts: [
+          'U.S. tariff and visa-policy headlines weighed on Indian IT exporter sentiment.',
+          'Weak rupee near ₹92.96/USD offers partial operating margin cushion.',
+          'Enterprise AI deal pipeline remains resilient ahead of Q3 updates.'
+        ]
+      },
+      INFY: {
+        symbol: 'NSE:INFY', name: 'Infosys Ltd',
+        price: 1912.40, changeStr: '-₹21.60 (-1.12%)', isPositive: false, regimeType: 'BEARISH',
+        indexReadout: 'Sector: <strong class="txt-primary">IT Services</strong>',
+        subprice: '27 Nov Close • ADR / NSE Dual-Listed',
+        dayRange: '₹1,904.00 – ₹1,940.00', w52Range: '₹1,420.00 – ₹1,995.00',
+        vixBadge: 'STOCK IV 23.4', vol1d: '±1.22%', vol1dSub: '±₹23.33', vol1w: '±3.10%', vol1wSub: '±₹59.30', volBand: '₹1,889 – ₹1,936',
+        bear: '₹1,865.00', base: '₹1,918.00', bull: '₹1,975.00',
+        catalysts: [
+          'Tracked broader IT pullback following U.S. immigration and trade headlines.',
+          'U.S. discretionary BFSI spending recovery supports medium-term guidance.',
+          'Key technical support sits near the 20-DMA at ₹1,875.'
+        ]
+      },
+      ICICIBANK: {
+        symbol: 'NSE:ICICIBANK', name: 'ICICI Bank Ltd',
+        price: 1296.80, changeStr: '-₹18.40 (-1.40%)', isPositive: false, regimeType: 'NEUTRAL',
+        indexReadout: 'Sector: <strong class="txt-primary">Private Banking</strong>',
+        subprice: '27 Nov Close • Core Financial',
+        dayRange: '₹1,291.00 – ₹1,318.50', w52Range: '₹1,050.00 – ₹1,362.00',
+        vixBadge: 'STOCK IV 20.2', vol1d: '±1.05%', vol1dSub: '±₹13.60', vol1w: '±2.65%', vol1wSub: '±₹34.35', volBand: '₹1,283 – ₹1,310',
+        bear: '₹1,268.00', base: '₹1,302.00', bull: '₹1,340.00',
+        catalysts: [
+          'Short-term consolidation after outperforming banking peers through October.',
+          'Industry-leading RoA and granular retail deposit base keep analysts constructive.',
+          'Watch ₹1,280 as primary institutional buy zone.'
+        ]
+      },
+      SBIN: {
+        symbol: 'NSE:SBIN', name: 'State Bank of India',
+        price: 842.15, changeStr: '-₹9.85 (-1.16%)', isPositive: false, regimeType: 'NEUTRAL',
+        indexReadout: 'Sector: <strong class="txt-primary">PSU Banking</strong>',
+        subprice: '27 Nov Close • PSU Bellwether',
+        dayRange: '₹838.50 – ₹854.00', w52Range: '₹690.00 – ₹912.00',
+        vixBadge: 'STOCK IV 24.5', vol1d: '±1.28%', vol1dSub: '±₹10.78', vol1w: '±3.20%', vol1wSub: '±₹26.95', volBand: '₹831 – ₹853',
+        bear: '₹818.00', base: '₹846.00', bull: '₹878.00',
+        catalysts: [
+          'Higher crude prices sparked mild bond-yield pressure across PSU banks.',
+          'Corporate capex credit pipeline remains strong heading into Q4.',
+          'Support anchored near ₹820 with resistance at ₹868.'
+        ]
+      },
+      ITC: {
+        symbol: 'NSE:ITC', name: 'ITC Ltd',
+        price: 478.90, changeStr: '+₹3.10 (+0.65%)', isPositive: true, regimeType: 'BULLISH',
+        indexReadout: 'Sector: <strong class="txt-primary">FMCG / Diversified</strong>',
+        subprice: '27 Nov Close • Defensive Dividend Leader',
+        dayRange: '₹474.20 – ₹481.50', w52Range: '₹405.00 – ₹528.00',
+        vixBadge: 'STOCK IV 15.8', vol1d: '±0.82%', vol1dSub: '±₹3.93', vol1w: '±2.10%', vol1wSub: '±₹10.05', volBand: '₹475 – ₹483',
+        bear: '₹468.00', base: '₹480.00', bull: '₹496.00',
+        catalysts: [
+          'Defensive rotation into FMCG and high-dividend counters supported steady gains.',
+          'Rural demand recovery and steady paperboard margins bolster earnings visibility.',
+          'Low beta profile insulates against global tariff volatility.'
+        ]
+      }
+    };
+
+    const US_ASSETS = {
+      SPY: {
+        symbol: 'AMEX:SPY', name: 'SPDR S&P 500 ETF Trust',
+        price: 728.87, changeStr: '+$10.09 (+1.40%)', isPositive: true,
+        indexReadout: 'S&P 500: <strong class="txt-primary">7,182.78</strong>',
+        subprice: 'Prev Close: $718.78 • Short Session: 20:00–23:30 IST',
+        range: '$727.24 – $731.16',
+        vixBadge: 'CBOE VIX 28.29', vol1d: '±1.78%', vol1dSub: '±$12.97', vol1w: '±3.92%', vol1wSub: '3.8% PCE', volBand: '$715.90 – $741.84',
+        bear: '$718.78', base: '$728.00', bull: '$736.50',
+        catalysts: [
+          'Post-Thanksgiving technical rebound lifted SPY over +1.4% in thin Black Friday pre-market trading.',
+          'Sticky 3.8% YoY PCE inflation keeps December Fed rate-hike pricing and CBOE VIX (28.29) elevated.',
+          'Early 1:00 PM ET (23:30 IST) close concentrates institutional order flow into the opening 90 minutes.'
+        ]
+      },
+      QQQ: {
+        symbol: 'NASDAQ:QQQ', name: 'Invesco QQQ Trust (Nasdaq-100)',
+        price: 649.26, changeStr: '+$11.16 (+1.75%)', isPositive: true,
+        indexReadout: 'Nasdaq-100: <strong class="txt-primary">26,710.40</strong>',
+        subprice: 'Prev Close: $638.10 • Mega-Cap Tech & AI',
+        range: '$645.10 – $651.80',
+        vixBadge: 'VXN 31.40', vol1d: '±1.98%', vol1dSub: '±$12.85', vol1w: '±4.40%', vol1wSub: 'Tech Beta', volBand: '$636.40 – $662.10',
+        bear: '$636.00', base: '$648.50', bull: '$661.00',
+        catalysts: [
+          'Semiconductor and hyperscaler dip-buying led the Black Friday pre-market bounce.',
+          'Treasury yield sensitivity remains elevated after Wednesday’s 3.8% PCE print.',
+          'Holding above $645 turns prior breakdown resistance into short-term support.'
+        ]
+      },
+      DIA: {
+        symbol: 'AMEX:DIA', name: 'SPDR Dow Jones Industrial Average ETF',
+        price: 508.10, changeStr: '+$8.34 (+1.67%)', isPositive: true,
+        indexReadout: 'Dow 30: <strong class="txt-primary">50,812.00</strong>',
+        subprice: 'Prev Close: $499.76 • Blue-Chip Industrials',
+        range: '$505.80 – $509.40',
+        vixBadge: 'VXD 23.10', vol1d: '±1.45%', vol1dSub: '±$7.36', vol1w: '±3.25%', vol1wSub: 'Cyclicals', volBand: '$500.75 – $515.45',
+        bear: '$499.75', base: '$508.00', bull: '$515.00',
+        catalysts: [
+          'Retail and consumer blue-chips rallied on early Black Friday e-commerce spending optimism.',
+          'Tariff rhetoric creates divergence between domestic industrials and multinational exporters.',
+          'Psychological 50,000 level on the Dow remains firmly defended.'
+        ]
+      },
+      IWM: {
+        symbol: 'AMEX:IWM', name: 'iShares Russell 2000 ETF',
+        price: 242.65, changeStr: '+$3.95 (+1.65%)', isPositive: true,
+        indexReadout: 'Russell 2000: <strong class="txt-primary">2,438.10</strong>',
+        subprice: 'Prev Close: $238.70 • U.S. Small Caps',
+        range: '$240.90 – $243.80',
+        vixBadge: 'RVX 30.80', vol1d: '±1.94%', vol1dSub: '±$4.70', vol1w: '±4.35%', vol1wSub: 'Rate Sensitive', volBand: '$237.95 – $247.35',
+        bear: '$237.50', base: '$242.50', bull: '$248.00',
+        catalysts: [
+          'Domestic-focused small caps caught a bid as a relative shelter from international tariff friction.',
+          'Higher-for-longer rate expectations remain the primary cap on multiple expansion.',
+          'Watch $244.00 breakout trigger for momentum follow-through.'
+        ]
+      },
+      NVDA: {
+        symbol: 'NASDAQ:NVDA', name: 'NVIDIA Corporation',
+        price: 186.40, changeStr: '+$4.82 (+2.65%)', isPositive: true,
+        indexReadout: 'Sector: <strong class="txt-primary">AI Semiconductors</strong>',
+        subprice: 'Prev Close: $181.58 • Market Cap: $4.54T',
+        range: '$184.20 – $188.10',
+        vixBadge: 'STOCK IV 48.2', vol1d: '±3.04%', vol1dSub: '±$5.66', vol1w: '±6.80%', vol1wSub: 'High Beta', volBand: '$180.75 – $192.05',
+        bear: '$179.50', base: '$186.50', bull: '$194.00',
+        catalysts: [
+          'Data-center GPU demand and next-gen rack shipments continue to anchor mega-cap tech leadership.',
+          'Options positioning shows heavy call interest at the $190 strike into weekly expiry.',
+          'Supply chain tariff exemptions remain closely watched by semiconductor desks.'
+        ]
+      },
+      AAPL: {
+        symbol: 'NASDAQ:AAPL', name: 'Apple Inc.',
+        price: 254.80, changeStr: '+$2.95 (+1.17%)', isPositive: true,
+        indexReadout: 'Sector: <strong class="txt-primary">Consumer Tech</strong>',
+        subprice: 'Prev Close: $251.85 • Holiday Hardware Cycle',
+        range: '$253.10 – $256.20',
+        vixBadge: 'STOCK IV 24.8', vol1d: '±1.56%', vol1dSub: '±$3.97', vol1w: '±3.50%', vol1wSub: 'Holiday Retail', volBand: '$250.85 – $258.75',
+        bear: '$249.50', base: '$255.00', bull: '$261.00',
+        catalysts: [
+          'Black Friday store traffic and Services ecosystem growth underpin steady defensive bids.',
+          'India manufacturing expansion helps diversify supply-chain tariff exposure.',
+          'Strong technical base established near $250.'
+        ]
+      },
+      MSFT: {
+        symbol: 'NASDAQ:MSFT', name: 'Microsoft Corporation',
+        price: 492.30, changeStr: '+$6.10 (+1.25%)', isPositive: true,
+        indexReadout: 'Sector: <strong class="txt-primary">Cloud &amp; Enterprise AI</strong>',
+        subprice: 'Prev Close: $486.20 • Azure Cloud Leader',
+        range: '$489.50 – $494.80',
+        vixBadge: 'STOCK IV 23.5', vol1d: '±1.48%', vol1dSub: '±$7.28', vol1w: '±3.30%', vol1wSub: 'Cloud CapEx', volBand: '$485.00 – $499.60',
+        bear: '$483.00', base: '$492.50', bull: '$504.00',
+        catalysts: [
+          'Enterprise Copilot seat adoption and Azure AI workloads remain key revenue drivers.',
+          'Lower tariff sensitivity vs hardware peers attracts institutional quality flows.',
+          'Testing key $495–$500 psychological resistance band.'
+        ]
+      },
+      GOOGL: {
+        symbol: 'NASDAQ:GOOGL', name: 'Alphabet Inc.',
+        price: 214.15, changeStr: '+$3.40 (+1.61%)', isPositive: true,
+        indexReadout: 'Sector: <strong class="txt-primary">Search / Cloud / AI</strong>',
+        subprice: 'Prev Close: $210.75 • Class A',
+        range: '$212.00 – $215.60',
+        vixBadge: 'STOCK IV 27.6', vol1d: '±1.74%', vol1dSub: '±$3.72', vol1w: '±3.88%', vol1wSub: 'Ad + Cloud', volBand: '$210.45 – $217.85',
+        bear: '$208.50', base: '$214.00', bull: '$221.00',
+        catalysts: [
+          'Holiday digital ad spend momentum and Google Cloud margin expansion lift sentiment.',
+          'Custom TPU efficiency continues to cushion AI infrastructure capex.',
+          'Reclaiming $215 sets up a retest of November highs.'
+        ]
+      },
+      AMZN: {
+        symbol: 'NASDAQ:AMZN', name: 'Amazon.com Inc.',
+        price: 238.90, changeStr: '+$4.65 (+1.99%)', isPositive: true,
+        indexReadout: 'Sector: <strong class="txt-primary">E-Commerce &amp; AWS</strong>',
+        subprice: 'Prev Close: $234.25 • Black Friday Bellwether',
+        range: '$236.40 – $240.50',
+        vixBadge: 'STOCK IV 29.4', vol1d: '±1.85%', vol1dSub: '±$4.42', vol1w: '±4.15%', vol1wSub: 'Retail Peak', volBand: '$234.50 – $243.30',
+        bear: '$232.00', base: '$239.00', bull: '$246.50',
+        catalysts: [
+          'Record early Black Friday gross merchandise volume headlines boost retail sentiment.',
+          'AWS cloud backlog and retail robotics efficiencies drive operating margin expansion.',
+          'Leading Mega-Cap Consumer Discretionary gainer in pre-market deals.'
+        ]
+      },
+      META: {
+        symbol: 'NASDAQ:META', name: 'Meta Platforms Inc.',
+        price: 642.50, changeStr: '+$9.20 (+1.45%)', isPositive: true,
+        indexReadout: 'Sector: <strong class="txt-primary">Digital Ads &amp; AI</strong>',
+        subprice: 'Prev Close: $633.30 • Class A',
+        range: '$638.00 – $645.90',
+        vixBadge: 'STOCK IV 32.1', vol1d: '±2.02%', vol1dSub: '±$12.98', vol1w: '±4.50%', vol1wSub: 'Ad Pricing', volBand: '$629.50 – $655.50',
+        bear: '$628.00', base: '$643.00', bull: '$660.00',
+        catalysts: [
+          'Holiday e-commerce advertiser demand boosts Reels and Advantage+ impression pricing.',
+          'Strong free cash flow supports ongoing share buybacks.',
+          'Holding above $635 keeps the medium-term uptrend intact.'
+        ]
+      },
+      TSLA: {
+        symbol: 'NASDAQ:TSLA', name: 'Tesla Inc.',
+        price: 368.20, changeStr: '+$7.90 (+2.19%)', isPositive: true,
+        indexReadout: 'Sector: <strong class="txt-primary">EV / Autonomy / Energy</strong>',
+        subprice: 'Prev Close: $360.30 • High-Beta Mover',
+        range: '$363.50 – $372.40',
+        vixBadge: 'STOCK IV 58.4', vol1d: '±3.68%', vol1dSub: '±$13.55', vol1w: '±8.20%', vol1wSub: 'High Volatility', volBand: '$354.65 – $381.75',
+        bear: '$350.00', base: '$368.00', bull: '$388.00',
+        catalysts: [
+          'Energy storage deployments and autonomous fleet updates remain primary valuation drivers.',
+          'High retail options volume amplifies intraday swings during half-day holiday sessions.',
+          'Watch $375 breakout level versus $355 near-term support.'
+        ]
+      }
+    };
+
+    const CRYPTO_ASSETS = {
+      BTC: {
+        id: 'bitcoin', symbol: 'BTC / USD', name: 'Bitcoin (BTC / USD)',
+        iconSvg: `<span class="font-mono font-bold text-amber-500 text-lg">₿</span>`,
+        usdPrice: 61484, changePct: 1.63, novPerf: 'Nov Performance: -22.85%',
+        band: '$60,459 – $61,806', dominance: 'BTC Dom: ~59.0%',
+        dvol: 'DVOL 55.45', vol1d: '±2.90%', vol1dSub: '±$1,783', vol7d: '±7.65%', vol7dSub: '$7.0B Expiry',
+        bear: 56830, base: 61750, bull: 64650, decimals: 0,
+        catalysts: [
+          'Technical relief bounce reclaimed $61,000+ in thin holiday liquidity despite Extreme Fear (12/100).',
+          'Record ~$4.7B–$5.0B November U.S. spot Bitcoin ETF outflows continue to cap rallies near $63K–$65K.',
+          'High Bitcoin dominance (~59%) signals defensive rotation out of higher-beta altcoins.'
+        ]
+      },
+      ETH: {
+        id: 'ethereum', symbol: 'ETH / USD', name: 'Ethereum (ETH / USD)',
+        iconSvg: `<span class="font-mono font-bold text-indigo-400 text-lg">Ξ</span>`,
+        usdPrice: 1728, changePct: 2.34, novPerf: 'Nov Performance: -28.40%',
+        band: '$1,685 – $1,752', dominance: 'ETH Dom: ~11.4%',
+        dvol: 'DVOL 64.20', vol1d: '±3.36%', vol1dSub: '±$58', vol7d: '±8.90%', vol7dSub: 'L2 Activity',
+        bear: 1590, base: 1740, bull: 1860, decimals: 0,
+        catalysts: [
+          'Outperformed BTC on the 24h rebound as ETH/BTC bounced off multi-month technical lows.',
+          'Layer-2 blob fee throughput remains high, though spot ETH ETF flows stayed muted.',
+          'Reclaiming $1,800 is required to neutralize the broader November downtrend.'
+        ]
+      },
+      SOL: {
+        id: 'solana', symbol: 'SOL / USD', name: 'Solana (SOL / USD)',
+        iconSvg: `<span class="font-mono font-bold text-emerald-400 text-sm">SOL</span>`,
+        usdPrice: 138.40, changePct: 3.12, novPerf: 'Nov Performance: -24.10%',
+        band: '$133.20 – $141.00', dominance: 'Rank #5 Global',
+        dvol: 'IV 74.50', vol1d: '±3.90%', vol1dSub: '±$5.40', vol7d: '±10.30%', vol7dSub: 'DEX Volume',
+        bear: 124.00, base: 139.00, bull: 152.00, decimals: 2,
+        catalysts: [
+          'High on-chain DEX volume and stablecoin inflows keep Solana among the fastest-rebounding majors.',
+          'High beta to BTC makes $130 a critical near-term structural floor.',
+          'Breakout above $144 targets the $152–$158 supply pocket.'
+        ]
+      },
+      BNB: {
+        id: 'binancecoin', symbol: 'BNB / USD', name: 'BNB (BNB / USD)',
+        iconSvg: `<span class="font-mono font-bold text-amber-400 text-sm">BNB</span>`,
+        usdPrice: 548.20, changePct: 1.15, novPerf: 'Nov Performance: -14.20%',
+        band: '$540.00 – $554.80', dominance: 'Rank #4 Global',
+        dvol: 'IV 49.80', vol1d: '±2.60%', vol1dSub: '±$14.25', vol7d: '±6.90%', vol7dSub: 'Low Beta',
+        bear: 515.00, base: 550.00, bull: 582.00, decimals: 2,
+        catalysts: [
+          'Displayed lower drawdown than most large-cap altcoins during November’s macro selloff.',
+          'Steady BNB Chain DeFi TVL and token burn mechanics support structural floor near $520.',
+          'Watch $565 resistance for trend resumption.'
+        ]
+      },
+      XRP: {
+        id: 'ripple', symbol: 'XRP / USD', name: 'XRP (XRP / USD)',
+        iconSvg: `<span class="font-mono font-bold text-sky-400 text-sm">XRP</span>`,
+        usdPrice: 1.42, changePct: 2.88, novPerf: 'Nov Performance: -18.60%',
+        band: '$1.37 – $1.46', dominance: 'Payments Leader',
+        dvol: 'IV 71.20', vol1d: '±3.72%', vol1dSub: '±$0.05', vol7d: '±9.85%', vol7dSub: 'Cross-Border',
+        bear: 1.28, base: 1.43, bull: 1.58, decimals: 2,
+        catalysts: [
+          'Institutional settlement corridors and regulatory clarity remain supportive long-term tailwinds.',
+          'Short-term momentum turns constructive on daily closes above $1.48.',
+          'Demand zone sits firmly between $1.28 and $1.34.'
+        ]
+      },
+      DOGE: {
+        id: 'dogecoin', symbol: 'DOGE / USD', name: 'Dogecoin (DOGE / USD)',
+        iconSvg: `<span class="font-mono font-bold text-amber-400 text-sm">Ð</span>`,
+        usdPrice: 0.194, changePct: 3.74, novPerf: 'Nov Performance: -31.50%',
+        band: '$0.185 – $0.199', dominance: 'Meme Bellwether',
+        dvol: 'IV 88.00', vol1d: '±4.60%', vol1dSub: '±$0.009', vol7d: '±12.20%', vol7dSub: 'Retail Beta',
+        bear: 0.172, base: 0.195, bull: 0.220, decimals: 3,
+        catalysts: [
+          'High retail beta amplified the Thanksgiving relief bounce across meme tokens.',
+          'Funding rates have reset to neutral, reducing forced-liquidation risk.',
+          'Resistance sits at $0.205–$0.215 with floor at $0.175.'
+        ]
+      },
+      ADA: {
+        id: 'cardano', symbol: 'ADA / USD', name: 'Cardano (ADA / USD)',
+        iconSvg: `<span class="font-mono font-bold text-blue-400 text-sm">ADA</span>`,
+        usdPrice: 0.584, changePct: 1.92, novPerf: 'Nov Performance: -26.40%',
+        band: '$0.568 – $0.596', dominance: 'L1 Smart Contracts',
+        dvol: 'IV 72.10', vol1d: '±3.77%', vol1dSub: '±$0.022', vol7d: '±10.00%', vol7dSub: 'Staking Yield',
+        bear: 0.530, base: 0.585, bull: 0.640, decimals: 3,
+        catalysts: [
+          'Governance upgrades and steady staking participation anchor long-term holders.',
+          'Tracking broader Layer-1 recovery alongside ETH and SOL.',
+          'Needs a break above $0.61 to shift market structure bullish.'
+        ]
+      },
+      LINK: {
+        id: 'chainlink', symbol: 'LINK / USD', name: 'Chainlink (LINK / USD)',
+        iconSvg: `<span class="font-mono font-bold text-sky-400 text-sm">⬡</span>`,
+        usdPrice: 14.85, changePct: 2.45, novPerf: 'Nov Performance: -19.80%',
+        band: '$14.40 – $15.15', dominance: 'Oracle / RWA Standard',
+        dvol: 'IV 69.50', vol1d: '±3.63%', vol1dSub: '±$0.54', vol7d: '±9.60%', vol7dSub: 'CCIP / RWA',
+        bear: 13.50, base: 14.90, bull: 16.40, decimals: 2,
+        catalysts: [
+          'Tokenized real-world asset (RWA) and bank CCIP pilots underpin fundamental demand.',
+          'Outperforming broader DeFi indices on a 30-day relative basis.',
+          'Watch $15.40 breakout for acceleration toward $16.50.'
+        ]
+      }
+    };
+
+    const COMMODITIES_ASSETS = {
+      GOLD: {
+        symbol: 'XAU / USD', icon: '🥇', name: 'Gold Spot (XAU / USD)',
+        price: 3842.50, changeStr: '+$44.20 (+1.16%)', isPositive: true, regimeType: 'BULLISH',
+        unitReadout: 'Unit: <strong class="txt-primary">USD / Troy Oz</strong>',
+        subprice: 'MCX Equivalent: ~₹1,25,400 / 10g',
+        dayRange: '$3,795.00 – $3,858.40', w52Range: '$2,680.00 – $3,910.00',
+        fgScore: 72, fgLabel: 'Greed / Risk Bid (72/100)',
+        ivBadge: 'GVZ 18.40', vol1d: '±1.16%', vol1dSub: '±$44.60', vol1w: '±2.60%', vol1wSub: 'Macro Hedge', volBand: '$3,798 – $3,887',
+        bear: '$3,765.00', base: '$3,845.00', bull: '$3,925.00', decimals: 2,
+        catalysts: [
+          'Geopolitical flare-ups in West Asia and tariff uncertainty fueled safe-haven gold inflows.',
+          'Central bank reserve diversification continues to absorb dips below $3,800/oz.',
+          'Sticky global inflation supports bullion even alongside elevated U.S. real yields.'
+        ]
+      },
+      BRENT: {
+        symbol: 'ICE:BRN', icon: '🛢️', name: 'Brent Crude Oil Futures',
+        price: 96.45, changeStr: '+$2.85 (+3.04%)', isPositive: true, regimeType: 'BULLISH',
+        unitReadout: 'Unit: <strong class="txt-primary">USD / Barrel</strong>',
+        subprice: 'Global Benchmark • Strait of Hormuz Risk Premium',
+        dayRange: '$93.60 – $97.20', w52Range: '$68.40 – $101.80',
+        fgScore: 68, fgLabel: 'Supply Risk Bid (68/100)',
+        ivBadge: 'OVX 38.20', vol1d: '±2.40%', vol1dSub: '±$2.31', vol1w: '±5.35%', vol1wSub: 'Geopolitics', volBand: '$94.15 – $98.75',
+        bear: '$91.80', base: '$96.50', bull: '$101.50', decimals: 2,
+        catalysts: [
+          'Overnight drone attacks in West Asia revived supply-disruption premiums above $96/bbl.',
+          'Directly impacts India’s import bill, OMC marketing margins, and INR sentiment.',
+          'OPEC+ output discipline keeps $90/bbl as a firm near-term floor.'
+        ]
+      },
+      WTI: {
+        symbol: 'NYMEX:CL', icon: '⛽', name: 'WTI Crude Oil Futures',
+        price: 92.80, changeStr: '+$2.60 (+2.88%)', isPositive: true, regimeType: 'BULLISH',
+        unitReadout: 'Unit: <strong class="txt-primary">USD / Barrel</strong>',
+        subprice: 'U.S. Benchmark • Cushing Delivery',
+        dayRange: '$90.15 – $93.55', w52Range: '$64.90 – $97.90',
+        fgScore: 66, fgLabel: 'Bullish Energy (66/100)',
+        ivBadge: 'OVX 38.20', vol1d: '±2.42%', vol1dSub: '±$2.25', vol1w: '±5.40%', vol1wSub: 'Inventory Draw', volBand: '$90.55 – $95.05',
+        bear: '$88.40', base: '$92.80', bull: '$97.50', decimals: 2,
+        catalysts: [
+          'Tracked Brent higher on West Asia escalation and tighter U.S. commercial crude stocks.',
+          'Higher energy prices add upside risk to headline U.S. CPI prints.',
+          'Key psychological resistance sits at $95.00/bbl.'
+        ]
+      },
+      SILVER: {
+        symbol: 'XAG / USD', icon: '🥈', name: 'Silver Spot (XAG / USD)',
+        price: 44.85, changeStr: '+$0.72 (+1.63%)', isPositive: true, regimeType: 'BULLISH',
+        unitReadout: 'Unit: <strong class="txt-primary">USD / Troy Oz</strong>',
+        subprice: 'Gold/Silver Ratio: 85.7x • Industrial + Precious',
+        dayRange: '$44.05 – $45.30', w52Range: '$28.90 – $46.80',
+        fgScore: 69, fgLabel: 'Constructive (69/100)',
+        ivBadge: 'VXSLV 29.5', vol1d: '±1.86%', vol1dSub: '±$0.83', vol1w: '±4.15%', vol1wSub: 'Solar + Safe Haven', volBand: '$44.00 – $45.70',
+        bear: '$43.20', base: '$44.90', bull: '$46.80', decimals: 2,
+        catalysts: [
+          'Benefiting from both gold’s safe-haven rally and structural solar photovoltaic demand.',
+          'High beta relative to gold amplifies upside during precious-metals breakouts.',
+          'Support holds at $43.50 with breakout zone at $46.00.'
+        ]
+      },
+      NATGAS: {
+        symbol: 'NYMEX:NG', icon: '🔥', name: 'Natural Gas Futures',
+        price: 3.68, changeStr: '-$0.09 (-2.39%)', isPositive: false, regimeType: 'BEARISH',
+        unitReadout: 'Unit: <strong class="txt-primary">USD / MMBtu</strong>',
+        subprice: 'Henry Hub • Winter Heating Season',
+        dayRange: '$3.62 – $3.81', w52Range: '$1.92 – $4.18',
+        fgScore: 44, fgLabel: 'Neutral / Weather (44/100)',
+        ivBadge: 'IV 62.0', vol1d: '±3.90%', vol1dSub: '±$0.14', vol1w: '±8.70%', vol1wSub: 'Winter Models', volBand: '$3.54 – $3.82',
+        bear: '$3.42', base: '$3.70', bull: '$3.98', decimals: 2,
+        catalysts: [
+          'Milder early-December U.S. weather forecasts trimmed winter heating demand expectations.',
+          'LNG export terminal feedgas flows remain near record highs, limiting steep drawdowns.',
+          'Expect sharp two-way swings around weekly EIA storage releases.'
+        ]
+      },
+      COPPER: {
+        symbol: 'COMEX:HG', icon: '⚡', name: 'Copper Futures (High Grade)',
+        price: 4.32, changeStr: '+$0.03 (+0.70%)', isPositive: true, regimeType: 'NEUTRAL',
+        unitReadout: 'Unit: <strong class="txt-primary">USD / Pound</strong>',
+        subprice: 'Dr. Copper • Grid &amp; AI Data Center Metal',
+        dayRange: '$4.27 – $4.36', w52Range: '$3.82 – $5.12',
+        fgScore: 54, fgLabel: 'Neutral (54/100)',
+        ivBadge: 'IV 24.1', vol1d: '±1.52%', vol1dSub: '±$0.07', vol1w: '±3.40%', vol1wSub: 'Trade Policy', volBand: '$4.25 – $4.39',
+        bear: '$4.15', base: '$4.32', bull: '$4.55', decimals: 2,
+        catalysts: [
+          'Power-grid electrification and AI data-center wiring support structural deficit narratives.',
+          'U.S. tariff rhetoric caps near-term industrial metals momentum.',
+          'Range-bound between $4.20 support and $4.48 resistance.'
+        ]
+      }
+    };
+
+    /**
+     * =========================================================================
+     * 3. ASTRO DAILY (12 SIGNS, VEDIC MOON & WESTERN SUN)
+     * =========================================================================
+     */
+    const ASTRO_SIGNS = [
+      { key: 'ARIES', glyph: '♈', vedic: 'Mesha (Aries)', western: 'Aries', element: 'Fire', ruler: 'Mars (Mangal)', color: 'Coral Red', hex: '#ef4444', num: 9 },
+      { key: 'TAURUS', glyph: '♉', vedic: 'Vrishabha (Taurus)', western: 'Taurus', element: 'Earth', ruler: 'Venus (Shukra)', color: 'Light Cream', hex: '#f5f0dc', num: 8 },
+      { key: 'GEMINI', glyph: '♊', vedic: 'Mithuna (Gemini)', western: 'Gemini', element: 'Air', ruler: 'Mercury (Budha)', color: 'Mint Green', hex: '#34d399', num: 5 },
+      { key: 'CANCER', glyph: '♋', vedic: 'Karka (Cancer)', western: 'Cancer', element: 'Water', ruler: 'Moon (Chandra)', color: 'Pearl White', hex: '#f1f5f9', num: 2 },
+      { key: 'LEO', glyph: '♌', vedic: 'Simha (Leo)', western: 'Leo', element: 'Fire', ruler: 'Sun (Surya)', color: 'Warm Gold', hex: '#f59e0b', num: 1 },
+      { key: 'VIRGO', glyph: '♍', vedic: 'Kanya (Virgo)', western: 'Virgo', element: 'Earth', ruler: 'Mercury (Budha)', color: 'Sage Green', hex: '#84cc16', num: 5 },
+      { key: 'LIBRA', glyph: '♎', vedic: 'Tula (Libra)', western: 'Libra', element: 'Air', ruler: 'Venus (Shukra)', color: 'Sky Blue', hex: '#38bdf8', num: 6 },
+      { key: 'SCORPIO', glyph: '♏', vedic: 'Vrishchika (Scorpio)', western: 'Scorpio', element: 'Water', ruler: 'Mars (Mangal)', color: 'Deep Crimson', hex: '#be123c', num: 9 },
+      { key: 'SAGITTARIUS', glyph: '♐', vedic: 'Dhanus (Sagittarius)', western: 'Sagittarius', element: 'Fire', ruler: 'Jupiter (Guru)', color: 'Saffron Yellow', hex: '#eab308', num: 3 },
+      { key: 'CAPRICORN', glyph: '♑', vedic: 'Makara (Capricorn)', western: 'Capricorn', element: 'Earth', ruler: 'Saturn (Shani)', color: 'Slate Blue', hex: '#475569', num: 8 },
+      { key: 'AQUARIUS', glyph: '♒', vedic: 'Kumbha (Aquarius)', western: 'Aquarius', element: 'Air', ruler: 'Saturn (Shani)', color: 'Electric Indigo', hex: '#6366f1', num: 4 },
+      { key: 'PISCES', glyph: '♓', vedic: 'Meena (Pisces)', western: 'Pisces', element: 'Water', ruler: 'Jupiter (Guru)', color: 'Seafoam', hex: '#2dd4bf', num: 3 }
+    ];
+
+    let activeAstroSys = 'VEDIC';
+    let activeAstroSign = 'TAURUS';
+    let activeAstroDay = 'TODAY';
+
+    function getAstroContent(signKey, sys, day) {
+      const sign = ASTRO_SIGNS.find((s) => s.key === signKey) || ASTRO_SIGNS[1];
+      const isTaurusVedic = signKey === 'TAURUS' && sys === 'VEDIC';
+      const isToday = day === 'TODAY';
+
+      if (isTaurusVedic && isToday) {
+        return {
+          kicker: 'VEDIC MOON (ROHINI PADA 1) • VAKYA PANCHANG',
+          title: 'Vrishabha (Taurus) Rashi',
+          luckyNum: 8,
+          luckyColor: 'Light Cream',
+          swatch: '#f5f0dc',
+          telemetry: [
+            { label: 'Janma Nakshatra', value: 'Rohini (Pada 1)' },
+            { label: 'Janma Lagna', value: 'Dhanus (Sagittarius)' },
+            { label: 'Transit Focus', value: 'Finance & Tactful Speech' }
+          ],
+          blocks: [
+            { title: 'Overall Outlook', tag: 'STEADY', color: 'amber', body: 'Financial complexities occupy your early focus, making rushed decisions unwise. Leaning on lived experience and calm interpersonal diplomacy brings steady clarity by afternoon.' },
+            { title: 'Career & Work', tag: 'FAVORABLE', color: 'emerald', body: 'Strong window to launch structured initiatives or upgrade productivity tools/hardware to hit deadlines. Keep schedules tight and avoid unnecessary detours.' },
+            { title: 'Money & Markets', tag: 'CAUTIOUS', color: 'rose', body: 'Over-cautiousness could make you hesitate on solid setups, while complex accounting needs patience. Verify risk/reward carefully before committing fresh capital.' },
+            { title: 'Relationships & Health', tag: 'BALANCED', color: 'emerald', body: 'Stay warm and attentive to family or partner perspectives to avoid minor friction. High physical efficiency lets you clear tough tasks—conserve energy by skipping unproductive debates.' }
+          ],
+          footer: 'Personalized for Vrishabha Rashi • Rohini Pada 1 • Vakya Panchangam (Fri, 27 Nov 2026).'
+        };
+      }
+
+      if (isTaurusVedic && !isToday) {
+        return {
+          kicker: 'VEDIC MOON (ROHINI PADA 1) • TOMORROW PREVIEW',
+          title: 'Vrishabha (Taurus) Rashi',
+          luckyNum: 6,
+          luckyColor: 'Pearl Cream',
+          swatch: '#f3ead3',
+          telemetry: [
+            { label: 'Janma Nakshatra', value: 'Rohini (Pada 1)' },
+            { label: 'Day Ruler', value: 'Shani (Saturday)' },
+            { label: 'Transit Focus', value: 'Rest & Long-Term Strategy' }
+          ],
+          blocks: [
+            { title: 'Overall Outlook', tag: 'CONSTRUCTIVE', color: 'emerald', body: 'Saturday brings grounded Saturnian clarity—ideal for organizing personal projects, decluttering priorities, and planning next week’s financial roadmap.' },
+            { title: 'Career & Projects', tag: 'PRODUCTIVE', color: 'emerald', body: 'Deep focus favors technical building, coding, or independent research. Avoid overcommitting to last-minute social errands.' },
+            { title: 'Money & Savings', tag: 'STABLE', color: 'amber', body: 'Good day to audit recurring expenses and review long-term allocations rather than chasing impulsive weekend purchases.' },
+            { title: 'Relationships & Health', tag: 'HARMONIOUS', color: 'emerald', body: 'Warm family conversations restore mental balance. Prioritize hydration, light stretching, and an earlier sleep window.' }
+          ],
+          footer: 'Tomorrow Preview for Vrishabha Rashi • Rohini Pada 1 • Vakya Panchangam (Sat, 28 Nov 2026).'
+        };
+      }
+
+      const dayLabel = isToday ? 'Fri, 27 Nov 2026' : 'Sat, 28 Nov 2026';
+      const sysLabel = sys === 'VEDIC' ? 'VEDIC MOON (CHANDRA RASHI)' : 'WESTERN SUN SIGN';
+      return {
+        kicker: `${sysLabel} • ${sign.element.toUpperCase()} ELEMENT`,
+        title: sys === 'VEDIC' ? `${sign.vedic} Rashi` : `${sign.western} (Sun Sign)`,
+        luckyNum: isToday ? sign.num : ((sign.num % 9) + 1),
+        luckyColor: sign.color,
+        swatch: sign.hex,
+        telemetry: [
+          { label: 'System', value: sys === 'VEDIC' ? 'Sidereal Vedic Moon' : 'Tropical Western Sun' },
+          { label: 'Planetary Ruler', value: sign.ruler },
+          { label: 'Elemental Tone', value: `${sign.element} • ${isToday ? 'Active' : 'Reflective'}` }
+        ],
+        blocks: [
+          { title: 'Overall Outlook', tag: isToday ? 'FOCUSED' : 'CALM', color: 'emerald', body: isToday ? `Practical momentum favors ${sign.western} placements today. Stay grounded in facts, pace your energy, and let preparation speak louder than urgency.` : `A slower weekend cadence helps ${sign.western} recharge, review weekly wins, and map out clean next-week priorities.` },
+          { title: 'Career & Ambition', tag: 'STEADY', color: 'amber', body: isToday ? 'Methodical execution outperforms improvisation. Wrap up pending deliverables before taking on fresh commitments.' : 'Ideal window for skill-building, creative planning, and quiet strategic thinking away from weekday noise.' },
+          { title: 'Finance & Risk', tag: 'DISCIPLINED', color: 'amber', body: isToday ? 'Keep position sizing conservative and avoid emotional decisions around volatile headlines.' : 'Review budgets, subscriptions, and long-term savings milestones with a clear head.' },
+          { title: 'Relationships & Well-Being', tag: 'WARM', color: 'emerald', body: isToday ? 'Clear, patient communication prevents small misunderstandings. Step away from screens briefly to reset focus.' : 'Quality time with close friends or family brings genuine renewal; prioritize restorative rest.' }
+        ],
+        footer: `${sys === 'VEDIC' ? 'Vedic Sidereal' : 'Western Tropical'} daily outlook for ${sign.western} (${dayLabel}).`
+      };
+    }
+
+    /**
+     * =========================================================================
+     * 4. WORLD NEWS, U.S., INDIA & STEM (16 CURATED BRIEFS)
+     * =========================================================================
+     */
+    const NEWS_ITEMS = [
+      { cat: 'WORLD', tag: 'GEOPOLITICS', title: 'North Korea Vows Nuclear Expansion & Orders Swiss Office Closure', summary: 'Pyongyang pledged to expand its nuclear arsenal despite diplomatic overtures and gave Switzerland 48 hours to close its new diplomatic mission over sanctions.', time: '2h ago' },
+      { cat: 'WORLD', tag: 'EUROPE', title: 'EU Leaders Debate €1.6 Trillion Long-Term Budget for 2028–2034', summary: 'European capitals opened negotiations on a proposed €1.6T multi-year spending framework balancing defense, green transition, and sustained Ukraine aid.', time: '3h ago' },
+      { cat: 'WORLD', tag: 'WEST ASIA', title: 'Brent Crude Reclaims $96/bbl After Overnight Regional Drone Attacks', summary: 'Fresh infrastructure strikes in West Asia injected renewed geopolitical risk premium into energy markets and shipping corridors.', time: '4h ago' },
+      { cat: 'WORLD', tag: 'SOUTH ASIA', title: 'Nepal Initiates Legal Process for 213 Missing Indian Nationals After Floods', summary: 'Authorities in Kathmandu began formal proceedings following severe monsoon flooding, coordinating closely with Indian consular officials.', time: '6h ago' },
+
+      { cat: 'US', tag: 'TRADE POLICY', title: 'Trump Proposes 25% Tariff on Indian Goods Alongside Broader Trade Threats', summary: 'The White House outlined a proposed 25% tariff following trade-practice reviews, putting export-oriented emerging-market sectors on alert.', time: '2h ago' },
+      { cat: 'US', tag: 'MACRO / FED', title: 'U.S. PCE Inflation Prints 3.8% YoY, Keeping December Fed Risk Alive', summary: 'Higher-than-expected personal consumption expenditures data kept Treasury yields elevated and pushed CBOE VIX above 28 ahead of Black Friday.', time: '5h ago' },
+      { cat: 'US', tag: 'TECH / LABOR', title: 'IBM Halts U.S. Visa Sponsorship, Impacting Thousands of Tech Workers', summary: 'The policy shift leaves affected international employees facing abrupt compensation adjustments or relocation timelines.', time: '5h ago' },
+      { cat: 'US', tag: 'COURTS', title: 'Federal Judge Strikes Down New U.S. Birthright Citizenship Restrictions', summary: 'A federal court blocked the administration’s latest citizenship limits while a separate ruling halted an FCC action targeting broadcast affiliates.', time: '7h ago' },
+
+      { cat: 'INDIA', tag: 'CORPORATE', title: 'Tata Trusts Moves Bombay High Court Over Tata Sons Chair Reappointment', summary: 'Tata Trusts filed a legal challenge contesting N. Chandrasekaran’s reappointment as Executive Chairman of Tata Sons, drawing close market scrutiny.', time: '3h ago' },
+      { cat: 'INDIA', tag: 'REGULATION', title: 'Supreme Court Mandates Front-of-Pack Salt, Sugar & Fat Warning Labels', summary: 'India’s top court ordered distinct front-of-pack nutrition warnings on packaged foods to curb rising metabolic health risks.', time: '4h ago' },
+      { cat: 'INDIA', tag: 'BANKING / RBI', title: 'RBI Data Shows Bank Bad-Loan Write-Offs Fell 8.2% YoY to ₹1.44 Lakh Cr', summary: 'Improved corporate balance sheets and stronger recoveries lowered FY26 write-offs across scheduled commercial banks.', time: '6h ago' },
+      { cat: 'INDIA', tag: 'POLICY', title: 'Tamil Nadu Introduces 15 Days Paid Paternity Leave for Govt Staff', summary: 'Tamil Nadu became the first Indian state to roll out 15 days of paid paternity leave for married male government employees.', time: '7h ago' },
+
+      { cat: 'STEM', tag: 'SPACE', title: 'ESA’s Hera Spacecraft Captures First Close-Up of DART’s Asteroid Crater', summary: 'Newly released images from the Didymos binary system confirm a stadium-sized impact crater on Dimorphos from NASA’s 2022 planetary-defense test.', time: '3h ago' },
+      { cat: 'STEM', tag: 'PHYSICS', title: 'Northwestern Physicists Cool Single Trapped Positron Near Absolute Zero', summary: 'Wall-free antimatter trapping enables ultra-precise symmetry tests probing physics beyond the Standard Model.', time: '5h ago' },
+      { cat: 'STEM', tag: 'ASTROBIOLOGY', title: 'Researchers Grow Potatoes in Simulated Lunar Regolith With Organic Blend', summary: 'Controlled greenhouse trials demonstrated viable tuber growth in Moon-soil simulants, advancing closed-loop lunar habitat food systems.', time: '6h ago' },
+      { cat: 'STEM', tag: 'QUANTUM', title: 'SAP & Neutral-Atom Startup planqc Expand Enterprise Quantum Roadmap', summary: 'The expanded partnership targets enterprise optimization trials on neutral-atom quantum processors beginning in 2027.', time: '8h ago' }
+    ];
+
+    let activeNewsCat = 'ALL';
+
+    /**
+     * =========================================================================
+     * 5. REUSABLE UI RENDERERS (DIAL, CHIPS, SEARCH DROPDOWN, LIGHTWEIGHT CHART)
+     * =========================================================================
+     */
+    function renderFearGreedDial(containerId, score) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const clamped = Math.max(0, Math.min(100, score));
+      const angle = -90 + (clamped / 100) * 180;
+      let scoreColor = '#f59e0b';
+      if (clamped <= 35) scoreColor = '#f43f5e';
+      else if (clamped >= 60) scoreColor = '#10b981';
+
+      container.innerHTML = `
+        <svg viewBox="0 0 200 118" class="w-full h-auto overflow-visible" aria-label="Sentiment score ${clamped} out of 100">
+          <defs>
+            <linearGradient id="fgGrad-${containerId}" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#f43f5e" />
+              <stop offset="50%" stop-color="#f59e0b" />
+              <stop offset="100%" stop-color="#10b981" />
+            </linearGradient>
+          </defs>
+          <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="currentColor" stroke-opacity="0.14" stroke-width="14" stroke-linecap="round" />
+          <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="url(#fgGrad-${containerId})" stroke-width="14" stroke-linecap="round" />
+          <g transform="translate(100,100) rotate(${angle})">
+            <line x1="0" y1="0" x2="0" y2="-66" stroke="${scoreColor}" stroke-width="3.5" stroke-linecap="round" />
+            <circle cx="0" cy="0" r="6" fill="${scoreColor}" />
+          </g>
+          <text x="100" y="84" text-anchor="middle" fill="${scoreColor}" font-family="JetBrains Mono, monospace" font-weight="700" font-size="22">${clamped}</text>
+          <text x="18" y="114" text-anchor="start" fill="currentColor" fill-opacity="0.55" font-family="JetBrains Mono, monospace" font-size="9">FEAR</text>
+          <text x="182" y="114" text-anchor="end" fill="currentColor" fill-opacity="0.55" font-family="JetBrains Mono, monospace" font-size="9">GREED</text>
+        </svg>
+      `;
+    }
+
+    function renderChips(containerId, keys, activeKey, onSelect) {
+      const wrap = document.getElementById(containerId);
+      if (!wrap) return;
+      wrap.innerHTML = keys.map((k) => `
+        <button type="button" data-chip="${k}" class="ticker-chip ${k === activeKey ? 'active' : ''} px-3 py-1.5 rounded-xl text-xs font-mono whitespace-nowrap cursor-pointer">${k}</button>
+      `).join('');
+      wrap.querySelectorAll('[data-chip]').forEach((btn) => {
+        btn.addEventListener('click', () => onSelect(btn.getAttribute('data-chip')));
+      });
+    }
+
+    function generateCandles(basePrice, symbol, tf) {
+      const countMap = { '1W': 14, '1M': 30, '3M': 65, '1Y': 120 };
+      const count = countMap[tf] || 30;
+      let seed = 0;
+      for (let i = 0; i < symbol.length; i++) seed = (seed * 31 + symbol.charCodeAt(i)) % 9973;
+      const rand = () => {
+        seed = (seed * 16807) % 2147483647;
+        return (seed - 1) / 2147483646;
+      };
+
+      const candles = [];
+      const vol = basePrice > 10000 ? 0.022 : 0.014;
+      let price = basePrice * (0.94 + rand() * 0.08);
+      const endDate = new Date(2026, 10, 27); // Nov 27, 2026
+
+      for (let i = count - 1; i >= 0; i--) {
+        const dt = new Date(endDate.getTime() - i * 86400000);
+        const yyyy = dt.getFullYear();
+        const mm = String(dt.getMonth() + 1).padStart(2, '0');
+        const dd = String(dt.getDate()).padStart(2, '0');
+        const drift = (basePrice - price) * (i === 0 ? 1 : 0.14);
+        const move = (rand() - 0.48) * basePrice * vol + drift;
+        const open = price;
+        const close = i === 0 ? basePrice : Math.max(basePrice * 0.5, open + move);
+        const high = Math.max(open, close) + rand() * basePrice * vol * 0.6;
+        const low = Math.min(open, close) - rand() * basePrice * vol * 0.6;
+        candles.push({
+          time: `${yyyy}-${mm}-${dd}`,
+          open: Number(open.toFixed(4)),
+          high: Number(high.toFixed(4)),
+          low: Number(low.toFixed(4)),
+          close: Number(close.toFixed(4))
+        });
+        price = close;
+      }
+      return candles;
+    }
+
+    function renderInteractiveChart(marketKey, containerId, ohlcId, symbolLabel, basePrice, tf) {
+      const container = document.getElementById(containerId);
+      const ohlcEl = document.getElementById(ohlcId);
+      if (!container) return;
+
+      if (chartInstances[marketKey]) {
+        try { chartInstances[marketKey].remove(); } catch (e) {}
+        delete chartInstances[marketKey];
+      }
+      container.innerHTML = '';
+
+      const candles = generateCandles(basePrice, symbolLabel, tf);
+      const bg = isLightMode ? '#f0e9db' : '#0c121e';
+      const txt = isLightMode ? '#3d3832' : '#94a3b8';
+      const grid = isLightMode ? 'rgba(61, 56, 50, 0.08)' : 'rgba(148, 163, 184, 0.08)';
+
+      if (window.LightweightCharts && typeof window.LightweightCharts.createChart === 'function') {
+        const chart = window.LightweightCharts.createChart(container, {
+          width: container.clientWidth || 680,
+          height: container.clientHeight || 360,
+          layout: { background: { type: 'solid', color: bg }, textColor: txt, fontFamily: 'JetBrains Mono, monospace' },
+          grid: { vertLines: { color: grid }, horzLines: { color: grid } },
+          rightPriceScale: { borderColor: grid },
+          timeScale: { borderColor: grid, timeVisible: false },
+          crosshair: { mode: 1 }
+        });
+
+        const series = chart.addCandlestickSeries({
+          upColor: '#10b981',
+          downColor: '#f43f5e',
+          borderVisible: false,
+          wickUpColor: '#10b981',
+          wickDownColor: '#f43f5e'
+        });
+
+        series.setData(candles);
+        chart.timeScale().fitContent();
+
+        chart.subscribeCrosshairMove((param) => {
+          if (!ohlcEl || !param || !param.seriesData) return;
+          const pt = param.seriesData.get(series);
+          if (pt) {
+            ohlcEl.textContent = `O ${pt.open}  H ${pt.high}  L ${pt.low}  C ${pt.close}`;
+          }
+        });
+
+        chartInstances[marketKey] = chart;
+      } else {
+        // Fallback crisp SVG sparkline if external chart script is offline
+        const closes = candles.map((c) => c.close);
+        const min = Math.min(...closes);
+        const max = Math.max(...closes);
+        const range = max - min || 1;
+        const pts = closes.map((v, i) => {
+          const x = (i / Math.max(1, closes.length - 1)) * 600;
+          const y = 180 - ((v - min) / range) * 150;
+          return `${x.toFixed(1)},${y.toFixed(1)}`;
+        }).join(' ');
+        container.innerHTML = `<svg viewBox="0 0 600 200" class="w-full h-full p-4"><polyline fill="none" stroke="#10b981" stroke-width="2.5" points="${pts}" /></svg>`;
+      }
+    }
+
+    function setupSearchDropdown(marketKey, assetsObj, onSelect, createCustom) {
+      const form = document.getElementById(`${marketKey}-search-form`);
+      const input = document.getElementById(`${marketKey}-search-input`);
+      const toggleBtn = document.getElementById(`${marketKey}-dropdown-toggle`);
+      const menu = document.getElementById(`${marketKey}-dropdown-menu`);
+      if (!form || !input || !toggleBtn || !menu) return;
+
+      const populate = (filterText = '') => {
+        const q = filterText.trim().toUpperCase();
+        const entries = Object.entries(assetsObj).filter(([k, v]) =>
+          !q || k.includes(q) || (v.name && v.name.toUpperCase().includes(q))
+        );
+        if (entries.length === 0 && q) {
+          menu.innerHTML = `<button type="button" data-custom="${q}" class="dropdown-item w-full text-left px-3 py-2 rounded-xl text-xs font-mono txt-primary cursor-pointer">Load custom ticker: <strong>${q}</strong></button>`;
+        } else {
+          menu.innerHTML = entries.map(([k, v]) => `
+            <button type="button" data-pick="${k}" class="dropdown-item w-full flex items-center justify-between gap-2 px-3 py-2 rounded-xl text-xs font-mono cursor-pointer">
+              <span class="font-bold txt-primary">${k}</span>
+              <span class="txt-muted truncate">${v.name}</span>
+            </button>
+          `).join('');
+        }
+        menu.querySelectorAll('[data-pick]').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const picked = btn.getAttribute('data-pick');
+            input.value = '';
+            menu.classList.add('hidden');
+            onSelect(picked);
+          });
+        });
+        menu.querySelectorAll('[data-custom]').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const sym = btn.getAttribute('data-custom');
+            createCustom(sym);
+            input.value = '';
+            menu.classList.add('hidden');
+            onSelect(sym);
+          });
+        });
+      };
+
+      toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        populate(input.value);
+        menu.classList.toggle('hidden');
+      });
+
+      input.addEventListener('focus', () => {
+        populate(input.value);
+        menu.classList.remove('hidden');
+      });
+
+      input.addEventListener('input', () => {
+        populate(input.value);
+        menu.classList.remove('hidden');
+      });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const q = input.value.trim().toUpperCase();
+        if (!q) return;
+        if (!assetsObj[q]) createCustom(q);
+        input.value = '';
+        menu.classList.add('hidden');
+        onSelect(q);
+      });
+    }
+
+    /**
+     * =========================================================================
+     * 6. CARD RENDER FUNCTIONS
+     * =========================================================================
+     */
+    function renderIndiaCard(key) {
+      const d = INDIA_ASSETS[key] || INDIA_ASSETS.NIFTYBEES;
+      activeTickers.india = key;
+      renderChips('india-chip-list', Object.keys(INDIA_ASSETS), key, (k) => renderIndiaCard(k));
+
+      document.getElementById('india-etf-name').textContent = d.name;
+      document.getElementById('india-index-readout').innerHTML = d.indexReadout;
+      document.getElementById('india-price').textContent = `₹${d.price.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+      const chEl = document.getElementById('india-change');
+      chEl.textContent = d.changeStr;
+      chEl.className = `px-2.5 py-1 rounded-lg text-sm font-mono font-bold tabular-nums border ${d.isPositive ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-500/30' : 'bg-rose-500/15 text-rose-700 dark:text-rose-400 border-rose-500/30'}`;
+
+      const pill = document.getElementById('india-regime-pill');
+      if (pill) {
+        if (d.regimeType === 'BULLISH') {
+          pill.className = 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35';
+          pill.textContent = '▲ GAIN';
+        } else if (d.regimeType === 'NEUTRAL') {
+          pill.className = 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/35';
+          pill.textContent = '◆ MIDDLE';
+        } else {
+          pill.className = 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/35';
+          pill.textContent = '▼ LOSS';
+        }
+      }
+
+      document.getElementById('india-subprice').textContent = d.subprice;
+      document.getElementById('india-day-range').textContent = d.dayRange;
+      document.getElementById('india-52w-range').textContent = d.w52Range;
+      document.getElementById('india-vix-badge').textContent = d.vixBadge;
+      document.getElementById('india-vol-1d').textContent = d.vol1d;
+      document.getElementById('india-vol-1d-etf').textContent = d.vol1dSub;
+      document.getElementById('india-vol-1w').textContent = d.vol1w;
+      document.getElementById('india-vol-1w-pts').textContent = d.vol1wSub;
+      document.getElementById('india-vol-band').textContent = d.volBand;
+      document.getElementById('india-bear').textContent = d.bear;
+      document.getElementById('india-base').textContent = d.base;
+      document.getElementById('india-bull').textContent = d.bull;
+      document.getElementById('india-chart-label').textContent = d.symbol;
+
+      document.getElementById('india-catalysts').innerHTML = d.catalysts.map((c) => `
+        <li class="p-3.5 rounded-xl inner-panel">${c}</li>
+      `).join('');
+
+      renderFearGreedDial('india-fg-dial', 56);
+      renderInteractiveChart('india', 'india-chart-container', 'india-chart-ohlc', d.symbol, d.price, activeTimeframes.india);
+    }
+
+    function renderUSCard(key) {
+      const d = US_ASSETS[key] || US_ASSETS.SPY;
+      activeTickers.us = key;
+      renderChips('us-chip-list', Object.keys(US_ASSETS), key, (k) => renderUSCard(k));
+
+      document.getElementById('us-etf-name').textContent = d.name;
+      document.getElementById('us-index-readout').innerHTML = d.indexReadout;
+      document.getElementById('us-price').textContent = `$${d.price.toFixed(2)}`;
+
+      const chEl = document.getElementById('us-change');
+      chEl.textContent = d.changeStr;
+      chEl.className = `px-2.5 py-1 rounded-lg text-sm font-mono font-bold tabular-nums border ${d.isPositive ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-500/30' : 'bg-rose-500/15 text-rose-700 dark:text-rose-400 border-rose-500/30'}`;
+
+      const usPill = document.getElementById('us-regime-pill');
+      if (usPill) {
+        usPill.className = d.isPositive
+          ? 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35'
+          : 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/35';
+        usPill.textContent = d.isPositive ? '▲ GAIN' : '▼ LOSS';
+      }
+
+      document.getElementById('us-subprice').textContent = d.subprice;
+      document.getElementById('us-range').textContent = d.range;
+      document.getElementById('us-vix-badge').textContent = d.vixBadge;
+      document.getElementById('us-vol-1d').textContent = d.vol1d;
+      document.getElementById('us-vol-1d-sub').textContent = d.vol1dSub;
+      document.getElementById('us-vol-1w').textContent = d.vol1w;
+      document.getElementById('us-vol-1w-sub').textContent = d.vol1wSub;
+      document.getElementById('us-vol-band').textContent = d.volBand;
+      document.getElementById('us-bear').textContent = d.bear;
+      document.getElementById('us-base').textContent = d.base;
+      document.getElementById('us-bull').textContent = d.bull;
+      document.getElementById('us-chart-label').textContent = d.symbol;
+
+      document.getElementById('us-catalysts').innerHTML = d.catalysts.map((c) => `
+        <li class="p-3.5 rounded-xl inner-panel">${c}</li>
+      `).join('');
+
+      renderFearGreedDial('us-fg-dial', 34);
+      renderInteractiveChart('us', 'us-chart-container', 'us-chart-ohlc', d.symbol, d.price, activeTimeframes.us);
+    }
+
+    function formatUsd(val, decimals) {
+      return '$' + Number(val).toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+    }
+
+    function renderCryptoCard(key) {
+      const d = CRYPTO_ASSETS[key] || CRYPTO_ASSETS.BTC;
+      activeTickers.crypto = key;
+      renderChips('crypto-chip-list', Object.keys(CRYPTO_ASSETS), key, (k) => renderCryptoCard(k));
+
+      const isPos = d.changePct >= 0;
+      document.getElementById('crypto-coin-icon').innerHTML = d.iconSvg;
+      document.getElementById('crypto-name').textContent = d.name;
+      document.getElementById('crypto-price').textContent = formatUsd(d.usdPrice, d.decimals);
+
+      const chEl = document.getElementById('crypto-change');
+      chEl.textContent = `${isPos ? '+' : ''}${d.changePct.toFixed(2)}%`;
+      chEl.className = `px-2.5 py-1 rounded-lg text-sm font-mono font-bold tabular-nums border ${isPos ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-500/30' : 'bg-rose-500/15 text-rose-700 dark:text-rose-400 border-rose-500/30'}`;
+
+      const cPill = document.getElementById('crypto-regime-pill');
+      if (cPill) {
+        cPill.className = isPos
+          ? 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35'
+          : 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/35';
+        cPill.textContent = isPos ? '▲ GAIN' : '▼ LOSS';
+      }
+
+      document.getElementById('crypto-subprice').textContent = d.novPerf;
+      document.getElementById('crypto-band').textContent = d.band;
+      document.getElementById('crypto-dominance').textContent = d.dominance;
+      document.getElementById('crypto-dvol-badge').textContent = d.dvol;
+      document.getElementById('crypto-vol-1d').textContent = d.vol1d;
+      document.getElementById('crypto-vol-1d-sub').textContent = d.vol1dSub;
+      document.getElementById('crypto-vol-7d').textContent = d.vol7d;
+      document.getElementById('crypto-vol-7d-sub').textContent = d.vol7dSub;
+      document.getElementById('crypto-bear').textContent = formatUsd(d.bear, d.decimals);
+      document.getElementById('crypto-base').textContent = formatUsd(d.base, d.decimals);
+      document.getElementById('crypto-bull').textContent = formatUsd(d.bull, d.decimals);
+      document.getElementById('crypto-chart-label').textContent = d.symbol;
+
+      document.getElementById('crypto-catalysts').innerHTML = d.catalysts.map((c) => `
+        <li class="p-3.5 rounded-xl inner-panel">${c}</li>
+      `).join('');
+
+      renderFearGreedDial('crypto-fg-dial', window.__cryptoFgScore || 12);
+      renderInteractiveChart('crypto', 'crypto-chart-container', 'crypto-chart-ohlc', d.symbol, d.usdPrice, activeTimeframes.crypto);
+    }
+
+    function renderCommoditiesCard(key) {
+      const d = COMMODITIES_ASSETS[key] || COMMODITIES_ASSETS.GOLD;
+      activeTickers.commodities = key;
+      renderChips('comm-chip-list', Object.keys(COMMODITIES_ASSETS), key, (k) => renderCommoditiesCard(k));
+
+      document.getElementById('comm-icon').textContent = d.icon;
+      document.getElementById('comm-name').textContent = d.name;
+      document.getElementById('comm-unit-readout').innerHTML = d.unitReadout;
+      document.getElementById('comm-price').textContent = formatUsd(d.price, d.decimals);
+
+      const chEl = document.getElementById('comm-change');
+      chEl.textContent = d.changeStr;
+      chEl.className = `px-2.5 py-1 rounded-lg text-sm font-mono font-bold tabular-nums border ${d.isPositive ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-500/30' : 'bg-rose-500/15 text-rose-700 dark:text-rose-400 border-rose-500/30'}`;
+
+      const commPill = document.getElementById('comm-regime-pill');
+      if (commPill) {
+        if (d.regimeType === 'BULLISH') {
+          commPill.className = 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35';
+          commPill.textContent = '▲ GAIN';
+        } else if (d.regimeType === 'NEUTRAL') {
+          commPill.className = 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/35';
+          commPill.textContent = '◆ MIDDLE';
+        } else {
+          commPill.className = 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/35';
+          commPill.textContent = '▼ LOSS';
+        }
+      }
+
+      document.getElementById('comm-subprice').textContent = d.subprice;
+      document.getElementById('comm-day-range').textContent = d.dayRange;
+      document.getElementById('comm-52w-range').textContent = d.w52Range;
+      document.getElementById('comm-fg-label').textContent = d.fgLabel;
+      document.getElementById('comm-iv-badge').textContent = d.ivBadge;
+      document.getElementById('comm-vol-1d').textContent = d.vol1d;
+      document.getElementById('comm-vol-1d-sub').textContent = d.vol1dSub;
+      document.getElementById('comm-vol-1w').textContent = d.vol1w;
+      document.getElementById('comm-vol-1w-sub').textContent = d.vol1wSub;
+      document.getElementById('comm-vol-band').textContent = d.volBand;
+      document.getElementById('comm-bear').textContent = d.bear;
+      document.getElementById('comm-base').textContent = d.base;
+      document.getElementById('comm-bull').textContent = d.bull;
+      document.getElementById('comm-chart-label').textContent = d.symbol;
+
+      document.getElementById('comm-catalysts').innerHTML = d.catalysts.map((c) => `
+        <li class="p-3.5 rounded-xl inner-panel">${c}</li>
+      `).join('');
+
+      renderFearGreedDial('comm-fg-dial', d.fgScore);
+      renderInteractiveChart('commodities', 'comm-chart-container', 'comm-chart-ohlc', d.symbol, d.price, activeTimeframes.commodities);
+    }
+
+    function renderAstroCard() {
+      const signObj = ASTRO_SIGNS.find((s) => s.key === activeAstroSign) || ASTRO_SIGNS[1];
+      const data = getAstroContent(activeAstroSign, activeAstroSys, activeAstroDay);
+
+      document.getElementById('astro-glyph').textContent = signObj.glyph;
+      document.getElementById('astro-system-kicker').textContent = data.kicker;
+      document.getElementById('astro-title').textContent = data.title;
+      document.getElementById('astro-lucky-num').textContent = data.luckyNum;
+      document.getElementById('astro-lucky-color').textContent = data.luckyColor;
+      document.getElementById('astro-color-swatch').style.backgroundColor = data.swatch;
+
+      document.getElementById('astro-telemetry').innerHTML = data.telemetry.map((t) => `
+        <div>
+          <span class="block text-[11px] uppercase txt-muted">${t.label}</span>
+          <strong class="txt-primary mt-0.5 block">${t.value}</strong>
+        </div>
+      `).join('');
+
+      const badgeMap = {
+        emerald: 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30',
+        amber: 'bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/30',
+        rose: 'bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-500/30'
+      };
+
+      document.getElementById('astro-blocks').innerHTML = data.blocks.map((b) => `
+        <div class="p-5 rounded-2xl inner-panel space-y-2">
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="text-base font-bold txt-primary">${b.title}</h3>
+            <span class="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold border ${badgeMap[b.color] || badgeMap.amber}">${b.tag}</span>
+          </div>
+          <p class="text-sm txt-secondary leading-relaxed">${b.body}</p>
+        </div>
+      `).join('');
+
+      document.getElementById('astro-footer').textContent = data.footer;
+    }
+
+    function renderNewsCard() {
+      const items = activeNewsCat === 'ALL' ? NEWS_ITEMS : NEWS_ITEMS.filter((n) => n.cat === activeNewsCat);
+      const catColors = {
+        WORLD: 'bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30',
+        US: 'bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 border-indigo-500/30',
+        INDIA: 'bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/30',
+        STEM: 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30'
+      };
+
+      document.getElementById('news-grid').innerHTML = items.map((n) => `
+        <article class="p-5 rounded-2xl inner-panel flex flex-col justify-between gap-3">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between gap-2 text-[11px] font-mono">
+              <span class="px-2 py-0.5 rounded-md font-bold border ${catColors[n.cat] || ''}">${n.cat} &bull; ${n.tag}</span>
+              <span class="txt-muted">${n.time}</span>
+            </div>
+            <h3 class="text-base font-bold txt-primary leading-snug">${n.title}</h3>
+            <p class="text-sm txt-secondary leading-relaxed">${n.summary}</p>
+          </div>
+        </article>
+      `).join('');
+
+      document.getElementById('news-count-label').textContent = `Showing ${items.length} brief${items.length === 1 ? '' : 's'}`;
+    }
+
+    /**
+     * =========================================================================
+     * 7. LIVE PUBLIC CRYPTO & FEAR/GREED FETCHERS
+     * =========================================================================
+     */
+    async function tryFetchLiveCrypto() {
+      try {
+        const ids = Object.values(CRYPTO_ASSETS).map((c) => c.id).filter(Boolean).join(',');
+        const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`);
+        if (res.ok) {
+          const data = await res.json();
+          Object.keys(CRYPTO_ASSETS).forEach((k) => {
+            const id = CRYPTO_ASSETS[k].id;
+            if (data[id] && data[id].usd) {
+              CRYPTO_ASSETS[k].usdPrice = data[id].usd;
+              if (typeof data[id].usd_24h_change === 'number') {
+                CRYPTO_ASSETS[k].changePct = data[id].usd_24h_change;
+              }
+            }
+          });
+          if (activeTab === 'crypto') renderCryptoCard(activeTickers.crypto);
+        }
+      } catch (e) { /* retain fallback */ }
+
+      try {
+        const fgRes = await fetch('https://api.alternative.me/fng/?limit=1');
+        if (fgRes.ok) {
+          const fgData = await fgRes.json();
+          if (fgData && fgData.data && fgData.data[0]) {
+            const val = parseInt(fgData.data[0].value, 10);
+            const cls = fgData.data[0].value_classification;
+            if (!Number.isNaN(val)) {
+              window.__cryptoFgScore = val;
+              const lbl = document.getElementById('crypto-fg-label');
+              if (lbl) lbl.textContent = `${cls} (${val}/100)`;
+              renderFearGreedDial('crypto-fg-dial', val);
+            }
+          }
+        }
+      } catch (e) { /* retain fallback */ }
+    }
+
+    /**
+     * =========================================================================
+     * 8. TAB SWITCHING, THEME TOGGLE, CLOCK & INITIALIZATION
+     * =========================================================================
+     */
+    function setActiveTab(tabKey) {
+      if (!TAB_META[tabKey]) tabKey = 'india';
+      activeTab = tabKey;
+
+      const meta = TAB_META[tabKey];
+      document.getElementById('header-active-title').textContent = meta.title;
+      document.getElementById('header-active-icon').innerHTML = meta.icon;
+      document.title = `${meta.title} — Daily Intelligence`;
+
+      document.querySelectorAll('[data-card-tab]').forEach((btn) => {
+        const match = btn.getAttribute('data-card-tab') === tabKey;
+        btn.classList.toggle('active', match);
+        btn.setAttribute('aria-selected', match ? 'true' : 'false');
+      });
+
+      document.querySelectorAll('.card-panel').forEach((panel) => {
+        panel.classList.toggle('active', panel.id === `panel-${tabKey}`);
+      });
+
+      // Re-render active market chart after panel becomes visible so width calculates properly
+      if (tabKey === 'india') renderIndiaCard(activeTickers.india);
+      else if (tabKey === 'us') renderUSCard(activeTickers.us);
+      else if (tabKey === 'crypto') renderCryptoCard(activeTickers.crypto);
+      else if (tabKey === 'commodities') renderCommoditiesCard(activeTickers.commodities);
+      else if (tabKey === 'astro') renderAstroCard();
+      else if (tabKey === 'intel') renderNewsCard();
+    }
+
+    function applyTheme(light) {
+      isLightMode = light;
+      const htmlEl = document.documentElement;
+      if (light) {
+        htmlEl.classList.remove('dark');
+        htmlEl.classList.add('light-beige');
+      } else {
+        htmlEl.classList.remove('light-beige');
+        htmlEl.classList.add('dark');
+      }
+      document.querySelectorAll('.theme-label').forEach((el) => {
+        el.textContent = light ? 'Dark Mode' : 'Light Mode';
+      });
+      document.querySelectorAll('.theme-icon').forEach((el) => {
+        el.textContent = light ? '☾' : '☀';
+      });
+      // Refresh visible chart palette
+      if (['india', 'us', 'crypto', 'commodities'].includes(activeTab)) {
+        setActiveTab(activeTab);
+      }
+    }
+
+    function updateClock() {
+      const el = document.getElementById('live-clock');
+      if (!el) return;
+      try {
+        const now = new Date();
+        const fmt = new Intl.DateTimeFormat('en-GB', {
+          timeZone: 'Asia/Kolkata',
+          weekday: 'short', day: '2-digit', month: 'short', year: 'numeric',
+          hour: '2-digit', minute: '2-digit', hour12: false
+        });
+        el.textContent = `${fmt.format(now).toUpperCase().replace(',', '')} IST`;
+      } catch (e) { /* keep static fallback */ }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Populate Astro sign dropdown
+      const signSelect = document.getElementById('astro-sign-select');
+      if (signSelect) {
+        signSelect.innerHTML = ASTRO_SIGNS.map((s) =>
+          `<option value="${s.key}" class="text-slate-900">${s.glyph} ${s.vedic}</option>`
+        ).join('');
+        signSelect.value = activeAstroSign;
+        signSelect.addEventListener('change', (e) => {
+          activeAstroSign = e.target.value;
+          renderAstroCard();
+        });
+      }
+
+      // Astro system & day switches
+      document.querySelectorAll('.astro-sys-tab').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          activeAstroSys = btn.getAttribute('data-astro-sys');
+          document.querySelectorAll('.astro-sys-tab').forEach((b) => b.classList.toggle('active', b === btn));
+          renderAstroCard();
+        });
+      });
+
+      document.querySelectorAll('.astro-day-tab').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          activeAstroDay = btn.getAttribute('data-astro-day');
+          document.querySelectorAll('.astro-day-tab').forEach((b) => b.classList.toggle('active', b === btn));
+          renderAstroCard();
+        });
+      });
+
+      // News category tabs
+      document.querySelectorAll('.news-tab').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          activeNewsCat = btn.getAttribute('data-news-cat');
+          document.querySelectorAll('.news-tab').forEach((b) => b.classList.toggle('active', b === btn));
+          renderNewsCard();
+        });
+      });
+
+      // Main navigation tabs
+      document.querySelectorAll('[data-card-tab]').forEach((btn) => {
+        btn.addEventListener('click', () => setActiveTab(btn.getAttribute('data-card-tab')));
+      });
+
+      // Theme toggles
+      const toggleTheme = () => applyTheme(!isLightMode);
+      const mobBtn = document.getElementById('theme-toggle-mobile');
+      const deskBtn = document.getElementById('theme-toggle-desktop');
+      if (mobBtn) mobBtn.addEventListener('click', toggleTheme);
+      if (deskBtn) deskBtn.addEventListener('click', toggleTheme);
+
+      // Forex selector
+      const fxSelect = document.getElementById('fx-target-select');
+      if (fxSelect) {
+        fxSelect.addEventListener('change', (e) => {
+          activeFxTarget = e.target.value;
+          renderFxBadge();
+        });
+      }
+
+      // Timeframe selectors
+      document.querySelectorAll('[data-tf-group]').forEach((group) => {
+        const market = group.getAttribute('data-tf-group');
+        group.querySelectorAll('.tf-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            activeTimeframes[market] = btn.getAttribute('data-tf');
+            group.querySelectorAll('.tf-btn').forEach((b) => b.classList.toggle('active', b === btn));
+            if (market === 'india') renderIndiaCard(activeTickers.india);
+            else if (market === 'us') renderUSCard(activeTickers.us);
+            else if (market === 'crypto') renderCryptoCard(activeTickers.crypto);
+            else if (market === 'commodities') renderCommoditiesCard(activeTickers.commodities);
+          });
+        });
+      });
+
+      // Search & dropdowns with custom ticker support
+      setupSearchDropdown('india', INDIA_ASSETS, renderIndiaCard, (sym) => {
+        INDIA_ASSETS[sym] = {
+          symbol: `NSE:${sym}`, name: `${sym} (Custom NSE Ticker)`,
+          price: 1000.00, changeStr: '+₹8.40 (+0.85%)', isPositive: true, regimeType: 'BULLISH',
+          indexReadout: 'Exchange: <strong class="txt-primary">NSE India</strong>',
+          subprice: 'Custom Ticker • Interactive Chart View',
+          dayRange: '₹988.00 – ₹1,012.00', w52Range: '₹840.00 – ₹1,140.00',
+          vixBadge: 'INDIA VIX 16.66', vol1d: '±1.10%', vol1dSub: '±₹11.00', vol1w: '±2.80%', vol1wSub: '±₹28.00', volBand: '₹989 – ₹1,011',
+          bear: '₹975.00', base: '₹1,002.00', bull: '₹1,035.00',
+          catalysts: ['Custom NSE symbol loaded on demand.', 'Wire live Yahoo Finance data via GitHub Actions for real-time quotes.', 'Use timeframe buttons above to inspect trend structure.']
+        };
+      });
+
+      setupSearchDropdown('us', US_ASSETS, renderUSCard, (sym) => {
+        US_ASSETS[sym] = {
+          symbol: `US:${sym}`, name: `${sym} (Custom U.S. Ticker)`,
+          price: 150.00, changeStr: '+$1.85 (+1.25%)', isPositive: true,
+          indexReadout: 'Exchange: <strong class="txt-primary">NYSE / Nasdaq</strong>',
+          subprice: 'Custom Ticker • Interactive Chart View',
+          range: '$148.10 – $151.90',
+          vixBadge: 'CBOE VIX 28.29', vol1d: '±1.85%', vol1dSub: '±$2.78', vol1w: '±4.10%', vol1wSub: 'Custom', volBand: '$147.20 – $152.80',
+          bear: '$145.50', base: '$150.00', bull: '$156.00',
+          catalysts: ['Custom U.S. symbol loaded on demand.', 'Connect Yahoo Finance in scripts/fetch-data.mjs for automated daily closes.', 'Switch timeframes above to inspect structure.']
+        };
+      });
+
+      setupSearchDropdown('crypto', CRYPTO_ASSETS, renderCryptoCard, (sym) => {
+        CRYPTO_ASSETS[sym] = {
+          id: sym.toLowerCase(), symbol: `${sym} / USD`, name: `${sym} (Custom Crypto)`,
+          iconSvg: `<span class="font-mono font-bold text-amber-400 text-xs">${sym.slice(0, 4)}</span>`,
+          usdPrice: 10.00, changePct: 1.50, novPerf: 'Custom Spot Pair',
+          band: '$9.65 – $10.35', dominance: 'Global Spot',
+          dvol: 'IV 70.0', vol1d: '±3.65%', vol1dSub: '±$0.37', vol7d: '±9.50%', vol7dSub: '24/7 Spot',
+          bear: 9.20, base: 10.05, bull: 11.10, decimals: 2,
+          catalysts: ['Custom crypto pair loaded on demand.', 'Supports live CoinGecko USD pricing when matched to CoinGecko ID.', 'Use timeframe controls to inspect trend structure.']
+        };
+      });
+
+      setupSearchDropdown('comm', COMMODITIES_ASSETS, renderCommoditiesCard, (sym) => {
+        COMMODITIES_ASSETS[sym] = {
+          symbol: `FUT:${sym}`, icon: '📦', name: `${sym} (Custom Commodity)`,
+          price: 100.00, changeStr: '+$0.85 (+0.86%)', isPositive: true, regimeType: 'NEUTRAL',
+          unitReadout: 'Unit: <strong class="txt-primary">USD Benchmark</strong>',
+          subprice: 'Custom Commodity Futures',
+          dayRange: '$98.50 – $101.20', w52Range: '$82.00 – $116.00',
+          fgScore: 55, fgLabel: 'Neutral (55/100)',
+          ivBadge: 'IV 22.0', vol1d: '±1.38%', vol1dSub: '±$1.38', vol1w: '±3.10%', vol1wSub: 'Futures', volBand: '$98.60 – $101.40',
+          bear: '$96.50', base: '$100.00', bull: '$104.50', decimals: 2,
+          catalysts: ['Custom commodity symbol loaded on demand.', 'Wire Yahoo Finance futures tickers in GitHub Actions for daily updates.', 'Inspect candles using the timeframe selector above.']
+        };
+      });
+
+      // Close open dropdowns on outside click
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('[data-search-wrapper]')) {
+          document.querySelectorAll('.dropdown-menu').forEach((m) => m.classList.add('hidden'));
+        }
+      });
+
+      // Keyboard shortcuts 1–6 (ignored while typing in inputs)
+      document.addEventListener('keydown', (e) => {
+        if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+        const map = { '1': 'india', '2': 'us', '3': 'crypto', '4': 'commodities', '5': 'astro', '6': 'intel' };
+        if (map[e.key]) setActiveTab(map[e.key]);
+      });
+
+      // Responsive chart resizing
+      window.addEventListener('resize', () => {
+        Object.keys(chartInstances).forEach((k) => {
+          const idMap = { india: 'india-chart-container', us: 'us-chart-container', crypto: 'crypto-chart-container', commodities: 'comm-chart-container' };
+          const el = document.getElementById(idMap[k]);
+          if (el && el.clientWidth > 0) {
+            try { chartInstances[k].applyOptions({ width: el.clientWidth }); } catch (e) {}
+          }
+        });
+      });
+
+      // Deep-link query params (?tab=crypto&sign=TAURUS&sys=VEDIC)
+      const params = new URLSearchParams(window.location.search);
+      const qTab = params.get('tab');
+      const qSign = params.get('sign');
+      const qSys = params.get('sys');
+      if (qSign && ASTRO_SIGNS.some((s) => s.key === qSign.toUpperCase())) {
+        activeAstroSign = qSign.toUpperCase();
+        if (signSelect) signSelect.value = activeAstroSign;
+      }
+      if (qSys && ['VEDIC', 'WESTERN'].includes(qSys.toUpperCase())) {
+        activeAstroSys = qSys.toUpperCase();
+      }
+
+      // Initial renders
+      renderFxBadge();
+      updateClock();
+      setInterval(updateClock, 30000);
+      setActiveTab(qTab || 'india');
+      tryFetchLiveFx();
+      tryFetchLiveCrypto();
+    });
+  </script>
+</body>
+</html>
