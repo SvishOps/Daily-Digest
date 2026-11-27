@@ -1,8 +1,8 @@
 (function () {
   const CARD_META = {
-    india: { title: 'Indian Markets', icon: '🇮🇳', tab: 'india', kicker: 'NSE / BSE • INDIAN MARKETS' },
-    us: { title: 'U.S. Markets', icon: '🇺🇸', tab: 'us', kicker: 'NYSE / NASDAQ • U.S. MARKETS' },
-    crypto: { title: 'Crypto Markets', icon: '₿', tab: 'crypto', kicker: '24/7 GLOBAL SPOT (USD) • CRYPTO MARKETS' },
+    india: { title: 'Indian Markets', icon: '<svg class="w-5 h-3.5 rounded-[2px] border border-black/15" viewBox="0 0 24 16"><rect width="24" height="5.33" fill="#FF9933"/><rect width="24" height="5.34" y="5.33" fill="#FFF"/><rect width="24" height="5.33" y="10.67" fill="#138808"/><circle cx="12" cy="8" r="2.1" fill="none" stroke="#000080" stroke-width="0.7"/></svg>', tab: 'india', kicker: 'NSE / BSE • INDIAN MARKETS' },
+    us: { title: 'U.S. Markets', icon: '<svg class="w-5 h-3.5 rounded-[2px] border border-black/15" viewBox="0 0 24 16"><rect width="24" height="16" fill="#B22234"/><rect width="24" height="2.28" y="2.28" fill="#FFF"/><rect width="24" height="2.28" y="6.85" fill="#FFF"/><rect width="24" height="2.28" y="11.42" fill="#FFF"/><rect width="10.5" height="9.14" fill="#3C3B6E"/></svg>', tab: 'us', kicker: 'NYSE / NASDAQ • U.S. MARKETS' },
+    crypto: { title: 'Crypto Markets', icon: '<span class="font-mono font-bold text-amber-500 text-lg">₿</span>', tab: 'crypto', kicker: '24/7 GLOBAL SPOT (USD) • CRYPTO MARKETS' },
     commodities: { title: 'Commodities', icon: '🛢️', tab: 'commodities', kicker: 'GLOBAL FUTURES & SPOT • COMMODITIES' },
     astro: { title: 'Astro Daily', icon: '♉', tab: 'astro', kicker: 'ASTRO DAILY • VEDIC & WESTERN' },
     news: { title: 'World News', icon: '🌐', tab: 'intel', kicker: 'WORLD NEWS • GLOBAL, U.S., INDIA & STEM' }
@@ -161,6 +161,12 @@
   }
 
   function getTradingViewSymbol(cardKey, tickerKey) {
+    const indiaMap = {
+      NIFTYBEES: 'NSE:NIFTYBEES', SENSEXIETF: 'BSE:SENSEXIETF', BANKBEES: 'NSE:BANKBEES',
+      GOLDBEES: 'NSE:GOLDBEES', RELIANCE: 'BSE:RELIANCE', HDFCBANK: 'BSE:HDFCBANK',
+      TCS: 'BSE:TCS', INFY: 'BSE:INFY', ICICIBANK: 'BSE:ICICIBANK',
+      SBIN: 'BSE:SBIN', ITC: 'BSE:ITC'
+    };
     const usMap = {
       SPY: 'AMEX:SPY', QQQ: 'NASDAQ:QQQ', DIA: 'AMEX:DIA', IWM: 'AMEX:IWM',
       NVDA: 'NASDAQ:NVDA', AAPL: 'NASDAQ:AAPL', MSFT: 'NASDAQ:MSFT',
@@ -175,9 +181,10 @@
       GOLD: 'OANDA:XAUUSD', BRENT: 'TVC:UKOIL', WTI: 'TVC:USOIL',
       SILVER: 'OANDA:XAGUSD', NATGAS: 'NYMEX:NG1!', COPPER: 'COMEX:HG1!'
     };
+    if (cardKey === 'india') return indiaMap[tickerKey] || `BSE:${tickerKey}`;
     if (cardKey === 'us') return usMap[tickerKey] || `NASDAQ:${tickerKey}`;
     if (cardKey === 'crypto') return cryptoMap[tickerKey] || `BINANCE:${tickerKey}USDT`;
-    if (cardKey === 'commodities') return commMap[tickerKey] || null;
+    if (cardKey === 'commodities') return commMap[tickerKey] || tickerKey;
     return null;
   }
 
@@ -341,7 +348,7 @@
     const iconEl = document.getElementById('card-header-icon');
     const hubLink = document.getElementById('card-hub-link');
     if (titleEl) titleEl.textContent = meta.title;
-    if (iconEl) iconEl.textContent = meta.icon;
+    if (iconEl) iconEl.innerHTML = meta.icon;
     if (hubLink) hubLink.href = `../index.html?tab=${meta.tab}`;
 
     const clockEl = document.getElementById('live-clock');
@@ -366,8 +373,37 @@
       const fx = FALLBACK_FX[activeFx];
       if (fxVal && fx) fxVal.textContent = `${fx.prefix}${fx.value.toFixed(fx.decimals)}`;
     };
-    if (fxSel) fxSel.addEventListener('change', (e) => { activeFx = e.target.value; renderFx(); });
+    const tryFetchLiveFx = async () => {
+      try {
+        const r = await fetch('https://open.er-api.com/v6/latest/USD', { cache: 'no-store' });
+        if (r.ok) {
+          const d = await r.json();
+          if (d?.rates) {
+            Object.keys(FALLBACK_FX).forEach((c) => {
+              if (typeof d.rates[c] === 'number') FALLBACK_FX[c].value = d.rates[c];
+            });
+            renderFx();
+            return;
+          }
+        }
+      } catch {}
+      try {
+        const r2 = await fetch('https://api.frankfurter.app/latest?from=USD', { cache: 'no-store' });
+        if (r2.ok) {
+          const d2 = await r2.json();
+          if (d2?.rates) {
+            Object.keys(FALLBACK_FX).forEach((c) => {
+              if (typeof d2.rates[c] === 'number') FALLBACK_FX[c].value = d2.rates[c];
+            });
+            renderFx();
+          }
+        }
+      } catch {}
+    };
+    if (fxSel) fxSel.addEventListener('change', (e) => { activeFx = e.target.value; renderFx(); tryFetchLiveFx(); });
     renderFx();
+    tryFetchLiveFx();
+    setInterval(tryFetchLiveFx, 60000);
 
     const applyTheme = (light) => {
       isLight = light;
@@ -588,7 +624,7 @@
           bear: +(d.price * 0.975).toFixed(dec),
           base: +(d.price * 1.003).toFixed(dec),
           bull: +(d.price * 1.025).toFixed(dec)
-        }, cardKey, currentTicker, cardKey !== 'india');
+        }, cardKey, currentTicker, true);
       } else if (cardKey === 'astro') {
         const signObj = ASTRO_SIGNS.find((s) => s.key === currentSign) || ASTRO_SIGNS[1];
         const isVedic = currentSys === 'VEDIC';
@@ -603,8 +639,8 @@
                 </div>
               </div>
               <div class="flex flex-wrap items-center gap-2">
-                <select id="standalone-astro-sign" class="px-3 py-2 rounded-xl text-xs font-mono inner-panel txt-primary">
-                  ${ASTRO_SIGNS.map((s) => `<option value="${s.key}" ${s.key === currentSign ? 'selected' : ''} class="text-slate-900">${s.glyph} ${isVedic ? s.vedic : s.western}</option>`).join('')}
+                <select id="standalone-astro-sign" class="px-3 py-2 rounded-xl text-xs font-mono inner-panel txt-primary cursor-pointer" style="color-scheme: ${isLight ? 'light' : 'dark'}">
+                  ${ASTRO_SIGNS.map((s) => `<option value="${s.key}" ${s.key === currentSign ? 'selected' : ''}>${s.glyph} ${isVedic ? s.vedic : s.western}</option>`).join('')}
                 </select>
                 <div class="inline-flex rounded-xl pill-track p-1 text-xs font-mono">
                   <button type="button" data-sys="VEDIC" class="seg-btn ${currentSys === 'VEDIC' ? 'active' : ''} px-3 py-1 rounded-lg cursor-pointer">Vedic</button>

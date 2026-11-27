@@ -19,15 +19,15 @@
   </thead>
   <tbody>
     <tr>
-      <td align="center">🇮🇳 <strong>Indian Markets</strong></td>
+      <td align="center"><img src="https://flagcdn.com/w20/in.png" width="20" alt="India Flag" /> <strong>Indian Markets</strong></td>
       <td align="center"><a href="https://svishops.github.io/daily-digest/cards/india.html">svishops.github.io/daily-digest/cards/india.html</a></td>
     </tr>
     <tr>
-      <td align="center">🇺🇸 <strong>U.S. Markets</strong></td>
+      <td align="center"><img src="https://flagcdn.com/w20/us.png" width="20" alt="U.S. Flag" /> <strong>U.S. Markets</strong></td>
       <td align="center"><a href="https://svishops.github.io/daily-digest/cards/us.html">svishops.github.io/daily-digest/cards/us.html</a></td>
     </tr>
     <tr>
-      <td align="center">🪙 <strong>Crypto Markets</strong></td>
+      <td align="center"><img src="https://cdn.simpleicons.org/bitcoin/f7931a" width="18" alt="Bitcoin" /> <strong>Crypto Markets</strong></td>
       <td align="center"><a href="https://svishops.github.io/daily-digest/cards/crypto.html">svishops.github.io/daily-digest/cards/crypto.html</a></td>
     </tr>
     <tr>
