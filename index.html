@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#090d16" />
-  <title>Indian Markets — Daily Digest</title>
+  <title>U.S. Markets — Daily Digest</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
   <link rel="manifest" href="./manifest.json" />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -214,7 +214,7 @@
         <div class="flex items-center gap-3">
           <div id="header-active-icon" class="w-10 h-10 rounded-xl inner-panel flex items-center justify-center shrink-0"></div>
           <div>
-            <h1 id="header-active-title" class="font-bold text-lg sm:text-xl tracking-tight txt-primary leading-none">Indian Markets</h1>
+            <h1 id="header-active-title" class="font-bold text-lg sm:text-xl tracking-tight txt-primary leading-none">U.S. Markets</h1>
             <div class="mt-1 flex items-center gap-2 text-xs font-mono txt-muted tabular-nums">
               <span class="w-2 h-2 rounded-full bg-emerald-500 pulse-live shrink-0"></span>
               <span id="live-clock">FRI 27 NOV 2026 &bull; 19:44 IST</span>
@@ -258,24 +258,19 @@
     <!-- SINGLE-CARD NAVIGATION BAR -->
     <nav class="border-t divider-line" aria-label="Briefing Modules">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 flex items-center gap-2 overflow-x-auto no-scrollbar" role="tablist">
-        <button type="button" data-card-tab="india" role="tab" aria-selected="true" class="nav-tab active inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer">
-          <svg class="w-5 h-3.5 rounded-[2px] border border-black/15 shrink-0" viewBox="0 0 24 16"><rect width="24" height="5.33" fill="#FF9933"/><rect width="24" height="5.34" y="5.33" fill="#FFF"/><rect width="24" height="5.33" y="10.67" fill="#138808"/><circle cx="12" cy="8" r="2.1" fill="none" stroke="#000080" stroke-width="0.7"/></svg>
-          <span>Indian Markets</span>
-        </button>
-
-        <button type="button" data-card-tab="us" role="tab" aria-selected="false" class="nav-tab inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer">
+        <button type="button" data-card-tab="us" role="tab" aria-selected="true" class="nav-tab active inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer">
           <svg class="w-5 h-3.5 rounded-[2px] border border-black/15 shrink-0" viewBox="0 0 24 16"><rect width="24" height="16" fill="#B22234"/><rect width="24" height="2.28" y="2.28" fill="#FFF"/><rect width="24" height="2.28" y="6.85" fill="#FFF"/><rect width="24" height="2.28" y="11.42" fill="#FFF"/><rect width="10.5" height="9.14" fill="#3C3B6E"/></svg>
           <span>U.S. Markets</span>
-        </button>
-
-        <button type="button" data-card-tab="crypto" role="tab" aria-selected="false" class="nav-tab inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer">
-          <span class="font-mono font-bold text-amber-500">₿</span>
-          <span>Crypto Markets</span>
         </button>
 
         <button type="button" data-card-tab="commodities" role="tab" aria-selected="false" class="nav-tab inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer">
           <span>🛢️</span>
           <span>Commodities</span>
+        </button>
+
+        <button type="button" data-card-tab="crypto" role="tab" aria-selected="false" class="nav-tab inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer">
+          <span class="font-mono font-bold text-amber-500">₿</span>
+          <span>Crypto Markets</span>
         </button>
 
         <button type="button" data-card-tab="astro" role="tab" aria-selected="false" class="nav-tab inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer">
@@ -287,6 +282,11 @@
           <span>🌐</span>
           <span>World News</span>
         </button>
+
+        <button type="button" data-card-tab="india" role="tab" aria-selected="false" class="nav-tab inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer">
+          <svg class="w-5 h-3.5 rounded-[2px] border border-black/15 shrink-0" viewBox="0 0 24 16"><rect width="24" height="5.33" fill="#FF9933"/><rect width="24" height="5.34" y="5.33" fill="#FFF"/><rect width="24" height="5.33" y="10.67" fill="#138808"/><circle cx="12" cy="8" r="2.1" fill="none" stroke="#000080" stroke-width="0.7"/></svg>
+          <span>Indian Markets</span>
+        </button>
       </div>
     </nav>
   </header>
@@ -297,7 +297,7 @@
     <!-- =================================================================== -->
     <!-- TAB 1: INDIA MARKETS                                                -->
     <!-- =================================================================== -->
-    <section id="panel-india" class="card-panel active terminal-card rounded-3xl p-5 sm:p-7 space-y-6">
+    <section id="panel-india" class="card-panel terminal-card rounded-3xl p-5 sm:p-7 space-y-6">
       <div class="space-y-4 pb-5 border-b divider-line">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div class="flex items-center gap-3.5">
@@ -448,7 +448,7 @@
     <!-- =================================================================== -->
     <!-- TAB 2: U.S. MARKETS                                                 -->
     <!-- =================================================================== -->
-    <section id="panel-us" class="card-panel terminal-card rounded-3xl p-5 sm:p-7 space-y-6">
+    <section id="panel-us" class="card-panel active terminal-card rounded-3xl p-5 sm:p-7 space-y-6">
       <div class="space-y-4 pb-5 border-b divider-line">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div class="flex items-center gap-3.5">
@@ -2732,7 +2732,7 @@
       // Keyboard shortcuts 1–6 (ignored while typing in inputs)
       document.addEventListener('keydown', (e) => {
         if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
-        const map = { '1': 'india', '2': 'us', '3': 'crypto', '4': 'commodities', '5': 'astro', '6': 'intel' };
+        const map = { '1': 'us', '2': 'commodities', '3': 'crypto', '4': 'astro', '5': 'intel', '6': 'india' };
         if (map[e.key]) setActiveTab(map[e.key]);
       });
 
@@ -2772,7 +2772,7 @@
       renderFxBadge();
       updateClock();
       setInterval(updateClock, 30000);
-      setActiveTab(qTab || 'india');
+      setActiveTab(qTab || 'us');
       tryLoadLiveBrief();
       tryFetchLiveFx();
       setInterval(tryFetchLiveFx, 60000);
