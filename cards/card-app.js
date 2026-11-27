@@ -160,7 +160,63 @@
     return out;
   }
 
-  function renderChart(containerId, ohlcId, symbol, basePrice, realCandles, levels) {
+  function getTradingViewSymbol(cardKey, tickerKey) {
+    const usMap = {
+      SPY: 'AMEX:SPY', QQQ: 'NASDAQ:QQQ', DIA: 'AMEX:DIA', IWM: 'AMEX:IWM',
+      NVDA: 'NASDAQ:NVDA', AAPL: 'NASDAQ:AAPL', MSFT: 'NASDAQ:MSFT',
+      GOOGL: 'NASDAQ:GOOGL', AMZN: 'NASDAQ:AMZN', META: 'NASDAQ:META', TSLA: 'NASDAQ:TSLA'
+    };
+    const cryptoMap = {
+      BTC: 'BINANCE:BTCUSDT', ETH: 'BINANCE:ETHUSDT', SOL: 'BINANCE:SOLUSDT',
+      BNB: 'BINANCE:BNBUSDT', XRP: 'BINANCE:XRPUSDT', DOGE: 'BINANCE:DOGEUSDT',
+      ADA: 'BINANCE:ADAUSDT', LINK: 'BINANCE:LINKUSDT'
+    };
+    const commMap = {
+      GOLD: 'OANDA:XAUUSD', BRENT: 'TVC:UKOIL', WTI: 'TVC:USOIL',
+      SILVER: 'OANDA:XAGUSD', NATGAS: 'NYMEX:NG1!', COPPER: 'COMEX:HG1!'
+    };
+    if (cardKey === 'us') return usMap[tickerKey] || `NASDAQ:${tickerKey}`;
+    if (cardKey === 'crypto') return cryptoMap[tickerKey] || `BINANCE:${tickerKey}USDT`;
+    if (cardKey === 'commodities') return commMap[tickerKey] || null;
+    return null;
+  }
+
+  function renderTradingViewWidget(container, tvSymbol, tf) {
+    const intervalMap = { '1W': '60', '1M': 'D', '3M': 'D', '1Y': 'W' };
+    const theme = isLight ? 'light' : 'dark';
+    const bg = isLight ? '#f0e9db' : '#0c121e';
+    container.innerHTML = '';
+    const wrap = document.createElement('div');
+    wrap.className = 'tradingview-widget-container w-full h-full';
+    const widgetDiv = document.createElement('div');
+    widgetDiv.className = 'tradingview-widget-container__widget w-full h-full';
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
+    script.async = true;
+    script.text = JSON.stringify({
+      autosize: true,
+      symbol: tvSymbol,
+      interval: intervalMap[tf] || 'D',
+      timezone: 'Asia/Kolkata',
+      theme,
+      style: '1',
+      locale: 'en',
+      backgroundColor: bg,
+      gridColor: isLight ? 'rgba(61, 56, 50, 0.08)' : 'rgba(148, 163, 184, 0.08)',
+      hide_top_toolbar: false,
+      hide_legend: false,
+      allow_symbol_change: true,
+      save_image: false,
+      calendar: false,
+      support_host: 'https://www.tradingview.com'
+    });
+    wrap.appendChild(widgetDiv);
+    wrap.appendChild(script);
+    container.appendChild(wrap);
+  }
+
+  function renderChart(containerId, ohlcId, symbol, basePrice, realCandles, levels, cardKey, tickerKey, useTradingView) {
     const container = document.getElementById(containerId);
     const ohlcEl = document.getElementById(ohlcId);
     if (!container) return;
@@ -170,10 +226,18 @@
     }
     container.innerHTML = '';
 
-    const sliceMap = { '1W': 7, '1M': 22, '3M': 65, '1Y': 90 };
+    const tvSym = useTradingView ? getTradingViewSymbol(cardKey, tickerKey) : null;
+    if (tvSym) {
+      if (ohlcEl) ohlcEl.textContent = `${tvSym} • TradingView Live Terminal`;
+      renderTradingViewWidget(container, tvSym, activeTf);
+      return;
+    }
+
+    const sliceMap = { '1W': 10, '1M': 24, '3M': 60, '1Y': 90 };
     const candles = Array.isArray(realCandles) && realCandles.length >= 5
-      ? [...realCandles].sort((a, b) => a.time.localeCompare(b.time)).slice(-(sliceMap[activeTf] || 22))
-      : generateFallbackCandles(basePrice, symbol, activeTf);
+      ? [...realCandles].sort((a, b) => a.time.localeCompare(b.time))
+      : generateFallbackCandles(basePrice, symbol, '1Y');
+    const visibleCount = sliceMap[activeTf] || 24;
 
     const bg = isLight ? '#f0e9db' : '#0c121e';
     const txt = isLight ? '#3d3832' : '#94a3b8';
@@ -186,9 +250,19 @@
         layout: { background: { type: 'solid', color: bg }, textColor: txt, fontFamily: 'JetBrains Mono, monospace', fontSize: 11 },
         grid: { vertLines: { color: grid }, horzLines: { color: grid } },
         rightPriceScale: { borderColor: grid, scaleMargins: { top: 0.08, bottom: 0.22 } },
-        timeScale: { borderColor: grid, timeVisible: false, fixLeftEdge: true, rightOffset: 2 },
+        timeScale: { borderColor: grid, timeVisible: false, rightOffset: 2, barSpacing: 12 },
         crosshair: { mode: 1 }
       });
+
+      const areaSeries = chart.addAreaSeries({
+        topColor: 'rgba(16, 185, 129, 0.14)',
+        bottomColor: 'rgba(16, 185, 129, 0.0)',
+        lineColor: 'rgba(16, 185, 129, 0.35)',
+        lineWidth: 1,
+        priceLineVisible: false,
+        lastValueVisible: false
+      });
+      areaSeries.setData(candles.map((c) => ({ time: c.time, value: c.close })));
 
       const series = chart.addCandlestickSeries({
         upColor: '#10b981', downColor: '#f43f5e', borderVisible: false, wickUpColor: '#10b981', wickDownColor: '#f43f5e'
@@ -211,14 +285,14 @@
           }
           return pts;
         };
-        const addProjLine = (targetVal, color, title) => {
+        const addProjLine = (targetVal, color) => {
           const pts = buildProjection(targetVal);
           if (!pts) return;
-          chart.addLineSeries({ color, lineWidth: 2, lineStyle: 2, priceLineVisible: false, lastValueVisible: true, title }).setData(pts);
+          chart.addLineSeries({ color, lineWidth: 2, lineStyle: 2, priceLineVisible: false, lastValueVisible: false }).setData(pts);
         };
-        addProjLine(levels.bull, '#10b981', 'GAIN');
-        addProjLine(levels.base, '#f59e0b', 'BASE');
-        addProjLine(levels.bear, '#f43f5e', 'LOSS');
+        addProjLine(levels.bull, '#10b981');
+        addProjLine(levels.base, '#f59e0b');
+        addProjLine(levels.bear, '#f43f5e');
       }
 
       if (candles.length >= 3) {
@@ -242,7 +316,10 @@
         color: c.close >= c.open ? 'rgba(16, 185, 129, 0.28)' : 'rgba(244, 63, 94, 0.28)'
       })));
 
-      chart.timeScale().fitContent();
+      chart.timeScale().setVisibleLogicalRange({
+        from: Math.max(0, candles.length - visibleCount),
+        to: candles.length + 5
+      });
 
       const last = candles[candles.length - 1];
       if (ohlcEl && last) ohlcEl.textContent = `O ${last.open}  H ${last.high}  L ${last.low}  C ${last.close}`;
@@ -511,7 +588,7 @@
           bear: +(d.price * 0.975).toFixed(dec),
           base: +(d.price * 1.003).toFixed(dec),
           bull: +(d.price * 1.025).toFixed(dec)
-        });
+        }, cardKey, currentTicker, cardKey !== 'india');
       } else if (cardKey === 'astro') {
         const signObj = ASTRO_SIGNS.find((s) => s.key === currentSign) || ASTRO_SIGNS[1];
         const isVedic = currentSys === 'VEDIC';

@@ -1780,7 +1780,65 @@
       return Number.isFinite(num) ? num : null;
     }
 
-    function renderInteractiveChart(marketKey, containerId, ohlcId, symbolLabel, basePrice, tf, realCandles, levels) {
+    function getTradingViewSymbol(marketKey, tickerKey) {
+      const usMap = {
+        SPY: 'AMEX:SPY', QQQ: 'NASDAQ:QQQ', DIA: 'AMEX:DIA', IWM: 'AMEX:IWM',
+        NVDA: 'NASDAQ:NVDA', AAPL: 'NASDAQ:AAPL', MSFT: 'NASDAQ:MSFT',
+        GOOGL: 'NASDAQ:GOOGL', AMZN: 'NASDAQ:AMZN', META: 'NASDAQ:META', TSLA: 'NASDAQ:TSLA'
+      };
+      const cryptoMap = {
+        BTC: 'BINANCE:BTCUSDT', ETH: 'BINANCE:ETHUSDT', SOL: 'BINANCE:SOLUSDT',
+        BNB: 'BINANCE:BNBUSDT', XRP: 'BINANCE:XRPUSDT', DOGE: 'BINANCE:DOGEUSDT',
+        ADA: 'BINANCE:ADAUSDT', LINK: 'BINANCE:LINKUSDT'
+      };
+      const commMap = {
+        GOLD: 'OANDA:XAUUSD', BRENT: 'TVC:UKOIL', WTI: 'TVC:USOIL',
+        SILVER: 'OANDA:XAGUSD', NATGAS: 'NYMEX:NG1!', COPPER: 'COMEX:HG1!'
+      };
+      if (marketKey === 'us') return usMap[tickerKey] || `NASDAQ:${tickerKey}`;
+      if (marketKey === 'crypto') return cryptoMap[tickerKey] || `BINANCE:${tickerKey}USDT`;
+      if (marketKey === 'commodities') return commMap[tickerKey] || null;
+      return null;
+    }
+
+    function renderTradingViewWidget(container, tvSymbol, tf) {
+      const intervalMap = { '1W': '60', '1M': 'D', '3M': 'D', '1Y': 'W' };
+      const theme = isLightMode ? 'light' : 'dark';
+      const bg = isLightMode ? '#f0e9db' : '#0c121e';
+      container.innerHTML = '';
+      const wrap = document.createElement('div');
+      wrap.className = 'tradingview-widget-container w-full h-full';
+      const widgetDiv = document.createElement('div');
+      widgetDiv.className = 'tradingview-widget-container__widget w-full h-full';
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
+      script.async = true;
+      script.text = JSON.stringify({
+        autosize: true,
+        symbol: tvSymbol,
+        interval: intervalMap[tf] || 'D',
+        timezone: 'Asia/Kolkata',
+        theme,
+        style: '1',
+        locale: 'en',
+        backgroundColor: bg,
+        gridColor: isLightMode ? 'rgba(61, 56, 50, 0.08)' : 'rgba(148, 163, 184, 0.08)',
+        hide_top_toolbar: false,
+        hide_legend: false,
+        allow_symbol_change: true,
+        save_image: false,
+        calendar: false,
+        support_host: 'https://www.tradingview.com'
+      });
+      wrap.appendChild(widgetDiv);
+      wrap.appendChild(script);
+      container.appendChild(wrap);
+    }
+
+    const chartModes = { india: 'PROJECTIONS', us: 'TRADINGVIEW', crypto: 'TRADINGVIEW', commodities: 'TRADINGVIEW' };
+
+    function renderInteractiveChart(marketKey, containerId, ohlcId, symbolLabel, basePrice, tf, realCandles, levels, tickerKey) {
       const container = document.getElementById(containerId);
       const ohlcEl = document.getElementById(ohlcId);
       if (!container) return;
@@ -1791,10 +1849,19 @@
       }
       container.innerHTML = '';
 
-      const tfSlice = { '1W': 7, '1M': 22, '3M': 65, '1Y': 90 };
-      let candles = Array.isArray(realCandles) && realCandles.length >= 5
-        ? [...realCandles].sort((a, b) => a.time.localeCompare(b.time)).slice(-(tfSlice[tf] || 22))
-        : generateCandles(basePrice, symbolLabel, tf);
+      const tvSym = getTradingViewSymbol(marketKey, tickerKey || activeTickers[marketKey]);
+      if (tvSym && chartModes[marketKey] === 'TRADINGVIEW') {
+        if (ohlcEl) ohlcEl.textContent = `${tvSym} • TradingView Live Terminal`;
+        renderTradingViewWidget(container, tvSym, tf);
+        return;
+      }
+
+      const tfSlice = { '1W': 10, '1M': 24, '3M': 60, '1Y': 90 };
+      const allCandles = Array.isArray(realCandles) && realCandles.length >= 5
+        ? [...realCandles].sort((a, b) => a.time.localeCompare(b.time))
+        : generateCandles(basePrice, symbolLabel, '1Y');
+      const candles = allCandles;
+      const visibleCount = tfSlice[tf] || 24;
       const bg = isLightMode ? '#f0e9db' : '#0c121e';
       const txt = isLightMode ? '#3d3832' : '#94a3b8';
       const grid = isLightMode ? 'rgba(61, 56, 50, 0.08)' : 'rgba(148, 163, 184, 0.08)';
@@ -1806,9 +1873,19 @@
           layout: { background: { type: 'solid', color: bg }, textColor: txt, fontFamily: 'JetBrains Mono, monospace', fontSize: 11 },
           grid: { vertLines: { color: grid }, horzLines: { color: grid } },
           rightPriceScale: { borderColor: grid, scaleMargins: { top: 0.08, bottom: 0.22 } },
-          timeScale: { borderColor: grid, timeVisible: false, fixLeftEdge: true, rightOffset: 2 },
+          timeScale: { borderColor: grid, timeVisible: false, rightOffset: 2, barSpacing: 12 },
           crosshair: { mode: 1 }
         });
+
+        const areaSeries = chart.addAreaSeries({
+          topColor: 'rgba(16, 185, 129, 0.14)',
+          bottomColor: 'rgba(16, 185, 129, 0.0)',
+          lineColor: 'rgba(16, 185, 129, 0.35)',
+          lineWidth: 1,
+          priceLineVisible: false,
+          lastValueVisible: false
+        });
+        areaSeries.setData(candles.map((c) => ({ time: c.time, value: c.close })));
 
         const series = chart.addCandlestickSeries({
           upColor: '#10b981',
@@ -1839,7 +1916,7 @@
             return pts;
           };
 
-          const addProjLine = (targetVal, color, title) => {
+          const addProjLine = (targetVal, color) => {
             const pts = buildProjection(targetVal);
             if (!pts) return;
             const ls = chart.addLineSeries({
@@ -1847,15 +1924,14 @@
               lineWidth: 2,
               lineStyle: 2,
               priceLineVisible: false,
-              lastValueVisible: true,
-              title
+              lastValueVisible: false
             });
             ls.setData(pts);
           };
 
-          addProjLine(parseNumericLevel(levels.bull), '#10b981', 'GAIN');
-          addProjLine(parseNumericLevel(levels.base), '#f59e0b', 'BASE');
-          addProjLine(parseNumericLevel(levels.bear), '#f43f5e', 'LOSS');
+          addProjLine(parseNumericLevel(levels.bull), '#10b981');
+          addProjLine(parseNumericLevel(levels.base), '#f59e0b');
+          addProjLine(parseNumericLevel(levels.bear), '#f43f5e');
         }
 
         // 10-period EMA overlay
@@ -1887,7 +1963,10 @@
           color: c.close >= c.open ? 'rgba(16, 185, 129, 0.28)' : 'rgba(244, 63, 94, 0.28)'
         })));
 
-        chart.timeScale().fitContent();
+        chart.timeScale().setVisibleLogicalRange({
+          from: Math.max(0, candles.length - visibleCount),
+          to: candles.length + 5
+        });
 
         const last = candles[candles.length - 1];
         if (ohlcEl && last) {
@@ -2060,7 +2139,7 @@
       document.getElementById('india-catalysts').innerHTML = renderDriversHtml(d.catalysts);
 
       renderFearGreedDial('india-fg-dial', window.__indiaFgScore || 56);
-      renderInteractiveChart('india', 'india-chart-container', 'india-chart-ohlc', d.symbol, d.price, activeTimeframes.india, d.candles, { bear: d.bear, base: d.base, bull: d.bull });
+      renderInteractiveChart('india', 'india-chart-container', 'india-chart-ohlc', d.symbol, d.price, activeTimeframes.india, d.candles, { bear: d.bear, base: d.base, bull: d.bull }, key);
     }
 
     function renderUSCard(key) {
@@ -2100,7 +2179,7 @@
       document.getElementById('us-catalysts').innerHTML = renderDriversHtml(d.catalysts);
 
       renderFearGreedDial('us-fg-dial', window.__usFgScore || 34);
-      renderInteractiveChart('us', 'us-chart-container', 'us-chart-ohlc', d.symbol, d.price, activeTimeframes.us, d.candles, { bear: d.bear, base: d.base, bull: d.bull });
+      renderInteractiveChart('us', 'us-chart-container', 'us-chart-ohlc', d.symbol, d.price, activeTimeframes.us, d.candles, { bear: d.bear, base: d.base, bull: d.bull }, key);
     }
 
     function formatUsd(val, decimals) {
@@ -2145,7 +2224,7 @@
       document.getElementById('crypto-catalysts').innerHTML = renderDriversHtml(d.catalysts);
 
       renderFearGreedDial('crypto-fg-dial', window.__cryptoFgScore || 12);
-      renderInteractiveChart('crypto', 'crypto-chart-container', 'crypto-chart-ohlc', d.symbol, d.usdPrice, activeTimeframes.crypto, d.candles, { bear: d.bear, base: d.base, bull: d.bull });
+      renderInteractiveChart('crypto', 'crypto-chart-container', 'crypto-chart-ohlc', d.symbol, d.usdPrice, activeTimeframes.crypto, d.candles, { bear: d.bear, base: d.base, bull: d.bull }, key);
     }
 
     function renderCommoditiesCard(key) {
@@ -2194,7 +2273,7 @@
       document.getElementById('comm-catalysts').innerHTML = renderDriversHtml(d.catalysts);
 
       renderFearGreedDial('comm-fg-dial', d.fgScore);
-      renderInteractiveChart('commodities', 'comm-chart-container', 'comm-chart-ohlc', d.symbol, d.price, activeTimeframes.commodities, d.candles, { bear: d.bear, base: d.base, bull: d.bull });
+      renderInteractiveChart('commodities', 'comm-chart-container', 'comm-chart-ohlc', d.symbol, d.price, activeTimeframes.commodities, d.candles, { bear: d.bear, base: d.base, bull: d.bull }, key);
     }
 
     function renderAstroCard() {
