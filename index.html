@@ -332,7 +332,7 @@
           <div class="mt-1.5 flex items-center gap-2.5 flex-wrap">
             <span id="india-price" class="text-4xl font-mono font-bold txt-primary tabular-nums">₹292.00</span>
             <span id="india-change" class="px-2.5 py-1 rounded-lg text-sm font-mono font-bold bg-rose-500/15 text-rose-700 dark:text-rose-400 border border-rose-500/30 tabular-nums">-₹3.33 (-1.13%)</span>
-            <span id="india-regime-pill" class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/35">▼ LOSS</span>
+            <span id="india-regime-pill" class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/35">▼ BEARISH</span>
           </div>
           <div id="india-subprice" class="mt-1.5 text-xs sm:text-sm font-mono txt-muted tabular-nums">27 Nov Close &bull; Vol: 7.65M &bull; Next Open Mon 09:15 IST</div>
         </div>
@@ -483,7 +483,7 @@
           <div class="mt-1.5 flex items-center gap-2.5 flex-wrap">
             <span id="us-price" class="text-4xl font-mono font-bold txt-primary tabular-nums">$728.87</span>
             <span id="us-change" class="px-2.5 py-1 rounded-lg text-sm font-mono font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 tabular-nums">+$10.09 (+1.40%)</span>
-            <span id="us-regime-pill" class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35">▲ GAIN</span>
+            <span id="us-regime-pill" class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35">▲ BULLISH</span>
           </div>
           <div id="us-subprice" class="mt-1.5 text-xs sm:text-sm font-mono txt-muted tabular-nums">Prev Close: $718.78 &bull; Short Session: 20:00–23:30 IST</div>
         </div>
@@ -627,7 +627,7 @@
           <div class="mt-1.5 flex items-center gap-2.5 flex-wrap">
             <span id="crypto-price" class="text-4xl font-mono font-bold txt-primary tabular-nums">$61,484</span>
             <span id="crypto-change" class="px-2.5 py-1 rounded-lg text-sm font-mono font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 tabular-nums">+1.63%</span>
-            <span id="crypto-regime-pill" class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35">▲ GAIN</span>
+            <span id="crypto-regime-pill" class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35">▲ BULLISH</span>
           </div>
           <div id="crypto-subprice" class="mt-1.5 text-xs sm:text-sm font-mono txt-muted tabular-nums">Nov Performance: -22.85%</div>
         </div>
@@ -771,7 +771,7 @@
           <div class="mt-1.5 flex items-center gap-2.5 flex-wrap">
             <span id="comm-price" class="text-4xl font-mono font-bold txt-primary tabular-nums">$3,842.50</span>
             <span id="comm-change" class="px-2.5 py-1 rounded-lg text-sm font-mono font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 tabular-nums">+$44.20 (+1.16%)</span>
-            <span id="comm-regime-pill" class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35">▲ GAIN</span>
+            <span id="comm-regime-pill" class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35">▲ BULLISH</span>
           </div>
           <div id="comm-subprice" class="mt-1.5 text-xs sm:text-sm font-mono txt-muted tabular-nums">MCX Equivalent: ~₹1,25,400 / 10g</div>
         </div>
@@ -1793,7 +1793,7 @@
 
       const tfSlice = { '1W': 7, '1M': 22, '3M': 65, '1Y': 90 };
       let candles = Array.isArray(realCandles) && realCandles.length >= 5
-        ? realCandles.slice(-(tfSlice[tf] || 22))
+        ? [...realCandles].sort((a, b) => a.time.localeCompare(b.time)).slice(-(tfSlice[tf] || 22))
         : generateCandles(basePrice, symbolLabel, tf);
       const bg = isLightMode ? '#f0e9db' : '#0c121e';
       const txt = isLightMode ? '#3d3832' : '#94a3b8';
@@ -1805,8 +1805,8 @@
           height: container.clientHeight || 380,
           layout: { background: { type: 'solid', color: bg }, textColor: txt, fontFamily: 'JetBrains Mono, monospace', fontSize: 11 },
           grid: { vertLines: { color: grid }, horzLines: { color: grid } },
-          rightPriceScale: { borderColor: grid, scaleMargins: { top: 0.08, bottom: 0.24 } },
-          timeScale: { borderColor: grid, timeVisible: false, rightOffset: 4 },
+          rightPriceScale: { borderColor: grid, scaleMargins: { top: 0.08, bottom: 0.22 } },
+          timeScale: { borderColor: grid, timeVisible: false, fixLeftEdge: true, rightOffset: 2 },
           crosshair: { mode: 1 }
         });
 
@@ -1820,20 +1820,42 @@
 
         series.setData(candles);
 
-        // Loss (Red), Base (Yellow/Amber), Gain (Green) price lines
-        if (levels) {
-          const lossVal = parseNumericLevel(levels.bear);
-          const baseVal = parseNumericLevel(levels.base);
-          const gainVal = parseNumericLevel(levels.bull);
-          if (lossVal !== null) {
-            series.createPriceLine({ price: lossVal, color: '#f43f5e', lineWidth: 1.5, lineStyle: 2, axisLabelVisible: true, title: 'LOSS' });
-          }
-          if (baseVal !== null) {
-            series.createPriceLine({ price: baseVal, color: '#f59e0b', lineWidth: 1.5, lineStyle: 2, axisLabelVisible: true, title: 'BASE' });
-          }
-          if (gainVal !== null) {
-            series.createPriceLine({ price: gainVal, color: '#10b981', lineWidth: 1.5, lineStyle: 2, axisLabelVisible: true, title: 'GAIN' });
-          }
+        // Forward 5-day market projection cone (Green Gain, Yellow Base, Red Loss)
+        const lastCandle = candles[candles.length - 1];
+        if (levels && lastCandle) {
+          const buildProjection = (targetVal) => {
+            if (targetVal === null) return null;
+            const pts = [{ time: lastCandle.time, value: lastCandle.close }];
+            let curDate = new Date(lastCandle.time + 'T00:00:00Z');
+            for (let step = 1; step <= 5; step += 1) {
+              curDate = new Date(curDate.getTime() + 86400000);
+              while (curDate.getUTCDay() === 0 || curDate.getUTCDay() === 6) {
+                curDate = new Date(curDate.getTime() + 86400000);
+              }
+              const t = step / 5;
+              const val = lastCandle.close + (targetVal - lastCandle.close) * t;
+              pts.push({ time: curDate.toISOString().slice(0, 10), value: Number(val.toFixed(2)) });
+            }
+            return pts;
+          };
+
+          const addProjLine = (targetVal, color, title) => {
+            const pts = buildProjection(targetVal);
+            if (!pts) return;
+            const ls = chart.addLineSeries({
+              color,
+              lineWidth: 2,
+              lineStyle: 2,
+              priceLineVisible: false,
+              lastValueVisible: true,
+              title
+            });
+            ls.setData(pts);
+          };
+
+          addProjLine(parseNumericLevel(levels.bull), '#10b981', 'GAIN');
+          addProjLine(parseNumericLevel(levels.base), '#f59e0b', 'BASE');
+          addProjLine(parseNumericLevel(levels.bear), '#f43f5e', 'LOSS');
         }
 
         // 10-period EMA overlay
@@ -2011,13 +2033,13 @@
       if (pill) {
         if (d.regimeType === 'BULLISH') {
           pill.className = 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35';
-          pill.textContent = '▲ GAIN';
+          pill.textContent = '▲ BULLISH';
         } else if (d.regimeType === 'NEUTRAL') {
           pill.className = 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/35';
-          pill.textContent = '◆ MIDDLE';
+          pill.textContent = '◆ NEUTRAL';
         } else {
           pill.className = 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/35';
-          pill.textContent = '▼ LOSS';
+          pill.textContent = '▼ BEARISH';
         }
       }
 
@@ -2059,7 +2081,7 @@
         usPill.className = d.isPositive
           ? 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35'
           : 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/35';
-        usPill.textContent = d.isPositive ? '▲ GAIN' : '▼ LOSS';
+        usPill.textContent = d.isPositive ? '▲ BULLISH' : '▼ BEARISH';
       }
 
       document.getElementById('us-subprice').textContent = d.subprice;
@@ -2104,7 +2126,7 @@
         cPill.className = isPos
           ? 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35'
           : 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/35';
-        cPill.textContent = isPos ? '▲ GAIN' : '▼ LOSS';
+        cPill.textContent = isPos ? '▲ BULLISH' : '▼ BEARISH';
       }
 
       document.getElementById('crypto-subprice').textContent = d.novPerf;
@@ -2144,13 +2166,13 @@
       if (commPill) {
         if (d.regimeType === 'BULLISH') {
           commPill.className = 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35';
-          commPill.textContent = '▲ GAIN';
+          commPill.textContent = '▲ BULLISH';
         } else if (d.regimeType === 'NEUTRAL') {
           commPill.className = 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/35';
-          commPill.textContent = '◆ MIDDLE';
+          commPill.textContent = '◆ NEUTRAL';
         } else {
           commPill.className = 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/35';
-          commPill.textContent = '▼ LOSS';
+          commPill.textContent = '▼ BEARISH';
         }
       }
 
