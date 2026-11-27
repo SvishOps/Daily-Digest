@@ -186,6 +186,14 @@
       background-color: var(--bg-inner);
       color: var(--text-primary);
       border: 1px solid var(--border-subtle);
+      color-scheme: dark;
+    }
+    html.light-beige input.search-input, html.light-beige select.custom-select {
+      color-scheme: light;
+    }
+    select.custom-select option {
+      background-color: var(--bg-card);
+      color: var(--text-primary);
     }
     input.search-input:focus, select.custom-select:focus {
       outline: none;
@@ -1030,18 +1038,34 @@
 
     async function tryFetchLiveFx() {
       try {
-        const res = await fetch('https://open.er-api.com/v6/latest/USD');
-        if (!res.ok) return;
-        const data = await res.json();
-        if (data && data.rates) {
-          Object.keys(USD_FX).forEach((code) => {
-            if (typeof data.rates[code] === 'number') {
-              USD_FX[code].value = data.rates[code];
-            }
-          });
-          renderFxBadge();
+        const res = await fetch('https://open.er-api.com/v6/latest/USD', { cache: 'no-store' });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.rates) {
+            Object.keys(USD_FX).forEach((code) => {
+              if (typeof data.rates[code] === 'number') {
+                USD_FX[code].value = data.rates[code];
+              }
+            });
+            renderFxBadge();
+            return;
+          }
         }
-      } catch (e) { /* retain verified fallback */ }
+      } catch (e) { /* try secondary live source */ }
+      try {
+        const res2 = await fetch('https://api.frankfurter.app/latest?from=USD', { cache: 'no-store' });
+        if (res2.ok) {
+          const data2 = await res2.json();
+          if (data2 && data2.rates) {
+            Object.keys(USD_FX).forEach((code) => {
+              if (typeof data2.rates[code] === 'number') {
+                USD_FX[code].value = data2.rates[code];
+              }
+            });
+            renderFxBadge();
+          }
+        }
+      } catch (e) { /* retain fallback */ }
     }
 
     /**
@@ -1781,6 +1805,12 @@
     }
 
     function getTradingViewSymbol(marketKey, tickerKey) {
+      const indiaMap = {
+        NIFTYBEES: 'NSE:NIFTYBEES', SENSEXIETF: 'BSE:SENSEXIETF', BANKBEES: 'NSE:BANKBEES',
+        GOLDBEES: 'NSE:GOLDBEES', RELIANCE: 'BSE:RELIANCE', HDFCBANK: 'BSE:HDFCBANK',
+        TCS: 'BSE:TCS', INFY: 'BSE:INFY', ICICIBANK: 'BSE:ICICIBANK',
+        SBIN: 'BSE:SBIN', ITC: 'BSE:ITC'
+      };
       const usMap = {
         SPY: 'AMEX:SPY', QQQ: 'NASDAQ:QQQ', DIA: 'AMEX:DIA', IWM: 'AMEX:IWM',
         NVDA: 'NASDAQ:NVDA', AAPL: 'NASDAQ:AAPL', MSFT: 'NASDAQ:MSFT',
@@ -1795,9 +1825,10 @@
         GOLD: 'OANDA:XAUUSD', BRENT: 'TVC:UKOIL', WTI: 'TVC:USOIL',
         SILVER: 'OANDA:XAGUSD', NATGAS: 'NYMEX:NG1!', COPPER: 'COMEX:HG1!'
       };
+      if (marketKey === 'india') return indiaMap[tickerKey] || `BSE:${tickerKey}`;
       if (marketKey === 'us') return usMap[tickerKey] || `NASDAQ:${tickerKey}`;
       if (marketKey === 'crypto') return cryptoMap[tickerKey] || `BINANCE:${tickerKey}USDT`;
-      if (marketKey === 'commodities') return commMap[tickerKey] || null;
+      if (marketKey === 'commodities') return commMap[tickerKey] || tickerKey;
       return null;
     }
 
@@ -1836,7 +1867,7 @@
       container.appendChild(wrap);
     }
 
-    const chartModes = { india: 'PROJECTIONS', us: 'TRADINGVIEW', crypto: 'TRADINGVIEW', commodities: 'TRADINGVIEW' };
+    const chartModes = { india: 'TRADINGVIEW', us: 'TRADINGVIEW', crypto: 'TRADINGVIEW', commodities: 'TRADINGVIEW' };
 
     function renderInteractiveChart(marketKey, containerId, ohlcId, symbolLabel, basePrice, tf, realCandles, levels, tickerKey) {
       const container = document.getElementById(containerId);
@@ -1850,7 +1881,7 @@
       container.innerHTML = '';
 
       const tvSym = getTradingViewSymbol(marketKey, tickerKey || activeTickers[marketKey]);
-      if (tvSym && chartModes[marketKey] === 'TRADINGVIEW') {
+      if (tvSym) {
         if (ohlcEl) ohlcEl.textContent = `${tvSym} • TradingView Live Terminal`;
         renderTradingViewWidget(container, tvSym, tf);
         return;
@@ -2567,7 +2598,7 @@
       const signSelect = document.getElementById('astro-sign-select');
       if (signSelect) {
         signSelect.innerHTML = ASTRO_SIGNS.map((s) =>
-          `<option value="${s.key}" class="text-slate-900">${s.glyph} ${s.vedic}</option>`
+          `<option value="${s.key}">${s.glyph} ${s.vedic}</option>`
         ).join('');
         signSelect.value = activeAstroSign;
         signSelect.addEventListener('change', (e) => {
@@ -2744,6 +2775,7 @@
       setActiveTab(qTab || 'india');
       tryLoadLiveBrief();
       tryFetchLiveFx();
+      setInterval(tryFetchLiveFx, 60000);
       tryFetchLiveCrypto();
     });
   </script>
