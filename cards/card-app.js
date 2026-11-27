@@ -160,7 +160,7 @@
     return out;
   }
 
-  function renderChart(containerId, ohlcId, symbol, basePrice, realCandles) {
+  function renderChart(containerId, ohlcId, symbol, basePrice, realCandles, levels) {
     const container = document.getElementById(containerId);
     const ohlcEl = document.getElementById(ohlcId);
     if (!container) return;
@@ -171,7 +171,7 @@
     container.innerHTML = '';
 
     const sliceMap = { '1W': 7, '1M': 22, '3M': 65, '1Y': 90 };
-    const candles = Array.isArray(realCandles) && realCandles.length
+    const candles = Array.isArray(realCandles) && realCandles.length >= 5
       ? realCandles.slice(-(sliceMap[activeTf] || 22))
       : generateFallbackCandles(basePrice, symbol, activeTf);
 
@@ -194,6 +194,18 @@
         upColor: '#10b981', downColor: '#f43f5e', borderVisible: false, wickUpColor: '#10b981', wickDownColor: '#f43f5e'
       });
       series.setData(candles);
+
+      if (levels) {
+        if (typeof levels.bear === 'number') {
+          series.createPriceLine({ price: levels.bear, color: '#f43f5e', lineWidth: 1.5, lineStyle: 2, axisLabelVisible: true, title: 'LOSS' });
+        }
+        if (typeof levels.base === 'number') {
+          series.createPriceLine({ price: levels.base, color: '#f59e0b', lineWidth: 1.5, lineStyle: 2, axisLabelVisible: true, title: 'BASE' });
+        }
+        if (typeof levels.bull === 'number') {
+          series.createPriceLine({ price: levels.bull, color: '#10b981', lineWidth: 1.5, lineStyle: 2, axisLabelVisible: true, title: 'GAIN' });
+        }
+      }
 
       if (candles.length >= 3) {
         const k = 2 / (Math.min(10, candles.length) + 1);
@@ -481,7 +493,11 @@
         root.querySelectorAll('[data-tf]').forEach((b) => {
           b.addEventListener('click', () => { activeTf = b.getAttribute('data-tf'); renderCurrent(); });
         });
-        renderChart('card-chart-container', 'card-chart-ohlc', d.symbol, d.price, d.candles);
+        renderChart('card-chart-container', 'card-chart-ohlc', d.symbol, d.price, d.candles, {
+          bear: +(d.price * 0.975).toFixed(dec),
+          base: +(d.price * 1.003).toFixed(dec),
+          bull: +(d.price * 1.025).toFixed(dec)
+        });
       } else if (cardKey === 'astro') {
         const signObj = ASTRO_SIGNS.find((s) => s.key === currentSign) || ASTRO_SIGNS[1];
         const isVedic = currentSys === 'VEDIC';

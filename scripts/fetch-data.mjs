@@ -244,6 +244,18 @@ async function fetchYahooBatch(items, decimalsFn = () => 2) {
       console.warn(`[warn] Yahoo fetch failed: ${r.reason?.message || r.reason}`);
     }
   }
+
+  // If SENSEXIETF.BO has sparse candles (< 10), scale ^BSESN candles to SENSEXIETF price
+  if (out.SENSEXIETF && out.SENSEXIETF.candles.length < 10 && out.SENSEX && out.SENSEX.candles.length >= 10 && out.SENSEX.price) {
+    const ratio = out.SENSEXIETF.price / out.SENSEX.price;
+    out.SENSEXIETF.candles = out.SENSEX.candles.map((c) => ({
+      time: c.time,
+      open: roundNum(c.open * ratio, 2),
+      high: roundNum(c.high * ratio, 2),
+      low: roundNum(c.low * ratio, 2),
+      close: roundNum(c.close * ratio, 2),
+    }));
+  }
   return out;
 }
 
