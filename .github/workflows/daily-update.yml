@@ -29,12 +29,12 @@ jobs:
 
       - name: Commit and push updated data/live-brief.json
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "SvishOps"
+          git config user.email "staticsundial@gmail.com"
           if git diff --quiet data/live-brief.json; then
             echo "No changes in data/live-brief.json"
           else
             git add data/live-brief.json
-            git commit -m "chore(data): update live-brief.json [skip ci]"
+            git commit -m "chore(data): refresh daily digest [skip ci]"
             git push
           fi
