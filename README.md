@@ -1,56 +1,47 @@
 # Markets Daily Brief
 
-A clean, shareable, daily-updating multi-asset market intelligence web app hosted on GitHub Pages, powered by zero-key public APIs and GitHub Actions.
+[![Live Site](https://img.shields.io/badge/GitHub%20Pages-Live-10b981?style=for-the-badge&logo=github)](https://svishops.github.io/markets-daily-brief/)
+[![Daily Update](https://github.com/SvishOps/markets-daily-brief/actions/workflows/daily-update.yml/badge.svg)](https://github.com/SvishOps/markets-daily-brief/actions/workflows/daily-update.yml)
+[![PWA Ready](https://img.shields.io/badge/PWA-Installable-f59e0b?style=for-the-badge)](https://svishops.github.io/markets-daily-brief/)
 
-## Live URLs
+A fast, zero-API-key, daily-updating multi-asset market intelligence hub hosted on **GitHub Pages** and refreshed automatically by **GitHub Actions**.
 
-- **Main 6-Tab Hub**: `https://svishops.github.io/markets-daily-brief/`
-- **Standalone Shareable Cards**:
-  - India Markets: `https://svishops.github.io/markets-daily-brief/cards/india.html`
-  - U.S. Markets: `https://svishops.github.io/markets-daily-brief/cards/us.html`
-  - Crypto Markets: `https://svishops.github.io/markets-daily-brief/cards/crypto.html`
-  - Commodities: `https://svishops.github.io/markets-daily-brief/cards/commodities.html`
-  - Astro Daily: `https://svishops.github.io/markets-daily-brief/cards/astro.html`
-  - World News: `https://svishops.github.io/markets-daily-brief/cards/news.html`
+**[Open Live Terminal](https://svishops.github.io/markets-daily-brief/)**
 
-## Deep-Link Query Parameters
+---
 
-Open any tab, ticker, or astro sign directly via URL parameters:
+## Standalone Shareable Cards
 
-- `?tab=crypto&ticker=BTC`
-- `?tab=india&ticker=RELIANCE`
-- `?tab=us&ticker=NVDA`
-- `?tab=commodities&ticker=GOLD`
-- `?tab=astro&sign=TAURUS&sys=VEDIC`
+Every module has its own dedicated URL that loads live data from `data/live-brief.json` and can be shared or bookmarked independently:
 
-Standalone cards also support `?ticker=BTC` or `?sign=TAURUS&sys=VEDIC`.
+| Module | Standalone Card | Hub Deep Link |
+| :--- | :--- | :--- |
+| **India Markets** | [Open India Card](https://svishops.github.io/markets-daily-brief/cards/india.html) | [India Tab](https://svishops.github.io/markets-daily-brief/?tab=india) |
+| **U.S. Markets** | [Open U.S. Card](https://svishops.github.io/markets-daily-brief/cards/us.html) | [U.S. Tab](https://svishops.github.io/markets-daily-brief/?tab=us) |
+| **Crypto Markets** | [Open Crypto Card](https://svishops.github.io/markets-daily-brief/cards/crypto.html) | [BTC Deep Link](https://svishops.github.io/markets-daily-brief/?tab=crypto&ticker=BTC) |
+| **Commodities** | [Open Commodities Card](https://svishops.github.io/markets-daily-brief/cards/commodities.html) | [Gold Deep Link](https://svishops.github.io/markets-daily-brief/?tab=commodities&ticker=GOLD) |
+| **Astro Daily** | [Open Astro Card](https://svishops.github.io/markets-daily-brief/cards/astro.html) | [Taurus Vedic](https://svishops.github.io/markets-daily-brief/?tab=astro&sign=TAURUS&sys=VEDIC) |
+| **World News** | [Open News Card](https://svishops.github.io/markets-daily-brief/cards/news.html) | [News Tab](https://svishops.github.io/markets-daily-brief/?tab=intel) |
 
-## Daily Live Data Engine
+> **Tip:** Append `?ticker=SYMBOL` to any market card (e.g. [cards/india.html?ticker=RELIANCE](https://svishops.github.io/markets-daily-brief/cards/india.html?ticker=RELIANCE) or [cards/us.html?ticker=NVDA](https://svishops.github.io/markets-daily-brief/cards/us.html?ticker=NVDA)) to share a specific asset directly.
 
-`scripts/fetch-data.mjs` (Node.js 20+, zero external dependencies, zero paid API keys) refreshes `data/live-brief.json` with:
+---
 
-- **India Markets**: Yahoo Finance quotes & 90-day OHLC candles (`NIFTYBEES.NS`, `SENSEXIETF.BO`, `BANKBEES.NS`, `GOLDBEES.NS`, `RELIANCE.NS`, `HDFCBANK.NS`, `TCS.NS`, `INFY.NS`, `ICICIBANK.NS`, `SBIN.NS`, `ITC.NS`, `^NSEI`, `^BSESN`, `^INDIAVIX`)
-- **U.S. Markets**: Yahoo Finance quotes & 90-day OHLC candles (`SPY`, `QQQ`, `DIA`, `IWM`, `NVDA`, `AAPL`, `MSFT`, `GOOGL`, `AMZN`, `META`, `TSLA`, `^GSPC`, `^VIX`)
-- **Commodities**: Yahoo Finance quotes & 90-day OHLC candles (`GC=F`, `BZ=F`, `CL=F`, `SI=F`, `NG=F`, `HG=F`)
-- **Crypto**: CoinGecko USD spot prices + Alternative.me Fear & Greed Index + 90-day OHLC candles
-- **Forex (1 USD base)**: `open.er-api.com` (`INR`, `EUR`, `GBP`, `JPY`, `AED`, `CHF`, `CAD`, `AUD`)
-- **World News**: Top 4 headlines each for World, U.S., India, and STEM from BBC, Google News RSS, and Hacker News
+## Automated Daily Data Pipeline
 
-GitHub Actions (`.github/workflows/daily-update.yml`) runs automatically at `00:30`, `01:30`, `02:45`, and `13:30` UTC (`06:00`, `07:00`, `08:15`, and `19:00` IST) and supports manual `workflow_dispatch`.
+[scripts/fetch-data.mjs](scripts/fetch-data.mjs) runs on **Node.js 20+** with zero paid API keys and writes [data/live-brief.json](data/live-brief.json):
 
-## Mobile & Desktop PWA Install Guide
+- **India & U.S. Markets & Commodities:** Yahoo Finance quotes + 90-day daily OHLC candles
+- **Crypto:** CoinGecko USD spot prices + Alternative.me Fear & Greed Index + 90-day OHLC candles
+- **Forex (1 USD base):** `open.er-api.com` (`INR`, `EUR`, `GBP`, `JPY`, `AED`, `CHF`, `CAD`, `AUD`)
+- **World News:** Top 4 headlines each for World, U.S., India, and STEM via BBC, Google News RSS, and Hacker News
 
-### iPhone / iPad (Safari)
-1. Open `https://svishops.github.io/markets-daily-brief/` in **Safari**.
-2. Tap the **Share** button (square with upward arrow).
-3. Scroll down and tap **Add to Home Screen**.
-4. Tap **Add** to launch Markets Brief as a full-screen app.
+**Schedule ([daily-update.yml](.github/workflows/daily-update.yml)):** Runs daily at `06:00`, `07:00`, `08:15`, and `19:00` IST (`00:30`, `01:30`, `02:45`, `13:30` UTC), plus manual runs via `workflow_dispatch`.
 
-### Android (Chrome / Edge / Brave)
-1. Open `https://svishops.github.io/markets-daily-brief/` in **Chrome**.
-2. Tap the **three-dot menu** (top-right).
-3. Tap **Install app** (or **Add to Home screen**).
+---
 
-### Desktop (Chrome / Edge)
-1. Open the site in Chrome or Edge.
-2. Click the **Install** icon in the right side of the address bar.
+## Install as an App (PWA)
+
+- **iPhone / iPad (Safari):** Open [the live site](https://svishops.github.io/markets-daily-brief/) → tap **Share** → **Add to Home Screen**.
+- **Android (Chrome):** Open [the live site](https://svishops.github.io/markets-daily-brief/) → tap **⋮ Menu** → **Install app**.
+- **Desktop (Chrome / Edge):** Click the **Install** icon in the right side of the address bar.
