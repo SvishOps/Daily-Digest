@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#090d16" />
-  <title>India Markets — Daily Intelligence</title>
+  <title>Indian Markets — Daily Digest</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
   <link rel="manifest" href="./manifest.json" />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -206,7 +206,7 @@
         <div class="flex items-center gap-3">
           <div id="header-active-icon" class="w-10 h-10 rounded-xl inner-panel flex items-center justify-center shrink-0"></div>
           <div>
-            <h1 id="header-active-title" class="font-bold text-lg sm:text-xl tracking-tight txt-primary leading-none">India Markets</h1>
+            <h1 id="header-active-title" class="font-bold text-lg sm:text-xl tracking-tight txt-primary leading-none">Indian Markets</h1>
             <div class="mt-1 flex items-center gap-2 text-xs font-mono txt-muted tabular-nums">
               <span class="w-2 h-2 rounded-full bg-emerald-500 pulse-live shrink-0"></span>
               <span id="live-clock">FRI 27 NOV 2026 &bull; 19:44 IST</span>
@@ -252,7 +252,7 @@
       <div class="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 flex items-center gap-2 overflow-x-auto no-scrollbar" role="tablist">
         <button type="button" data-card-tab="india" role="tab" aria-selected="true" class="nav-tab active inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer">
           <svg class="w-5 h-3.5 rounded-[2px] border border-black/15 shrink-0" viewBox="0 0 24 16"><rect width="24" height="5.33" fill="#FF9933"/><rect width="24" height="5.34" y="5.33" fill="#FFF"/><rect width="24" height="5.33" y="10.67" fill="#138808"/><circle cx="12" cy="8" r="2.1" fill="none" stroke="#000080" stroke-width="0.7"/></svg>
-          <span>India Markets</span>
+          <span>Indian Markets</span>
         </button>
 
         <button type="button" data-card-tab="us" role="tab" aria-selected="false" class="nav-tab inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer">
@@ -300,7 +300,7 @@
               <circle cx="12" cy="8" r="2.1" fill="none" stroke="#000080" stroke-width="0.65" />
             </svg>
             <div>
-              <span class="text-xs font-mono uppercase tracking-widest text-indigo-500 dark:text-indigo-400 font-semibold">NSE / BSE &bull; INDIA MARKETS</span>
+              <span class="text-xs font-mono uppercase tracking-widest text-indigo-500 dark:text-indigo-400 font-semibold">NSE / BSE &bull; INDIAN MARKETS</span>
               <h2 id="india-etf-name" class="text-lg sm:text-xl font-bold txt-primary mt-0.5">Nippon India ETF Nifty 50 BeES</h2>
             </div>
           </div>
@@ -964,7 +964,7 @@
      */
     const TAB_META = {
       india: {
-        title: 'India Markets',
+        title: 'Indian Markets',
         icon: `<svg class="w-6 h-4 rounded-[2px] border border-black/15" viewBox="0 0 24 16"><rect width="24" height="5.33" fill="#FF9933"/><rect width="24" height="5.34" y="5.33" fill="#FFF"/><rect width="24" height="5.33" y="10.67" fill="#138808"/><circle cx="12" cy="8" r="2.1" fill="none" stroke="#000080" stroke-width="0.7"/></svg>`
       },
       us: {
@@ -1795,11 +1795,11 @@
       if (window.LightweightCharts && typeof window.LightweightCharts.createChart === 'function') {
         const chart = window.LightweightCharts.createChart(container, {
           width: container.clientWidth || 680,
-          height: container.clientHeight || 360,
-          layout: { background: { type: 'solid', color: bg }, textColor: txt, fontFamily: 'JetBrains Mono, monospace' },
+          height: container.clientHeight || 380,
+          layout: { background: { type: 'solid', color: bg }, textColor: txt, fontFamily: 'JetBrains Mono, monospace', fontSize: 11 },
           grid: { vertLines: { color: grid }, horzLines: { color: grid } },
-          rightPriceScale: { borderColor: grid },
-          timeScale: { borderColor: grid, timeVisible: false },
+          rightPriceScale: { borderColor: grid, scaleMargins: { top: 0.08, bottom: 0.24 } },
+          timeScale: { borderColor: grid, timeVisible: false, rightOffset: 4 },
           crosshair: { mode: 1 }
         });
 
@@ -1812,13 +1812,50 @@
         });
 
         series.setData(candles);
+
+        // 10-period EMA overlay
+        if (candles.length >= 3) {
+          const k = 2 / (Math.min(10, candles.length) + 1);
+          let ema = candles[0].close;
+          const emaData = candles.map((c, idx) => {
+            ema = idx === 0 ? c.close : c.close * k + ema * (1 - k);
+            return { time: c.time, value: Number(ema.toFixed(2)) };
+          });
+          const emaSeries = chart.addLineSeries({
+            color: '#f59e0b',
+            lineWidth: 1.5,
+            priceLineVisible: false,
+            lastValueVisible: false
+          });
+          emaSeries.setData(emaData);
+        }
+
+        // Volume / range activity histogram
+        const volSeries = chart.addHistogramSeries({
+          priceFormat: { type: 'volume' },
+          priceScaleId: '',
+          scaleMargins: { top: 0.78, bottom: 0 }
+        });
+        volSeries.setData(candles.map((c) => ({
+          time: c.time,
+          value: Math.max(0.01, Number(((c.high - c.low) / Math.max(1, c.open) * 1000).toFixed(2))),
+          color: c.close >= c.open ? 'rgba(16, 185, 129, 0.28)' : 'rgba(244, 63, 94, 0.28)'
+        })));
+
         chart.timeScale().fitContent();
+
+        const last = candles[candles.length - 1];
+        if (ohlcEl && last) {
+          ohlcEl.textContent = `O ${last.open}  H ${last.high}  L ${last.low}  C ${last.close}`;
+        }
 
         chart.subscribeCrosshairMove((param) => {
           if (!ohlcEl || !param || !param.seriesData) return;
           const pt = param.seriesData.get(series);
           if (pt) {
             ohlcEl.textContent = `O ${pt.open}  H ${pt.high}  L ${pt.low}  C ${pt.close}`;
+          } else if (last) {
+            ohlcEl.textContent = `O ${last.open}  H ${last.high}  L ${last.low}  C ${last.close}`;
           }
         });
 
@@ -1911,6 +1948,29 @@
      * 6. CARD RENDER FUNCTIONS
      * =========================================================================
      */
+    const DRIVER_HEADERS = [
+      { label: 'MACRO & FLOWS', cls: 'bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30' },
+      { label: 'CATALYST & POLICY', cls: 'bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/30' },
+      { label: 'TECHNICAL PIVOT', cls: 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30' }
+    ];
+
+    function renderDriversHtml(catalysts) {
+      return (catalysts || []).map((c, idx) => {
+        const hdr = DRIVER_HEADERS[idx % DRIVER_HEADERS.length];
+        const title = typeof c === 'object' && c.header ? c.header : hdr.label;
+        const body = typeof c === 'object' && c.body ? c.body : c;
+        return `
+          <li class="p-4 rounded-xl inner-panel space-y-2">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold uppercase border ${hdr.cls}">${title}</span>
+              <span class="text-[10px] font-mono txt-muted">0${idx + 1}</span>
+            </div>
+            <p class="text-sm txt-secondary leading-relaxed">${body}</p>
+          </li>
+        `;
+      }).join('');
+    }
+
     function renderIndiaCard(key) {
       const d = INDIA_ASSETS[key] || INDIA_ASSETS.NIFTYBEES;
       activeTickers.india = key;
@@ -1952,9 +2012,7 @@
       document.getElementById('india-bull').textContent = d.bull;
       document.getElementById('india-chart-label').textContent = d.symbol;
 
-      document.getElementById('india-catalysts').innerHTML = d.catalysts.map((c) => `
-        <li class="p-3.5 rounded-xl inner-panel">${c}</li>
-      `).join('');
+      document.getElementById('india-catalysts').innerHTML = renderDriversHtml(d.catalysts);
 
       renderFearGreedDial('india-fg-dial', window.__indiaFgScore || 56);
       renderInteractiveChart('india', 'india-chart-container', 'india-chart-ohlc', d.symbol, d.price, activeTimeframes.india, d.candles);
@@ -1994,9 +2052,7 @@
       document.getElementById('us-bull').textContent = d.bull;
       document.getElementById('us-chart-label').textContent = d.symbol;
 
-      document.getElementById('us-catalysts').innerHTML = d.catalysts.map((c) => `
-        <li class="p-3.5 rounded-xl inner-panel">${c}</li>
-      `).join('');
+      document.getElementById('us-catalysts').innerHTML = renderDriversHtml(d.catalysts);
 
       renderFearGreedDial('us-fg-dial', window.__usFgScore || 34);
       renderInteractiveChart('us', 'us-chart-container', 'us-chart-ohlc', d.symbol, d.price, activeTimeframes.us, d.candles);
@@ -2041,9 +2097,7 @@
       document.getElementById('crypto-bull').textContent = formatUsd(d.bull, d.decimals);
       document.getElementById('crypto-chart-label').textContent = d.symbol;
 
-      document.getElementById('crypto-catalysts').innerHTML = d.catalysts.map((c) => `
-        <li class="p-3.5 rounded-xl inner-panel">${c}</li>
-      `).join('');
+      document.getElementById('crypto-catalysts').innerHTML = renderDriversHtml(d.catalysts);
 
       renderFearGreedDial('crypto-fg-dial', window.__cryptoFgScore || 12);
       renderInteractiveChart('crypto', 'crypto-chart-container', 'crypto-chart-ohlc', d.symbol, d.usdPrice, activeTimeframes.crypto, d.candles);
@@ -2092,9 +2146,7 @@
       document.getElementById('comm-bull').textContent = d.bull;
       document.getElementById('comm-chart-label').textContent = d.symbol;
 
-      document.getElementById('comm-catalysts').innerHTML = d.catalysts.map((c) => `
-        <li class="p-3.5 rounded-xl inner-panel">${c}</li>
-      `).join('');
+      document.getElementById('comm-catalysts').innerHTML = renderDriversHtml(d.catalysts);
 
       renderFearGreedDial('comm-fg-dial', d.fgScore);
       renderInteractiveChart('commodities', 'comm-chart-container', 'comm-chart-ohlc', d.symbol, d.price, activeTimeframes.commodities, d.candles);
@@ -2329,7 +2381,7 @@
       const meta = TAB_META[tabKey];
       document.getElementById('header-active-title').textContent = meta.title;
       document.getElementById('header-active-icon').innerHTML = meta.icon;
-      document.title = `${meta.title} — Daily Intelligence`;
+      document.title = `${meta.title} — Daily Digest`;
 
       document.querySelectorAll('[data-card-tab]').forEach((btn) => {
         const match = btn.getAttribute('data-card-tab') === tabKey;
