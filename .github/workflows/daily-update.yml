@@ -1,0 +1,40 @@
+name: Daily Live Brief Update
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 06:00 IST, 07:00 IST, 08:15 IST, 19:00 IST
+    - cron: '30 0 * * *'
+    - cron: '30 1 * * *'
+    - cron: '45 2 * * *'
+    - cron: '30 13 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  update-brief:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch daily market, crypto, forex, and news data
+        run: node scripts/fetch-data.mjs
+
+      - name: Commit and push updated data/live-brief.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet data/live-brief.json; then
+            echo "No changes in data/live-brief.json"
+          else
+            git add data/live-brief.json
+            git commit -m "chore(data): update live-brief.json [skip ci]"
+            git push
+          fi
