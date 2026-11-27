@@ -1773,7 +1773,14 @@
       return candles;
     }
 
-    function renderInteractiveChart(marketKey, containerId, ohlcId, symbolLabel, basePrice, tf, realCandles) {
+    function parseNumericLevel(val) {
+      if (typeof val === 'number' && Number.isFinite(val)) return val;
+      if (typeof val !== 'string') return null;
+      const num = parseFloat(val.replace(/[^0-9.-]/g, ''));
+      return Number.isFinite(num) ? num : null;
+    }
+
+    function renderInteractiveChart(marketKey, containerId, ohlcId, symbolLabel, basePrice, tf, realCandles, levels) {
       const container = document.getElementById(containerId);
       const ohlcEl = document.getElementById(ohlcId);
       if (!container) return;
@@ -1785,7 +1792,7 @@
       container.innerHTML = '';
 
       const tfSlice = { '1W': 7, '1M': 22, '3M': 65, '1Y': 90 };
-      let candles = Array.isArray(realCandles) && realCandles.length > 0
+      let candles = Array.isArray(realCandles) && realCandles.length >= 5
         ? realCandles.slice(-(tfSlice[tf] || 22))
         : generateCandles(basePrice, symbolLabel, tf);
       const bg = isLightMode ? '#f0e9db' : '#0c121e';
@@ -1812,6 +1819,22 @@
         });
 
         series.setData(candles);
+
+        // Loss (Red), Base (Yellow/Amber), Gain (Green) price lines
+        if (levels) {
+          const lossVal = parseNumericLevel(levels.bear);
+          const baseVal = parseNumericLevel(levels.base);
+          const gainVal = parseNumericLevel(levels.bull);
+          if (lossVal !== null) {
+            series.createPriceLine({ price: lossVal, color: '#f43f5e', lineWidth: 1.5, lineStyle: 2, axisLabelVisible: true, title: 'LOSS' });
+          }
+          if (baseVal !== null) {
+            series.createPriceLine({ price: baseVal, color: '#f59e0b', lineWidth: 1.5, lineStyle: 2, axisLabelVisible: true, title: 'BASE' });
+          }
+          if (gainVal !== null) {
+            series.createPriceLine({ price: gainVal, color: '#10b981', lineWidth: 1.5, lineStyle: 2, axisLabelVisible: true, title: 'GAIN' });
+          }
+        }
 
         // 10-period EMA overlay
         if (candles.length >= 3) {
@@ -2015,7 +2038,7 @@
       document.getElementById('india-catalysts').innerHTML = renderDriversHtml(d.catalysts);
 
       renderFearGreedDial('india-fg-dial', window.__indiaFgScore || 56);
-      renderInteractiveChart('india', 'india-chart-container', 'india-chart-ohlc', d.symbol, d.price, activeTimeframes.india, d.candles);
+      renderInteractiveChart('india', 'india-chart-container', 'india-chart-ohlc', d.symbol, d.price, activeTimeframes.india, d.candles, { bear: d.bear, base: d.base, bull: d.bull });
     }
 
     function renderUSCard(key) {
@@ -2055,7 +2078,7 @@
       document.getElementById('us-catalysts').innerHTML = renderDriversHtml(d.catalysts);
 
       renderFearGreedDial('us-fg-dial', window.__usFgScore || 34);
-      renderInteractiveChart('us', 'us-chart-container', 'us-chart-ohlc', d.symbol, d.price, activeTimeframes.us, d.candles);
+      renderInteractiveChart('us', 'us-chart-container', 'us-chart-ohlc', d.symbol, d.price, activeTimeframes.us, d.candles, { bear: d.bear, base: d.base, bull: d.bull });
     }
 
     function formatUsd(val, decimals) {
@@ -2100,7 +2123,7 @@
       document.getElementById('crypto-catalysts').innerHTML = renderDriversHtml(d.catalysts);
 
       renderFearGreedDial('crypto-fg-dial', window.__cryptoFgScore || 12);
-      renderInteractiveChart('crypto', 'crypto-chart-container', 'crypto-chart-ohlc', d.symbol, d.usdPrice, activeTimeframes.crypto, d.candles);
+      renderInteractiveChart('crypto', 'crypto-chart-container', 'crypto-chart-ohlc', d.symbol, d.usdPrice, activeTimeframes.crypto, d.candles, { bear: d.bear, base: d.base, bull: d.bull });
     }
 
     function renderCommoditiesCard(key) {
@@ -2149,7 +2172,7 @@
       document.getElementById('comm-catalysts').innerHTML = renderDriversHtml(d.catalysts);
 
       renderFearGreedDial('comm-fg-dial', d.fgScore);
-      renderInteractiveChart('commodities', 'comm-chart-container', 'comm-chart-ohlc', d.symbol, d.price, activeTimeframes.commodities, d.candles);
+      renderInteractiveChart('commodities', 'comm-chart-container', 'comm-chart-ohlc', d.symbol, d.price, activeTimeframes.commodities, d.candles, { bear: d.bear, base: d.base, bull: d.bull });
     }
 
     function renderAstroCard() {
