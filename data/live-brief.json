@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-27T14:52:15.020Z",
+  "generatedAt": "2026-11-27T15:52:28.636Z",
   "india": {
     "NIFTYBEES": {
       "symbol": "NIFTYBEES.NS",
@@ -5893,16 +5893,16 @@
     "SPY": {
       "symbol": "SPY",
       "currency": "USD",
-      "price": 721.55,
+      "price": 724.58,
       "prevClose": 716.7,
-      "change": 4.85,
-      "changePct": 0.68,
-      "dayLow": 720.5,
-      "dayHigh": 726.03,
+      "change": 7.88,
+      "changePct": 1.1,
+      "dayLow": 719.62,
+      "dayHigh": 726.62,
       "w52Low": 629.28,
       "w52High": 781.62,
-      "volume": 6093357,
-      "marketTime": "2026-11-27T14:52:12.000Z",
+      "volume": 13411712,
+      "marketTime": "2026-11-27T15:52:26.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -6355,9 +6355,9 @@
         {
           "time": "2026-11-27",
           "open": 725.86,
-          "high": 726.03,
-          "low": 720.5,
-          "close": 721.55
+          "high": 726.62,
+          "low": 719.62,
+          "close": 724.58
         }
       ],
       "isIndex": false
@@ -6365,16 +6365,16 @@
     "QQQ": {
       "symbol": "QQQ",
       "currency": "USD",
-      "price": 638.83,
+      "price": 644.14,
       "prevClose": 633.93,
-      "change": 4.9,
-      "changePct": 0.77,
-      "dayLow": 637.17,
-      "dayHigh": 645.89,
+      "change": 10.21,
+      "changePct": 1.61,
+      "dayLow": 636.72,
+      "dayHigh": 646.61,
       "w52Low": 555.6,
       "w52High": 762.86,
-      "volume": 7912491,
-      "marketTime": "2026-11-27T14:52:11.000Z",
+      "volume": 16677881,
+      "marketTime": "2026-11-27T15:52:26.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -6827,9 +6827,9 @@
         {
           "time": "2026-11-27",
           "open": 645.72,
-          "high": 645.89,
-          "low": 637.17,
-          "close": 638.83
+          "high": 646.61,
+          "low": 636.72,
+          "close": 644.14
         }
       ],
       "isIndex": false
@@ -6837,16 +6837,16 @@
     "DIA": {
       "symbol": "DIA",
       "currency": "USD",
-      "price": 504.43,
+      "price": 506.06,
       "prevClose": 501.27,
-      "change": 3.16,
-      "changePct": 0.63,
-      "dayLow": 504.38,
-      "dayHigh": 506.77,
+      "change": 4.79,
+      "changePct": 0.96,
+      "dayLow": 503.46,
+      "dayHigh": 506.78,
       "w52Low": 450.44,
       "w52High": 546.75,
-      "volume": 543772,
-      "marketTime": "2026-11-27T14:52:11.000Z",
+      "volume": 974108,
+      "marketTime": "2026-11-27T15:52:23.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -7299,9 +7299,9 @@
         {
           "time": "2026-11-27",
           "open": 506.75,
-          "high": 506.77,
-          "low": 504.38,
-          "close": 504.43
+          "high": 506.78,
+          "low": 503.46,
+          "close": 506.06
         }
       ],
       "isIndex": false
@@ -7309,16 +7309,16 @@
     "IWM": {
       "symbol": "IWM",
       "currency": "USD",
-      "price": 271.12,
+      "price": 272.45,
       "prevClose": 268.87,
-      "change": 2.25,
-      "changePct": 0.84,
-      "dayLow": 270.98,
-      "dayHigh": 272.44,
+      "change": 3.58,
+      "changePct": 1.33,
+      "dayLow": 270.69,
+      "dayHigh": 272.81,
       "w52Low": 238.69,
       "w52High": 305.18,
-      "volume": 2151186,
-      "marketTime": "2026-11-27T14:52:12.000Z",
+      "volume": 4773624,
+      "marketTime": "2026-11-27T15:52:26.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -7771,9 +7771,9 @@
         {
           "time": "2026-11-27",
           "open": 271.82,
-          "high": 272.44,
-          "low": 270.98,
-          "close": 271.12
+          "high": 272.81,
+          "low": 270.68,
+          "close": 272.45
         }
       ],
       "isIndex": false
@@ -7781,16 +7781,16 @@
     "NVDA": {
       "symbol": "NVDA",
       "currency": "USD",
-      "price": 146.71,
+      "price": 147.1,
       "prevClose": 149.3,
-      "change": -2.59,
-      "changePct": -1.73,
+      "change": -2.21,
+      "changePct": -1.48,
       "dayLow": 145.39,
       "dayHigh": 151.98,
       "w52Low": 124.5,
       "w52High": 243.37,
-      "volume": 48878564,
-      "marketTime": "2026-11-27T14:52:11.000Z",
+      "volume": 94334229,
+      "marketTime": "2026-11-27T15:52:26.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -8245,7 +8245,7 @@
           "open": 151.94,
           "high": 151.98,
           "low": 145.39,
-          "close": 146.71
+          "close": 147.1
         }
       ],
       "isIndex": false
@@ -8253,16 +8253,16 @@
     "AAPL": {
       "symbol": "AAPL",
       "currency": "USD",
-      "price": 356.62,
+      "price": 358.85,
       "prevClose": 355.58,
-      "change": 1.04,
-      "changePct": 0.29,
-      "dayLow": 356.08,
-      "dayHigh": 358.9,
+      "change": 3.27,
+      "changePct": 0.92,
+      "dayLow": 355.64,
+      "dayHigh": 359.41,
       "w52Low": 243.42,
       "w52High": 360.83,
-      "volume": 3436356,
-      "marketTime": "2026-11-27T14:52:12.000Z",
+      "volume": 7532977,
+      "marketTime": "2026-11-27T15:52:26.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -8715,9 +8715,9 @@
         {
           "time": "2026-11-27",
           "open": 358.44,
-          "high": 358.9,
-          "low": 356.08,
-          "close": 356.62
+          "high": 359.41,
+          "low": 355.64,
+          "close": 358.85
         }
       ],
       "isIndex": false
@@ -8725,16 +8725,16 @@
     "MSFT": {
       "symbol": "MSFT",
       "currency": "USD",
-      "price": 492.8,
+      "price": 491.16,
       "prevClose": 489.93,
-      "change": 2.87,
-      "changePct": 0.59,
-      "dayLow": 492.43,
+      "change": 1.22,
+      "changePct": 0.25,
+      "dayLow": 488.96,
       "dayHigh": 500.47,
       "w52Low": 349.2,
       "w52High": 559.15,
-      "volume": 1574068,
-      "marketTime": "2026-11-27T14:52:11.000Z",
+      "volume": 3853754,
+      "marketTime": "2026-11-27T15:52:27.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -9188,8 +9188,8 @@
           "time": "2026-11-27",
           "open": 499.48,
           "high": 500.46,
-          "low": 492.43,
-          "close": 492.8
+          "low": 488.96,
+          "close": 491.15
         }
       ],
       "isIndex": false
@@ -9197,16 +9197,16 @@
     "GOOGL": {
       "symbol": "GOOGL",
       "currency": "USD",
-      "price": 273.6,
+      "price": 272.57,
       "prevClose": 273.1,
-      "change": 0.5,
-      "changePct": 0.18,
-      "dayLow": 273.12,
+      "change": -0.53,
+      "changePct": -0.19,
+      "dayLow": 270.03,
       "dayHigh": 279.52,
       "w52Low": 262.73,
       "w52High": 408.61,
-      "volume": 3750123,
-      "marketTime": "2026-11-27T14:52:11.000Z",
+      "volume": 9338407,
+      "marketTime": "2026-11-27T15:52:26.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -9660,8 +9660,8 @@
           "time": "2026-11-27",
           "open": 279.16,
           "high": 279.52,
-          "low": 273.12,
-          "close": 273.6
+          "low": 270.03,
+          "close": 272.57
         }
       ],
       "isIndex": false
@@ -9669,16 +9669,16 @@
     "AMZN": {
       "symbol": "AMZN",
       "currency": "USD",
-      "price": 250.15,
+      "price": 253.6,
       "prevClose": 244.43,
-      "change": 5.72,
-      "changePct": 2.34,
+      "change": 9.17,
+      "changePct": 3.75,
       "dayLow": 248.45,
-      "dayHigh": 251.33,
+      "dayHigh": 254.34,
       "w52Low": 196,
       "w52High": 287.2,
-      "volume": 4342697,
-      "marketTime": "2026-11-27T14:52:11.000Z",
+      "volume": 10275464,
+      "marketTime": "2026-11-27T15:52:27.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -10131,9 +10131,9 @@
         {
           "time": "2026-11-27",
           "open": 250.45,
-          "high": 251.33,
+          "high": 254.34,
           "low": 248.45,
-          "close": 250.15
+          "close": 253.6
         }
       ],
       "isIndex": false
@@ -10141,16 +10141,16 @@
     "META": {
       "symbol": "META",
       "currency": "USD",
-      "price": 625.33,
+      "price": 634.51,
       "prevClose": 609.89,
-      "change": 15.44,
-      "changePct": 2.53,
+      "change": 24.62,
+      "changePct": 4.04,
       "dayLow": 620.8,
-      "dayHigh": 630.09,
+      "dayHigh": 636.62,
       "w52Low": 520.26,
       "w52High": 779.82,
-      "volume": 2252829,
-      "marketTime": "2026-11-27T14:52:11.000Z",
+      "volume": 4820567,
+      "marketTime": "2026-11-27T15:52:27.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -10603,9 +10603,9 @@
         {
           "time": "2026-11-27",
           "open": 627.83,
-          "high": 630.09,
+          "high": 636.62,
           "low": 620.8,
-          "close": 625.33
+          "close": 634.51
         }
       ],
       "isIndex": false
@@ -10613,16 +10613,16 @@
     "TSLA": {
       "symbol": "TSLA",
       "currency": "USD",
-      "price": 392.16,
+      "price": 398.86,
       "prevClose": 380.14,
-      "change": 12.02,
-      "changePct": 3.16,
+      "change": 18.72,
+      "changePct": 4.92,
       "dayLow": 384.66,
-      "dayHigh": 395.25,
+      "dayHigh": 401.18,
       "w52Low": 297.38,
       "w52High": 498.83,
-      "volume": 5255689,
-      "marketTime": "2026-11-27T14:52:11.000Z",
+      "volume": 13490059,
+      "marketTime": "2026-11-27T15:52:27.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -11075,9 +11075,9 @@
         {
           "time": "2026-11-27",
           "open": 391.33,
-          "high": 395.25,
+          "high": 401.18,
           "low": 384.66,
-          "close": 392.16
+          "close": 398.86
         }
       ],
       "isIndex": false
@@ -11085,16 +11085,16 @@
     "SP500": {
       "symbol": "^GSPC",
       "currency": "USD",
-      "price": 7230.55,
+      "price": 7261.78,
       "prevClose": 7182.78,
-      "change": 47.77,
-      "changePct": 0.67,
-      "dayLow": 7220.75,
-      "dayHigh": 7271.43,
+      "change": 79,
+      "changePct": 1.1,
+      "dayLow": 7211.46,
+      "dayHigh": 7281.17,
       "w52Low": 6316.91,
       "w52High": 7844.52,
-      "volume": 288346716,
-      "marketTime": "2026-11-27T14:52:12.000Z",
+      "volume": 658534225,
+      "marketTime": "2026-11-27T15:52:26.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -11547,9 +11547,9 @@
         {
           "time": "2026-11-27",
           "open": 7262.61,
-          "high": 7271.43,
-          "low": 7220.75,
-          "close": 7230.55
+          "high": 7281.17,
+          "low": 7211.46,
+          "close": 7261.78
         }
       ],
       "isIndex": true
@@ -11557,16 +11557,16 @@
     "VIX": {
       "symbol": "^VIX",
       "currency": "USD",
-      "price": 26.6,
+      "price": 25.89,
       "prevClose": 26.8,
-      "change": -0.2,
-      "changePct": -0.75,
+      "change": -0.91,
+      "changePct": -3.4,
       "dayLow": 24.52,
-      "dayHigh": 27,
+      "dayHigh": 27.52,
       "w52Low": 13.38,
       "w52High": 40.03,
       "volume": 0,
-      "marketTime": "2026-11-27T14:37:01.000Z",
+      "marketTime": "2026-11-27T15:37:16.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -12033,9 +12033,9 @@
         {
           "time": "2026-11-27",
           "open": 24.89,
-          "high": 27,
+          "high": 27.52,
           "low": 24.52,
-          "close": 26.6
+          "close": 25.89
         }
       ],
       "isIndex": true
@@ -12045,16 +12045,16 @@
     "GOLD": {
       "symbol": "GC=F",
       "currency": "USD",
-      "price": 3661.1,
+      "price": 3656.4,
       "prevClose": 3535.8,
-      "change": 125.3,
-      "changePct": 3.54,
+      "change": 120.6,
+      "changePct": 3.41,
       "dayLow": 3578.8,
       "dayHigh": 3712.8,
       "w52Low": 3425.2,
       "w52High": 5586.2,
-      "volume": 187969,
-      "marketTime": "2026-11-27T14:42:11.000Z",
+      "volume": 200367,
+      "marketTime": "2026-11-27T15:42:25.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -12509,7 +12509,7 @@
           "open": 3619.8,
           "high": 3712.8,
           "low": 3578.8,
-          "close": 3661.1
+          "close": 3656.4
         }
       ],
       "isIndex": false
@@ -12517,16 +12517,16 @@
     "BRENT": {
       "symbol": "BZ=F",
       "currency": "USD",
-      "price": 91.28,
+      "price": 90.81,
       "prevClose": 94.61,
-      "change": -3.33,
-      "changePct": -3.52,
+      "change": -3.8,
+      "changePct": -4.02,
       "dayLow": 89.77,
       "dayHigh": 93.14,
       "w52Low": 58.72,
       "w52High": 126.1,
-      "volume": 30773,
-      "marketTime": "2026-11-27T14:41:55.000Z",
+      "volume": 32949,
+      "marketTime": "2026-11-27T15:42:03.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -12981,7 +12981,7 @@
           "open": 90.57,
           "high": 93.14,
           "low": 89.77,
-          "close": 91.28
+          "close": 90.81
         }
       ],
       "isIndex": false
@@ -12989,16 +12989,16 @@
     "WTI": {
       "symbol": "CL=F",
       "currency": "USD",
-      "price": 84.07,
+      "price": 83.61,
       "prevClose": 83.68,
-      "change": 0.39,
-      "changePct": 0.47,
+      "change": -0.07,
+      "changePct": -0.08,
       "dayLow": 83.16,
       "dayHigh": 86.6,
       "w52Low": 54.98,
       "w52High": 119.48,
-      "volume": 174933,
-      "marketTime": "2026-11-27T14:42:08.000Z",
+      "volume": 191837,
+      "marketTime": "2026-11-27T15:42:25.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -13453,7 +13453,7 @@
           "open": 84.09,
           "high": 86.6,
           "low": 83.16,
-          "close": 84.07
+          "close": 83.61
         }
       ],
       "isIndex": false
@@ -13461,16 +13461,16 @@
     "SILVER": {
       "symbol": "SI=F",
       "currency": "USD",
-      "price": 43.93,
+      "price": 43.81,
       "prevClose": 40.05,
-      "change": 3.88,
-      "changePct": 9.69,
+      "change": 3.76,
+      "changePct": 9.38,
       "dayLow": 41.08,
-      "dayHigh": 44.86,
+      "dayHigh": 44.84,
       "w52Low": 40.05,
       "w52High": 121.3,
-      "volume": 79304,
-      "marketTime": "2026-11-27T14:42:07.000Z",
+      "volume": 84883,
+      "marketTime": "2026-11-27T15:42:21.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -13923,9 +13923,9 @@
         {
           "time": "2026-11-27",
           "open": 41.71,
-          "high": 44.86,
+          "high": 44.83,
           "low": 41.08,
-          "close": 43.93
+          "close": 43.81
         }
       ],
       "isIndex": false
@@ -13933,16 +13933,16 @@
     "NATGAS": {
       "symbol": "NG=F",
       "currency": "USD",
-      "price": 3.49,
+      "price": 3.513,
       "prevClose": 3.269,
-      "change": 0.221,
-      "changePct": 6.76,
+      "change": 0.244,
+      "changePct": 7.46,
       "dayLow": 3.454,
       "dayHigh": 3.696,
       "w52Low": 2.483,
       "w52High": 7.827,
-      "volume": 86676,
-      "marketTime": "2026-11-27T14:41:56.000Z",
+      "volume": 97145,
+      "marketTime": "2026-11-27T15:42:25.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -14397,7 +14397,7 @@
           "open": 3.675,
           "high": 3.696,
           "low": 3.454,
-          "close": 3.49
+          "close": 3.513
         }
       ],
       "isIndex": false
@@ -14405,16 +14405,16 @@
     "COPPER": {
       "symbol": "HG=F",
       "currency": "USD",
-      "price": 5.59,
+      "price": 5.6,
       "prevClose": 5.33,
-      "change": 0.25,
-      "changePct": 4.78,
+      "change": 0.27,
+      "changePct": 5.07,
       "dayLow": 5.43,
       "dayHigh": 5.76,
       "w52Low": 5.06,
       "w52High": 6.83,
-      "volume": 73033,
-      "marketTime": "2026-11-27T14:42:07.000Z",
+      "volume": 77992,
+      "marketTime": "2026-11-27T15:42:21.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -14869,7 +14869,7 @@
           "open": 5.48,
           "high": 5.76,
           "low": 5.43,
-          "close": 5.59
+          "close": 5.6
         }
       ],
       "isIndex": false
@@ -14880,10 +14880,10 @@
       "BTC": {
         "id": "bitcoin",
         "symbol": "BTC-USD",
-        "price": 59421,
-        "changePct": -2.16,
-        "marketCap": 1195286981915.2551,
-        "volume24h": 24122818206.210766,
+        "price": 59957,
+        "changePct": -0.95,
+        "marketCap": 1206204543423.4185,
+        "volume24h": 27262210031.058247,
         "candles": [
           {
             "time": "2026-08-30",
@@ -15512,20 +15512,20 @@
             "time": "2026-11-27",
             "open": 60495.95,
             "high": 62085.71,
-            "low": 59378.62,
-            "close": 59118.11
+            "low": 59007.89,
+            "close": 59935.79
           }
         ],
-        "dayLow": 59378.62,
+        "dayLow": 59007.89,
         "dayHigh": 62085.71
       },
       "ETH": {
         "id": "ethereum",
         "symbol": "ETH-USD",
-        "price": 1665.69,
-        "changePct": -1.9,
-        "marketCap": 203633063788.10843,
-        "volume24h": 9666134261.1062,
+        "price": 1671.05,
+        "changePct": -1.03,
+        "marketCap": 204240441802.28598,
+        "volume24h": 11172028318.131815,
         "candles": [
           {
             "time": "2026-08-30",
@@ -16154,20 +16154,20 @@
             "time": "2026-11-27",
             "open": 1687.75,
             "high": 1744.08,
-            "low": 1666.3,
-            "close": 1661.64
+            "low": 1640.96,
+            "close": 1668.23
           }
         ],
-        "dayLow": 1666.3,
+        "dayLow": 1640.96,
         "dayHigh": 1744.08
       },
       "SOL": {
         "id": "solana",
         "symbol": "SOL-USD",
-        "price": 71,
-        "changePct": -0.1,
-        "marketCap": 42034191191.30203,
-        "volume24h": 2293366488.732253,
+        "price": 72.01,
+        "changePct": 1.56,
+        "marketCap": 42648524490.097565,
+        "volume24h": 2601480780.8738723,
         "candles": [
           {
             "time": "2026-08-30",
@@ -16796,20 +16796,20 @@
             "time": "2026-11-27",
             "open": 70.93,
             "high": 73.74,
-            "low": 70.92,
-            "close": 70.69
+            "low": 70.55,
+            "close": 71.83
           }
         ],
-        "dayLow": 70.92,
+        "dayLow": 70.55,
         "dayHigh": 73.74
       },
       "BNB": {
         "id": "binancecoin",
         "symbol": "BNB-USD",
-        "price": 548.26,
-        "changePct": -0.65,
-        "marketCap": 72128584382.43044,
-        "volume24h": 456350066.7491232,
+        "price": 552.96,
+        "changePct": 0.59,
+        "marketCap": 72720260842.08937,
+        "volume24h": 513739623.8226709,
         "candles": [
           {
             "time": "2026-08-30",
@@ -17438,20 +17438,20 @@
             "time": "2026-11-27",
             "open": 553.16,
             "high": 566.87,
-            "low": 548.79,
-            "close": 546.69
+            "low": 545.18,
+            "close": 552.34
           }
         ],
-        "dayLow": 548.79,
+        "dayLow": 545.18,
         "dayHigh": 566.87
       },
       "XRP": {
         "id": "ripple",
         "symbol": "XRP-USD",
-        "price": 0.942,
-        "changePct": -0.81,
-        "marketCap": 59878915026.99704,
-        "volume24h": 1553291311.6269548,
+        "price": 0.95,
+        "changePct": 0.32,
+        "marketCap": 60328106111.86965,
+        "volume24h": 1704795060.4806874,
         "candles": [
           {
             "time": "2026-08-30",
@@ -18080,20 +18080,20 @@
             "time": "2026-11-27",
             "open": 0.9429,
             "high": 0.9835,
-            "low": 0.942,
-            "close": 0.9385
+            "low": 0.9351,
+            "close": 0.9494
           }
         ],
-        "dayLow": 0.942,
+        "dayLow": 0.9351,
         "dayHigh": 0.9835
       },
       "DOGE": {
         "id": "dogecoin",
         "symbol": "DOGE-USD",
-        "price": 0.0569,
-        "changePct": 0.1,
-        "marketCap": 8928495548.268118,
-        "volume24h": 403853693.5215687,
+        "price": 0.0576,
+        "changePct": 1.97,
+        "marketCap": 9043786985.541254,
+        "volume24h": 439671300.33708817,
         "candles": [
           {
             "time": "2026-08-30",
@@ -18723,7 +18723,7 @@
             "open": 0.0564,
             "high": 0.059,
             "low": 0.0564,
-            "close": 0.0567
+            "close": 0.0575
           }
         ],
         "dayLow": 0.0564,
@@ -18732,10 +18732,10 @@
       "ADA": {
         "id": "cardano",
         "symbol": "ADA-USD",
-        "price": 0.1474,
-        "changePct": -0.96,
-        "marketCap": 5537474499.53006,
-        "volume24h": 211823516.84244356,
+        "price": 0.1487,
+        "changePct": 0.36,
+        "marketCap": 5589006326.587563,
+        "volume24h": 231191408.48688117,
         "candles": [
           {
             "time": "2026-08-30",
@@ -19364,20 +19364,20 @@
             "time": "2026-11-27",
             "open": 0.1484,
             "high": 0.1534,
-            "low": 0.1473,
-            "close": 0.1469
+            "low": 0.1465,
+            "close": 0.1484
           }
         ],
-        "dayLow": 0.1473,
+        "dayLow": 0.1465,
         "dayHigh": 0.1534
       },
       "LINK": {
         "id": "chainlink",
         "symbol": "LINK-USD",
-        "price": 9.22,
-        "changePct": 0.06,
-        "marketCap": 7067229679.266288,
-        "volume24h": 260178919.919225,
+        "price": 9.32,
+        "changePct": 1.62,
+        "marketCap": 7145821205.963561,
+        "volume24h": 282143499.5384961,
         "candles": [
           {
             "time": "2026-08-30",
@@ -20006,11 +20006,11 @@
             "time": "2026-11-27",
             "open": 9.27,
             "high": 9.69,
-            "low": 9.21,
-            "close": 9.18
+            "low": 9.14,
+            "close": 9.3
           }
         ],
-        "dayLow": 9.21,
+        "dayLow": 9.14,
         "dayHigh": 9.69
       }
     },
@@ -20040,110 +20040,110 @@
       "tag": "BBC WORLD",
       "title": "Zelensky criticises 'strange' Trump-Putin friendship in BBC interview",
       "summary": "Ukraine's president voices frustration with US and says it is not pushing Russia hard enough in peace talks to end the war.",
-      "time": "6h ago",
+      "time": "7h ago",
       "link": "https://www.bbc.co.uk/news/articles/c820q9wgrpyyo?at_medium=RSS&at_campaign=rss"
     },
     {
       "cat": "WORLD",
       "tag": "BBC WORLD",
-      "title": "Hundreds of thousands still without power after storms hit US on Thanksgiving",
-      "summary": "Pennsylvania and neighbouring states remain badly affected on Friday after both coasts were lashed with wind and rain.",
-      "time": "2m ago",
-      "link": "https://www.bbc.co.uk/news/articles/cre3dj5n7dpwo?at_medium=RSS&at_campaign=rss"
+      "title": "John Simpson: Ukraine is bowed but still unbroken as freezing weather sets in",
+      "summary": "Ukraine settles in for another devastating winter as the questions persists: how will it all end?",
+      "time": "34m ago",
+      "link": "https://www.bbc.co.uk/news/articles/c3pw4yrr8kz9o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "cat": "WORLD",
+      "tag": "BBC WORLD",
+      "title": "Marching bands scramble to cover costs after Thanksgiving parade rearranged",
+      "summary": "Stormy weather in New York City prompted organisers to push back the Macy's parade by two days - leaving some musicians stuck.",
+      "time": "37m ago",
+      "link": "https://www.bbc.co.uk/news/articles/ckd71ypy9e8eo?at_medium=RSS&at_campaign=rss"
     },
     {
       "cat": "WORLD",
       "tag": "BBC WORLD",
       "title": "Leaders clash in final Spain election debate as housing dominates run-in",
       "summary": "The struggle many face in buying a home has been the biggest issue of a bitter campaign.",
-      "time": "9h ago",
+      "time": "10h ago",
       "link": "https://www.bbc.co.uk/news/articles/ckr5gr4g8gn5o?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "cat": "WORLD",
-      "tag": "BBC WORLD",
-      "title": "Italy's former police chief rejected mafia inquiry allegations before death",
-      "summary": "The contents of an eight-page letter by Gianni De Gennaro have been revealed days after his body was found at his Tuscany home.",
-      "time": "7h ago",
-      "link": "https://www.bbc.co.uk/news/articles/c69q8yjj1v0po?at_medium=RSS&at_campaign=rss"
     },
     {
       "cat": "US",
       "tag": "U.S. NEWS",
       "title": "Hundreds of thousands still without power after storms hit US on Thanksgiving",
       "summary": "Pennsylvania and neighbouring states remain badly affected on Friday after both coasts were lashed with wind and rain.",
-      "time": "2m ago",
+      "time": "1h ago",
       "link": "https://www.bbc.co.uk/news/articles/cre3dj5n7dpwo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "cat": "US",
+      "tag": "U.S. NEWS",
+      "title": "Marching bands scramble to cover NYC costs after parade rearranged",
+      "summary": "Stormy weather in New York City prompted organisers to push back the Macy's parade by two days - leaving some musicians stuck.",
+      "time": "37m ago",
+      "link": "https://www.bbc.co.uk/news/articles/ckd71ypy9e8eo?at_medium=RSS&at_campaign=rss"
     },
     {
       "cat": "US",
       "tag": "U.S. NEWS",
       "title": "Watch: Roofs torn off and streets under water as severe weather hits US",
       "summary": "Hundreds of thousands have been affected by storms in the country as the Thanksgiving holiday weekend begins.",
-      "time": "19h ago",
+      "time": "20h ago",
       "link": "https://www.bbc.co.uk/news/videos/cq808d704m22o?at_medium=RSS&at_campaign=rss"
     },
     {
       "cat": "US",
       "tag": "U.S. NEWS",
-      "title": "Canada's top court to rule on Quebec's ban on wearing religious symbols",
-      "summary": "Legal experts say the outcome will have an impact on much more than religious expression in the country.",
-      "time": "4h ago",
-      "link": "https://www.bbc.co.uk/news/articles/c78j8vk3r50o?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "cat": "US",
-      "tag": "U.S. NEWS",
-      "title": "Analysis: Why Trump's new tariffs are less of a threat",
-      "summary": "Other countries have rerouted trade in response to his first tariff salvo, now they are looking beyond Trump's tenure.",
-      "time": "19h ago",
-      "link": "https://www.bbc.co.uk/news/articles/c6r7g4e3yep1o?at_medium=RSS&at_campaign=rss"
+      "title": "Canada's top court largely upholds Quebec ban on religious symbols for public servants",
+      "summary": "The law faced legal challenges from a range of groups, including female Muslim, Sikh and Catholic teachers, who argued it violated their funadamental rights.",
+      "time": "14m ago",
+      "link": "https://www.bbc.co.uk/news/articles/cq3dgpy9lem3o?at_medium=RSS&at_campaign=rss"
     },
     {
       "cat": "INDIA",
       "tag": "THE HINDU",
       "title": "Union Cabinet clears delimitation bill - The Hindu",
-      "summary": "Union Cabinet clears delimitation bill &nbsp;&nbsp; The Hindu Opposition parties slam Union govt's move to push delimitation Bill in Parliament &nbsp;&nbsp; The News Minute NCP(SP) decides to back...",
-      "time": "5h ago",
+      "summary": "Union Cabinet clears delimitation bill &nbsp;&nbsp; The Hindu INDIA bloc to chalk out Parliament strategy as Opposition rallies against delimitation Bills &nbsp;&nbsp; The Hindu \"Will Support Delim...",
+      "time": "6h ago",
       "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNWmdfYjFZSHU5ZHhWZUEwU0VsbjI3ZnYxOFp4ZEY3V2djcE5aUVRzcENfaGtheGYyUndCR215WWVwUTEwdVNmLVJTTFUycDdqRlZVRGltZC1EVEhuTjNDeWJOc3Q3LUZPbDc0enhVZ042eE5Ock9ueXlndmh5eUNITTAyMkh1UV9hRHRCNVVMWExFOWtIeUtQQ1BGenp5QQ?oc=5"
     },
     {
       "cat": "INDIA",
       "tag": "LIVE LAW",
       "title": "Thiruparankundram Row | Supreme Court Orders Lamp Lighting At Deepathoon Tomorrow; Issues Contempt Notice ... - Live Law",
-      "summary": "Thiruparankundram Row | Supreme Court Orders Lamp Lighting At Deepathoon Tomorrow; Issues Contempt Notice ... &nbsp;&nbsp; Live Law 'Time to deal with iron hand': SC raps Vijay govt over contempt o...",
-      "time": "5h ago",
+      "summary": "Thiruparankundram Row | Supreme Court Orders Lamp Lighting At Deepathoon Tomorrow; Issues Contempt Notice ... &nbsp;&nbsp; Live Law Supreme Court orders Karthigai Deepam to be lit on ‘deepathoon’ o...",
+      "time": "6h ago",
       "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxQWU8xV2FaYlp2MHBXRzFGYUdwU1VYQkRMX0lWUENjb2lxVTI1U2JETGg5Y2FVQWN1ZzRMSEhFemRPbHcyWWZSVE5TZ1JUSjA4MHEzX1hJdWxKTG9oaHpJdGpDVHcyblVjbHZaa0tWdGlWaTNJQ1kxcXJBSW0wVUpQaDlzRGJycGQxUzJBSk1rMmgwT3F0VEZxaGMyQWtpVTFWd0ZwRmF5bFNfR3N6ZzI5ajZmZjRQRzBtUDFJZ3pKeDU2MlR5dXpuci1QWmpRSEVFZXlweWlTbkFIWnlmaEczamgzZHoycDFESEllLU04c0RpN1dN0gH6AUFVX3lxTE1tVU9rUzktTE5WdjVPdTI0QWhPZ1M2VDJ0OHFlMEI4YzVpV0RZR21TSlVDT2pSUnFiMVhkbk5WUW03eV9nel9EODNCSzN4cE1oT1NPQncwMUViWm4tbUN0UEs3a25VcnBmenNXdVZ6bG12b0YtakpfREIxX01iZm5Ea3hwbU5RRlR5RTE5S2dwZGdjT0ZVWm40eXRFX1R4S28tUWpaVVRRbXowN1htWk96TkxwMzVSWHloMWlTdU5MSXRfN2RnN0gwVVluR1RKYVowanlpODZUTHVHaDBCSEZtU3F3dDJaSlp1X01zN2htWmFHd25rWWg4T3c?oc=5"
     },
     {
       "cat": "INDIA",
-      "tag": "BBC",
-      "title": "Sheikh Hasina: Why her planned return from India has Bangladesh on edge - BBC",
-      "summary": "Sheikh Hasina: Why her planned return from India has Bangladesh on edge &nbsp;&nbsp; BBC MEA separates Sheikh Hasina’s plans to return to Bangladesh from issue of extradition &nbsp;&nbsp; The Hindu...",
-      "time": "14h ago",
-      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1BaXpGUk5KWTAweGxGT2RLSXUxMjdqMGdjdW5RZnJGZ3lmZWttaWZDT2UzcEFHNDFrQWZmelM2bWNaV0pqVmg4UVhUMFFLc3FhaDZ2Tzhtd3dXWjQ?oc=5"
+      "tag": "THE HINDU",
+      "title": "DMK sets conditions to support Delimitation Bill - The Hindu",
+      "summary": "DMK sets conditions to support Delimitation Bill &nbsp;&nbsp; The Hindu Delimitation Bill: DMK Sets Terms for Tamil Nadu Support &nbsp;&nbsp; Frontline Magazine MK Stalin, Sharad Pawar's Parties Be...",
+      "time": "7h ago",
+      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQOC1FNXdZWmhkRVg0UGU2V3FTRUt0bS01LXdGd0RoT2N1ZlZPNmM5Mmxmdjh2RjJwcExhVDc3THFySmhfbjFiSDl4a2k2cUxyOVh2bzd0WDNMLURhLV84dV9lRHg3U2hxYVlqWGFFZXJkWjUwSm1VSHBqaWxiNXh1eThSeXhRMVhHd3h6Qk1IVjlkaDVkazlvVTBKTlVTUHEwU203bkhPUEV0MEnSAbIBQVVfeXFMUGJ3eHFCU3FNUXA2bC1OQklLMS10d1VUc19MUUhJYUZvbm9EZERZdTI2bEJhRlp4RmFRU01JQW8wSWhnZGJ3MWROQmhPZUtVYXdqMk1HVzgwRGhNdzlaaVRGN2NIY0xiUjk0TDJKTG1EaTdRMEdUZkdoMnlUYXlrNU5nUVViRFRQM0diUmxadFVkMkppUmdGSnhMc0g3YjcxRFJLSklKekJCOXl4Xy1RbjBhZw?oc=5"
     },
     {
       "cat": "INDIA",
-      "tag": "THE HINDU",
-      "title": "FIR registered against Kallakurichi TVK MLA for ‘misbehaving’ with woman IAS officer, Madras HC told - The Hindu",
-      "summary": "FIR registered against Kallakurichi TVK MLA for ‘misbehaving’ with woman IAS officer, Madras HC told &nbsp;&nbsp; The Hindu Stalin seeks action against those who ‘pressured’ IAS officer to settle h...",
-      "time": "3d ago",
-      "link": "https://news.google.com/rss/articles/CBMikAJBVV95cUxOUTZTWlhLY2NrYjhGQ1pRSGtsRmVxM1l6cFZWQ2d5dEhONVlMVlVtLVVleS1lMnN1SVNPYUh4Q0JzYVQzeFNoV1R1eEEwNnFUek11ZFBhQ0FJc21zbWpUbWJIUEwtems3OEQ0SWh3ODRIVERQZjJMT0pOTDF3cVhxMk9yRURWWnE1eGxDQ3Vyd0ZSeHJfVUxsWVB6Nlp3ckdwN3Y3enVmU3lzSkpwa29DbjRfckttSkR3Y29xWXFzYXdaWmRtNTlwa0E4Vm9zb29HV3pkaklOaUlyMkViNGY4ei1xVi16TlBzNXNidnJNMFcwWFdpYV9yU3JyTE1PWXFCNFlEMHVXbllDQm9kTjI1X9IBlwJBVV95cUxPaGZHWUlUdDk0bTA0LXQ4aDU3NDZPTnVPTzBOQmZFNnk0QnVPejQ5elJXcWhpWFRidEREYnEyakxHdmRwQU9VMmE0aUhSSk93QVFqZFE4S3dPTHBrUWFFWmx1NW5BaHhQZXRTUEtMYTNONVRQN2lRTG1PMkZXU1RHN3FxVk5sQVJZUlgyLXpRYXRZVUU1R3ZzQllBNm1nZXBDZDdzalZTcDNYWEZCdDVyVTUwM0ZQc1ZqRUswT0NZMS1wVGpCV2wyTWpnNk1VUkFMRER4VFZha29TeWU5R3oyYXFGSXN6YVM2M19Pd0FINWlGeUtXSzN3U1pUZEJvQjN3dUItV0Q2bmJaWjRHNk9XSWx3Xzc0Xzg?oc=5"
+      "tag": "NDTV",
+      "title": "20 Rebel Trinamool MPs Free To Vote In Parliament Special Session: Sources - NDTV",
+      "summary": "20 Rebel Trinamool MPs Free To Vote In Parliament Special Session: Sources &nbsp;&nbsp; NDTV Rebel TMC MPs face crucial test as Delimitation Bill threatens to deepen defection battle &nbsp;&nbsp; U...",
+      "time": "5h ago",
+      "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPRS1NRTBmajdJV3hzQkd6WG9POTBVQ1JXQlptYW9MaThwUDBENDNBam4wNTdEMjlhSWl1TkZic19zU0NFWnRrTGtzMjR1TVZSckg5NWxsZzNHVmkwYTNON1AwSXlyb0tEbnFsdWJRNmJEUFBPNTBOTmVidG9hUk9CN1hHRGt1NUVFZ1JQdFV4QVp4WGtvbVgxWjg5V2M5NmdDcEM3MWlWUkVubTBzaVNoMERuVXJNR0xzQVFBbGZjMjB1dmdjdngyaENBbVE?oc=5"
     },
     {
       "cat": "STEM",
       "tag": "JANLUKAS.BLOG",
       "title": "AI made self-hosting fun again",
-      "summary": "Trending on Hacker News (889 pts, 431 comments).",
-      "time": "17h ago",
+      "summary": "Trending on Hacker News (920 pts, 445 comments).",
+      "time": "18h ago",
       "link": "https://janlukas.blog/posts/ai-self-hosting"
     },
     {
       "cat": "STEM",
       "tag": "GITHUB.COM",
       "title": "Intel One Mono font (2023)",
-      "summary": "Trending on Hacker News (550 pts, 262 comments).",
+      "summary": "Trending on Hacker News (557 pts, 265 comments).",
       "time": "1d ago",
       "link": "https://github.com/intel/intel-one-mono"
     },
@@ -20151,17 +20151,17 @@
       "cat": "STEM",
       "tag": "CONSTRUCT22.COM",
       "title": "The group chat where your AI talks behind your back",
-      "summary": "Trending on Hacker News (468 pts, 207 comments).",
-      "time": "8h ago",
+      "summary": "Trending on Hacker News (506 pts, 221 comments).",
+      "time": "9h ago",
       "link": "https://construct22.com/"
     },
     {
       "cat": "STEM",
-      "tag": "GITHUB.COM",
-      "title": "YouTube Ad Punisher – Auto-reloads YouTube pages when an ad plays",
-      "summary": "Trending on Hacker News (466 pts, 545 comments).",
-      "time": "21h ago",
-      "link": "https://github.com/antonpictures/youtube-punisher"
+      "tag": "LIA.MG",
+      "title": "Company Culture = Slack Emoji ÷ √Headcount",
+      "summary": "Trending on Hacker News (479 pts, 247 comments).",
+      "time": "19h ago",
+      "link": "https://lia.mg/posts/measuring-company-culture-with-slack-emoji/"
     }
   ]
 }
