@@ -1,7 +1,7 @@
 {
-  "name": "Markets Daily Brief",
-  "short_name": "Markets Brief",
-  "description": "Daily multi-asset market intelligence: India, U.S., Crypto, Commodities, Astro Daily, and World News.",
+  "name": "Daily Digest",
+  "short_name": "Daily Digest",
+  "description": "Daily Digest: Indian Markets, U.S. Markets, Crypto, Commodities, Astro Daily, and World News.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
