@@ -575,12 +575,12 @@
               </div>
             </div>
 
+            ${cardKey !== 'india' ? `
             <div class="rounded-2xl inner-panel overflow-hidden">
               <div class="px-4 py-2.5 border-b divider-line flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
                 <div class="flex items-center gap-2">
                   <span class="font-bold txt-primary">${d.symbol}</span>
-                  <span class="px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-600 dark:text-amber-300 text-[10px]">EMA 10 + VOL</span>
-                  <span id="card-chart-ohlc" class="txt-muted hidden sm:inline">90-Day Daily OHLC</span>
+                  <span id="card-chart-ohlc" class="txt-muted hidden sm:inline">TradingView Live Terminal</span>
                 </div>
                 <div class="flex items-center gap-1">
                   ${['1W', '1M', '3M', '1Y'].map((tf) => `<button type="button" data-tf="${tf}" class="seg-btn ${tf === activeTf ? 'active' : ''} px-2.5 py-1 rounded-md cursor-pointer">${tf}</button>`).join('')}
@@ -588,6 +588,7 @@
               </div>
               <div id="card-chart-container" class="w-full h-[380px] sm:h-[420px]"></div>
             </div>
+            ` : ''}
 
             <div class="pt-4 border-t divider-line space-y-2.5">
               <div class="text-xs font-mono uppercase tracking-wider txt-muted font-bold">Key Market Drivers</div>
@@ -620,11 +621,13 @@
         root.querySelectorAll('[data-tf]').forEach((b) => {
           b.addEventListener('click', () => { activeTf = b.getAttribute('data-tf'); renderCurrent(); });
         });
-        renderChart('card-chart-container', 'card-chart-ohlc', d.symbol, d.price, d.candles, {
-          bear: +(d.price * 0.975).toFixed(dec),
-          base: +(d.price * 1.003).toFixed(dec),
-          bull: +(d.price * 1.025).toFixed(dec)
-        }, cardKey, currentTicker, true);
+        if (cardKey !== 'india') {
+          renderChart('card-chart-container', 'card-chart-ohlc', d.symbol, d.price, d.candles, {
+            bear: +(d.price * 0.975).toFixed(dec),
+            base: +(d.price * 1.003).toFixed(dec),
+            bull: +(d.price * 1.025).toFixed(dec)
+          }, cardKey, currentTicker, true);
+        }
       } else if (cardKey === 'astro') {
         const signObj = ASTRO_SIGNS.find((s) => s.key === currentSign) || ASTRO_SIGNS[1];
         const isVedic = currentSys === 'VEDIC';
