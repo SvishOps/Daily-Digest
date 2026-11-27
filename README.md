@@ -1,30 +1,32 @@
 <div align="center">
 
-# Daily Digest
+# 📊 Daily Digest
 
-**Multi-Asset Market Terminal, Commodities, Crypto, Astro & World News**
+**Multi-Asset Market Terminal • Indian & U.S. Equities • Crypto • Commodities • Astro • World News**
 
-[![Live on GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-10b981?style=for-the-badge&logo=github)](https://svishops.github.io/daily-digest/)
-[![Daily Data Refresh](https://github.com/SvishOps/daily-digest/actions/workflows/daily-update.yml/badge.svg)](https://github.com/SvishOps/daily-digest/actions/workflows/daily-update.yml)
-[![PWA Installable](https://img.shields.io/badge/PWA-Installable-f59e0b?style=for-the-badge)](https://svishops.github.io/daily-digest/)
+[![Live Site](https://img.shields.io/badge/Live_Site-GitHub_Pages-10b981?style=for-the-badge&logo=github)](https://svishops.github.io/daily-digest/)
+[![Daily Sync](https://github.com/SvishOps/daily-digest/actions/workflows/daily-update.yml/badge.svg)](https://github.com/SvishOps/daily-digest/actions/workflows/daily-update.yml)
 
-**[Launch Daily Digest →](https://svishops.github.io/daily-digest/)**
+[Open Daily Digest](https://svishops.github.io/daily-digest/) · [Indian Markets](https://svishops.github.io/daily-digest/cards/india.html) · [U.S. Markets](https://svishops.github.io/daily-digest/cards/us.html) · [Crypto](https://svishops.github.io/daily-digest/cards/crypto.html) · [Commodities](https://svishops.github.io/daily-digest/cards/commodities.html) · [Astro](https://svishops.github.io/daily-digest/cards/astro.html) · [News](https://svishops.github.io/daily-digest/cards/news.html)
 
 </div>
 
 ---
 
-## Standalone Shareable Cards
+### Shareable Cards & Deep Links
 
-Each module has its own dedicated URL powered by [`data/live-brief.json`](data/live-brief.json), TradingView Lightweight Charts (90-day OHLC + EMA-10 + Volume), Fear & Greed gauges, Expected Volatility bands, and Key Market Drivers:
-
-| Module | Standalone Card | Deep-Link Example |
+| Card | Direct Link | Deep-Link Example |
 | :--- | :--- | :--- |
-| 🇮🇳 **Indian Markets** | [cards/india.html](https://svishops.github.io/daily-digest/cards/india.html) | [Reliance Industries](https://svishops.github.io/daily-digest/?tab=india&ticker=RELIANCE) |
-| 🇺🇸 **U.S. Markets** | [cards/us.html](https://svishops.github.io/daily-digest/cards/us.html) | [NVIDIA (NVDA)](https://svishops.github.io/daily-digest/?tab=us&ticker=NVDA) |
-| ₿ **Crypto Markets** | [cards/crypto.html](https://svishops.github.io/daily-digest/cards/crypto.html) | [Bitcoin (BTC)](https://svishops.github.io/daily-digest/?tab=crypto&ticker=BTC) |
-| 🛢️ **Commodities** | [cards/commodities.html](https://svishops.github.io/daily-digest/cards/commodities.html) | [Gold Spot (XAU)](https://svishops.github.io/daily-digest/?tab=commodities&ticker=GOLD) |
-| ♉ **Astro Daily** | [cards/astro.html](https://svishops.github.io/daily-digest/cards/astro.html) | [Taurus · Vedic](https://svishops.github.io/daily-digest/?tab=astro&sign=TAURUS&sys=VEDIC) |
-| 🌐 **World News** | [cards/news.html](https://svishops.github.io/daily-digest/cards/news.html) | [All Headlines](https://svishops.github.io/daily-digest/?tab=intel) |
+| 🇮🇳 **Indian Markets** | [Open Card](https://svishops.github.io/daily-digest/cards/india.html) | [Reliance (`RELIANCE`)](https://svishops.github.io/daily-digest/?tab=india&ticker=RELIANCE) |
+| 🇺🇸 **U.S. Markets** | [Open Card](https://svishops.github.io/daily-digest/cards/us.html) | [NVIDIA (`NVDA`)](https://svishops.github.io/daily-digest/?tab=us&ticker=NVDA) |
+| ₿ **Crypto Markets** | [Open Card](https://svishops.github.io/daily-digest/cards/crypto.html) | [Bitcoin (`BTC`)](https://svishops.github.io/daily-digest/?tab=crypto&ticker=BTC) |
+| 🛢️ **Commodities** | [Open Card](https://svishops.github.io/daily-digest/cards/commodities.html) | [Gold (`GOLD`)](https://svishops.github.io/daily-digest/?tab=commodities&ticker=GOLD) |
+| ♉ **Astro Daily** | [Open Card](https://svishops.github.io/daily-digest/cards/astro.html) | [Taurus · Vedic](https://svishops.github.io/daily-digest/?tab=astro&sign=TAURUS&sys=VEDIC) |
+| 🌐 **World News** | [Open Card](https://svishops.github.io/daily-digest/cards/news.html) | [All Headlines](https://svishops.github.io/daily-digest/?tab=intel) |
 
-> **Tip:** Append `?ticker=SYMBOL` to any standalone card URL (for example, [`cards/india.html?ticker=HDFCBANK`](https://svishops.github.io/daily-digest/cards/india.html?ticker=HDFCBANK)) to share a specific ticker directly.
+---
+
+### Live & Scheduled Updates
+
+- **Real-time on load:** USD Forex rates (`open.er-api.com`), Crypto spot prices (`CoinGecko`), and Crypto Fear & Greed (`alternative.me`).
+- **4× daily via GitHub Actions:** Indian & U.S. equities, commodities, 90-day OHLC candles, and World/India/U.S./STEM RSS headlines (`06:00`, `07:00`, `08:15`, and `19:00` IST).

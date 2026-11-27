@@ -107,9 +107,9 @@
   }
 
   function regimeInfo(pct) {
-    if (pct > 0.35) return { label: '▲ GAIN', cls: 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/35' };
-    if (pct < -0.35) return { label: '▼ LOSS', cls: 'bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-500/35' };
-    return { label: '◆ MIDDLE', cls: 'bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/35' };
+    if (pct > 0.35) return { label: '▲ BULLISH', cls: 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/35' };
+    if (pct < -0.35) return { label: '▼ BEARISH', cls: 'bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-500/35' };
+    return { label: '◆ NEUTRAL', cls: 'bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/35' };
   }
 
   function renderDialSvg(score) {
@@ -172,7 +172,7 @@
 
     const sliceMap = { '1W': 7, '1M': 22, '3M': 65, '1Y': 90 };
     const candles = Array.isArray(realCandles) && realCandles.length >= 5
-      ? realCandles.slice(-(sliceMap[activeTf] || 22))
+      ? [...realCandles].sort((a, b) => a.time.localeCompare(b.time)).slice(-(sliceMap[activeTf] || 22))
       : generateFallbackCandles(basePrice, symbol, activeTf);
 
     const bg = isLight ? '#f0e9db' : '#0c121e';
@@ -185,8 +185,8 @@
         height: container.clientHeight || 380,
         layout: { background: { type: 'solid', color: bg }, textColor: txt, fontFamily: 'JetBrains Mono, monospace', fontSize: 11 },
         grid: { vertLines: { color: grid }, horzLines: { color: grid } },
-        rightPriceScale: { borderColor: grid, scaleMargins: { top: 0.08, bottom: 0.24 } },
-        timeScale: { borderColor: grid, timeVisible: false, rightOffset: 4 },
+        rightPriceScale: { borderColor: grid, scaleMargins: { top: 0.08, bottom: 0.22 } },
+        timeScale: { borderColor: grid, timeVisible: false, fixLeftEdge: true, rightOffset: 2 },
         crosshair: { mode: 1 }
       });
 
@@ -195,16 +195,30 @@
       });
       series.setData(candles);
 
-      if (levels) {
-        if (typeof levels.bear === 'number') {
-          series.createPriceLine({ price: levels.bear, color: '#f43f5e', lineWidth: 1.5, lineStyle: 2, axisLabelVisible: true, title: 'LOSS' });
-        }
-        if (typeof levels.base === 'number') {
-          series.createPriceLine({ price: levels.base, color: '#f59e0b', lineWidth: 1.5, lineStyle: 2, axisLabelVisible: true, title: 'BASE' });
-        }
-        if (typeof levels.bull === 'number') {
-          series.createPriceLine({ price: levels.bull, color: '#10b981', lineWidth: 1.5, lineStyle: 2, axisLabelVisible: true, title: 'GAIN' });
-        }
+      const lastCandle = candles[candles.length - 1];
+      if (levels && lastCandle) {
+        const buildProjection = (targetVal) => {
+          if (typeof targetVal !== 'number') return null;
+          const pts = [{ time: lastCandle.time, value: lastCandle.close }];
+          let curDate = new Date(lastCandle.time + 'T00:00:00Z');
+          for (let step = 1; step <= 5; step += 1) {
+            curDate = new Date(curDate.getTime() + 86400000);
+            while (curDate.getUTCDay() === 0 || curDate.getUTCDay() === 6) {
+              curDate = new Date(curDate.getTime() + 86400000);
+            }
+            const t = step / 5;
+            pts.push({ time: curDate.toISOString().slice(0, 10), value: Number((lastCandle.close + (targetVal - lastCandle.close) * t).toFixed(2)) });
+          }
+          return pts;
+        };
+        const addProjLine = (targetVal, color, title) => {
+          const pts = buildProjection(targetVal);
+          if (!pts) return;
+          chart.addLineSeries({ color, lineWidth: 2, lineStyle: 2, priceLineVisible: false, lastValueVisible: true, title }).setData(pts);
+        };
+        addProjLine(levels.bull, '#10b981', 'GAIN');
+        addProjLine(levels.base, '#f59e0b', 'BASE');
+        addProjLine(levels.bear, '#f43f5e', 'LOSS');
       }
 
       if (candles.length >= 3) {
