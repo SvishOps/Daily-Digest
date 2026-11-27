@@ -7,22 +7,22 @@
 [![Live Site](https://img.shields.io/badge/Live_Site-GitHub_Pages-10b981?style=for-the-badge&logo=github)](https://svishops.github.io/daily-digest/)
 [![Daily Sync](https://github.com/SvishOps/daily-digest/actions/workflows/daily-update.yml/badge.svg)](https://github.com/SvishOps/daily-digest/actions/workflows/daily-update.yml)
 
-[Open Daily Digest](https://svishops.github.io/daily-digest/) · [Indian Markets](https://svishops.github.io/daily-digest/cards/india.html) · [U.S. Markets](https://svishops.github.io/daily-digest/cards/us.html) · [Crypto](https://svishops.github.io/daily-digest/cards/crypto.html) · [Commodities](https://svishops.github.io/daily-digest/cards/commodities.html) · [Astro](https://svishops.github.io/daily-digest/cards/astro.html) · [News](https://svishops.github.io/daily-digest/cards/news.html)
+**[Launch Daily Digest →](https://svishops.github.io/daily-digest/)**
 
 </div>
 
 ---
 
-### Shareable Cards & Deep Links
+### Standalone Shareable Cards
 
-| Card | Direct Link | Deep-Link Example |
-| :--- | :--- | :--- |
-| 🇮🇳 **Indian Markets** | [Open Card](https://svishops.github.io/daily-digest/cards/india.html) | [Reliance (`RELIANCE`)](https://svishops.github.io/daily-digest/?tab=india&ticker=RELIANCE) |
-| 🇺🇸 **U.S. Markets** | [Open Card](https://svishops.github.io/daily-digest/cards/us.html) | [NVIDIA (`NVDA`)](https://svishops.github.io/daily-digest/?tab=us&ticker=NVDA) |
-| ₿ **Crypto Markets** | [Open Card](https://svishops.github.io/daily-digest/cards/crypto.html) | [Bitcoin (`BTC`)](https://svishops.github.io/daily-digest/?tab=crypto&ticker=BTC) |
-| 🛢️ **Commodities** | [Open Card](https://svishops.github.io/daily-digest/cards/commodities.html) | [Gold (`GOLD`)](https://svishops.github.io/daily-digest/?tab=commodities&ticker=GOLD) |
-| ♉ **Astro Daily** | [Open Card](https://svishops.github.io/daily-digest/cards/astro.html) | [Taurus · Vedic](https://svishops.github.io/daily-digest/?tab=astro&sign=TAURUS&sys=VEDIC) |
-| 🌐 **World News** | [Open Card](https://svishops.github.io/daily-digest/cards/news.html) | [All Headlines](https://svishops.github.io/daily-digest/?tab=intel) |
+| Module | Direct Link |
+| :--- | :--- |
+| 🇮🇳 **Indian Markets** | [svishops.github.io/daily-digest/cards/india.html](https://svishops.github.io/daily-digest/cards/india.html) |
+| 🇺🇸 **U.S. Markets** | [svishops.github.io/daily-digest/cards/us.html](https://svishops.github.io/daily-digest/cards/us.html) |
+| ₿ **Crypto Markets** | [svishops.github.io/daily-digest/cards/crypto.html](https://svishops.github.io/daily-digest/cards/crypto.html) |
+| 🛢️ **Commodities** | [svishops.github.io/daily-digest/cards/commodities.html](https://svishops.github.io/daily-digest/cards/commodities.html) |
+| ♉ **Astro Daily** | [svishops.github.io/daily-digest/cards/astro.html](https://svishops.github.io/daily-digest/cards/astro.html) |
+| 🌐 **World News** | [svishops.github.io/daily-digest/cards/news.html](https://svishops.github.io/daily-digest/cards/news.html) |
 
 ---
 
