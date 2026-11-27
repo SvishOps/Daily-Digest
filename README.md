@@ -4,10 +4,6 @@
 
 **Multi-Asset Market Terminal, Commodities, Crypto, Astro & World News**
 
-[![Live on GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-10b981?style=for-the-badge&logo=github)](https://svishops.github.io/daily-digest/)
-[![Daily Data Refresh](https://github.com/SvishOps/daily-digest/actions/workflows/daily-update.yml/badge.svg)](https://github.com/SvishOps/daily-digest/actions/workflows/daily-update.yml)
-[![PWA Installable](https://img.shields.io/badge/PWA-Installable-f59e0b?style=for-the-badge)](https://svishops.github.io/daily-digest/)
-
 **[Launch Daily Digest →](https://svishops.github.io/daily-digest/)**
 
 </div>
