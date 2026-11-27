@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090d16" />
+  <title>Crypto Markets — Markets Daily Brief</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="manifest" href="../manifest.json" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lightweight-charts@4.2.1/dist/lightweight-charts.standalone.production.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] } } } };</script>
+  <style>
+    :root { --bg-page:#090d16; --bg-header:rgba(9,13,22,0.94); --bg-card:#111827; --bg-inner:#0c121e; --bg-pill:#080c14; --border-subtle:#1f2937; --border-hover:#374151; --text-primary:#f8fafc; --text-secondary:#cbd5e1; --text-muted:#94a3b8; --seg-active-bg:#1e293b; --seg-active-text:#fff; }
+    html.light-beige { --bg-page:#f4efe6; --bg-header:rgba(244,239,230,0.96); --bg-card:#fcf9f2; --bg-inner:#f0e9db; --bg-pill:#e7decb; --border-subtle:#d6cbb8; --border-hover:#b8aa95; --text-primary:#1c1917; --text-secondary:#3d3832; --text-muted:#696055; --seg-active-bg:#1c1917; --seg-active-text:#fcf9f2; }
+    body { background-color:var(--bg-page); color:var(--text-primary); font-family:'Inter',system-ui,sans-serif; min-height:100vh; }
+    .terminal-header { background-color:var(--bg-header); border-bottom:1px solid var(--border-subtle); }
+    .terminal-card { background-color:var(--bg-card); border:1px solid var(--border-subtle); }
+    .inner-panel { background-color:var(--bg-inner); border:1px solid var(--border-subtle); }
+    .pill-track { background-color:var(--bg-pill); border:1px solid var(--border-subtle); }
+    .divider-line { border-color:var(--border-subtle); }
+    .txt-primary { color:var(--text-primary); } .txt-secondary { color:var(--text-secondary); } .txt-muted { color:var(--text-muted); }
+    .seg-btn { color:var(--text-muted); } .seg-btn.active { background-color:var(--seg-active-bg); color:var(--seg-active-text); }
+    .ticker-chip { background-color:var(--bg-inner); border:1px solid var(--border-subtle); color:var(--text-secondary); }
+    .ticker-chip.active { background-color:var(--seg-active-bg); color:var(--seg-active-text); border-color:transparent; font-weight:700; }
+    .tabular-nums { font-variant-numeric:tabular-nums; }
+  </style>
+</head>
+<body class="antialiased pb-12">
+  <header class="sticky top-0 z-40 terminal-header backdrop-blur-md">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div id="card-header-icon" class="w-9 h-9 rounded-xl inner-panel flex items-center justify-center text-lg font-mono font-bold text-amber-500">₿</div>
+        <div>
+          <h1 id="card-header-title" class="font-bold text-base sm:text-lg txt-primary leading-none">Crypto Markets</h1>
+          <div id="live-clock" class="mt-1 text-[11px] font-mono txt-muted tabular-nums">IST</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 flex-wrap">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl inner-panel">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span class="text-xs font-mono font-bold txt-primary">1 USD =</span>
+          <span id="fx-rate-value" class="text-xs sm:text-sm font-mono font-bold text-emerald-600 dark:text-emerald-400 tabular-nums">₹92.96</span>
+          <select id="fx-target-select" class="bg-transparent text-xs font-mono font-bold txt-secondary focus:outline-none cursor-pointer border-l divider-line pl-2">
+            <option value="INR" class="text-slate-900">INR</option><option value="EUR" class="text-slate-900">EUR</option><option value="GBP" class="text-slate-900">GBP</option><option value="JPY" class="text-slate-900">JPY</option><option value="AED" class="text-slate-900">AED</option><option value="CHF" class="text-slate-900">CHF</option><option value="CAD" class="text-slate-900">CAD</option><option value="AUD" class="text-slate-900">AUD</option>
+          </select>
+        </div>
+        <button type="button" class="theme-toggle-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono font-semibold inner-panel txt-primary cursor-pointer"><span class="theme-icon text-amber-500">☀</span><span class="theme-label hidden sm:inline">Light Mode</span></button>
+        <a id="card-hub-link" href="../index.html?tab=crypto" class="px-3 py-1.5 rounded-xl text-xs font-mono font-semibold inner-panel txt-primary hover:opacity-80">All 6 Cards &rarr;</a>
+      </div>
+    </div>
+  </header>
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 pt-6">
+    <section id="card-root" class="terminal-card rounded-3xl p-5 sm:p-7"></section>
+  </main>
+  <script src="./card-app.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => window.initStandaloneCard('crypto'));</script>
+</body>
+</html>
