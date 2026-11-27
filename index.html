@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090d16" />
   <title>India Markets — Daily Intelligence</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="manifest" href="./manifest.json" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lightweight-charts@4.2.1/dist/lightweight-charts.standalone.production.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -384,7 +387,7 @@
       </div>
 
       <!-- LOSS / MIDDLE / GAIN STRIP (ABOVE THE CHART) -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono tabular-nums">
+      <div class="grid grid-cols-3 gap-2 sm:gap-3 font-mono tabular-nums">
         <div class="p-4 rounded-2xl bg-rose-500/15 border border-rose-500/35 flex items-center justify-between gap-2">
           <div>
             <div class="text-xs text-rose-700 dark:text-rose-400 font-bold uppercase">▼ Loss / Bear</div>
@@ -535,7 +538,7 @@
       </div>
 
       <!-- LOSS / MIDDLE / GAIN STRIP (ABOVE THE CHART) -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono tabular-nums">
+      <div class="grid grid-cols-3 gap-2 sm:gap-3 font-mono tabular-nums">
         <div class="p-4 rounded-2xl bg-rose-500/15 border border-rose-500/35 flex items-center justify-between gap-2">
           <div>
             <div class="text-xs text-rose-700 dark:text-rose-400 font-bold uppercase">▼ Loss / Bear</div>
@@ -624,7 +627,7 @@
           <div class="mt-1.5 flex items-center gap-2.5 flex-wrap">
             <span id="crypto-price" class="text-4xl font-mono font-bold txt-primary tabular-nums">$61,484</span>
             <span id="crypto-change" class="px-2.5 py-1 rounded-lg text-sm font-mono font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 tabular-nums">+1.63%</span>
-            <span id="crypto-regime-pill" class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/35">◆ BOUNCE</span>
+            <span id="crypto-regime-pill" class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35">▲ GAIN</span>
           </div>
           <div id="crypto-subprice" class="mt-1.5 text-xs sm:text-sm font-mono txt-muted tabular-nums">Nov Performance: -22.85%</div>
         </div>
@@ -679,7 +682,7 @@
       </div>
 
       <!-- LOSS / MIDDLE / GAIN STRIP (ABOVE THE CHART) -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono tabular-nums">
+      <div class="grid grid-cols-3 gap-2 sm:gap-3 font-mono tabular-nums">
         <div class="p-4 rounded-2xl bg-rose-500/15 border border-rose-500/35 flex items-center justify-between gap-2">
           <div>
             <div class="text-xs text-rose-700 dark:text-rose-400 font-bold uppercase">▼ Loss / Bear</div>
@@ -823,7 +826,7 @@
       </div>
 
       <!-- LOSS / MIDDLE / GAIN STRIP (ABOVE THE CHART) -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono tabular-nums">
+      <div class="grid grid-cols-3 gap-2 sm:gap-3 font-mono tabular-nums">
         <div class="p-4 rounded-2xl bg-rose-500/15 border border-rose-500/35 flex items-center justify-between gap-2">
           <div>
             <div class="text-xs text-rose-700 dark:text-rose-400 font-bold uppercase">▼ Loss / Bear</div>
@@ -1770,7 +1773,7 @@
       return candles;
     }
 
-    function renderInteractiveChart(marketKey, containerId, ohlcId, symbolLabel, basePrice, tf) {
+    function renderInteractiveChart(marketKey, containerId, ohlcId, symbolLabel, basePrice, tf, realCandles) {
       const container = document.getElementById(containerId);
       const ohlcEl = document.getElementById(ohlcId);
       if (!container) return;
@@ -1781,7 +1784,10 @@
       }
       container.innerHTML = '';
 
-      const candles = generateCandles(basePrice, symbolLabel, tf);
+      const tfSlice = { '1W': 7, '1M': 22, '3M': 65, '1Y': 90 };
+      let candles = Array.isArray(realCandles) && realCandles.length > 0
+        ? realCandles.slice(-(tfSlice[tf] || 22))
+        : generateCandles(basePrice, symbolLabel, tf);
       const bg = isLightMode ? '#f0e9db' : '#0c121e';
       const txt = isLightMode ? '#3d3832' : '#94a3b8';
       const grid = isLightMode ? 'rgba(61, 56, 50, 0.08)' : 'rgba(148, 163, 184, 0.08)';
@@ -1950,8 +1956,8 @@
         <li class="p-3.5 rounded-xl inner-panel">${c}</li>
       `).join('');
 
-      renderFearGreedDial('india-fg-dial', 56);
-      renderInteractiveChart('india', 'india-chart-container', 'india-chart-ohlc', d.symbol, d.price, activeTimeframes.india);
+      renderFearGreedDial('india-fg-dial', window.__indiaFgScore || 56);
+      renderInteractiveChart('india', 'india-chart-container', 'india-chart-ohlc', d.symbol, d.price, activeTimeframes.india, d.candles);
     }
 
     function renderUSCard(key) {
@@ -1992,8 +1998,8 @@
         <li class="p-3.5 rounded-xl inner-panel">${c}</li>
       `).join('');
 
-      renderFearGreedDial('us-fg-dial', 34);
-      renderInteractiveChart('us', 'us-chart-container', 'us-chart-ohlc', d.symbol, d.price, activeTimeframes.us);
+      renderFearGreedDial('us-fg-dial', window.__usFgScore || 34);
+      renderInteractiveChart('us', 'us-chart-container', 'us-chart-ohlc', d.symbol, d.price, activeTimeframes.us, d.candles);
     }
 
     function formatUsd(val, decimals) {
@@ -2040,7 +2046,7 @@
       `).join('');
 
       renderFearGreedDial('crypto-fg-dial', window.__cryptoFgScore || 12);
-      renderInteractiveChart('crypto', 'crypto-chart-container', 'crypto-chart-ohlc', d.symbol, d.usdPrice, activeTimeframes.crypto);
+      renderInteractiveChart('crypto', 'crypto-chart-container', 'crypto-chart-ohlc', d.symbol, d.usdPrice, activeTimeframes.crypto, d.candles);
     }
 
     function renderCommoditiesCard(key) {
@@ -2091,7 +2097,7 @@
       `).join('');
 
       renderFearGreedDial('comm-fg-dial', d.fgScore);
-      renderInteractiveChart('commodities', 'comm-chart-container', 'comm-chart-ohlc', d.symbol, d.price, activeTimeframes.commodities);
+      renderInteractiveChart('commodities', 'comm-chart-container', 'comm-chart-ohlc', d.symbol, d.price, activeTimeframes.commodities, d.candles);
     }
 
     function renderAstroCard() {
@@ -2161,6 +2167,119 @@
      * 7. LIVE PUBLIC CRYPTO & FEAR/GREED FETCHERS
      * =========================================================================
      */
+    async function tryLoadLiveBrief() {
+      try {
+        const res = await fetch('./data/live-brief.json', { cache: 'no-store' });
+        if (!res.ok) return;
+        const brief = await res.json();
+
+        const fmtInr = (n) => `₹${Number(n).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        const fmtUsdVal = (n, d = 2) => `$${Number(n).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d })}`;
+
+        if (brief.forex && brief.forex.rates) {
+          Object.keys(USD_FX).forEach((code) => {
+            if (typeof brief.forex.rates[code] === 'number') {
+              USD_FX[code].value = brief.forex.rates[code];
+            }
+          });
+          renderFxBadge();
+        }
+
+        if (brief.india) {
+          const nifty = brief.india.NIFTY50;
+          const sensex = brief.india.SENSEX;
+          const vix = brief.india.INDIAVIX;
+          Object.keys(INDIA_ASSETS).forEach((k) => {
+            const q = brief.india[k];
+            if (!q || typeof q.price !== 'number') return;
+            const d = INDIA_ASSETS[k];
+            d.price = q.price;
+            const sign = q.change >= 0 ? '+' : '-';
+            d.isPositive = q.change >= 0;
+            d.regimeType = q.changePct > 0.35 ? 'BULLISH' : q.changePct < -0.35 ? 'BEARISH' : 'NEUTRAL';
+            d.changeStr = `${sign}₹${Math.abs(q.change).toFixed(2)} (${q.change >= 0 ? '+' : ''}${q.changePct.toFixed(2)}%)`;
+            if (q.dayLow && q.dayHigh) d.dayRange = `${fmtInr(q.dayLow)} – ${fmtInr(q.dayHigh)}`;
+            if (q.w52Low && q.w52High) d.w52Range = `${fmtInr(q.w52Low)} – ${fmtInr(q.w52High)}`;
+            if (k === 'NIFTYBEES' && nifty?.price) d.indexReadout = `Nifty 50: <strong class="txt-primary">${nifty.price.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</strong>`;
+            if (k === 'SENSEXIETF' && sensex?.price) d.indexReadout = `Sensex: <strong class="txt-primary">${sensex.price.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</strong>`;
+            if (vix?.price && ['NIFTYBEES', 'SENSEXIETF', 'BANKBEES'].includes(k)) d.vixBadge = `INDIA VIX ${vix.price.toFixed(2)}`;
+            d.bear = fmtInr(q.price * 0.985);
+            d.base = fmtInr(q.price * 1.003);
+            d.bull = fmtInr(q.price * 1.02);
+            if (Array.isArray(q.candles) && q.candles.length) d.candles = q.candles;
+          });
+        }
+
+        if (brief.us) {
+          const sp500 = brief.us.SP500;
+          const vix = brief.us.VIX;
+          Object.keys(US_ASSETS).forEach((k) => {
+            const q = brief.us[k];
+            if (!q || typeof q.price !== 'number') return;
+            const d = US_ASSETS[k];
+            d.price = q.price;
+            const sign = q.change >= 0 ? '+' : '-';
+            d.isPositive = q.change >= 0;
+            d.changeStr = `${sign}$${Math.abs(q.change).toFixed(2)} (${q.change >= 0 ? '+' : ''}${q.changePct.toFixed(2)}%)`;
+            if (q.dayLow && q.dayHigh) d.range = `${fmtUsdVal(q.dayLow)} – ${fmtUsdVal(q.dayHigh)}`;
+            if (k === 'SPY' && sp500?.price) d.indexReadout = `S&amp;P 500: <strong class="txt-primary">${sp500.price.toLocaleString('en-US', { maximumFractionDigits: 2 })}</strong>`;
+            if (vix?.price && ['SPY', 'QQQ', 'DIA', 'IWM'].includes(k)) d.vixBadge = `CBOE VIX ${vix.price.toFixed(2)}`;
+            d.bear = fmtUsdVal(q.price * 0.982);
+            d.base = fmtUsdVal(q.price * 1.004);
+            d.bull = fmtUsdVal(q.price * 1.022);
+            if (Array.isArray(q.candles) && q.candles.length) d.candles = q.candles;
+          });
+        }
+
+        if (brief.crypto) {
+          if (brief.crypto.assets) {
+            Object.keys(CRYPTO_ASSETS).forEach((k) => {
+              const q = brief.crypto.assets[k];
+              if (!q || typeof q.price !== 'number') return;
+              const d = CRYPTO_ASSETS[k];
+              d.usdPrice = q.price;
+              if (typeof q.changePct === 'number') d.changePct = q.changePct;
+              d.bear = q.price * 0.94;
+              d.base = q.price * 1.01;
+              d.bull = q.price * 1.06;
+              if (Array.isArray(q.candles) && q.candles.length) d.candles = q.candles;
+            });
+          }
+          if (brief.crypto.fearGreed && typeof brief.crypto.fearGreed.value === 'number') {
+            window.__cryptoFgScore = brief.crypto.fearGreed.value;
+            const lbl = document.getElementById('crypto-fg-label');
+            if (lbl) lbl.textContent = `${brief.crypto.fearGreed.classification} (${brief.crypto.fearGreed.value}/100)`;
+          }
+        }
+
+        if (brief.commodities) {
+          Object.keys(COMMODITIES_ASSETS).forEach((k) => {
+            const q = brief.commodities[k];
+            if (!q || typeof q.price !== 'number') return;
+            const d = COMMODITIES_ASSETS[k];
+            d.price = q.price;
+            const dec = d.decimals || 2;
+            const sign = q.change >= 0 ? '+' : '-';
+            d.isPositive = q.change >= 0;
+            d.regimeType = q.changePct > 0.35 ? 'BULLISH' : q.changePct < -0.35 ? 'BEARISH' : 'NEUTRAL';
+            d.changeStr = `${sign}$${Math.abs(q.change).toFixed(dec)} (${q.change >= 0 ? '+' : ''}${q.changePct.toFixed(2)}%)`;
+            if (q.dayLow && q.dayHigh) d.dayRange = `${fmtUsdVal(q.dayLow, dec)} – ${fmtUsdVal(q.dayHigh, dec)}`;
+            if (q.w52Low && q.w52High) d.w52Range = `${fmtUsdVal(q.w52Low, dec)} – ${fmtUsdVal(q.w52High, dec)}`;
+            d.bear = fmtUsdVal(q.price * 0.975, dec);
+            d.base = fmtUsdVal(q.price * 1.003, dec);
+            d.bull = fmtUsdVal(q.price * 1.028, dec);
+            if (Array.isArray(q.candles) && q.candles.length) d.candles = q.candles;
+          });
+        }
+
+        if (Array.isArray(brief.news) && brief.news.length > 0) {
+          NEWS_ITEMS.splice(0, NEWS_ITEMS.length, ...brief.news);
+        }
+
+        setActiveTab(activeTab);
+      } catch (e) { /* retain built-in fallback */ }
+    }
+
     async function tryFetchLiveCrypto() {
       try {
         const ids = Object.values(CRYPTO_ASSETS).map((c) => c.id).filter(Boolean).join(',');
@@ -2421,11 +2540,19 @@
         });
       });
 
-      // Deep-link query params (?tab=crypto&sign=TAURUS&sys=VEDIC)
+      // Deep-link query params (?tab=crypto&ticker=BTC&sign=TAURUS&sys=VEDIC)
       const params = new URLSearchParams(window.location.search);
       const qTab = params.get('tab');
+      const qTicker = params.get('ticker');
       const qSign = params.get('sign');
       const qSys = params.get('sys');
+      if (qTicker) {
+        const tk = qTicker.toUpperCase();
+        if (INDIA_ASSETS[tk]) activeTickers.india = tk;
+        if (US_ASSETS[tk]) activeTickers.us = tk;
+        if (CRYPTO_ASSETS[tk]) activeTickers.crypto = tk;
+        if (COMMODITIES_ASSETS[tk]) activeTickers.commodities = tk;
+      }
       if (qSign && ASTRO_SIGNS.some((s) => s.key === qSign.toUpperCase())) {
         activeAstroSign = qSign.toUpperCase();
         if (signSelect) signSelect.value = activeAstroSign;
@@ -2439,6 +2566,7 @@
       updateClock();
       setInterval(updateClock, 30000);
       setActiveTab(qTab || 'india');
+      tryLoadLiveBrief();
       tryFetchLiveFx();
       tryFetchLiveCrypto();
     });
