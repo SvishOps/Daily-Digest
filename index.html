@@ -210,7 +210,7 @@
       <!-- Dynamic Respective Section Title -->
       <div class="flex items-center justify-between gap-3">
         <div class="flex items-center gap-3">
-          <div id="header-active-icon" class="w-10 h-10 rounded-xl inner-panel flex items-center justify-center shrink-0"></div>
+          <div id="header-active-icon" class="w-10 h-10 rounded-xl inner-panel flex items-center justify-center shrink-0"><svg class="w-6 h-4 rounded-[2px] border border-black/15" viewBox="0 0 24 16"><rect width="24" height="16" fill="#B22234"/><rect width="24" height="2.28" y="2.28" fill="#FFF"/><rect width="24" height="2.28" y="6.85" fill="#FFF"/><rect width="24" height="2.28" y="11.42" fill="#FFF"/><rect width="10.5" height="9.14" fill="#3C3B6E"/></svg></div>
           <div>
             <h1 id="header-active-title" class="font-bold text-lg sm:text-xl tracking-tight txt-primary leading-none">U.S. Markets</h1>
             <div class="mt-1 flex items-center gap-2 text-xs font-mono txt-muted tabular-nums">
@@ -362,7 +362,7 @@
             <span class="px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30 font-bold text-[10px]">SENTIMENT</span>
           </div>
           <div id="india-fg-dial" class="w-full max-w-[165px] my-0.5"></div>
-          <div class="text-xs font-mono font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wide">Neutral / Greed (56/100)</div>
+          <div id="india-fg-label" class="text-xs font-mono font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wide">Neutral / Greed (56/100)</div>
         </div>
 
         <div class="lg:col-span-4 p-4 rounded-xl bg-amber-500/10 border border-amber-500/35 flex flex-col justify-between gap-2 font-mono tabular-nums">
@@ -484,7 +484,7 @@
             <span class="px-1.5 py-0.5 rounded bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/30 font-bold text-[10px]">SENTIMENT</span>
           </div>
           <div id="us-fg-dial" class="w-full max-w-[165px] my-0.5"></div>
-          <div class="text-xs font-mono font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wide">Fear (34/100)</div>
+          <div id="us-fg-label" class="text-xs font-mono font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wide">Fear (34/100)</div>
         </div>
 
         <div class="lg:col-span-4 p-4 rounded-xl bg-rose-500/10 border border-rose-500/35 flex flex-col justify-between gap-2 font-mono tabular-nums">
@@ -1555,75 +1555,96 @@
       }
     }
 
+    const NAKSHATRAS = [
+      'Ashwini', 'Bharani', 'Krittika', 'Rohini', 'Mrigashira', 'Ardra', 'Punarvasu', 'Pushya', 'Ashlesha',
+      'Magha', 'Purva Phalguni', 'Uttara Phalguni', 'Hasta', 'Chitra', 'Swati', 'Vishakha', 'Anuradha', 'Jyeshtha',
+      'Mula', 'Purva Ashadha', 'Uttara Ashadha', 'Shravana', 'Dhanishta', 'Shatabhisha', 'Purva Bhadrapada', 'Uttara Bhadrapada', 'Revati'
+    ];
+    const TITHIS = [
+      'Pratipada', 'Dwitiya', 'Tritiya', 'Chaturthi', 'Panchami', 'Shashthi', 'Saptami', 'Ashtami', 'Navami', 'Dashami',
+      'Ekadashi', 'Dwadashi', 'Trayodashi', 'Chaturdashi', 'Purnima',
+      'Pratipada', 'Dwitiya', 'Tritiya', 'Chaturthi', 'Panchami', 'Shashthi', 'Saptami', 'Ashtami', 'Navami', 'Dashami',
+      'Ekadashi', 'Dwadashi', 'Trayodashi', 'Chaturdashi', 'Amavasya'
+    ];
+    const VARA_LORDS = ['Surya (Sun)', 'Chandra (Moon)', 'Mangala (Mars)', 'Budha (Mercury)', 'Guru (Jupiter)', 'Shukra (Venus)', 'Shani (Saturn)'];
+
+    function computeDailyAstroMeta(isToday) {
+      const dt = new Date(Date.now() + (isToday ? 0 : 86400000));
+      const istParts = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Kolkata', year: 'numeric', month: '2-digit', day: '2-digit' }).format(dt);
+      const dayLabel = getAstroDateLabel(isToday);
+      const daysJ2k = (dt.getTime() - Date.UTC(2000, 0, 1, 12, 0, 0)) / 86400000;
+      const siderealMoonDeg = ((218.316 + 13.176396 * daysJ2k - 23.85) % 360 + 360) % 360;
+      const nakIdx = Math.floor(siderealMoonDeg / (360 / 27)) % 27;
+      const pada = (Math.floor((siderealMoonDeg % (360 / 27)) / (360 / 108)) % 4) + 1;
+      const synodicDays = (dt.getTime() - Date.UTC(2000, 0, 6, 18, 14, 0)) / 86400000;
+      const lunarPhase = ((synodicDays % 29.53058867) + 29.53058867) % 29.53058867;
+      const tithiIdx = Math.floor((lunarPhase / 29.53058867) * 30) % 30;
+      const paksha = tithiIdx < 15 ? 'Shukla' : 'Krishna';
+      const vara = VARA_LORDS[dt.getDay()];
+      return { iso: istParts, dayLabel, nakshatra: NAKSHATRAS[nakIdx], pada, tithi: `${paksha} ${TITHIS[tithiIdx]}`, vara };
+    }
+
     function getAstroContent(signKey, sys, day) {
       const sign = ASTRO_SIGNS.find((s) => s.key === signKey) || ASTRO_SIGNS[1];
-      const isTaurusVedic = signKey === 'TAURUS' && sys === 'VEDIC';
       const isToday = day === 'TODAY';
-      const dayLabel = getAstroDateLabel(isToday);
-
-      if (isTaurusVedic && isToday) {
-        return {
-          kicker: 'VEDIC MOON (ROHINI PADA 1) • VAKYA PANCHANG',
-          title: 'Vrishabha (Taurus) Rashi',
-          luckyNum: 8,
-          luckyColor: 'Light Cream',
-          swatch: '#f5f0dc',
-          telemetry: [
-            { label: 'Janma Nakshatra', value: 'Rohini (Pada 1)' },
-            { label: 'Janma Lagna', value: 'Dhanus (Sagittarius)' },
-            { label: 'Transit Focus', value: 'Finance & Tactful Speech' }
-          ],
-          blocks: [
-            { title: 'Overall Outlook', tag: 'STEADY', color: 'amber', body: 'Financial complexities occupy your early focus, making rushed decisions unwise. Leaning on lived experience and calm interpersonal diplomacy brings steady clarity by afternoon.' },
-            { title: 'Career & Work', tag: 'FAVORABLE', color: 'emerald', body: 'Strong window to launch structured initiatives or upgrade productivity tools/hardware to hit deadlines. Keep schedules tight and avoid unnecessary detours.' },
-            { title: 'Money & Markets', tag: 'CAUTIOUS', color: 'rose', body: 'Over-cautiousness could make you hesitate on solid setups, while complex accounting needs patience. Verify risk/reward carefully before committing fresh capital.' },
-            { title: 'Relationships & Health', tag: 'BALANCED', color: 'emerald', body: 'Stay warm and attentive to family or partner perspectives to avoid minor friction. High physical efficiency lets you clear tough tasks—conserve energy by skipping unproductive debates.' }
-          ],
-          footer: `Personalized for Vrishabha Rashi • Rohini Pada 1 • Vakya Panchangam (${dayLabel}).`
-        };
+      const meta = computeDailyAstroMeta(isToday);
+      const seedStr = `${meta.iso}:${signKey}:${sys}`;
+      let h = 2166136261;
+      for (let i = 0; i < seedStr.length; i += 1) {
+        h ^= seedStr.charCodeAt(i);
+        h = Math.imul(h, 16777619);
       }
+      const pick = (arr, offset = 0) => arr[Math.abs(h + offset * 7919) % arr.length];
 
-      if (isTaurusVedic && !isToday) {
-        return {
-          kicker: 'VEDIC MOON (ROHINI PADA 1) • TOMORROW PREVIEW',
-          title: 'Vrishabha (Taurus) Rashi',
-          luckyNum: 6,
-          luckyColor: 'Pearl Cream',
-          swatch: '#f3ead3',
-          telemetry: [
-            { label: 'Janma Nakshatra', value: 'Rohini (Pada 1)' },
-            { label: 'Day Ruler', value: 'Shani (Saturday)' },
-            { label: 'Transit Focus', value: 'Rest & Long-Term Strategy' }
-          ],
-          blocks: [
-            { title: 'Overall Outlook', tag: 'CONSTRUCTIVE', color: 'emerald', body: 'Saturday brings grounded Saturnian clarity—ideal for organizing personal projects, decluttering priorities, and planning next week’s financial roadmap.' },
-            { title: 'Career & Projects', tag: 'PRODUCTIVE', color: 'emerald', body: 'Deep focus favors technical building, coding, or independent research. Avoid overcommitting to last-minute social errands.' },
-            { title: 'Money & Savings', tag: 'STABLE', color: 'amber', body: 'Good day to audit recurring expenses and review long-term allocations rather than chasing impulsive weekend purchases.' },
-            { title: 'Relationships & Health', tag: 'HARMONIOUS', color: 'emerald', body: 'Warm family conversations restore mental balance. Prioritize hydration, light stretching, and an earlier sleep window.' }
-          ],
-          footer: `Tomorrow Preview for Vrishabha Rashi • Rohini Pada 1 • Vakya Panchangam (${dayLabel}).`
-        };
-      }
+      const overallPool = [
+        { tag: 'STEADY FOCUS', color: 'emerald', body: `Under ${meta.nakshatra} (Pada ${meta.pada}) and ${meta.vara} rulership, methodical execution outpaces rushed action. Lock in your top priority early.` },
+        { tag: 'CONSTRUCTIVE', color: 'emerald', body: `${meta.tithi} brings grounded clarity for ${sign.western} placements. Simplify your schedule and let preparation guide every commitment.` },
+        { tag: 'MEASURED', color: 'amber', body: `Pacing matters today—avoid reacting to short-term noise and lean on proven routines through midday.` },
+        { tag: 'MOMENTUM', color: 'emerald', body: `Strong alignment for ${sign.element} energy today. Clear communication and decisive follow-through open productive doors.` }
+      ];
+      const careerPool = [
+        { tag: 'HIGH CLARITY', color: 'emerald', body: 'Ideal window for deep analytical work, technical problem-solving, and clearing pending deliverables cleanly.' },
+        { tag: 'PRODUCTIVE', color: 'emerald', body: 'Structured planning and tool/workflow upgrades yield outsized returns. Keep meetings concise and outcome-driven.' },
+        { tag: 'STEADY', color: 'amber', body: 'Focus on quality control and finishing existing tasks before taking on new obligations.' }
+      ];
+      const financePool = [
+        { tag: 'DISCIPLINED', color: 'amber', body: 'Favor pre-planned allocations and strict risk limits rather than chasing intraday swings.' },
+        { tag: 'CAUTIOUS', color: 'rose', body: 'Double-check numbers, contracts, and position sizing before committing fresh capital today.' },
+        { tag: 'BALANCED', color: 'emerald', body: 'Good day to audit recurring expenses, rebalance long-term holdings, and protect liquidity.' }
+      ];
+      const healthPool = [
+        { tag: 'GROUNDED', color: 'emerald', body: 'Prioritize hydration, steady posture breaks, and a calm screen-free wind-down before sleep.' },
+        { tag: 'HARMONIOUS', color: 'emerald', body: 'Patience and active listening strengthen close relationships; light evening movement restores energy.' },
+        { tag: 'RESTORATIVE', color: 'amber', body: 'Conserve mental bandwidth by skipping unproductive debates and keeping meals light and regular.' }
+      ];
 
-      const sysLabel = sys === 'VEDIC' ? 'VEDIC MOON (CHANDRA RASHI)' : 'WESTERN SUN SIGN';
+      const palette = [
+        { name: 'Light Cream', hex: '#f5f0dc' }, { name: 'Emerald Green', hex: '#10b981' },
+        { name: 'Warm Gold', hex: '#f59e0b' }, { name: 'Sky Blue', hex: '#38bdf8' },
+        { name: 'Coral Red', hex: '#ef4444' }, { name: 'Pearl White', hex: '#f1f5f9' }
+      ];
+      const colObj = pick(palette, 5);
+      const luckyNum = ((Math.abs(h) + sign.num) % 9) + 1;
+      const sysLabel = sys === 'VEDIC' ? `VEDIC MOON • ${meta.nakshatra.toUpperCase()} (PADA ${meta.pada})` : `WESTERN SUN • ${sign.element.toUpperCase()} ELEMENT`;
+
       return {
-        kicker: `${sysLabel} • ${sign.element.toUpperCase()} ELEMENT`,
+        kicker: `${sysLabel} • ${meta.dayLabel.toUpperCase()}`,
         title: sys === 'VEDIC' ? `${sign.vedic} Rashi` : `${sign.western} (Sun Sign)`,
-        luckyNum: isToday ? sign.num : ((sign.num % 9) + 1),
-        luckyColor: sign.color,
-        swatch: sign.hex,
+        luckyNum,
+        luckyColor: colObj.name,
+        swatch: colObj.hex,
         telemetry: [
-          { label: 'System', value: sys === 'VEDIC' ? 'Sidereal Vedic Moon' : 'Tropical Western Sun' },
-          { label: 'Planetary Ruler', value: sign.ruler },
-          { label: 'Elemental Tone', value: `${sign.element} • ${isToday ? 'Active' : 'Reflective'}` }
+          { label: sys === 'VEDIC' ? 'Nakshatra & Pada' : 'Day Ruler', value: sys === 'VEDIC' ? `${meta.nakshatra} (Pada ${meta.pada})` : meta.vara },
+          { label: 'Panchang Tithi', value: meta.tithi },
+          { label: 'Planetary Ruler', value: sign.ruler }
         ],
         blocks: [
-          { title: 'Overall Outlook', tag: isToday ? 'FOCUSED' : 'CALM', color: 'emerald', body: isToday ? `Practical momentum favors ${sign.western} placements today. Stay grounded in facts, pace your energy, and let preparation speak louder than urgency.` : `A slower weekend cadence helps ${sign.western} recharge, review weekly wins, and map out clean next-week priorities.` },
-          { title: 'Career & Ambition', tag: 'STEADY', color: 'amber', body: isToday ? 'Methodical execution outperforms improvisation. Wrap up pending deliverables before taking on fresh commitments.' : 'Ideal window for skill-building, creative planning, and quiet strategic thinking away from weekday noise.' },
-          { title: 'Finance & Risk', tag: 'DISCIPLINED', color: 'amber', body: isToday ? 'Keep position sizing conservative and avoid emotional decisions around volatile headlines.' : 'Review budgets, subscriptions, and long-term savings milestones with a clear head.' },
-          { title: 'Relationships & Well-Being', tag: 'WARM', color: 'emerald', body: isToday ? 'Clear, patient communication prevents small misunderstandings. Step away from screens briefly to reset focus.' : 'Quality time with close friends or family brings genuine renewal; prioritize restorative rest.' }
+          { title: 'Overall Outlook', ...pick(overallPool, 1) },
+          { title: 'Career & Work', ...pick(careerPool, 2) },
+          { title: 'Finance & Markets', ...pick(financePool, 3) },
+          { title: 'Relationships & Health', ...pick(healthPool, 4) }
         ],
-        footer: `${sys === 'VEDIC' ? 'Vedic Sidereal' : 'Western Tropical'} daily outlook for ${sign.western} (${dayLabel}).`
+        footer: `${isToday ? 'Daily' : 'Tomorrow'} ${sys === 'VEDIC' ? 'Vedic' : 'Western'} Brief • ${meta.tithi} • ${meta.nakshatra} (${meta.dayLabel}).`
       };
     }
 
@@ -1685,9 +1706,9 @@
             <line x1="0" y1="0" x2="0" y2="-66" stroke="${scoreColor}" stroke-width="3.5" stroke-linecap="round" />
             <circle cx="0" cy="0" r="6" fill="${scoreColor}" />
           </g>
-          <text x="100" y="84" text-anchor="middle" fill="${scoreColor}" font-family="JetBrains Mono, monospace" font-weight="700" font-size="22">${clamped}</text>
-          <text x="18" y="114" text-anchor="start" fill="currentColor" fill-opacity="0.55" font-family="JetBrains Mono, monospace" font-size="9">FEAR</text>
-          <text x="182" y="114" text-anchor="end" fill="currentColor" fill-opacity="0.55" font-family="JetBrains Mono, monospace" font-size="9">GREED</text>
+          <text x="100" y="84" text-anchor="middle" fill="${scoreColor}" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="22">${clamped}</text>
+          <text x="18" y="114" text-anchor="start" fill="currentColor" fill-opacity="0.55" font-family="IBM Plex Mono, monospace" font-size="9">FEAR</text>
+          <text x="182" y="114" text-anchor="end" fill="currentColor" fill-opacity="0.55" font-family="IBM Plex Mono, monospace" font-size="9">GREED</text>
         </svg>
       `;
     }
@@ -2396,6 +2417,10 @@
             d.bear = fmtInr(q.price * 0.985);
             d.base = fmtInr(q.price * 1.003);
             d.bull = fmtInr(q.price * 1.02);
+            if (q.marketTime) {
+              const dtStr = new Date(q.marketTime).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', timeZone: 'Asia/Kolkata' });
+              d.subprice = `${dtStr} Close${q.volume ? ` • Vol: ${(q.volume / 1e6).toFixed(2)}M` : ''}`;
+            }
             if (Array.isArray(q.candles) && q.candles.length) d.candles = q.candles;
           });
         }
@@ -2417,6 +2442,10 @@
             d.bear = fmtUsdVal(q.price * 0.982);
             d.base = fmtUsdVal(q.price * 1.004);
             d.bull = fmtUsdVal(q.price * 1.022);
+            if (q.marketTime) {
+              const dtStr = new Date(q.marketTime).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', timeZone: 'Asia/Kolkata' });
+              d.subprice = `${dtStr} Close${q.volume ? ` • Vol: ${(q.volume / 1e6).toFixed(2)}M` : ''}`;
+            }
             if (Array.isArray(q.candles) && q.candles.length) d.candles = q.candles;
           });
         }
@@ -2432,7 +2461,11 @@
               d.bear = q.price * 0.94;
               d.base = q.price * 1.01;
               d.bull = q.price * 1.06;
-              if (Array.isArray(q.candles) && q.candles.length) d.candles = q.candles;
+              if (q.marketTime) {
+              const dtStr = new Date(q.marketTime).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', timeZone: 'Asia/Kolkata' });
+              d.subprice = `${dtStr} Close${q.volume ? ` • Vol: ${(q.volume / 1e6).toFixed(2)}M` : ''}`;
+            }
+            if (Array.isArray(q.candles) && q.candles.length) d.candles = q.candles;
             });
           }
           if (brief.crypto.fearGreed && typeof brief.crypto.fearGreed.value === 'number') {
@@ -2458,6 +2491,10 @@
             d.bear = fmtUsdVal(q.price * 0.975, dec);
             d.base = fmtUsdVal(q.price * 1.003, dec);
             d.bull = fmtUsdVal(q.price * 1.028, dec);
+            if (q.marketTime) {
+              const dtStr = new Date(q.marketTime).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', timeZone: 'Asia/Kolkata' });
+              d.subprice = `${dtStr} Close${q.volume ? ` • Vol: ${(q.volume / 1e6).toFixed(2)}M` : ''}`;
+            }
             if (Array.isArray(q.candles) && q.candles.length) d.candles = q.candles;
           });
         }

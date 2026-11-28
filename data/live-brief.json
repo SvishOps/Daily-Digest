@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-28T05:48:57.804Z",
+  "generatedAt": "2026-11-28T06:09:34.701Z",
   "india": {
     "NIFTYBEES": {
       "symbol": "NIFTYBEES.NS",
@@ -15160,10 +15160,10 @@
       "BTC": {
         "id": "bitcoin",
         "symbol": "BTC-USD",
-        "price": 59712,
-        "changePct": -3.23,
-        "marketCap": 1201288898728.7993,
-        "volume24h": 26364493342.764275,
+        "price": 59683,
+        "changePct": -3.26,
+        "marketCap": 1200560489560.3323,
+        "volume24h": 26244534257.548218,
         "candles": [
           {
             "time": "2026-08-30",
@@ -15792,20 +15792,20 @@
             "time": "2026-11-28",
             "open": 59866.07,
             "high": 60164.19,
-            "low": 59704.25,
-            "close": 59676.65
+            "low": 59666.09,
+            "close": 59633.44
           }
         ],
-        "dayLow": 59704.25,
+        "dayLow": 59666.09,
         "dayHigh": 60164.19
       },
       "ETH": {
         "id": "ethereum",
         "symbol": "ETH-USD",
-        "price": 1653.09,
-        "changePct": -4.99,
-        "marketCap": 202394476513.84674,
-        "volume24h": 9713997985.644598,
+        "price": 1654.13,
+        "changePct": -4.83,
+        "marketCap": 202236294022.76956,
+        "volume24h": 9781239850.549631,
         "candles": [
           {
             "time": "2026-08-30",
@@ -16434,20 +16434,20 @@
             "time": "2026-11-28",
             "open": 1661.04,
             "high": 1669.16,
-            "low": 1653.62,
-            "close": 1651.07
+            "low": 1652.51,
+            "close": 1652.88
           }
         ],
-        "dayLow": 1653.62,
+        "dayLow": 1652.51,
         "dayHigh": 1669.16
       },
       "SOL": {
         "id": "solana",
         "symbol": "SOL-USD",
-        "price": 71.19,
-        "changePct": -2.61,
-        "marketCap": 42165512276.137,
-        "volume24h": 2370372505.2983,
+        "price": 71.24,
+        "changePct": -2.4,
+        "marketCap": 42199149471.285515,
+        "volume24h": 2381188157.19156,
         "candles": [
           {
             "time": "2026-08-30",
@@ -17076,20 +17076,20 @@
             "time": "2026-11-28",
             "open": 71.58,
             "high": 72.17,
-            "low": 71.2,
-            "close": 71.09
+            "low": 71.17,
+            "close": 71.14
           }
         ],
-        "dayLow": 71.2,
+        "dayLow": 71.17,
         "dayHigh": 72.17
       },
       "BNB": {
         "id": "binancecoin",
         "symbol": "BNB-USD",
         "price": 551.35,
-        "changePct": -2.58,
-        "marketCap": 72487528455.22107,
-        "volume24h": 492457262.79057974,
+        "changePct": -2.65,
+        "marketCap": 72504408509.06696,
+        "volume24h": 490655178.0981599,
         "candles": [
           {
             "time": "2026-08-30",
@@ -17718,20 +17718,20 @@
             "time": "2026-11-28",
             "open": 554.19,
             "high": 556.21,
-            "low": 551.45,
-            "close": 550.6
+            "low": 551.16,
+            "close": 550.94
           }
         ],
-        "dayLow": 551.45,
+        "dayLow": 551.16,
         "dayHigh": 556.21
       },
       "XRP": {
         "id": "ripple",
         "symbol": "XRP-USD",
-        "price": 0.9441,
-        "changePct": -2.48,
-        "marketCap": 59993006047.93764,
-        "volume24h": 1687812853.2346525,
+        "price": 0.9457,
+        "changePct": -2.32,
+        "marketCap": 60065655844.25022,
+        "volume24h": 1602413766.7387116,
         "candles": [
           {
             "time": "2026-08-30",
@@ -18360,20 +18360,20 @@
             "time": "2026-11-28",
             "open": 0.948,
             "high": 0.954,
-            "low": 0.9439,
-            "close": 0.9437
+            "low": 0.9443,
+            "close": 0.9443
           }
         ],
-        "dayLow": 0.9439,
+        "dayLow": 0.9443,
         "dayHigh": 0.954
       },
       "DOGE": {
         "id": "dogecoin",
         "symbol": "DOGE-USD",
-        "price": 0.0567,
-        "changePct": -2.12,
-        "marketCap": 8915697835.599268,
-        "volume24h": 389444492.00786835,
+        "price": 0.0568,
+        "changePct": -2.1,
+        "marketCap": 8914635624.41279,
+        "volume24h": 389939952.9298736,
         "candles": [
           {
             "time": "2026-08-30",
@@ -19012,10 +19012,10 @@
       "ADA": {
         "id": "cardano",
         "symbol": "ADA-USD",
-        "price": 0.1458,
-        "changePct": -4.35,
-        "marketCap": 5478697453.694961,
-        "volume24h": 191813935.79912817,
+        "price": 0.1456,
+        "changePct": -4.81,
+        "marketCap": 5475126016.063203,
+        "volume24h": 203443783.96888658,
         "candles": [
           {
             "time": "2026-08-30",
@@ -19644,20 +19644,20 @@
             "time": "2026-11-28",
             "open": 0.1483,
             "high": 0.1488,
-            "low": 0.1459,
-            "close": 0.1456
+            "low": 0.1456,
+            "close": 0.1454
           }
         ],
-        "dayLow": 0.1459,
+        "dayLow": 0.1456,
         "dayHigh": 0.1488
       },
       "LINK": {
         "id": "chainlink",
         "symbol": "LINK-USD",
-        "price": 9.15,
-        "changePct": -5.16,
-        "marketCap": 7017833174.440698,
-        "volume24h": 238379584.06394622,
+        "price": 9.14,
+        "changePct": -5.54,
+        "marketCap": 7011015391.716342,
+        "volume24h": 237684568.0652933,
         "candles": [
           {
             "time": "2026-08-30",
@@ -20287,7 +20287,7 @@
             "open": 9.36,
             "high": 9.4,
             "low": 9.15,
-            "close": 9.14
+            "close": 9.13
           }
         ],
         "dayLow": 9.15,
@@ -20318,18 +20318,26 @@
     {
       "cat": "WORLD",
       "tag": "BBC WORLD",
-      "title": "Spanish PM and rivals rally supporters in final pitch for votes",
-      "summary": "Prime Minister Pedro Sánchez wants to defy the polls, and his main rivals accuse him of not telling the truth and of \"betrayal\".",
-      "time": "8h ago",
-      "link": "https://www.bbc.co.uk/news/articles/c8wy5p4gdnwvo?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "cat": "WORLD",
-      "tag": "BBC WORLD",
       "title": "Zelensky criticises 'strange' Trump-Putin friendship in BBC interview",
       "summary": "Ukraine's president voices frustration with US and says it is not pushing Russia hard enough in peace talks to end the war.",
       "time": "12h ago",
       "link": "https://www.bbc.co.uk/news/articles/c820q9wgrpyyo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "cat": "WORLD",
+      "tag": "AL JAZEERA",
+      "title": "Israel kills two MSF staff in targeted strike on Gaza clinic",
+      "summary": "An Israeli strike on a clinic operated by Doctors Without Borders (MSF) in Gaza has killed two watchmen.",
+      "time": "4h ago",
+      "link": "https://www.aljazeera.com/video/newsfeed/2026/11/28/israel-kills-two-msf-staff-in-targeted-strike-on-gaza-clinic?traffic_source=rss"
+    },
+    {
+      "cat": "WORLD",
+      "tag": "BBC WORLD",
+      "title": "Spanish PM and rivals rally supporters in final pitch for votes",
+      "summary": "Prime Minister Pedro Sánchez wants to defy the polls, and his main rivals accuse him of not telling the truth and of \"betrayal\".",
+      "time": "8h ago",
+      "link": "https://www.bbc.co.uk/news/articles/c8wy5p4gdnwvo?at_medium=RSS&at_campaign=rss"
     },
     {
       "cat": "WORLD",
@@ -20340,100 +20348,76 @@
       "link": "https://www.bbc.co.uk/news/articles/c6r7g4e3yep1o?at_medium=RSS&at_campaign=rss"
     },
     {
-      "cat": "WORLD",
-      "tag": "BBC BUSINESS",
-      "title": "UK to pay 'participation' fee to deliver EU deals",
-      "summary": "Details of the contribution towards EU running costs have been revealed in new legal documents.",
-      "time": "1d ago",
-      "link": "https://www.bbc.co.uk/news/articles/ck2057x387ego?at_medium=RSS&at_campaign=rss"
-    },
-    {
       "cat": "US",
-      "tag": "CNBC",
-      "title": "Inflation has shoppers hunting for value. That bodes well for Black Friday",
-      "summary": "Even as consumers face macroeconomic headwinds, retailers are expecting robust holiday spending through Black Friday and beyond.",
+      "tag": "CNBC ECONOMY",
+      "title": "Even the price of toys is on the rise. How Americans are scaling back holiday plans",
+      "summary": "U.S. consumers face higher food, travel and gift costs in 2026 as inflation and Iran-war energy shocks pressure holiday budgets.",
       "time": "8h ago",
-      "link": "https://www.cnbc.com/2026/11/27/black-friday-2026-inflation-value-deals.html"
+      "link": "https://www.cnbc.com/2026/11/25/holiday-inflation-thanksgiving-travel-food-gifts.html"
     },
     {
       "cat": "US",
-      "tag": "CNBC",
-      "title": "Trump demands probe into 'record setting error' after third-quarter GDP data gets massive revision higher",
-      "summary": "President Donald Trump on Thursday deemed the latest gross domestic product revision a mistake, claiming that it should be \"immediately investigated.\"",
-      "time": "14h ago",
-      "link": "https://www.cnbc.com/2026/11/26/trump-gdp-revision-investigation.html"
+      "tag": "CNBC ECONOMY",
+      "title": "Fed’s preferred inflation gauge accelerated to 3.8% in October, raising the 2027 stakes for the central bank",
+      "summary": "The personal consumption expenditures price index was expected to show an annual inflation rate of 3.8% in October, according to the Dow Jones consensus.",
+      "time": "3d ago",
+      "link": "https://www.cnbc.com/2026/11/25/pce-inflation-report-october-2026.html"
     },
     {
       "cat": "US",
-      "tag": "CNBC",
-      "title": "OpenAI countersues Apple for stealing trade secrets",
-      "summary": "Apple in July sued OpenAI and two former employees, alleging misappropriation of its trade secrets to benefit the ChatGPT owner's foray into consumer hardware.",
-      "time": "7h ago",
-      "link": "https://www.cnbc.com/2026/11/27/openai-countersues-apple-for-stealing-trade-secrets-ft-reports.html"
+      "tag": "CNBC ECONOMY",
+      "title": "Why France is at risk of recession — and what could keep it out of one",
+      "summary": "Bank of France Governor Emmanuel Moulin told CNBC he still expects growth, pointing to resilience in sectors including defense, aerospace and electricity.",
+      "time": "4d ago",
+      "link": "https://www.cnbc.com/2026/11/24/france-recession-risk-pmi.html"
     },
     {
       "cat": "US",
-      "tag": "CNBC",
-      "title": "Budget airline Norse Atlantic files for bankruptcy in Europe after failing to secure funding",
-      "summary": "Budget carrier Norse Atlantic filed for bankruptcy Friday, saying it failed to secure funding after soaring fuel costs strained the company's operations.",
-      "time": "11h ago",
-      "link": "https://www.cnbc.com/2026/11/27/norse-atlantic-bankruptcy-fuel-costs.html"
+      "tag": "CNBC MARKETS",
+      "title": "The S&P 500 is in a correction. Bear markets and recessions don't always follow",
+      "summary": "The November sell-off has so far pushed the S&P 500 into a correction. History shows that a correction doesn't always lead to a bear market, or a recession.",
+      "time": "17h ago",
+      "link": "https://www.cnbc.com/2026/11/27/the-sp-500-is-in-a-correction-bear-markets-and-recessions-dont-always-follow.html"
     },
     {
       "cat": "INDIA",
       "tag": "ECON TIMES",
       "title": "India's FY28 fiscal deficit projected to stay unchanged at 4.3% of GDP: Deutsche Bank",
       "summary": "India's fiscal deficit for the financial year 2028 is expected to stay at 4.3 percent of GDP. The report highlights challenges in consolidation efforts due to rising expenditure and subsidy bills....",
-      "time": "58m ago",
+      "time": "1h ago",
       "link": "https://economictimes.indiatimes.com/news/economy/indicators/indias-fy28-fiscal-deficit-projected-to-stay-unchanged-at-4-3-of-gdp-deutsche-bank/articleshow/136238634.cms"
     },
     {
       "cat": "INDIA",
       "tag": "ECON TIMES",
-      "title": "Why is RBI bringing its gold back to India? The big shift decoded",
-      "summary": "ECON TIMES briefing: Why is RBI bringing its gold back to India? The big shift decoded",
-      "time": "17h ago",
-      "link": "https://economictimes.indiatimes.com/news/economy/policy/why-is-rbi-bringing-its-gold-back-to-india-the-big-shift-decoded/videoshow/136223275.cms"
+      "title": "India to cross $1 trillion export mark by March 2027 despite proposed 25% US tariff: ASSOCHAM Secretary General",
+      "summary": "Speaking to on the sidelines of ASSOCHAM's India Energy Sovereignty Summit 2026, ASSOCHAM Secretary General Saurabh Sanyal expressed confidence in India's export performance, highlighting that the...",
+      "time": "2d ago",
+      "link": "https://economictimes.indiatimes.com/news/economy/foreign-trade/india-to-cross-1-trillion-export-mark-by-march-2027-despite-proposed-25-us-tariff-assocham-secretary-general/articleshow/136193418.cms"
     },
     {
       "cat": "INDIA",
       "tag": "ECON TIMES",
-      "title": "IORA nations must enhance collaboration: EAM Jaishankar",
-      "summary": "External Affairs Minister S Jaishankar highlighted the significance of the Indian Ocean for global trade and energy security. He stated that regional cooperation is vital to address the shared chal...",
-      "time": "21h ago",
-      "link": "https://economictimes.indiatimes.com/news/economy/foreign-trade/iora-nations-urged-to-strengthen-collaboration-amid-geopolitical-shifts-by-eam-jaishankar/articleshow/136215650.cms"
+      "title": "Even 17% tariff under India-US trade deal may offer little competitive advantage to Indian exporters: FIEO",
+      "summary": "Ajay Sahai from the Federation of Indian Export Organisations expressed concerns about a potential BTA with the US. He mentioned that even a 17 per cent tariff concession may not give Indian export...",
+      "time": "2d ago",
+      "link": "https://economictimes.indiatimes.com/news/economy/foreign-trade/even-17-tariff-under-india-us-trade-deal-may-offer-little-competitive-advantage-to-indian-exporters-fieo/articleshow/136191482.cms"
     },
     {
       "cat": "INDIA",
-      "tag": "ECON TIMES",
-      "title": "Vietnam has made very strong commitments in trade talks with US, PM says",
-      "summary": "Vietnam is in advanced negotiations with the United States to finalize a trade deal. Prime Minister Le Minh Hung announced that tariffs would be significantly lower than earlier proposals. The fina...",
-      "time": "1d ago",
-      "link": "https://economictimes.indiatimes.com/news/economy/foreign-trade/vietnam-us-trade-talks-strong-commitments-lower-tariffs-deal/articleshow/136207839.cms"
+      "tag": "ET MARKETS",
+      "title": "From war premium to demand concerns: What is driving the sharp fall in crude oil prices?",
+      "summary": "Crude oil prices have fallen sharply from their September highs as geopolitical risk premiums fade and concerns over oversupply and slowing demand take centre stage. Rising production from non-OPEC...",
+      "time": "1h ago",
+      "link": "https://economictimes.indiatimes.com/markets/commodities/news/from-war-premium-to-demand-concerns-what-is-driving-the-sharp-fall-in-crude-oil-prices/articleshow/136238953.cms"
     },
     {
       "cat": "STEM",
-      "tag": "MIT RESEARCH",
-      "title": "Draining peatlands leaves a long legacy of warming",
-      "summary": "A new study finds the long-term decomposition of drained bogs, fens, and swamps is responsible for about 3 percent of human-caused climate warming.",
-      "time": "3d ago",
-      "link": "https://news.mit.edu/2026/draining-peatlands-leaves-long-warming-legacy-1125"
-    },
-    {
-      "cat": "STEM",
-      "tag": "MIT RESEARCH",
-      "title": "Agentic system personalizes physical controls to help users “DJ their art”",
-      "summary": "“TangiMap” uses an AI agent to reprogram how buttons, knobs, and sliders are used, helping users do things like edit photos and perform music in a more dynamic, tactile way.",
-      "time": "3d ago",
-      "link": "https://news.mit.edu/2026/tangimap-agentic-system-personalizes-physical-controls-help-users-dj-their-art-1124"
-    },
-    {
-      "cat": "STEM",
-      "tag": "MIT RESEARCH",
-      "title": "What if excess renewable energy could power new industrial processes?",
-      "summary": "Excess electricity from solar and wind generation could become widely available across the U.S. and then tapped to manufacture materials or run data centers, scientists say.",
-      "time": "4d ago",
-      "link": "https://news.mit.edu/2026/excess-renewable-energy-could-power-new-industrial-processes-1124"
+      "tag": "NASA",
+      "title": "NASA’s NG-25 Mission to Launch Pioneering Space Crops Research",
+      "summary": "NASA experiments, including a first-of-its-kind space crop production system, will travel to the International Space Station aboard Northrop Grumman’s 25th Commercial Resupply Services mission for...",
+      "time": "16h ago",
+      "link": "https://science.nasa.gov/science-research/biological-physical-sciences/nasas-ng-25-mission-to-launch-pioneering-space-crops-research/"
     },
     {
       "cat": "STEM",
@@ -20442,6 +20426,22 @@
       "summary": "Analyzing speakers of 21 languages, an MIT study using multilingual AI finds the human brain may represent meaning in much the same way.",
       "time": "4d ago",
       "link": "https://news.mit.edu/2026/many-languages-one-common-neural-code-1123"
+    },
+    {
+      "cat": "STEM",
+      "tag": "NASA",
+      "title": "Artemis III Astronaut Andre Douglas Visits VAB",
+      "summary": "NASA astronaut Andre Douglas, Artemis III mission specialist, stands inside an RS-25 engine test article during a visit to the Vehicle Assembly Building at NASA’s Kennedy Space Center in Florida on...",
+      "time": "15h ago",
+      "link": "https://www.nasa.gov/image-article/artemis-iii-astronaut-andre-douglas-visits-vab/"
+    },
+    {
+      "cat": "STEM",
+      "tag": "NASA",
+      "title": "APOD: 2026 November 27 – The Moon Watchers",
+      "summary": "APOD Science APOD APOD: 2026 November 27 –… Today’s APOD Archive Submissions Index Search Calendar RSS Education About Discuss APOD Astronomy Picture of the Day Discover the cosmos! Each day a diff...",
+      "time": "1d ago",
+      "link": "https://science.nasa.gov/image-article/apod-2026-november-27-the-moon-watchers/"
     }
   ]
 }
