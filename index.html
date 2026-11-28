@@ -290,12 +290,12 @@
   </header>
 
   <!-- FOCUSED SINGLE-CARD VIEWPORT -->
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8">
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-4 sm:pt-5">
 
     <!-- =================================================================== -->
     <!-- TAB 1: INDIA MARKETS                                                -->
     <!-- =================================================================== -->
-    <section id="panel-india" class="card-panel terminal-card rounded-3xl p-5 sm:p-7 space-y-6">
+    <section id="panel-india" class="card-panel terminal-card rounded-2xl p-4 sm:p-5 space-y-4">
       <div class="space-y-4 pb-5 border-b divider-line">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div class="flex items-center gap-3.5">
@@ -354,71 +354,56 @@
         </div>
       </div>
 
-      <!-- SIDE-BY-SIDE: FEAR & GREED DIAL + EXPECTED VOLATILITY -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
-        <div class="p-5 rounded-2xl inner-panel flex flex-col items-center justify-between text-center">
-          <div class="w-full flex items-center justify-between text-xs font-mono">
-            <span class="uppercase font-bold txt-muted">India Market Mood (MMI)</span>
-            <span class="px-2 py-0.5 rounded bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30 font-bold text-[10px]">SENTIMENT</span>
+      <!-- SINGLE ROW: FEAR & GREED + EXPECTED VOLATILITY + LOSS / BASE / BULL -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 items-stretch">
+        <div class="lg:col-span-4 p-4 rounded-xl inner-panel flex flex-col items-center justify-between text-center">
+          <div class="w-full flex items-center justify-between text-[11px] font-mono">
+            <span class="uppercase font-bold txt-muted">Market Mood</span>
+            <span class="px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30 font-bold text-[10px]">SENTIMENT</span>
           </div>
-          <div id="india-fg-dial" class="w-full max-w-[210px] my-1"></div>
-          <div class="space-y-0.5">
-            <div class="text-xs sm:text-sm font-mono font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wide">Neutral / Greed (56/100)</div>
-            <div class="text-xs txt-muted">Prev: 61 &bull; Cooled on pullback</div>
-          </div>
+          <div id="india-fg-dial" class="w-full max-w-[165px] my-0.5"></div>
+          <div class="text-xs font-mono font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wide">Neutral / Greed (56/100)</div>
         </div>
 
-        <div class="p-5 rounded-2xl bg-amber-500/10 border border-amber-500/35 flex flex-col justify-between gap-3 font-mono tabular-nums">
-          <div class="flex items-center justify-between gap-2 flex-wrap">
-            <span class="text-xs uppercase tracking-wider text-amber-700 dark:text-amber-300 font-bold">Expected Volatility (±1&sigma;)</span>
-            <div class="flex items-center gap-1.5">
-              <span id="india-vol-state" class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35">LOW</span>
-              <span id="india-vix-badge" class="px-2 py-0.5 rounded-md text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35 font-semibold">INDIA VIX 16.66</span>
+        <div class="lg:col-span-4 p-4 rounded-xl bg-amber-500/10 border border-amber-500/35 flex flex-col justify-between gap-2 font-mono tabular-nums">
+          <div class="flex items-center justify-between gap-1.5 flex-wrap">
+            <span class="text-[11px] uppercase tracking-wider text-amber-700 dark:text-amber-300 font-bold">Expected Vol (±1&sigma;)</span>
+            <div class="flex items-center gap-1">
+              <span id="india-vol-state" class="px-1.5 py-0.5 rounded text-[10px] font-bold uppercase bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35">LOW</span>
+              <span id="india-vix-badge" class="px-1.5 py-0.5 rounded text-[11px] bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35 font-semibold">INDIA VIX 16.66</span>
             </div>
           </div>
-          <div class="grid grid-cols-2 gap-3">
-            <div class="p-3 rounded-xl inner-panel">
-              <span class="block text-[11px] txt-muted uppercase">1D Implied</span>
-              <span id="india-vol-1d" class="text-lg font-bold text-emerald-700 dark:text-emerald-300 mt-1 block">±0.87%</span>
-              <span id="india-vol-1d-etf" class="text-xs txt-muted mt-0.5 block">±₹2.54</span>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="p-2.5 rounded-lg inner-panel">
+              <span class="block text-[10px] txt-muted uppercase">1D Implied</span>
+              <span id="india-vol-1d" class="text-base font-bold text-emerald-700 dark:text-emerald-300 block">±0.87%</span>
+              <span id="india-vol-1d-etf" class="text-[11px] txt-muted block">±₹2.54</span>
             </div>
-            <div class="p-3 rounded-xl inner-panel">
-              <span class="block text-[11px] txt-muted uppercase">1W Implied</span>
-              <span id="india-vol-1w" class="text-lg font-bold text-amber-700 dark:text-amber-300 mt-1 block">±2.31%</span>
-              <span id="india-vol-1w-pts" class="text-xs txt-muted mt-0.5 block">±591 pts</span>
+            <div class="p-2.5 rounded-lg inner-panel">
+              <span class="block text-[10px] txt-muted uppercase">1W Implied</span>
+              <span id="india-vol-1w" class="text-base font-bold text-amber-700 dark:text-amber-300 block">±2.31%</span>
+              <span id="india-vol-1w-pts" class="text-[11px] txt-muted block">±591 pts</span>
             </div>
           </div>
-          <div class="text-xs txt-secondary flex items-center justify-between pt-2 border-t border-amber-500/20">
-            <span>Next Session Band:</span>
+          <div class="text-[11px] txt-secondary flex items-center justify-between pt-1.5 border-t border-amber-500/20">
+            <span>Next Band:</span>
             <strong id="india-vol-band" class="text-amber-700 dark:text-amber-300">₹289.45 – ₹294.55</strong>
           </div>
         </div>
-      </div>
 
-      <!-- LOSS / MIDDLE / GAIN STRIP (ABOVE THE CHART) -->
-      <div class="grid grid-cols-3 gap-2 sm:gap-3 font-mono tabular-nums">
-        <div class="p-4 rounded-2xl bg-rose-500/15 border border-rose-500/35 flex items-center justify-between gap-2">
-          <div>
-            <div class="text-xs text-rose-700 dark:text-rose-400 font-bold uppercase">▼ Loss / Bear</div>
-            <div id="india-bear-idx" class="text-xs text-rose-700/80 dark:text-rose-400/80 mt-0.5">Support Floor</div>
+        <div class="lg:col-span-4 grid grid-cols-1 gap-2 font-mono tabular-nums">
+          <div class="px-3.5 py-2.5 rounded-xl bg-rose-500/15 border border-rose-500/35 flex items-center justify-between gap-2">
+            <span class="text-xs text-rose-700 dark:text-rose-400 font-bold uppercase">▼ Loss</span>
+            <span id="india-bear" class="text-base sm:text-lg font-bold text-rose-800 dark:text-rose-300">₹288.20</span>
           </div>
-          <div id="india-bear" class="text-xl font-bold text-rose-800 dark:text-rose-300">₹288.20</div>
-        </div>
-
-        <div class="p-4 rounded-2xl bg-amber-500/15 border border-amber-500/35 flex items-center justify-between gap-2">
-          <div>
-            <div class="text-xs text-amber-700 dark:text-amber-400 font-bold uppercase">◆ Middle / Base</div>
-            <div id="india-base-idx" class="text-xs text-amber-700/80 dark:text-amber-400/80 mt-0.5">Consolidation</div>
+          <div class="px-3.5 py-2.5 rounded-xl bg-amber-500/15 border border-amber-500/35 flex items-center justify-between gap-2">
+            <span class="text-xs text-amber-700 dark:text-amber-400 font-bold uppercase">◆ Base</span>
+            <span id="india-base" class="text-base sm:text-lg font-bold text-amber-800 dark:text-amber-300">₹293.50</span>
           </div>
-          <div id="india-base" class="text-xl font-bold text-amber-800 dark:text-amber-300">₹293.50</div>
-        </div>
-
-        <div class="p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/35 flex items-center justify-between gap-2">
-          <div>
-            <div class="text-xs text-emerald-700 dark:text-emerald-400 font-bold uppercase">▲ Gain / Bull</div>
-            <div id="india-bull-idx" class="text-xs text-emerald-700/80 dark:text-emerald-400/80 mt-0.5">Upside Target</div>
+          <div class="px-3.5 py-2.5 rounded-xl bg-emerald-500/15 border border-emerald-500/35 flex items-center justify-between gap-2">
+            <span class="text-xs text-emerald-700 dark:text-emerald-400 font-bold uppercase">▲ Bull</span>
+            <span id="india-bull" class="text-base sm:text-lg font-bold text-emerald-800 dark:text-emerald-300">₹298.50</span>
           </div>
-          <div id="india-bull" class="text-xl font-bold text-emerald-800 dark:text-emerald-300">₹298.50</div>
         </div>
       </div>
 
@@ -432,7 +417,7 @@
     <!-- =================================================================== -->
     <!-- TAB 2: U.S. MARKETS                                                 -->
     <!-- =================================================================== -->
-    <section id="panel-us" class="card-panel active terminal-card rounded-3xl p-5 sm:p-7 space-y-6">
+    <section id="panel-us" class="card-panel active terminal-card rounded-2xl p-4 sm:p-5 space-y-4">
       <div class="space-y-4 pb-5 border-b divider-line">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div class="flex items-center gap-3.5">
@@ -491,71 +476,56 @@
         </div>
       </div>
 
-      <!-- SIDE-BY-SIDE: FEAR & GREED DIAL + EXPECTED VOLATILITY -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
-        <div class="p-5 rounded-2xl inner-panel flex flex-col items-center justify-between text-center">
-          <div class="w-full flex items-center justify-between text-xs font-mono">
+      <!-- SINGLE ROW: FEAR & GREED + EXPECTED VOLATILITY + LOSS / BASE / BULL -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 items-stretch">
+        <div class="lg:col-span-4 p-4 rounded-xl inner-panel flex flex-col items-center justify-between text-center">
+          <div class="w-full flex items-center justify-between text-[11px] font-mono">
             <span class="uppercase font-bold txt-muted">U.S. Fear &amp; Greed</span>
-            <span class="px-2 py-0.5 rounded bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/30 font-bold text-[10px]">SENTIMENT</span>
+            <span class="px-1.5 py-0.5 rounded bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/30 font-bold text-[10px]">SENTIMENT</span>
           </div>
-          <div id="us-fg-dial" class="w-full max-w-[210px] my-1"></div>
-          <div class="space-y-0.5">
-            <div class="text-xs sm:text-sm font-mono font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wide">Fear (34/100)</div>
-            <div class="text-xs txt-muted">Prev: 29 &bull; VIX Elevated</div>
-          </div>
+          <div id="us-fg-dial" class="w-full max-w-[165px] my-0.5"></div>
+          <div class="text-xs font-mono font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wide">Fear (34/100)</div>
         </div>
 
-        <div class="p-5 rounded-2xl bg-rose-500/10 border border-rose-500/35 flex flex-col justify-between gap-3 font-mono tabular-nums">
-          <div class="flex items-center justify-between gap-2 flex-wrap">
-            <span class="text-xs uppercase tracking-wider text-rose-700 dark:text-rose-300 font-bold">Expected Volatility (±1&sigma;)</span>
-            <div class="flex items-center gap-1.5">
-              <span id="us-vol-state" class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/35">FLAT</span>
-              <span id="us-vix-badge" class="px-2 py-0.5 rounded-md text-xs bg-rose-500/20 text-rose-800 dark:text-rose-200 border border-rose-500/40 font-semibold">CBOE VIX 28.29</span>
+        <div class="lg:col-span-4 p-4 rounded-xl bg-rose-500/10 border border-rose-500/35 flex flex-col justify-between gap-2 font-mono tabular-nums">
+          <div class="flex items-center justify-between gap-1.5 flex-wrap">
+            <span class="text-[11px] uppercase tracking-wider text-rose-700 dark:text-rose-300 font-bold">Expected Vol (±1&sigma;)</span>
+            <div class="flex items-center gap-1">
+              <span id="us-vol-state" class="px-1.5 py-0.5 rounded text-[10px] font-bold uppercase bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/35">FLAT</span>
+              <span id="us-vix-badge" class="px-1.5 py-0.5 rounded text-[11px] bg-rose-500/20 text-rose-800 dark:text-rose-200 border border-rose-500/40 font-semibold">CBOE VIX 28.29</span>
             </div>
           </div>
-          <div class="grid grid-cols-2 gap-3">
-            <div class="p-3 rounded-xl inner-panel">
-              <span class="block text-[11px] txt-muted uppercase">1D Implied</span>
-              <span id="us-vol-1d" class="text-lg font-bold text-rose-700 dark:text-rose-300 mt-1 block">±1.78%</span>
-              <span id="us-vol-1d-sub" class="text-xs txt-muted mt-0.5 block">±$12.97</span>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="p-2.5 rounded-lg inner-panel">
+              <span class="block text-[10px] txt-muted uppercase">1D Implied</span>
+              <span id="us-vol-1d" class="text-base font-bold text-rose-700 dark:text-rose-300 block">±1.78%</span>
+              <span id="us-vol-1d-sub" class="text-[11px] txt-muted block">±$12.97</span>
             </div>
-            <div class="p-3 rounded-xl inner-panel">
-              <span class="block text-[11px] txt-muted uppercase">1W Implied</span>
-              <span id="us-vol-1w" class="text-lg font-bold text-rose-700 dark:text-rose-300 mt-1 block">±3.92%</span>
-              <span id="us-vol-1w-sub" class="text-xs txt-muted mt-0.5 block">3.8% PCE</span>
+            <div class="p-2.5 rounded-lg inner-panel">
+              <span class="block text-[10px] txt-muted uppercase">1W Implied</span>
+              <span id="us-vol-1w" class="text-base font-bold text-rose-700 dark:text-rose-300 block">±3.92%</span>
+              <span id="us-vol-1w-sub" class="text-[11px] txt-muted block">3.8% PCE</span>
             </div>
           </div>
-          <div class="text-xs txt-secondary flex items-center justify-between pt-2 border-t border-rose-500/20">
-            <span>1D Implied Range:</span>
+          <div class="text-[11px] txt-secondary flex items-center justify-between pt-1.5 border-t border-rose-500/20">
+            <span>1D Range:</span>
             <strong id="us-vol-band" class="text-amber-700 dark:text-amber-300">$715.90 – $741.84</strong>
           </div>
         </div>
-      </div>
 
-      <!-- LOSS / MIDDLE / GAIN STRIP (ABOVE THE CHART) -->
-      <div class="grid grid-cols-3 gap-2 sm:gap-3 font-mono tabular-nums">
-        <div class="p-4 rounded-2xl bg-rose-500/15 border border-rose-500/35 flex items-center justify-between gap-2">
-          <div>
-            <div class="text-xs text-rose-700 dark:text-rose-400 font-bold uppercase">▼ Loss / Bear</div>
-            <div id="us-bear-sub" class="text-xs text-rose-700/80 dark:text-rose-400/80 mt-0.5">Gap Fill Floor</div>
+        <div class="lg:col-span-4 grid grid-cols-1 gap-2 font-mono tabular-nums">
+          <div class="px-3.5 py-2.5 rounded-xl bg-rose-500/15 border border-rose-500/35 flex items-center justify-between gap-2">
+            <span class="text-xs text-rose-700 dark:text-rose-400 font-bold uppercase">▼ Loss</span>
+            <span id="us-bear" class="text-base sm:text-lg font-bold text-rose-800 dark:text-rose-300">$718.78</span>
           </div>
-          <div id="us-bear" class="text-xl font-bold text-rose-800 dark:text-rose-300">$718.78</div>
-        </div>
-
-        <div class="p-4 rounded-2xl bg-amber-500/15 border border-amber-500/35 flex items-center justify-between gap-2">
-          <div>
-            <div class="text-xs text-amber-700 dark:text-amber-400 font-bold uppercase">◆ Middle / Base</div>
-            <div id="us-base-sub" class="text-xs text-amber-700/80 dark:text-amber-400/80 mt-0.5">Consolidation</div>
+          <div class="px-3.5 py-2.5 rounded-xl bg-amber-500/15 border border-amber-500/35 flex items-center justify-between gap-2">
+            <span class="text-xs text-amber-700 dark:text-amber-400 font-bold uppercase">◆ Base</span>
+            <span id="us-base" class="text-base sm:text-lg font-bold text-amber-800 dark:text-amber-300">$728.00</span>
           </div>
-          <div id="us-base" class="text-xl font-bold text-amber-800 dark:text-amber-300">$728.00</div>
-        </div>
-
-        <div class="p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/35 flex items-center justify-between gap-2">
-          <div>
-            <div class="text-xs text-emerald-700 dark:text-emerald-400 font-bold uppercase">▲ Gain / Bull</div>
-            <div id="us-bull-sub" class="text-xs text-emerald-700/80 dark:text-emerald-400/80 mt-0.5">Upside Target</div>
+          <div class="px-3.5 py-2.5 rounded-xl bg-emerald-500/15 border border-emerald-500/35 flex items-center justify-between gap-2">
+            <span class="text-xs text-emerald-700 dark:text-emerald-400 font-bold uppercase">▲ Bull</span>
+            <span id="us-bull" class="text-base sm:text-lg font-bold text-emerald-800 dark:text-emerald-300">$736.50</span>
           </div>
-          <div id="us-bull" class="text-xl font-bold text-emerald-800 dark:text-emerald-300">$736.50</div>
         </div>
       </div>
 
@@ -585,7 +555,7 @@
     <!-- =================================================================== -->
     <!-- TAB 3: CRYPTO MARKETS (PURE USD)                                    -->
     <!-- =================================================================== -->
-    <section id="panel-crypto" class="card-panel terminal-card rounded-3xl p-5 sm:p-7 space-y-6">
+    <section id="panel-crypto" class="card-panel terminal-card rounded-2xl p-4 sm:p-5 space-y-4">
       <div class="space-y-4 pb-5 border-b divider-line">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div class="flex items-center gap-3.5">
@@ -638,71 +608,56 @@
         </div>
       </div>
 
-      <!-- SIDE-BY-SIDE: FEAR & GREED DIAL + EXPECTED VOLATILITY -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
-        <div class="p-5 rounded-2xl inner-panel flex flex-col items-center justify-between text-center">
-          <div class="w-full flex items-center justify-between text-xs font-mono">
+      <!-- SINGLE ROW: FEAR & GREED + EXPECTED VOLATILITY + LOSS / BASE / BULL -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 items-stretch">
+        <div class="lg:col-span-4 p-4 rounded-xl inner-panel flex flex-col items-center justify-between text-center">
+          <div class="w-full flex items-center justify-between text-[11px] font-mono">
             <span class="uppercase font-bold txt-muted">Crypto Fear &amp; Greed</span>
-            <span class="px-2 py-0.5 rounded bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/30 font-bold text-[10px]">SENTIMENT</span>
+            <span class="px-1.5 py-0.5 rounded bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/30 font-bold text-[10px]">SENTIMENT</span>
           </div>
-          <div id="crypto-fg-dial" class="w-full max-w-[210px] my-1"></div>
-          <div class="space-y-0.5">
-            <div id="crypto-fg-label" class="text-xs sm:text-sm font-mono font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wide">Extreme Fear (12/100)</div>
-            <div class="text-xs txt-muted">Yesterday: 10 &bull; Last Wk: 18</div>
-          </div>
+          <div id="crypto-fg-dial" class="w-full max-w-[165px] my-0.5"></div>
+          <div id="crypto-fg-label" class="text-xs font-mono font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wide">Extreme Fear (12/100)</div>
         </div>
 
-        <div class="p-5 rounded-2xl bg-rose-500/10 border border-rose-500/35 flex flex-col justify-between gap-3 font-mono tabular-nums">
-          <div class="flex items-center justify-between gap-2 flex-wrap">
-            <span class="text-xs uppercase tracking-wider text-rose-700 dark:text-rose-300 font-bold">Expected Volatility (±1&sigma;)</span>
-            <div class="flex items-center gap-1.5">
-              <span id="crypto-vol-state" class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/35">HIGH</span>
-              <span id="crypto-dvol-badge" class="px-2 py-0.5 rounded-md text-xs bg-rose-500/20 text-rose-800 dark:text-rose-200 border border-rose-500/40 font-semibold">DVOL 55.45</span>
+        <div class="lg:col-span-4 p-4 rounded-xl bg-rose-500/10 border border-rose-500/35 flex flex-col justify-between gap-2 font-mono tabular-nums">
+          <div class="flex items-center justify-between gap-1.5 flex-wrap">
+            <span class="text-[11px] uppercase tracking-wider text-rose-700 dark:text-rose-300 font-bold">Expected Vol (±1&sigma;)</span>
+            <div class="flex items-center gap-1">
+              <span id="crypto-vol-state" class="px-1.5 py-0.5 rounded text-[10px] font-bold uppercase bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/35">HIGH</span>
+              <span id="crypto-dvol-badge" class="px-1.5 py-0.5 rounded text-[11px] bg-rose-500/20 text-rose-800 dark:text-rose-200 border border-rose-500/40 font-semibold">DVOL 55.45</span>
             </div>
           </div>
-          <div class="grid grid-cols-2 gap-3">
-            <div class="p-3 rounded-xl inner-panel">
-              <span class="block text-[11px] txt-muted uppercase">24H (±1&sigma;)</span>
-              <span id="crypto-vol-1d" class="text-lg font-bold text-rose-700 dark:text-rose-300 mt-1 block">±2.90%</span>
-              <span id="crypto-vol-1d-sub" class="text-xs txt-muted mt-0.5 block">±$1,783</span>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="p-2.5 rounded-lg inner-panel">
+              <span class="block text-[10px] txt-muted uppercase">24H (±1&sigma;)</span>
+              <span id="crypto-vol-1d" class="text-base font-bold text-rose-700 dark:text-rose-300 block">±2.90%</span>
+              <span id="crypto-vol-1d-sub" class="text-[11px] txt-muted block">±$1,783</span>
             </div>
-            <div class="p-3 rounded-xl inner-panel">
-              <span class="block text-[11px] txt-muted uppercase">7D (±1&sigma;)</span>
-              <span id="crypto-vol-7d" class="text-lg font-bold text-amber-700 dark:text-amber-300 mt-1 block">±7.65%</span>
-              <span id="crypto-vol-7d-sub" class="text-xs txt-muted mt-0.5 block">$7.0B Expiry</span>
+            <div class="p-2.5 rounded-lg inner-panel">
+              <span class="block text-[10px] txt-muted uppercase">7D (±1&sigma;)</span>
+              <span id="crypto-vol-7d" class="text-base font-bold text-amber-700 dark:text-amber-300 block">±7.65%</span>
+              <span id="crypto-vol-7d-sub" class="text-[11px] txt-muted block">$7.0B Expiry</span>
             </div>
           </div>
-          <div class="text-xs txt-secondary pt-2 border-t border-rose-500/20 flex justify-between">
+          <div class="text-[11px] txt-secondary pt-1.5 border-t border-rose-500/20 flex justify-between">
             <span>Put / Call Ratio:</span>
             <strong class="text-amber-700 dark:text-amber-300">0.89 (Elevated)</strong>
           </div>
         </div>
-      </div>
 
-      <!-- LOSS / MIDDLE / GAIN STRIP (ABOVE THE CHART) -->
-      <div class="grid grid-cols-3 gap-2 sm:gap-3 font-mono tabular-nums">
-        <div class="p-4 rounded-2xl bg-rose-500/15 border border-rose-500/35 flex items-center justify-between gap-2">
-          <div>
-            <div class="text-xs text-rose-700 dark:text-rose-400 font-bold uppercase">▼ Loss / Bear</div>
-            <div class="text-xs text-rose-700/80 dark:text-rose-400/80 mt-0.5">Downside Floor</div>
+        <div class="lg:col-span-4 grid grid-cols-1 gap-2 font-mono tabular-nums">
+          <div class="px-3.5 py-2.5 rounded-xl bg-rose-500/15 border border-rose-500/35 flex items-center justify-between gap-2">
+            <span class="text-xs text-rose-700 dark:text-rose-400 font-bold uppercase">▼ Loss</span>
+            <span id="crypto-bear" class="text-base sm:text-lg font-bold text-rose-800 dark:text-rose-300">$56,830</span>
           </div>
-          <div id="crypto-bear" class="text-xl font-bold text-rose-800 dark:text-rose-300">$56,830</div>
-        </div>
-
-        <div class="p-4 rounded-2xl bg-amber-500/15 border border-amber-500/35 flex items-center justify-between gap-2">
-          <div>
-            <div class="text-xs text-amber-700 dark:text-amber-400 font-bold uppercase">◆ Middle / Base</div>
-            <div class="text-xs text-amber-700/80 dark:text-amber-400/80 mt-0.5">Pivot Band</div>
+          <div class="px-3.5 py-2.5 rounded-xl bg-amber-500/15 border border-amber-500/35 flex items-center justify-between gap-2">
+            <span class="text-xs text-amber-700 dark:text-amber-400 font-bold uppercase">◆ Base</span>
+            <span id="crypto-base" class="text-base sm:text-lg font-bold text-amber-800 dark:text-amber-300">$61,750</span>
           </div>
-          <div id="crypto-base" class="text-xl font-bold text-amber-800 dark:text-amber-300">$61,750</div>
-        </div>
-
-        <div class="p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/35 flex items-center justify-between gap-2">
-          <div>
-            <div class="text-xs text-emerald-700 dark:text-emerald-400 font-bold uppercase">▲ Gain / Bull</div>
-            <div class="text-xs text-emerald-700/80 dark:text-emerald-400/80 mt-0.5">Upside Target</div>
+          <div class="px-3.5 py-2.5 rounded-xl bg-emerald-500/15 border border-emerald-500/35 flex items-center justify-between gap-2">
+            <span class="text-xs text-emerald-700 dark:text-emerald-400 font-bold uppercase">▲ Bull</span>
+            <span id="crypto-bull" class="text-base sm:text-lg font-bold text-emerald-800 dark:text-emerald-300">$64,650</span>
           </div>
-          <div id="crypto-bull" class="text-xl font-bold text-emerald-800 dark:text-emerald-300">$64,650</div>
         </div>
       </div>
 
@@ -732,7 +687,7 @@
     <!-- =================================================================== -->
     <!-- TAB 4: COMMODITIES (GOLD, SILVER, BRENT OIL, WTI, NATGAS, COPPER)   -->
     <!-- =================================================================== -->
-    <section id="panel-commodities" class="card-panel terminal-card rounded-3xl p-5 sm:p-7 space-y-6">
+    <section id="panel-commodities" class="card-panel terminal-card rounded-2xl p-4 sm:p-5 space-y-4">
       <div class="space-y-4 pb-5 border-b divider-line">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div class="flex items-center gap-3.5">
@@ -785,71 +740,56 @@
         </div>
       </div>
 
-      <!-- SIDE-BY-SIDE: SENTIMENT DIAL + EXPECTED VOLATILITY -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
-        <div class="p-5 rounded-2xl inner-panel flex flex-col items-center justify-between text-center">
-          <div class="w-full flex items-center justify-between text-xs font-mono">
+      <!-- SINGLE ROW: FEAR & GREED + EXPECTED VOLATILITY + LOSS / BASE / BULL -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 items-stretch">
+        <div class="lg:col-span-4 p-4 rounded-xl inner-panel flex flex-col items-center justify-between text-center">
+          <div class="w-full flex items-center justify-between text-[11px] font-mono">
             <span class="uppercase font-bold txt-muted">Commodity Sentiment</span>
-            <span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">MOMENTUM</span>
+            <span class="px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 font-bold text-[10px]">MOMENTUM</span>
           </div>
-          <div id="comm-fg-dial" class="w-full max-w-[210px] my-1"></div>
-          <div class="space-y-0.5">
-            <div id="comm-fg-label" class="text-xs sm:text-sm font-mono font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide">Greed / Risk Bid (72/100)</div>
-            <div class="text-xs txt-muted">Central bank &amp; geopolitical inflows</div>
-          </div>
+          <div id="comm-fg-dial" class="w-full max-w-[165px] my-0.5"></div>
+          <div id="comm-fg-label" class="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide">Greed / Risk Bid (72/100)</div>
         </div>
 
-        <div class="p-5 rounded-2xl bg-amber-500/10 border border-amber-500/35 flex flex-col justify-between gap-3 font-mono tabular-nums">
-          <div class="flex items-center justify-between gap-2 flex-wrap">
-            <span class="text-xs uppercase tracking-wider text-amber-700 dark:text-amber-300 font-bold">Expected Volatility (±1&sigma;)</span>
-            <div class="flex items-center gap-1.5">
-              <span id="comm-vol-state" class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/35">FLAT</span>
-              <span id="comm-iv-badge" class="px-2 py-0.5 rounded-md text-xs bg-amber-500/20 text-amber-800 dark:text-amber-200 border border-amber-500/40 font-semibold">GVZ 18.40</span>
+        <div class="lg:col-span-4 p-4 rounded-xl bg-amber-500/10 border border-amber-500/35 flex flex-col justify-between gap-2 font-mono tabular-nums">
+          <div class="flex items-center justify-between gap-1.5 flex-wrap">
+            <span class="text-[11px] uppercase tracking-wider text-amber-700 dark:text-amber-300 font-bold">Expected Vol (±1&sigma;)</span>
+            <div class="flex items-center gap-1">
+              <span id="comm-vol-state" class="px-1.5 py-0.5 rounded text-[10px] font-bold uppercase bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/35">FLAT</span>
+              <span id="comm-iv-badge" class="px-1.5 py-0.5 rounded text-[11px] bg-amber-500/20 text-amber-800 dark:text-amber-200 border border-amber-500/40 font-semibold">GVZ 18.40</span>
             </div>
           </div>
-          <div class="grid grid-cols-2 gap-3">
-            <div class="p-3 rounded-xl inner-panel">
-              <span class="block text-[11px] txt-muted uppercase">1D Implied</span>
-              <span id="comm-vol-1d" class="text-lg font-bold text-amber-700 dark:text-amber-300 mt-1 block">±1.16%</span>
-              <span id="comm-vol-1d-sub" class="text-xs txt-muted mt-0.5 block">±$44.60</span>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="p-2.5 rounded-lg inner-panel">
+              <span class="block text-[10px] txt-muted uppercase">1D Implied</span>
+              <span id="comm-vol-1d" class="text-base font-bold text-amber-700 dark:text-amber-300 block">±1.16%</span>
+              <span id="comm-vol-1d-sub" class="text-[11px] txt-muted block">±$44.60</span>
             </div>
-            <div class="p-3 rounded-xl inner-panel">
-              <span class="block text-[11px] txt-muted uppercase">1W Implied</span>
-              <span id="comm-vol-1w" class="text-lg font-bold text-amber-700 dark:text-amber-300 mt-1 block">±2.60%</span>
-              <span id="comm-vol-1w-sub" class="text-xs txt-muted mt-0.5 block">Macro Hedge</span>
+            <div class="p-2.5 rounded-lg inner-panel">
+              <span class="block text-[10px] txt-muted uppercase">1W Implied</span>
+              <span id="comm-vol-1w" class="text-base font-bold text-amber-700 dark:text-amber-300 block">±2.60%</span>
+              <span id="comm-vol-1w-sub" class="text-[11px] txt-muted block">Macro Hedge</span>
             </div>
           </div>
-          <div class="text-xs txt-secondary flex items-center justify-between pt-2 border-t border-amber-500/20">
-            <span>1D Implied Band:</span>
+          <div class="text-[11px] txt-secondary flex items-center justify-between pt-1.5 border-t border-amber-500/20">
+            <span>1D Band:</span>
             <strong id="comm-vol-band" class="text-amber-700 dark:text-amber-300">$3,798 – $3,887</strong>
           </div>
         </div>
-      </div>
 
-      <!-- LOSS / MIDDLE / GAIN STRIP (ABOVE THE CHART) -->
-      <div class="grid grid-cols-3 gap-2 sm:gap-3 font-mono tabular-nums">
-        <div class="p-4 rounded-2xl bg-rose-500/15 border border-rose-500/35 flex items-center justify-between gap-2">
-          <div>
-            <div class="text-xs text-rose-700 dark:text-rose-400 font-bold uppercase">▼ Loss / Bear</div>
-            <div class="text-xs text-rose-700/80 dark:text-rose-400/80 mt-0.5">Support Floor</div>
+        <div class="lg:col-span-4 grid grid-cols-1 gap-2 font-mono tabular-nums">
+          <div class="px-3.5 py-2.5 rounded-xl bg-rose-500/15 border border-rose-500/35 flex items-center justify-between gap-2">
+            <span class="text-xs text-rose-700 dark:text-rose-400 font-bold uppercase">▼ Loss</span>
+            <span id="comm-bear" class="text-base sm:text-lg font-bold text-rose-800 dark:text-rose-300">$3,765.00</span>
           </div>
-          <div id="comm-bear" class="text-xl font-bold text-rose-800 dark:text-rose-300">$3,765.00</div>
-        </div>
-
-        <div class="p-4 rounded-2xl bg-amber-500/15 border border-amber-500/35 flex items-center justify-between gap-2">
-          <div>
-            <div class="text-xs text-amber-700 dark:text-amber-400 font-bold uppercase">◆ Middle / Base</div>
-            <div class="text-xs text-amber-700/80 dark:text-amber-400/80 mt-0.5">Range Pivot</div>
+          <div class="px-3.5 py-2.5 rounded-xl bg-amber-500/15 border border-amber-500/35 flex items-center justify-between gap-2">
+            <span class="text-xs text-amber-700 dark:text-amber-400 font-bold uppercase">◆ Base</span>
+            <span id="comm-base" class="text-base sm:text-lg font-bold text-amber-800 dark:text-amber-300">$3,845.00</span>
           </div>
-          <div id="comm-base" class="text-xl font-bold text-amber-800 dark:text-amber-300">$3,845.00</div>
-        </div>
-
-        <div class="p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/35 flex items-center justify-between gap-2">
-          <div>
-            <div class="text-xs text-emerald-700 dark:text-emerald-400 font-bold uppercase">▲ Gain / Bull</div>
-            <div class="text-xs text-emerald-700/80 dark:text-emerald-400/80 mt-0.5">Upside Target</div>
+          <div class="px-3.5 py-2.5 rounded-xl bg-emerald-500/15 border border-emerald-500/35 flex items-center justify-between gap-2">
+            <span class="text-xs text-emerald-700 dark:text-emerald-400 font-bold uppercase">▲ Bull</span>
+            <span id="comm-bull" class="text-base sm:text-lg font-bold text-emerald-800 dark:text-emerald-300">$3,925.00</span>
           </div>
-          <div id="comm-bull" class="text-xl font-bold text-emerald-800 dark:text-emerald-300">$3,925.00</div>
         </div>
       </div>
 
@@ -879,7 +819,7 @@
     <!-- =================================================================== -->
     <!-- TAB 5: ASTRO DAILY                                                  -->
     <!-- =================================================================== -->
-    <section id="panel-astro" class="card-panel terminal-card rounded-3xl p-5 sm:p-7 space-y-6 relative overflow-hidden">
+    <section id="panel-astro" class="card-panel terminal-card rounded-2xl p-4 sm:p-5 space-y-4 relative overflow-hidden">
       <div class="pointer-events-none absolute -right-16 -top-16 w-64 h-64 rounded-full bg-amber-400/10 blur-3xl"></div>
 
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pb-5 border-b divider-line">
@@ -931,7 +871,7 @@
     <!-- =================================================================== -->
     <!-- TAB 6: WORLD NEWS                                                   -->
     <!-- =================================================================== -->
-    <section id="panel-intel" class="card-panel terminal-card rounded-3xl p-5 sm:p-7 space-y-6">
+    <section id="panel-intel" class="card-panel terminal-card rounded-2xl p-4 sm:p-5 space-y-4">
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pb-5 border-b divider-line">
         <div>
           <span class="text-xs font-mono uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-semibold">DAILY BRIEFING &bull; 06:30 IST</span>

@@ -549,51 +549,50 @@
               </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="p-4 sm:p-5 rounded-2xl inner-panel flex flex-col items-center justify-center text-center">
-                <div class="w-full flex items-center justify-between text-xs font-mono mb-1">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 items-stretch">
+              <div class="lg:col-span-4 p-4 rounded-xl inner-panel flex flex-col items-center justify-between text-center">
+                <div class="w-full flex items-center justify-between text-[11px] font-mono">
                   <span class="uppercase tracking-wider txt-muted font-semibold">Market Sentiment</span>
                   <span class="font-bold txt-primary">${dial.label}</span>
                 </div>
                 ${dial.svg}
               </div>
-              <div class="p-4 sm:p-5 rounded-2xl inner-panel flex flex-col justify-between space-y-3">
-                <div class="flex items-center justify-between text-xs font-mono">
-                  <span class="uppercase tracking-wider txt-muted font-semibold">Expected Volatility</span>
-                  <div class="flex items-center gap-1.5">
-                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase border ${volState.cls}">${volState.label}</span>
-                    <span class="px-2 py-0.5 rounded-md font-bold bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30">${d.iv || 'IV 20.0'}</span>
+              <div class="lg:col-span-4 p-4 rounded-xl inner-panel flex flex-col justify-between gap-2">
+                <div class="flex items-center justify-between text-[11px] font-mono">
+                  <span class="uppercase tracking-wider txt-muted font-semibold">Expected Vol</span>
+                  <div class="flex items-center gap-1">
+                    <span class="px-1.5 py-0.5 rounded text-[10px] font-bold uppercase border ${volState.cls}">${volState.label}</span>
+                    <span class="px-1.5 py-0.5 rounded font-bold bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30">${d.iv || 'IV 20.0'}</span>
                   </div>
                 </div>
-                <div class="grid grid-cols-2 gap-3 font-mono tabular-nums">
-                  <div class="p-3 rounded-xl terminal-card">
-                    <div class="text-[11px] uppercase txt-muted">1-Day (1σ)</div>
-                    <div class="text-lg font-bold txt-primary mt-0.5">${d.vol1d || '±1.10%'}</div>
+                <div class="grid grid-cols-2 gap-2 font-mono tabular-nums">
+                  <div class="p-2.5 rounded-lg terminal-card">
+                    <div class="text-[10px] uppercase txt-muted">1-Day (1σ)</div>
+                    <div class="text-base font-bold txt-primary mt-0.5">${d.vol1d || '±1.10%'}</div>
                   </div>
-                  <div class="p-3 rounded-xl terminal-card">
-                    <div class="text-[11px] uppercase txt-muted">1-Week (1σ)</div>
-                    <div class="text-lg font-bold txt-primary mt-0.5">${d.vol1w || '±2.75%'}</div>
+                  <div class="p-2.5 rounded-lg terminal-card">
+                    <div class="text-[10px] uppercase txt-muted">1-Week (1σ)</div>
+                    <div class="text-base font-bold txt-primary mt-0.5">${d.vol1w || '±2.75%'}</div>
                   </div>
                 </div>
-                <div class="text-xs font-mono txt-muted flex items-center justify-between">
-                  <span>Next Session Band:</span>
+                <div class="text-[11px] font-mono txt-muted flex items-center justify-between">
+                  <span>Next Band:</span>
                   <strong class="text-amber-700 dark:text-amber-300 tabular-nums">${bandStr}</strong>
                 </div>
               </div>
-            </div>
-
-            <div class="grid grid-cols-3 gap-2 sm:gap-3 font-mono tabular-nums">
-              <div class="p-3 sm:p-4 rounded-2xl bg-rose-500/15 border border-rose-500/35 flex items-center justify-between gap-2">
-                <div><div class="text-xs text-rose-700 dark:text-rose-400 font-bold uppercase">▼ Loss</div></div>
-                <div class="text-base sm:text-xl font-bold text-rose-800 dark:text-rose-300">${bear}</div>
-              </div>
-              <div class="p-3 sm:p-4 rounded-2xl bg-amber-500/15 border border-amber-500/35 flex items-center justify-between gap-2">
-                <div><div class="text-xs text-amber-700 dark:text-amber-400 font-bold uppercase">◆ Middle</div></div>
-                <div class="text-base sm:text-xl font-bold text-amber-800 dark:text-amber-300">${base}</div>
-              </div>
-              <div class="p-3 sm:p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/35 flex items-center justify-between gap-2">
-                <div><div class="text-xs text-emerald-700 dark:text-emerald-400 font-bold uppercase">▲ Gain</div></div>
-                <div class="text-base sm:text-xl font-bold text-emerald-800 dark:text-emerald-300">${bull}</div>
+              <div class="lg:col-span-4 grid grid-cols-1 gap-2 font-mono tabular-nums">
+                <div class="px-3.5 py-2.5 rounded-xl bg-rose-500/15 border border-rose-500/35 flex items-center justify-between gap-2">
+                  <span class="text-xs text-rose-700 dark:text-rose-400 font-bold uppercase">▼ Loss</span>
+                  <span class="text-base sm:text-lg font-bold text-rose-800 dark:text-rose-300">${bear}</span>
+                </div>
+                <div class="px-3.5 py-2.5 rounded-xl bg-amber-500/15 border border-amber-500/35 flex items-center justify-between gap-2">
+                  <span class="text-xs text-amber-700 dark:text-amber-400 font-bold uppercase">◆ Base</span>
+                  <span class="text-base sm:text-lg font-bold text-amber-800 dark:text-amber-300">${base}</span>
+                </div>
+                <div class="px-3.5 py-2.5 rounded-xl bg-emerald-500/15 border border-emerald-500/35 flex items-center justify-between gap-2">
+                  <span class="text-xs text-emerald-700 dark:text-emerald-400 font-bold uppercase">▲ Bull</span>
+                  <span class="text-base sm:text-lg font-bold text-emerald-800 dark:text-emerald-300">${bull}</span>
+                </div>
               </div>
             </div>
 
