@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-28T04:38:23.922Z",
+  "generatedAt": "2026-11-28T05:26:26.082Z",
   "india": {
     "NIFTYBEES": {
       "symbol": "NIFTYBEES.NS",
@@ -11422,8 +11422,8 @@
       "dayHigh": 7304.1,
       "w52Low": 6316.91,
       "w52High": 7844.52,
-      "volume": 1715427000,
-      "marketTime": "2026-11-27T21:00:00.000Z",
+      "volume": 2936150000,
+      "marketTime": "2026-11-27T18:38:39.000Z",
       "candles": [
         {
           "time": "2026-08-28",
@@ -12375,7 +12375,7 @@
       "dayHigh": 3712.8,
       "w52Low": 3425.2,
       "w52High": 5586.2,
-      "volume": 228331,
+      "volume": 124601,
       "marketTime": "2026-11-27T19:44:58.000Z",
       "candles": [
         {
@@ -12821,10 +12821,10 @@
         },
         {
           "time": "2026-11-27",
-          "open": 3619.8,
-          "high": 3712.8,
-          "low": 3578.8,
-          "close": 3668.5
+          "open": 3590.3,
+          "high": 3683.5,
+          "low": 3549.9,
+          "close": 3639.6
         }
       ],
       "isIndex": false
@@ -12840,7 +12840,7 @@
       "dayHigh": 93.14,
       "w52Low": 58.72,
       "w52High": 126.1,
-      "volume": 40534,
+      "volume": 19622,
       "marketTime": "2026-11-27T19:44:58.000Z",
       "candles": [
         {
@@ -13286,10 +13286,10 @@
         },
         {
           "time": "2026-11-27",
-          "open": 90.57,
-          "high": 93.14,
-          "low": 89.77,
-          "close": 90.84
+          "open": 94.5,
+          "high": 98,
+          "low": 93.54,
+          "close": 95.44
         }
       ],
       "isIndex": false
@@ -13305,7 +13305,7 @@
       "dayHigh": 86.6,
       "w52Low": 54.98,
       "w52High": 119.48,
-      "volume": 254754,
+      "volume": 264729,
       "marketTime": "2026-11-27T19:44:59.000Z",
       "candles": [
         {
@@ -13770,7 +13770,7 @@
       "dayHigh": 44.86,
       "w52Low": 40.05,
       "w52High": 121.3,
-      "volume": 98031,
+      "volume": 48110,
       "marketTime": "2026-11-27T19:44:56.000Z",
       "candles": [
         {
@@ -14216,10 +14216,10 @@
         },
         {
           "time": "2026-11-27",
-          "open": 41.71,
-          "high": 44.86,
-          "low": 41.08,
-          "close": 43.7
+          "open": 41.28,
+          "high": 44.3,
+          "low": 40.59,
+          "close": 43.17
         }
       ],
       "isIndex": false
@@ -14235,7 +14235,7 @@
       "dayHigh": 3.696,
       "w52Low": 2.483,
       "w52High": 7.827,
-      "volume": 140284,
+      "volume": 188713,
       "marketTime": "2026-11-27T19:44:59.000Z",
       "candles": [
         {
@@ -14700,7 +14700,7 @@
       "dayHigh": 5.76,
       "w52Low": 5.06,
       "w52High": 6.83,
-      "volume": 90175,
+      "volume": 25360,
       "marketTime": "2026-11-27T19:44:55.000Z",
       "candles": [
         {
@@ -15146,10 +15146,10 @@
         },
         {
           "time": "2026-11-27",
-          "open": 5.48,
-          "high": 5.76,
-          "low": 5.43,
-          "close": 5.6
+          "open": 5.39,
+          "high": 5.67,
+          "low": 5.34,
+          "close": 5.52
         }
       ],
       "isIndex": false
@@ -15160,10 +15160,10 @@
       "BTC": {
         "id": "bitcoin",
         "symbol": "BTC-USD",
-        "price": 59909,
-        "changePct": -2.58,
-        "marketCap": 1205248726900.6597,
-        "volume24h": 26938646423.303074,
+        "price": 59786,
+        "changePct": -3.07,
+        "marketCap": 1202653387695.796,
+        "volume24h": 26688396159.36869,
         "candles": [
           {
             "time": "2026-08-30",
@@ -15792,20 +15792,20 @@
             "time": "2026-11-28",
             "open": 59866.07,
             "high": 60164.19,
-            "low": 59838.65,
-            "close": 59923.6
+            "low": 59706.33,
+            "close": 59760.54
           }
         ],
-        "dayLow": 59838.65,
+        "dayLow": 59706.33,
         "dayHigh": 60164.19
       },
       "ETH": {
         "id": "ethereum",
         "symbol": "ETH-USD",
-        "price": 1661.31,
-        "changePct": -4.13,
-        "marketCap": 203816040380.2252,
-        "volume24h": 9987988973.627224,
+        "price": 1657.24,
+        "changePct": -4.97,
+        "marketCap": 202607717755.3459,
+        "volume24h": 9781195650.376722,
         "candles": [
           {
             "time": "2026-08-30",
@@ -16434,20 +16434,20 @@
             "time": "2026-11-28",
             "open": 1661.04,
             "high": 1669.16,
-            "low": 1660.08,
-            "close": 1661.85
+            "low": 1654.49,
+            "close": 1656.84
           }
         ],
-        "dayLow": 1660.08,
+        "dayLow": 1654.49,
         "dayHigh": 1669.16
       },
       "SOL": {
         "id": "solana",
         "symbol": "SOL-USD",
-        "price": 71.47,
-        "changePct": -1.91,
-        "marketCap": 42668653087.83474,
-        "volume24h": 2414280853.4176435,
+        "price": 71.37,
+        "changePct": -2.39,
+        "marketCap": 42283122214.995056,
+        "volume24h": 2317715001.650089,
         "candles": [
           {
             "time": "2026-08-30",
@@ -17076,20 +17076,20 @@
             "time": "2026-11-28",
             "open": 71.58,
             "high": 72.17,
-            "low": 71.57,
-            "close": 71.52
+            "low": 71.26,
+            "close": 71.35
           }
         ],
-        "dayLow": 71.57,
+        "dayLow": 71.26,
         "dayHigh": 72.17
       },
       "BNB": {
         "id": "binancecoin",
         "symbol": "BNB-USD",
-        "price": 554,
-        "changePct": -1.73,
-        "marketCap": 73140817059.6089,
-        "volume24h": 505380473.1345647,
+        "price": 552.32,
+        "changePct": -2.38,
+        "marketCap": 72636193055.70238,
+        "volume24h": 495574492.05179876,
         "candles": [
           {
             "time": "2026-08-30",
@@ -17718,20 +17718,20 @@
             "time": "2026-11-28",
             "open": 554.19,
             "high": 556.21,
-            "low": 553.64,
-            "close": 554.37
+            "low": 552.13,
+            "close": 552.02
           }
         ],
-        "dayLow": 553.64,
+        "dayLow": 552.13,
         "dayHigh": 556.21
       },
       "XRP": {
         "id": "ripple",
         "symbol": "XRP-USD",
-        "price": 0.9465,
-        "changePct": -1.52,
-        "marketCap": 60487751451.302895,
-        "volume24h": 1714634135.1525786,
+        "price": 0.9469,
+        "changePct": -1.75,
+        "marketCap": 60140480821.24139,
+        "volume24h": 1700738370.2468896,
         "candles": [
           {
             "time": "2026-08-30",
@@ -18360,20 +18360,20 @@
             "time": "2026-11-28",
             "open": 0.948,
             "high": 0.954,
-            "low": 0.9473,
-            "close": 0.9474
+            "low": 0.945,
+            "close": 0.9462
           }
         ],
-        "dayLow": 0.9473,
+        "dayLow": 0.945,
         "dayHigh": 0.954
       },
       "DOGE": {
         "id": "dogecoin",
         "symbol": "DOGE-USD",
-        "price": 0.0574,
-        "changePct": -0.6,
-        "marketCap": 9094128825.794165,
-        "volume24h": 397739166.30801326,
+        "price": 0.057,
+        "changePct": -1.52,
+        "marketCap": 8947293401.633722,
+        "volume24h": 391654864.9813514,
         "candles": [
           {
             "time": "2026-08-30",
@@ -19002,20 +19002,20 @@
             "time": "2026-11-28",
             "open": 0.0577,
             "high": 0.058,
-            "low": 0.0574,
-            "close": 0.0575
+            "low": 0.0569,
+            "close": 0.0569
           }
         ],
-        "dayLow": 0.0574,
+        "dayLow": 0.0569,
         "dayHigh": 0.058
       },
       "ADA": {
         "id": "cardano",
         "symbol": "ADA-USD",
-        "price": 0.1475,
-        "changePct": -2.84,
-        "marketCap": 5581321847.21928,
-        "volume24h": 206036065.23216242,
+        "price": 0.1466,
+        "changePct": -3.51,
+        "marketCap": 5512226556.024726,
+        "volume24h": 192380703.15738362,
         "candles": [
           {
             "time": "2026-08-30",
@@ -19644,20 +19644,20 @@
             "time": "2026-11-28",
             "open": 0.1483,
             "high": 0.1488,
-            "low": 0.1474,
-            "close": 0.1474
+            "low": 0.1465,
+            "close": 0.1463
           }
         ],
-        "dayLow": 0.1474,
+        "dayLow": 0.1465,
         "dayHigh": 0.1488
       },
       "LINK": {
         "id": "chainlink",
         "symbol": "LINK-USD",
-        "price": 9.21,
-        "changePct": -3.77,
-        "marketCap": 7208388626.84983,
-        "volume24h": 250403077.31289592,
+        "price": 9.18,
+        "changePct": -5.08,
+        "marketCap": 7040855340.724403,
+        "volume24h": 241341695.81957543,
         "candles": [
           {
             "time": "2026-08-30",
@@ -20286,11 +20286,11 @@
             "time": "2026-11-28",
             "open": 9.36,
             "high": 9.4,
-            "low": 9.22,
-            "close": 9.22
+            "low": 9.18,
+            "close": 9.17
           }
         ],
-        "dayLow": 9.22,
+        "dayLow": 9.18,
         "dayHigh": 9.4
       }
     },
@@ -20320,7 +20320,7 @@
       "tag": "BBC WORLD",
       "title": "Spanish PM and rivals rally supporters in final pitch for votes",
       "summary": "Prime Minister Pedro Sánchez wants to defy the polls, and his main rivals accuse him of not telling the truth and of \"betrayal\".",
-      "time": "7h ago",
+      "time": "8h ago",
       "link": "https://www.bbc.co.uk/news/articles/c8wy5p4gdnwvo?at_medium=RSS&at_campaign=rss"
     },
     {
@@ -20328,7 +20328,7 @@
       "tag": "BBC WORLD",
       "title": "Turkish officials 'destroyed' pro-opposition TV channel, owner tells BBC",
       "summary": "The headquarters of Halk TV were raided last month, the latest in a series of crackdowns on news sources deemed critical of the government.",
-      "time": "25m ago",
+      "time": "1h ago",
       "link": "https://www.bbc.co.uk/news/articles/cq36gk151xkdo?at_medium=RSS&at_campaign=rss"
     },
     {
@@ -20336,7 +20336,7 @@
       "tag": "BBC WORLD",
       "title": "Eight killed in Peruvian military helicopter crash",
       "summary": "The pilot was the sole survivor of the crash during a rescue mission in a remote area known for drug trafficking.",
-      "time": "19m ago",
+      "time": "1h ago",
       "link": "https://www.bbc.co.uk/news/articles/cwp9d85mlp88o?at_medium=RSS&at_campaign=rss"
     },
     {
@@ -20349,99 +20349,99 @@
     },
     {
       "cat": "US",
-      "tag": "U.S. NEWS",
-      "title": "Hundreds of thousands still without power a day after US slammed with Thanksgiving storms",
-      "summary": "Pennsylvania and neighbouring states remained badly affected on Friday after both coasts were lashed with wind and rain.",
-      "time": "3h ago",
-      "link": "https://www.bbc.co.uk/news/articles/cre3dj5n7dpwo?at_medium=RSS&at_campaign=rss"
+      "tag": "NPR / BBC US",
+      "title": "Thanksgiving storm batters East Coast. And, Black Friday sales to hit record levels",
+      "summary": "A powerful storm knocked out power for nearly 1 million customers and flooded streets. And, experts predict inflation will not dampen American spending for the holidays",
+      "time": "17h ago",
+      "link": "https://www.npr.org/2026/11/27/g-s1-156004/up-first-newsletter-thanksgiving-storm-black-friday-shopping-asylum-supreme-court"
     },
     {
       "cat": "US",
-      "tag": "U.S. NEWS",
-      "title": "Marching bands scramble to cover NYC costs after parade rearranged",
-      "summary": "Stormy weather in New York City prompted organisers to push back the Macy's parade by two days - leaving some musicians stuck.",
-      "time": "9h ago",
-      "link": "https://www.bbc.co.uk/news/articles/ckd71ypy9e8eo?at_medium=RSS&at_campaign=rss"
+      "tag": "NPR / BBC US",
+      "title": "From Thanksgiving blackouts to Black Friday, a holiday hit by wild weather and economic woes",
+      "summary": "A storm battered much of the country on Thursday, knocking out power to thousands of homes and disrupting travel. Today, Black Friday shopping deals kick off, and on Saturday New York City will hol...",
+      "time": "18h ago",
+      "link": "https://www.npr.org/2026/11/27/nx-s1-6054884/thanksgiving-weather-black-friday"
     },
     {
       "cat": "US",
-      "tag": "U.S. NEWS",
-      "title": "Canada's top court largely upholds Quebec ban on religious symbols for public servants",
-      "summary": "The law faced legal challenges from a range of groups, including female Muslim, Sikh and Catholic teachers, who argued it violated their fundamental rights.",
-      "time": "12h ago",
-      "link": "https://www.bbc.co.uk/news/articles/cq3dgpy9lem3o?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "cat": "US",
-      "tag": "U.S. NEWS",
-      "title": "Two American Airlines planes clip wings before takeoff at Reagan airport in 'tense' moment",
-      "summary": "No injuries were reported, and the FAA plans to investigate the incident, which occurred during taxiing.",
-      "time": "3h ago",
-      "link": "https://www.bbc.co.uk/news/articles/cqkgr4g5nrnlo?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "cat": "INDIA",
-      "tag": "THE HINDU",
-      "title": "Thirupparankundram row: Supreme Court finds wilful disobedience of Deepam order, directs lighting of pillar today - The Hindu",
-      "summary": "Thirupparankundram row: Supreme Court finds wilful disobedience of Deepam order, directs lighting of pillar today &nbsp;&nbsp; The Hindu Thiruparankundram Row | Supreme Court Orders Lamp Lighting A...",
-      "time": "22m ago",
-      "link": "https://news.google.com/rss/articles/CBMiogJBVV95cUxQTmNfSUVyV2FOX1JTQnVWR1pLSDJZUW1DVW00QTZlVTZmUEVMS0RzaWVQR2tYTzdFWGJ0NFdiR1NhSlJQRHJQT0ZKTGlsY1RxYkI1Qm9kRmJwb2hKcjl6VE1ZVXI2X3FKRzc3RWgteEZURGxjVURLV3NJVEx0T0xkY2k0YXN4TENid2d0d21TLUpNOGxQbTRPZ1N5T2VxU0dZQy16emhBRzdGZ0ItRXFiYXBmTDM3VlVxSHVXVnREVkdlMTJ3Yk9VOW1tNG5LbE10S29iaG9CQTE0WG5fdmhKX0ZHYzJGb3R4WTFmSGhDR19fR194MThicUtoN0pPWG5WVXlsNDladjM3WExoWFNISDFfSXhHTVpVOWNBZXU2UnB2UQ?oc=5"
-    },
-    {
-      "cat": "INDIA",
-      "tag": "THE NEWS MINUTE",
-      "title": "Draft delimitation Bill released: 50% increase in seats, 850-seat Lok Sabha, freeze till 2051 - The News Minute",
-      "summary": "Draft delimitation Bill released: 50% increase in seats, 850-seat Lok Sabha, freeze till 2051 &nbsp;&nbsp; The News Minute Fair play: on a hurried delimitation of Lok Sabha constituencies &nbsp;&nb...",
-      "time": "11h ago",
-      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNVXl2UVJyWjlFU045VEtEOUZydEVnRU9jT3UtQ3gtN3V5ejdFWWtHeUxyXy1YYTI2dVJqTFlENFFlblhmbGVJM3VrQlhjY0s2aklBdVNwZGh5TVFKUXpBMVJteE9Eemtja01laEpVOFEyOEJ1SjdXTFBQay1VSENKbGZQN05Kb2hNNEhfdEtzVGQ1MzFvTmt6Uk9CQUdEcW8zdThSZ2F0VEFHbHlMZExIcHZlSkxCcWlDbzRIS05TOGZodw?oc=5"
-    },
-    {
-      "cat": "INDIA",
-      "tag": "THE TIMES OF INDIA",
-      "title": "Pakistan's space capability improving with China's help, we need to enhance our capabilities: CDS Gen Sub - The Times of India",
-      "summary": "Pakistan's space capability improving with China's help, we need to enhance our capabilities: CDS Gen Sub &nbsp;&nbsp; The Times of India War and peace distinction blurring, India faces continuous...",
-      "time": "11h ago",
-      "link": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxPNmYxamYzWlRYWVc1VGVHczMwQkV3RjNheWc1bUxCZ0NwNnVhaTg1SnJMdm9YZzVwTk9fdkNVZldUYVpOQW04U3VNZ1Y1RkxaN1p5OTVVUDg1MjBMblpZbHFzaFFmSnJvbE0xVGw4cWJHZnp4WXloeEMyZElLeXExMmVUWFhBS3ZOWDNsaTJqUHlfRlUxNmJLNDRuTlg0RWZEWWhEOTJGSmM5LXhNRGgzSEhJaGJPWHFfVm1iQnBoVXVvRjMwVU50SXJERWNHNkxxWEZHUW9EWjllWGZGNDhsVXpza01UdmhQcFpRSkhndmVYam01djlWSzBnOHZrVU5wMWZzNDByeUs?oc=5"
-    },
-    {
-      "cat": "INDIA",
-      "tag": "THE HINDU",
-      "title": "Kallakurichi TVK MLA Arul Vignesh arrested on charges of harassing IAS officer - The Hindu",
-      "summary": "Kallakurichi TVK MLA Arul Vignesh arrested on charges of harassing IAS officer &nbsp;&nbsp; The Hindu ‘தமிழகத்தில் திறமையான அதிகாரிகள் உள்ளனர்’ - தவெக எம்.எல்.ஏ விவகாரம் குறித்து நீதிபதி கருத்து! &...",
-      "time": "15h ago",
-      "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOU3lVSDRva2dnOXpxX3BranNjVnA1SHR2OVJQUFhITllET29LSzZoeFdsUVNiVTFBRE5YMGNWbUxhdEFDeVNITmJyYjF3S0JRTDFZLVprZEx6VVZzVHdTR0JmSlN0T0VIdlV1eUd6Wm1wVDhwRzlVaGVBcWhoaXRKdTFkV0RRVDZ4VDc5T3F3NGM4ckpnQUh5RVh3UFZUYXRnX3VoRk1iRjkwRkFpcVo5NElBeTYxd2JEakhna1JJb3pHd3o5UGNHZDl5U2h1VUVRd185MGFBRWlEMW45RUUzc09n0gHoAUFVX3lxTE9tZHV0TmliSjNuMzZWT3ZaNEtjTnhUaHdDS3NPMHlQaXVMQktvUGZHYmpOVkNmMnFvS2RDUVJraXJWNTdSQjc4TkUwcGtpM240dDFsTzg4dWw2UzUxQWhOdWRyLXgwVmM3ZWtUcUo5ZGd1SEh2MW9Mb2MtUzF0Y2lpSGFNYklUUl9DdHVGSzQ1XzFzY3J3OHVXY2N5QzBvN2FDbjJ0TlZ2RnFueTUxTnpNT1ZsamFnN0lTOVMzazJGa3liZ0hJNzZvNDJkb1hDeGNEMUpyc3Y3UnV3RWMzT291SmU0R3hpbW8?oc=5"
-    },
-    {
-      "cat": "STEM",
-      "tag": "SCIENCEDAILY",
-      "title": "The narwhal’s legendary “unicorn horn” holds a remarkable engineering secret",
-      "summary": "The narwhal’s iconic spiral tusk, once prized in Europe as the horn of a mythical unicorn, conceals an extraordinary feat of natural engineering. Using advanced X-ray technology, an international t...",
+      "tag": "NPR / BBC US",
+      "title": "Can luxury save Macy's?",
+      "summary": "This week's celebration of Macy's 100th Thanksgiving parade finds the department store at a turning point. After years of losing sales, the retailer is reimagining itself — as a higher-end destinat...",
       "time": "19h ago",
-      "link": "https://www.sciencedaily.com/releases/2026/11/261126063316.htm"
+      "link": "https://www.npr.org/2026/11/27/nx-s1-6026486/macys-tries-to-reinvent-with-luxury"
     },
     {
-      "cat": "STEM",
-      "tag": "SCIENCEDAILY",
-      "title": "Scientists turn one of the world’s hardest-to-recycle plastics into high-performance lubricating oil",
-      "summary": "Virginia Tech scientists have discovered how to transform one of the world's hardest-to-recycle plastics into a valuable ingredient for high-performance engine oil. Their innovative process convert...",
+      "cat": "US",
+      "tag": "NPR / BBC US",
+      "title": "Trump effectively ended asylum. Advocates look to the Supreme Court to restore it",
+      "summary": "Trump's sweeping immigration changes — an asylum ban, mass firings and new legal maneuvers — have all but ended asylum. The high court will soon consider whether some shifts deny people due process.",
       "time": "19h ago",
-      "link": "https://www.sciencedaily.com/releases/2026/11/261126033501.htm"
+      "link": "https://www.npr.org/2026/11/27/nx-s1-6037854/trump-effectively-ended-asylum-supreme-court"
+    },
+    {
+      "cat": "INDIA",
+      "tag": "INDIA",
+      "title": "The Indian 'Tamasha queen' whose fans paid for a show that never happened",
+      "summary": "A new Bollywood flim spotlights the remarkable life of dancer and singer Vithabhai Narayangaonkar.",
+      "time": "5h ago",
+      "link": "https://www.bbc.co.uk/news/articles/cj20q9pw0116o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "cat": "INDIA",
+      "tag": "INDIA",
+      "title": "Sheikh Hasina's planned return puts Bangladesh on edge - and India in a bind",
+      "summary": "The ousted prime minister's December homecoming plan deepens Dhaka-Delhi tensions and risks fresh unrest.",
+      "time": "1d ago",
+      "link": "https://www.bbc.co.uk/news/articles/cx30g71rev23o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "cat": "INDIA",
+      "tag": "INDIA",
+      "title": "India busts cyberfraud and trafficking network rescuing 164 foreigners",
+      "summary": "Lured by IT job promises, the victims were allegedly forced into cybercrime, police say.",
+      "time": "19h ago",
+      "link": "https://www.bbc.co.uk/news/articles/crkgvjy7q83wo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "cat": "INDIA",
+      "tag": "INDIA",
+      "title": "Millions of wives in South Asia unprotected from marital rape - study",
+      "summary": "More than 100 countries have outlawed marital rape, but a large part of South Asia has not.",
+      "time": "21h ago",
+      "link": "https://www.bbc.co.uk/news/articles/cw074p95ye5do?at_medium=RSS&at_campaign=rss"
     },
     {
       "cat": "STEM",
-      "tag": "SCIENCEDAILY",
-      "title": "Scientists identify two ages when children may be most vulnerable to screen time",
-      "summary": "Scientists have identified two potentially critical periods when screen time may be especially detrimental to children's learning and memory: infancy and the start of formal schooling. Greater scre...",
-      "time": "1d ago",
-      "link": "https://www.sciencedaily.com/releases/2026/11/261126033220.htm"
+      "tag": "MIT RESEARCH",
+      "title": "Draining peatlands leaves a long legacy of warming",
+      "summary": "A new study finds the long-term decomposition of drained bogs, fens, and swamps is responsible for about 3 percent of human-caused climate warming.",
+      "time": "3d ago",
+      "link": "https://news.mit.edu/2026/draining-peatlands-leaves-long-warming-legacy-1125"
     },
     {
       "cat": "STEM",
-      "tag": "SCIENCEDAILY",
-      "title": "These bizarre prehistoric mammals may have been misunderstood for 150 years",
-      "summary": "Giant horned mammals that emerged shortly after the extinction of the dinosaurs may have had far fewer physical differences between males and females than scientists once believed. The discovery ch...",
-      "time": "1d ago",
-      "link": "https://www.sciencedaily.com/releases/2026/11/261125045310.htm"
+      "tag": "MIT RESEARCH",
+      "title": "Agentic system personalizes physical controls to help users “DJ their art”",
+      "summary": "“TangiMap” uses an AI agent to reprogram how buttons, knobs, and sliders are used, helping users do things like edit photos and perform music in a more dynamic, tactile way.",
+      "time": "3d ago",
+      "link": "https://news.mit.edu/2026/tangimap-agentic-system-personalizes-physical-controls-help-users-dj-their-art-1124"
+    },
+    {
+      "cat": "STEM",
+      "tag": "MIT RESEARCH",
+      "title": "What if excess renewable energy could power new industrial processes?",
+      "summary": "Excess electricity from solar and wind generation could become widely available across the U.S. and then tapped to manufacture materials or run data centers, scientists say.",
+      "time": "4d ago",
+      "link": "https://news.mit.edu/2026/excess-renewable-energy-could-power-new-industrial-processes-1124"
+    },
+    {
+      "cat": "STEM",
+      "tag": "NASA",
+      "title": "Artemis III Astronaut Andre Douglas Visits VAB",
+      "summary": "NASA astronaut Andre Douglas, Artemis III mission specialist, stands inside an RS-25 engine test article during a visit to the Vehicle Assembly Building at NASA’s Kennedy Space Center in Florida on...",
+      "time": "14h ago",
+      "link": "https://www.nasa.gov/image-article/artemis-iii-astronaut-andre-douglas-visits-vab/"
     }
   ]
 }

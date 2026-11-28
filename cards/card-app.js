@@ -509,7 +509,12 @@
         const w52RangeStr = d.w52Low && d.w52High ? `${fmtPrice(d.w52Low, cur, dec)} – ${fmtPrice(d.w52High, cur, dec)}` : `${fmtPrice(d.price * 0.78, cur, dec)} – ${fmtPrice(d.price * 1.12, cur, dec)}`;
         const fgScore = cardKey === 'crypto' && brief?.crypto?.fearGreed?.value ? brief.crypto.fearGreed.value : (d.fg || 52);
         const dial = renderDialSvg(fgScore);
-        const bandStr = `${fmtPrice(d.price * 0.99, cur, dec)} – ${fmtPrice(d.price * 1.01, cur, dec)}`;
+        const volPct = parseFloat(String(d.vol1d || '').replace(/[^0-9.]/g, '')) || 1.1;
+        const volState = volPct >= 1.8
+          ? { label: 'HIGH', cls: 'bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-500/35' }
+          : volPct <= 0.95
+            ? { label: 'LOW', cls: 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/35' }
+            : { label: 'FLAT', cls: 'bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/35' };
 
         root.innerHTML = `
           <div class="space-y-6">
@@ -555,7 +560,10 @@
               <div class="p-4 sm:p-5 rounded-2xl inner-panel flex flex-col justify-between space-y-3">
                 <div class="flex items-center justify-between text-xs font-mono">
                   <span class="uppercase tracking-wider txt-muted font-semibold">Expected Volatility</span>
-                  <span class="px-2 py-0.5 rounded-md font-bold bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30">${d.iv || 'IV 20.0'}</span>
+                  <div class="flex items-center gap-1.5">
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase border ${volState.cls}">${volState.label}</span>
+                    <span class="px-2 py-0.5 rounded-md font-bold bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30">${d.iv || 'IV 20.0'}</span>
+                  </div>
                 </div>
                 <div class="grid grid-cols-2 gap-3 font-mono tabular-nums">
                   <div class="p-3 rounded-xl terminal-card">
@@ -645,13 +653,20 @@
       } else if (cardKey === 'astro') {
         const signObj = ASTRO_SIGNS.find((s) => s.key === currentSign) || ASTRO_SIGNS[1];
         const isVedic = currentSys === 'VEDIC';
+        const fmtAstroShort = (offset) => {
+          try {
+            return new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kolkata', day: '2-digit', month: 'short' }).format(new Date(Date.now() + offset * 86400000)).toUpperCase();
+          } catch { return offset === 0 ? 'TODAY' : 'TOMORROW'; }
+        };
+        const todayShort = fmtAstroShort(0);
+        const tomShort = fmtAstroShort(1);
         root.innerHTML = `
           <div class="space-y-6">
             <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 border-b divider-line pb-4">
               <div class="flex items-center gap-3.5">
                 <div class="w-12 h-12 rounded-2xl inner-panel flex items-center justify-center text-2xl">${signObj.glyph}</div>
                 <div>
-                  <span class="text-xs font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-semibold">${isVedic ? 'VEDIC MOON (CHANDRA RASHI)' : 'WESTERN SUN SIGN'} • ${currentDay}</span>
+                  <span class="text-xs font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-semibold">${isVedic ? 'VEDIC MOON (CHANDRA RASHI)' : 'WESTERN SUN SIGN'} • ${currentDay === 'TODAY' ? todayShort : tomShort}</span>
                   <h2 class="text-lg sm:text-xl font-bold txt-primary">${isVedic ? signObj.vedic : signObj.western}</h2>
                 </div>
               </div>
@@ -664,8 +679,8 @@
                   <button type="button" data-sys="WESTERN" class="seg-btn ${currentSys === 'WESTERN' ? 'active' : ''} px-3 py-1 rounded-lg cursor-pointer">Western</button>
                 </div>
                 <div class="inline-flex rounded-xl pill-track p-1 text-xs font-mono">
-                  <button type="button" data-day="TODAY" class="seg-btn ${currentDay === 'TODAY' ? 'active' : ''} px-3 py-1 rounded-lg cursor-pointer">Today</button>
-                  <button type="button" data-day="TOMORROW" class="seg-btn ${currentDay === 'TOMORROW' ? 'active' : ''} px-3 py-1 rounded-lg cursor-pointer">Tomorrow</button>
+                  <button type="button" data-day="TODAY" class="seg-btn ${currentDay === 'TODAY' ? 'active' : ''} px-3 py-1 rounded-lg cursor-pointer">Today • ${todayShort}</button>
+                  <button type="button" data-day="TOMORROW" class="seg-btn ${currentDay === 'TOMORROW' ? 'active' : ''} px-3 py-1 rounded-lg cursor-pointer">Tomorrow • ${tomShort}</button>
                 </div>
               </div>
             </div>

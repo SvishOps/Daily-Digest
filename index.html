@@ -11,14 +11,14 @@
   <script src="https://unpkg.com/lightweight-charts@4.2.1/dist/lightweight-charts.standalone.production.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
             mono: ['"IBM Plex Mono"', 'monospace'],
           }
         }
@@ -67,8 +67,10 @@
     body {
       background-color: var(--bg-page);
       color: var(--text-primary);
-      font-family: 'IBM Plex Sans', system-ui, sans-serif;
-      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
       transition: background-color 0.25s ease, color 0.25s ease;
       min-height: 100vh;
     }
@@ -369,7 +371,10 @@
         <div class="p-5 rounded-2xl bg-amber-500/10 border border-amber-500/35 flex flex-col justify-between gap-3 font-mono tabular-nums">
           <div class="flex items-center justify-between gap-2 flex-wrap">
             <span class="text-xs uppercase tracking-wider text-amber-700 dark:text-amber-300 font-bold">Expected Volatility (±1&sigma;)</span>
-            <span id="india-vix-badge" class="px-2 py-0.5 rounded-md text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35 font-semibold">INDIA VIX 16.66</span>
+            <div class="flex items-center gap-1.5">
+              <span id="india-vol-state" class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35">LOW</span>
+              <span id="india-vix-badge" class="px-2 py-0.5 rounded-md text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35 font-semibold">INDIA VIX 16.66</span>
+            </div>
           </div>
           <div class="grid grid-cols-2 gap-3">
             <div class="p-3 rounded-xl inner-panel">
@@ -503,7 +508,10 @@
         <div class="p-5 rounded-2xl bg-rose-500/10 border border-rose-500/35 flex flex-col justify-between gap-3 font-mono tabular-nums">
           <div class="flex items-center justify-between gap-2 flex-wrap">
             <span class="text-xs uppercase tracking-wider text-rose-700 dark:text-rose-300 font-bold">Expected Volatility (±1&sigma;)</span>
-            <span id="us-vix-badge" class="px-2 py-0.5 rounded-md text-xs bg-rose-500/20 text-rose-800 dark:text-rose-200 border border-rose-500/40 font-semibold">CBOE VIX 28.29</span>
+            <div class="flex items-center gap-1.5">
+              <span id="us-vol-state" class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/35">FLAT</span>
+              <span id="us-vix-badge" class="px-2 py-0.5 rounded-md text-xs bg-rose-500/20 text-rose-800 dark:text-rose-200 border border-rose-500/40 font-semibold">CBOE VIX 28.29</span>
+            </div>
           </div>
           <div class="grid grid-cols-2 gap-3">
             <div class="p-3 rounded-xl inner-panel">
@@ -647,7 +655,10 @@
         <div class="p-5 rounded-2xl bg-rose-500/10 border border-rose-500/35 flex flex-col justify-between gap-3 font-mono tabular-nums">
           <div class="flex items-center justify-between gap-2 flex-wrap">
             <span class="text-xs uppercase tracking-wider text-rose-700 dark:text-rose-300 font-bold">Expected Volatility (±1&sigma;)</span>
-            <span id="crypto-dvol-badge" class="px-2 py-0.5 rounded-md text-xs bg-rose-500/20 text-rose-800 dark:text-rose-200 border border-rose-500/40 font-semibold">DVOL 55.45</span>
+            <div class="flex items-center gap-1.5">
+              <span id="crypto-vol-state" class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/35">HIGH</span>
+              <span id="crypto-dvol-badge" class="px-2 py-0.5 rounded-md text-xs bg-rose-500/20 text-rose-800 dark:text-rose-200 border border-rose-500/40 font-semibold">DVOL 55.45</span>
+            </div>
           </div>
           <div class="grid grid-cols-2 gap-3">
             <div class="p-3 rounded-xl inner-panel">
@@ -791,7 +802,10 @@
         <div class="p-5 rounded-2xl bg-amber-500/10 border border-amber-500/35 flex flex-col justify-between gap-3 font-mono tabular-nums">
           <div class="flex items-center justify-between gap-2 flex-wrap">
             <span class="text-xs uppercase tracking-wider text-amber-700 dark:text-amber-300 font-bold">Expected Volatility (±1&sigma;)</span>
-            <span id="comm-iv-badge" class="px-2 py-0.5 rounded-md text-xs bg-amber-500/20 text-amber-800 dark:text-amber-200 border border-amber-500/40 font-semibold">GVZ 18.40</span>
+            <div class="flex items-center gap-1.5">
+              <span id="comm-vol-state" class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/35">FLAT</span>
+              <span id="comm-iv-badge" class="px-2 py-0.5 rounded-md text-xs bg-amber-500/20 text-amber-800 dark:text-amber-200 border border-amber-500/40 font-semibold">GVZ 18.40</span>
+            </div>
           </div>
           <div class="grid grid-cols-2 gap-3">
             <div class="p-3 rounded-xl inner-panel">
@@ -1590,10 +1604,22 @@
     let activeAstroSign = 'TAURUS';
     let activeAstroDay = 'TODAY';
 
+    function getAstroDateLabel(isToday) {
+      const dt = new Date(Date.now() + (isToday ? 0 : 86400000));
+      try {
+        return new Intl.DateTimeFormat('en-GB', {
+          timeZone: 'Asia/Kolkata', weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'
+        }).format(dt);
+      } catch (e) {
+        return dt.toDateString();
+      }
+    }
+
     function getAstroContent(signKey, sys, day) {
       const sign = ASTRO_SIGNS.find((s) => s.key === signKey) || ASTRO_SIGNS[1];
       const isTaurusVedic = signKey === 'TAURUS' && sys === 'VEDIC';
       const isToday = day === 'TODAY';
+      const dayLabel = getAstroDateLabel(isToday);
 
       if (isTaurusVedic && isToday) {
         return {
@@ -1613,7 +1639,7 @@
             { title: 'Money & Markets', tag: 'CAUTIOUS', color: 'rose', body: 'Over-cautiousness could make you hesitate on solid setups, while complex accounting needs patience. Verify risk/reward carefully before committing fresh capital.' },
             { title: 'Relationships & Health', tag: 'BALANCED', color: 'emerald', body: 'Stay warm and attentive to family or partner perspectives to avoid minor friction. High physical efficiency lets you clear tough tasks—conserve energy by skipping unproductive debates.' }
           ],
-          footer: 'Personalized for Vrishabha Rashi • Rohini Pada 1 • Vakya Panchangam (Fri, 27 Nov 2026).'
+          footer: `Personalized for Vrishabha Rashi • Rohini Pada 1 • Vakya Panchangam (${dayLabel}).`
         };
       }
 
@@ -1635,11 +1661,10 @@
             { title: 'Money & Savings', tag: 'STABLE', color: 'amber', body: 'Good day to audit recurring expenses and review long-term allocations rather than chasing impulsive weekend purchases.' },
             { title: 'Relationships & Health', tag: 'HARMONIOUS', color: 'emerald', body: 'Warm family conversations restore mental balance. Prioritize hydration, light stretching, and an earlier sleep window.' }
           ],
-          footer: 'Tomorrow Preview for Vrishabha Rashi • Rohini Pada 1 • Vakya Panchangam (Sat, 28 Nov 2026).'
+          footer: `Tomorrow Preview for Vrishabha Rashi • Rohini Pada 1 • Vakya Panchangam (${dayLabel}).`
         };
       }
 
-      const dayLabel = isToday ? 'Fri, 27 Nov 2026' : 'Sat, 28 Nov 2026';
       const sysLabel = sys === 'VEDIC' ? 'VEDIC MOON (CHANDRA RASHI)' : 'WESTERN SUN SIGN';
       return {
         kicker: `${sysLabel} • ${sign.element.toUpperCase()} ELEMENT`,
@@ -2107,6 +2132,22 @@
       }).join('');
     }
 
+    function renderVolStatePill(pillId, vol1dStr) {
+      const el = document.getElementById(pillId);
+      if (!el) return;
+      const pct = parseFloat(String(vol1dStr || '').replace(/[^0-9.]/g, '')) || 1.1;
+      if (pct >= 1.8) {
+        el.textContent = 'HIGH';
+        el.className = 'px-2 py-0.5 rounded-md text-[10px] font-bold uppercase bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/35';
+      } else if (pct <= 0.95) {
+        el.textContent = 'LOW';
+        el.className = 'px-2 py-0.5 rounded-md text-[10px] font-bold uppercase bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35';
+      } else {
+        el.textContent = 'FLAT';
+        el.className = 'px-2 py-0.5 rounded-md text-[10px] font-bold uppercase bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/35';
+      }
+    }
+
     function renderIndiaCard(key) {
       const d = INDIA_ASSETS[key] || INDIA_ASSETS.NIFTYBEES;
       activeTickers.india = key;
@@ -2138,6 +2179,7 @@
       document.getElementById('india-day-range').textContent = d.dayRange;
       document.getElementById('india-52w-range').textContent = d.w52Range;
       document.getElementById('india-vix-badge').textContent = d.vixBadge;
+      renderVolStatePill('india-vol-state', d.vol1d);
       document.getElementById('india-vol-1d').textContent = d.vol1d;
       document.getElementById('india-vol-1d-etf').textContent = d.vol1dSub;
       document.getElementById('india-vol-1w').textContent = d.vol1w;
@@ -2176,6 +2218,7 @@
       document.getElementById('us-subprice').textContent = d.subprice;
       document.getElementById('us-range').textContent = d.range;
       document.getElementById('us-vix-badge').textContent = d.vixBadge;
+      renderVolStatePill('us-vol-state', d.vol1d);
       document.getElementById('us-vol-1d').textContent = d.vol1d;
       document.getElementById('us-vol-1d-sub').textContent = d.vol1dSub;
       document.getElementById('us-vol-1w').textContent = d.vol1w;
@@ -2222,6 +2265,7 @@
       document.getElementById('crypto-band').textContent = d.band;
       document.getElementById('crypto-dominance').textContent = d.dominance;
       document.getElementById('crypto-dvol-badge').textContent = d.dvol;
+      renderVolStatePill('crypto-vol-state', d.vol1d);
       document.getElementById('crypto-vol-1d').textContent = d.vol1d;
       document.getElementById('crypto-vol-1d-sub').textContent = d.vol1dSub;
       document.getElementById('crypto-vol-7d').textContent = d.vol7d;
@@ -2270,6 +2314,7 @@
       document.getElementById('comm-52w-range').textContent = d.w52Range;
       document.getElementById('comm-fg-label').textContent = d.fgLabel;
       document.getElementById('comm-iv-badge').textContent = d.ivBadge;
+      renderVolStatePill('comm-vol-state', d.vol1d);
       document.getElementById('comm-vol-1d').textContent = d.vol1d;
       document.getElementById('comm-vol-1d-sub').textContent = d.vol1dSub;
       document.getElementById('comm-vol-1w').textContent = d.vol1w;
@@ -2601,8 +2646,14 @@
       });
 
       document.querySelectorAll('.astro-day-tab').forEach((btn) => {
+        const dayKey = btn.getAttribute('data-astro-day');
+        try {
+          const dt = new Date(Date.now() + (dayKey === 'TODAY' ? 0 : 86400000));
+          const shortDt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kolkata', day: '2-digit', month: 'short' }).format(dt).toUpperCase();
+          btn.textContent = `${dayKey} • ${shortDt}`;
+        } catch (e) {}
         btn.addEventListener('click', () => {
-          activeAstroDay = btn.getAttribute('data-astro-day');
+          activeAstroDay = dayKey;
           document.querySelectorAll('.astro-day-tab').forEach((b) => b.classList.toggle('active', b === btn));
           renderAstroCard();
         });

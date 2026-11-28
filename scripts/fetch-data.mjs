@@ -384,6 +384,11 @@ function relativeTimeLabel(pubDateStr) {
   return `${diffDays}d ago`;
 }
 
+function isEnglishText(str = '') {
+  // Reject strings containing non-Latin scripts (Devanagari, Arabic, CJK, Cyrillic, Tamil, etc.)
+  return !/[\u0400-\u04FF\u0600-\u06FF\u0900-\u0D7F\u3040-\u30FF\u4E00-\u9FFF\uAC00-\uD7AF]/.test(str);
+}
+
 function parseRssItems(xmlText, cat, defaultTag, limit = 4) {
   const items = [];
   const itemMatches = xmlText.match(/<item\b[\s\S]*?<\/item>/gi) || [];
@@ -396,11 +401,10 @@ function parseRssItems(xmlText, cat, defaultTag, limit = 4) {
     const sourceRaw = raw.match(/<source\b[^>]*>([\s\S]*?)<\/source>/i)?.[1] || '';
 
     let title = decodeXmlEntities(titleRaw);
-    if (!title) continue;
-    // Strip trailing " - Source" in Google News titles if present
+    if (!title || !isEnglishText(title)) continue;
     const tag = decodeXmlEntities(sourceRaw).toUpperCase() || defaultTag;
     let summary = decodeXmlEntities(descRaw);
-    if (!summary || summary === title) {
+    if (!summary || summary === title || !isEnglishText(summary)) {
       summary = `${tag} briefing: ${title}`;
     }
     if (summary.length > 200) {
@@ -419,25 +423,27 @@ function parseRssItems(xmlText, cat, defaultTag, limit = 4) {
   return items;
 }
 
+const BREAKTHROUGH_RE = /\b(breakthrough|discover|quantum|fusion|ai|model|nasa|space|orbit|telescope|vaccine|crispr|gene|cancer|battery|semiconductor|chip|robot|physics|climate|solar|launch|moon|mars|neural|superconduct)\b/i;
+
 async function fetchNews() {
   const feeds = [
     {
       cat: 'WORLD',
       tag: 'BBC WORLD',
       url: 'https://feeds.bbci.co.uk/news/world/rss.xml',
-      fallbackUrl: 'https://news.google.com/rss/headlines/section/TOPIC/WORLD?hl=en-US&gl=US&ceid=US:en',
+      fallbackUrl: 'https://feeds.npr.org/1004/rss.xml',
     },
     {
       cat: 'US',
-      tag: 'U.S. NEWS',
-      url: 'https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml',
-      fallbackUrl: 'https://news.google.com/rss/headlines/section/TOPIC/NATION?hl=en-US&gl=US&ceid=US:en',
+      tag: 'NPR / BBC US',
+      url: 'https://feeds.npr.org/1003/rss.xml',
+      fallbackUrl: 'https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml',
     },
     {
       cat: 'INDIA',
       tag: 'INDIA',
-      url: 'https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en',
-      fallbackUrl: 'https://feeds.bbci.co.uk/news/world/asia/india/rss.xml',
+      url: 'https://feeds.bbci.co.uk/news/world/asia/india/rss.xml',
+      fallbackUrl: 'https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en',
     },
   ];
 
@@ -457,22 +463,35 @@ async function fetchNews() {
     allItems.push(...loaded);
   }
 
-  // STEM: ScienceDaily, Ars Technica Science, NASA, BBC Science
+  // STEM: MIT News Research, NASA Breaking News, Ars Technica Science, Nature
   const stemFeeds = [
-    { tag: 'SCIENCEDAILY', url: 'https://www.sciencedaily.com/rss/top/science.xml' },
+    { tag: 'MIT RESEARCH', url: 'https://news.mit.edu/rss/research' },
+    { tag: 'NASA', url: 'https://www.nasa.gov/rss/dyn/breaking_news.rss' },
     { tag: 'ARS SCIENCE', url: 'https://feeds.arstechnica.com/arstechnica/science' },
-    { tag: 'BBC SCIENCE', url: 'https://feeds.bbci.co.uk/news/science_and_environment/rss.xml' },
+    { tag: 'SCIENCEDAILY', url: 'https://www.sciencedaily.com/rss/top/technology.xml' },
   ];
-  let stemItems = [];
+  const stemPool = [];
   for (const sf of stemFeeds) {
-    if (stemItems.length >= 4) break;
     try {
       const xml = await fetchText(sf.url);
-      const parsed = parseRssItems(xml, 'STEM', sf.tag, 4 - stemItems.length);
-      stemItems.push(...parsed);
+      stemPool.push(...parseRssItems(xml, 'STEM', sf.tag, 5));
     } catch (err) {
       console.warn(`[warn] STEM RSS fetch failed (${sf.url}): ${err.message}`);
     }
+  }
+  // Prioritize breakthroughs & major scientific advancements
+  stemPool.sort((a, b) => {
+    const sa = BREAKTHROUGH_RE.test(`${a.title} ${a.summary}`) ? 1 : 0;
+    const sb = BREAKTHROUGH_RE.test(`${b.title} ${b.summary}`) ? 1 : 0;
+    return sb - sa;
+  });
+  const seenStem = new Set();
+  const stemItems = [];
+  for (const item of stemPool) {
+    if (stemItems.length >= 4) break;
+    if (seenStem.has(item.title)) continue;
+    seenStem.add(item.title);
+    stemItems.push(item);
   }
 
   allItems.push(...stemItems);
