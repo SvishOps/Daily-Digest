@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-28T05:26:26.082Z",
+  "generatedAt": "2026-11-28T05:48:57.804Z",
   "india": {
     "NIFTYBEES": {
       "symbol": "NIFTYBEES.NS",
@@ -15160,10 +15160,10 @@
       "BTC": {
         "id": "bitcoin",
         "symbol": "BTC-USD",
-        "price": 59786,
-        "changePct": -3.07,
-        "marketCap": 1202653387695.796,
-        "volume24h": 26688396159.36869,
+        "price": 59712,
+        "changePct": -3.23,
+        "marketCap": 1201288898728.7993,
+        "volume24h": 26364493342.764275,
         "candles": [
           {
             "time": "2026-08-30",
@@ -15792,20 +15792,20 @@
             "time": "2026-11-28",
             "open": 59866.07,
             "high": 60164.19,
-            "low": 59706.33,
-            "close": 59760.54
+            "low": 59704.25,
+            "close": 59676.65
           }
         ],
-        "dayLow": 59706.33,
+        "dayLow": 59704.25,
         "dayHigh": 60164.19
       },
       "ETH": {
         "id": "ethereum",
         "symbol": "ETH-USD",
-        "price": 1657.24,
-        "changePct": -4.97,
-        "marketCap": 202607717755.3459,
-        "volume24h": 9781195650.376722,
+        "price": 1653.09,
+        "changePct": -4.99,
+        "marketCap": 202394476513.84674,
+        "volume24h": 9713997985.644598,
         "candles": [
           {
             "time": "2026-08-30",
@@ -16434,20 +16434,20 @@
             "time": "2026-11-28",
             "open": 1661.04,
             "high": 1669.16,
-            "low": 1654.49,
-            "close": 1656.84
+            "low": 1653.62,
+            "close": 1651.07
           }
         ],
-        "dayLow": 1654.49,
+        "dayLow": 1653.62,
         "dayHigh": 1669.16
       },
       "SOL": {
         "id": "solana",
         "symbol": "SOL-USD",
-        "price": 71.37,
-        "changePct": -2.39,
-        "marketCap": 42283122214.995056,
-        "volume24h": 2317715001.650089,
+        "price": 71.19,
+        "changePct": -2.61,
+        "marketCap": 42165512276.137,
+        "volume24h": 2370372505.2983,
         "candles": [
           {
             "time": "2026-08-30",
@@ -17076,20 +17076,20 @@
             "time": "2026-11-28",
             "open": 71.58,
             "high": 72.17,
-            "low": 71.26,
-            "close": 71.35
+            "low": 71.2,
+            "close": 71.09
           }
         ],
-        "dayLow": 71.26,
+        "dayLow": 71.2,
         "dayHigh": 72.17
       },
       "BNB": {
         "id": "binancecoin",
         "symbol": "BNB-USD",
-        "price": 552.32,
-        "changePct": -2.38,
-        "marketCap": 72636193055.70238,
-        "volume24h": 495574492.05179876,
+        "price": 551.35,
+        "changePct": -2.58,
+        "marketCap": 72487528455.22107,
+        "volume24h": 492457262.79057974,
         "candles": [
           {
             "time": "2026-08-30",
@@ -17718,20 +17718,20 @@
             "time": "2026-11-28",
             "open": 554.19,
             "high": 556.21,
-            "low": 552.13,
-            "close": 552.02
+            "low": 551.45,
+            "close": 550.6
           }
         ],
-        "dayLow": 552.13,
+        "dayLow": 551.45,
         "dayHigh": 556.21
       },
       "XRP": {
         "id": "ripple",
         "symbol": "XRP-USD",
-        "price": 0.9469,
-        "changePct": -1.75,
-        "marketCap": 60140480821.24139,
-        "volume24h": 1700738370.2468896,
+        "price": 0.9441,
+        "changePct": -2.48,
+        "marketCap": 59993006047.93764,
+        "volume24h": 1687812853.2346525,
         "candles": [
           {
             "time": "2026-08-30",
@@ -18360,20 +18360,20 @@
             "time": "2026-11-28",
             "open": 0.948,
             "high": 0.954,
-            "low": 0.945,
-            "close": 0.9462
+            "low": 0.9439,
+            "close": 0.9437
           }
         ],
-        "dayLow": 0.945,
+        "dayLow": 0.9439,
         "dayHigh": 0.954
       },
       "DOGE": {
         "id": "dogecoin",
         "symbol": "DOGE-USD",
-        "price": 0.057,
-        "changePct": -1.52,
-        "marketCap": 8947293401.633722,
-        "volume24h": 391654864.9813514,
+        "price": 0.0567,
+        "changePct": -2.12,
+        "marketCap": 8915697835.599268,
+        "volume24h": 389444492.00786835,
         "candles": [
           {
             "time": "2026-08-30",
@@ -19002,20 +19002,20 @@
             "time": "2026-11-28",
             "open": 0.0577,
             "high": 0.058,
-            "low": 0.0569,
-            "close": 0.0569
+            "low": 0.0568,
+            "close": 0.0567
           }
         ],
-        "dayLow": 0.0569,
+        "dayLow": 0.0568,
         "dayHigh": 0.058
       },
       "ADA": {
         "id": "cardano",
         "symbol": "ADA-USD",
-        "price": 0.1466,
-        "changePct": -3.51,
-        "marketCap": 5512226556.024726,
-        "volume24h": 192380703.15738362,
+        "price": 0.1458,
+        "changePct": -4.35,
+        "marketCap": 5478697453.694961,
+        "volume24h": 191813935.79912817,
         "candles": [
           {
             "time": "2026-08-30",
@@ -19644,20 +19644,20 @@
             "time": "2026-11-28",
             "open": 0.1483,
             "high": 0.1488,
-            "low": 0.1465,
-            "close": 0.1463
+            "low": 0.1459,
+            "close": 0.1456
           }
         ],
-        "dayLow": 0.1465,
+        "dayLow": 0.1459,
         "dayHigh": 0.1488
       },
       "LINK": {
         "id": "chainlink",
         "symbol": "LINK-USD",
-        "price": 9.18,
-        "changePct": -5.08,
-        "marketCap": 7040855340.724403,
-        "volume24h": 241341695.81957543,
+        "price": 9.15,
+        "changePct": -5.16,
+        "marketCap": 7017833174.440698,
+        "volume24h": 238379584.06394622,
         "candles": [
           {
             "time": "2026-08-30",
@@ -20286,11 +20286,11 @@
             "time": "2026-11-28",
             "open": 9.36,
             "high": 9.4,
-            "low": 9.18,
-            "close": 9.17
+            "low": 9.15,
+            "close": 9.14
           }
         ],
-        "dayLow": 9.18,
+        "dayLow": 9.15,
         "dayHigh": 9.4
       }
     },
@@ -20326,90 +20326,90 @@
     {
       "cat": "WORLD",
       "tag": "BBC WORLD",
-      "title": "Turkish officials 'destroyed' pro-opposition TV channel, owner tells BBC",
-      "summary": "The headquarters of Halk TV were raided last month, the latest in a series of crackdowns on news sources deemed critical of the government.",
-      "time": "1h ago",
-      "link": "https://www.bbc.co.uk/news/articles/cq36gk151xkdo?at_medium=RSS&at_campaign=rss"
+      "title": "Zelensky criticises 'strange' Trump-Putin friendship in BBC interview",
+      "summary": "Ukraine's president voices frustration with US and says it is not pushing Russia hard enough in peace talks to end the war.",
+      "time": "12h ago",
+      "link": "https://www.bbc.co.uk/news/articles/c820q9wgrpyyo?at_medium=RSS&at_campaign=rss"
     },
     {
       "cat": "WORLD",
-      "tag": "BBC WORLD",
-      "title": "Eight killed in Peruvian military helicopter crash",
-      "summary": "The pilot was the sole survivor of the crash during a rescue mission in a remote area known for drug trafficking.",
-      "time": "1h ago",
-      "link": "https://www.bbc.co.uk/news/articles/cwp9d85mlp88o?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "cat": "WORLD",
-      "tag": "BBC WORLD",
-      "title": "'Poison seller' Kenneth Law apologises in court to the families of his victims",
-      "summary": "The Canadian man, who pleaded guilty to 14 counts of aiding and abetting suicide earlier this year, said he was remorseful for his actions.",
-      "time": "4h ago",
-      "link": "https://www.bbc.co.uk/news/articles/cmx2898wq2qjo?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "cat": "US",
-      "tag": "NPR / BBC US",
-      "title": "Thanksgiving storm batters East Coast. And, Black Friday sales to hit record levels",
-      "summary": "A powerful storm knocked out power for nearly 1 million customers and flooded streets. And, experts predict inflation will not dampen American spending for the holidays",
-      "time": "17h ago",
-      "link": "https://www.npr.org/2026/11/27/g-s1-156004/up-first-newsletter-thanksgiving-storm-black-friday-shopping-asylum-supreme-court"
-    },
-    {
-      "cat": "US",
-      "tag": "NPR / BBC US",
-      "title": "From Thanksgiving blackouts to Black Friday, a holiday hit by wild weather and economic woes",
-      "summary": "A storm battered much of the country on Thursday, knocking out power to thousands of homes and disrupting travel. Today, Black Friday shopping deals kick off, and on Saturday New York City will hol...",
-      "time": "18h ago",
-      "link": "https://www.npr.org/2026/11/27/nx-s1-6054884/thanksgiving-weather-black-friday"
-    },
-    {
-      "cat": "US",
-      "tag": "NPR / BBC US",
-      "title": "Can luxury save Macy's?",
-      "summary": "This week's celebration of Macy's 100th Thanksgiving parade finds the department store at a turning point. After years of losing sales, the retailer is reimagining itself — as a higher-end destinat...",
-      "time": "19h ago",
-      "link": "https://www.npr.org/2026/11/27/nx-s1-6026486/macys-tries-to-reinvent-with-luxury"
-    },
-    {
-      "cat": "US",
-      "tag": "NPR / BBC US",
-      "title": "Trump effectively ended asylum. Advocates look to the Supreme Court to restore it",
-      "summary": "Trump's sweeping immigration changes — an asylum ban, mass firings and new legal maneuvers — have all but ended asylum. The high court will soon consider whether some shifts deny people due process.",
-      "time": "19h ago",
-      "link": "https://www.npr.org/2026/11/27/nx-s1-6037854/trump-effectively-ended-asylum-supreme-court"
-    },
-    {
-      "cat": "INDIA",
-      "tag": "INDIA",
-      "title": "The Indian 'Tamasha queen' whose fans paid for a show that never happened",
-      "summary": "A new Bollywood flim spotlights the remarkable life of dancer and singer Vithabhai Narayangaonkar.",
-      "time": "5h ago",
-      "link": "https://www.bbc.co.uk/news/articles/cj20q9pw0116o?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "cat": "INDIA",
-      "tag": "INDIA",
-      "title": "Sheikh Hasina's planned return puts Bangladesh on edge - and India in a bind",
-      "summary": "The ousted prime minister's December homecoming plan deepens Dhaka-Delhi tensions and risks fresh unrest.",
+      "tag": "BBC BUSINESS",
+      "title": "Faisal Islam: Why Trump's new tariffs are less of a threat",
+      "summary": "Other countries have rerouted trade in response to his first tariff salvo, now they are looking beyond Trump's tenure.",
       "time": "1d ago",
-      "link": "https://www.bbc.co.uk/news/articles/cx30g71rev23o?at_medium=RSS&at_campaign=rss"
+      "link": "https://www.bbc.co.uk/news/articles/c6r7g4e3yep1o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "cat": "WORLD",
+      "tag": "BBC BUSINESS",
+      "title": "UK to pay 'participation' fee to deliver EU deals",
+      "summary": "Details of the contribution towards EU running costs have been revealed in new legal documents.",
+      "time": "1d ago",
+      "link": "https://www.bbc.co.uk/news/articles/ck2057x387ego?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "cat": "US",
+      "tag": "CNBC",
+      "title": "Inflation has shoppers hunting for value. That bodes well for Black Friday",
+      "summary": "Even as consumers face macroeconomic headwinds, retailers are expecting robust holiday spending through Black Friday and beyond.",
+      "time": "8h ago",
+      "link": "https://www.cnbc.com/2026/11/27/black-friday-2026-inflation-value-deals.html"
+    },
+    {
+      "cat": "US",
+      "tag": "CNBC",
+      "title": "Trump demands probe into 'record setting error' after third-quarter GDP data gets massive revision higher",
+      "summary": "President Donald Trump on Thursday deemed the latest gross domestic product revision a mistake, claiming that it should be \"immediately investigated.\"",
+      "time": "14h ago",
+      "link": "https://www.cnbc.com/2026/11/26/trump-gdp-revision-investigation.html"
+    },
+    {
+      "cat": "US",
+      "tag": "CNBC",
+      "title": "OpenAI countersues Apple for stealing trade secrets",
+      "summary": "Apple in July sued OpenAI and two former employees, alleging misappropriation of its trade secrets to benefit the ChatGPT owner's foray into consumer hardware.",
+      "time": "7h ago",
+      "link": "https://www.cnbc.com/2026/11/27/openai-countersues-apple-for-stealing-trade-secrets-ft-reports.html"
+    },
+    {
+      "cat": "US",
+      "tag": "CNBC",
+      "title": "Budget airline Norse Atlantic files for bankruptcy in Europe after failing to secure funding",
+      "summary": "Budget carrier Norse Atlantic filed for bankruptcy Friday, saying it failed to secure funding after soaring fuel costs strained the company's operations.",
+      "time": "11h ago",
+      "link": "https://www.cnbc.com/2026/11/27/norse-atlantic-bankruptcy-fuel-costs.html"
     },
     {
       "cat": "INDIA",
-      "tag": "INDIA",
-      "title": "India busts cyberfraud and trafficking network rescuing 164 foreigners",
-      "summary": "Lured by IT job promises, the victims were allegedly forced into cybercrime, police say.",
-      "time": "19h ago",
-      "link": "https://www.bbc.co.uk/news/articles/crkgvjy7q83wo?at_medium=RSS&at_campaign=rss"
+      "tag": "ECON TIMES",
+      "title": "India's FY28 fiscal deficit projected to stay unchanged at 4.3% of GDP: Deutsche Bank",
+      "summary": "India's fiscal deficit for the financial year 2028 is expected to stay at 4.3 percent of GDP. The report highlights challenges in consolidation efforts due to rising expenditure and subsidy bills....",
+      "time": "58m ago",
+      "link": "https://economictimes.indiatimes.com/news/economy/indicators/indias-fy28-fiscal-deficit-projected-to-stay-unchanged-at-4-3-of-gdp-deutsche-bank/articleshow/136238634.cms"
     },
     {
       "cat": "INDIA",
-      "tag": "INDIA",
-      "title": "Millions of wives in South Asia unprotected from marital rape - study",
-      "summary": "More than 100 countries have outlawed marital rape, but a large part of South Asia has not.",
+      "tag": "ECON TIMES",
+      "title": "Why is RBI bringing its gold back to India? The big shift decoded",
+      "summary": "ECON TIMES briefing: Why is RBI bringing its gold back to India? The big shift decoded",
+      "time": "17h ago",
+      "link": "https://economictimes.indiatimes.com/news/economy/policy/why-is-rbi-bringing-its-gold-back-to-india-the-big-shift-decoded/videoshow/136223275.cms"
+    },
+    {
+      "cat": "INDIA",
+      "tag": "ECON TIMES",
+      "title": "IORA nations must enhance collaboration: EAM Jaishankar",
+      "summary": "External Affairs Minister S Jaishankar highlighted the significance of the Indian Ocean for global trade and energy security. He stated that regional cooperation is vital to address the shared chal...",
       "time": "21h ago",
-      "link": "https://www.bbc.co.uk/news/articles/cw074p95ye5do?at_medium=RSS&at_campaign=rss"
+      "link": "https://economictimes.indiatimes.com/news/economy/foreign-trade/iora-nations-urged-to-strengthen-collaboration-amid-geopolitical-shifts-by-eam-jaishankar/articleshow/136215650.cms"
+    },
+    {
+      "cat": "INDIA",
+      "tag": "ECON TIMES",
+      "title": "Vietnam has made very strong commitments in trade talks with US, PM says",
+      "summary": "Vietnam is in advanced negotiations with the United States to finalize a trade deal. Prime Minister Le Minh Hung announced that tariffs would be significantly lower than earlier proposals. The fina...",
+      "time": "1d ago",
+      "link": "https://economictimes.indiatimes.com/news/economy/foreign-trade/vietnam-us-trade-talks-strong-commitments-lower-tariffs-deal/articleshow/136207839.cms"
     },
     {
       "cat": "STEM",
@@ -20437,11 +20437,11 @@
     },
     {
       "cat": "STEM",
-      "tag": "NASA",
-      "title": "Artemis III Astronaut Andre Douglas Visits VAB",
-      "summary": "NASA astronaut Andre Douglas, Artemis III mission specialist, stands inside an RS-25 engine test article during a visit to the Vehicle Assembly Building at NASA’s Kennedy Space Center in Florida on...",
-      "time": "14h ago",
-      "link": "https://www.nasa.gov/image-article/artemis-iii-astronaut-andre-douglas-visits-vab/"
+      "tag": "MIT RESEARCH",
+      "title": "Many languages, one common neural code",
+      "summary": "Analyzing speakers of 21 languages, an MIT study using multilingual AI finds the human brain may represent meaning in much the same way.",
+      "time": "4d ago",
+      "link": "https://news.mit.edu/2026/many-languages-one-common-neural-code-1123"
     }
   ]
 }

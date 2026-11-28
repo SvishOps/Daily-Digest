@@ -424,46 +424,72 @@ function parseRssItems(xmlText, cat, defaultTag, limit = 4) {
 }
 
 const BREAKTHROUGH_RE = /\b(breakthrough|discover|quantum|fusion|ai|model|nasa|space|orbit|telescope|vaccine|crispr|gene|cancer|battery|semiconductor|chip|robot|physics|climate|solar|launch|moon|mars|neural|superconduct)\b/i;
+const MACRO_GEO_RE = /\b(tariff|inflation|fed|federal reserve|rbi|central bank|rate|gdp|sanction|treaty|summit|election|parliament|budget|oil|opec|trade|war|ceasefire|nato|eu|europe|china|ukraine|russia|iran|israel|gaza|middle east|diplomat|treasury|bond|econom|export|import|defense|nuclear|energy|bank|imf|world bank|policy|minister|president|prime minister|semiconductor|currency|rupee|dollar)\b/i;
+const NOISE_NEWS_RE = /\b(poison seller|apologises|tamasha|celebrity|kardashian|wedding|divorce|horoscope|movie|box office|netflix|spotify|murder|serial killer|rapist|football|soccer|cricket|nba|nfl|taylor swift)\b/i;
+
+function scoreAndPickNews(pool, scoreRe, limit = 4) {
+  const clean = pool.filter((item) => !NOISE_NEWS_RE.test(`${item.title} ${item.summary}`));
+  const source = clean.length >= limit ? clean : pool;
+  source.sort((a, b) => {
+    const sa = scoreRe.test(`${a.title} ${a.summary}`) ? 1 : 0;
+    const sb = scoreRe.test(`${b.title} ${b.summary}`) ? 1 : 0;
+    return sb - sa;
+  });
+  const seen = new Set();
+  const out = [];
+  for (const item of source) {
+    if (out.length >= limit) break;
+    if (seen.has(item.title)) continue;
+    seen.add(item.title);
+    out.push(item);
+  }
+  return out;
+}
 
 async function fetchNews() {
-  const feeds = [
+  const categoryFeeds = [
     {
       cat: 'WORLD',
-      tag: 'BBC WORLD',
-      url: 'https://feeds.bbci.co.uk/news/world/rss.xml',
-      fallbackUrl: 'https://feeds.npr.org/1004/rss.xml',
+      sources: [
+        { tag: 'BBC WORLD', url: 'https://feeds.bbci.co.uk/news/world/rss.xml' },
+        { tag: 'BBC BUSINESS', url: 'https://feeds.bbci.co.uk/news/business/rss.xml' },
+        { tag: 'NPR WORLD', url: 'https://feeds.npr.org/1004/rss.xml' },
+      ],
     },
     {
       cat: 'US',
-      tag: 'NPR / BBC US',
-      url: 'https://feeds.npr.org/1003/rss.xml',
-      fallbackUrl: 'https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml',
+      sources: [
+        { tag: 'CNBC', url: 'https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114' },
+        { tag: 'NPR', url: 'https://feeds.npr.org/1003/rss.xml' },
+        { tag: 'BBC US', url: 'https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml' },
+      ],
     },
     {
       cat: 'INDIA',
-      tag: 'INDIA',
-      url: 'https://feeds.bbci.co.uk/news/world/asia/india/rss.xml',
-      fallbackUrl: 'https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en',
+      sources: [
+        { tag: 'ECON TIMES', url: 'https://economictimes.indiatimes.com/news/economy/rssfeeds/1373380680.cms' },
+        { tag: 'THE HINDU', url: 'https://www.thehindu.com/news/national/feeder/default.rss' },
+        { tag: 'BBC INDIA', url: 'https://feeds.bbci.co.uk/news/world/asia/india/rss.xml' },
+      ],
     },
   ];
 
   const allItems = [];
 
-  for (const f of feeds) {
-    let loaded = [];
-    for (const u of [f.url, f.fallbackUrl]) {
+  for (const group of categoryFeeds) {
+    const pool = [];
+    for (const src of group.sources) {
       try {
-        const xml = await fetchText(u);
-        loaded = parseRssItems(xml, f.cat, f.tag, 4);
-        if (loaded.length > 0) break;
+        const xml = await fetchText(src.url);
+        pool.push(...parseRssItems(xml, group.cat, src.tag, 12));
       } catch (err) {
-        console.warn(`[warn] RSS fetch failed (${u}): ${err.message}`);
+        console.warn(`[warn] RSS fetch failed (${src.url}): ${err.message}`);
       }
     }
-    allItems.push(...loaded);
+    allItems.push(...scoreAndPickNews(pool, MACRO_GEO_RE, 4));
   }
 
-  // STEM: MIT News Research, NASA Breaking News, Ars Technica Science, Nature
+  // STEM: MIT News Research, NASA Breaking News, Ars Technica Science, ScienceDaily
   const stemFeeds = [
     { tag: 'MIT RESEARCH', url: 'https://news.mit.edu/rss/research' },
     { tag: 'NASA', url: 'https://www.nasa.gov/rss/dyn/breaking_news.rss' },
@@ -474,27 +500,12 @@ async function fetchNews() {
   for (const sf of stemFeeds) {
     try {
       const xml = await fetchText(sf.url);
-      stemPool.push(...parseRssItems(xml, 'STEM', sf.tag, 5));
+      stemPool.push(...parseRssItems(xml, 'STEM', sf.tag, 6));
     } catch (err) {
       console.warn(`[warn] STEM RSS fetch failed (${sf.url}): ${err.message}`);
     }
   }
-  // Prioritize breakthroughs & major scientific advancements
-  stemPool.sort((a, b) => {
-    const sa = BREAKTHROUGH_RE.test(`${a.title} ${a.summary}`) ? 1 : 0;
-    const sb = BREAKTHROUGH_RE.test(`${b.title} ${b.summary}`) ? 1 : 0;
-    return sb - sa;
-  });
-  const seenStem = new Set();
-  const stemItems = [];
-  for (const item of stemPool) {
-    if (stemItems.length >= 4) break;
-    if (seenStem.has(item.title)) continue;
-    seenStem.add(item.title);
-    stemItems.push(item);
-  }
-
-  allItems.push(...stemItems);
+  allItems.push(...scoreAndPickNews(stemPool, BREAKTHROUGH_RE, 4));
   return allItems;
 }
 
