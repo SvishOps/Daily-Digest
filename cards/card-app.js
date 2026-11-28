@@ -502,9 +502,16 @@
           ? `${isPos ? '+' : ''}${pct.toFixed(2)}%`
           : `${isPos ? '+' : '-'}${cur === 'INR' ? '₹' : '$'}${Math.abs(d.change || 0).toFixed(dec)} (${isPos ? '+' : ''}${pct.toFixed(2)}%)`;
 
-        const bear = fmtPrice(d.price * 0.975, cur, dec);
-        const base = fmtPrice(d.price * 1.003, cur, dec);
-        const bull = fmtPrice(d.price * 1.025, cur, dec);
+        const bearVal = d.price * 0.975;
+        const baseVal = d.price * 1.003;
+        const bullVal = d.price * 1.025;
+        const bear = fmtPrice(bearVal, cur, dec);
+        const base = fmtPrice(baseVal, cur, dec);
+        const bull = fmtPrice(bullVal, cur, dec);
+        const fmtExpPct = (t) => {
+          const p = ((t - d.price) / d.price) * 100;
+          return `Exp ${p >= 0 ? '+' : ''}${p.toFixed(2)}%`;
+        };
         const dayRangeStr = d.dayLow && d.dayHigh ? `${fmtPrice(d.dayLow, cur, dec)} – ${fmtPrice(d.dayHigh, cur, dec)}` : `${fmtPrice(d.price * 0.99, cur, dec)} – ${fmtPrice(d.price * 1.01, cur, dec)}`;
         const w52RangeStr = d.w52Low && d.w52High ? `${fmtPrice(d.w52Low, cur, dec)} – ${fmtPrice(d.w52High, cur, dec)}` : `${fmtPrice(d.price * 0.78, cur, dec)} – ${fmtPrice(d.price * 1.12, cur, dec)}`;
         const fgScore = cardKey === 'crypto' && brief?.crypto?.fearGreed?.value ? brief.crypto.fearGreed.value : (d.fg || 52);
@@ -582,15 +589,15 @@
               </div>
               <div class="lg:col-span-4 grid grid-cols-1 gap-2 font-mono tabular-nums">
                 <div class="px-3.5 py-2.5 rounded-xl bg-rose-500/15 border border-rose-500/35 flex items-center justify-between gap-2">
-                  <span class="text-xs text-rose-700 dark:text-rose-400 font-bold uppercase">▼ Loss</span>
+                  <div class="flex items-center gap-2"><span class="text-xs text-rose-700 dark:text-rose-400 font-bold uppercase">▼ Loss</span><span class="text-[11px] text-rose-700/80 dark:text-rose-300/80">${fmtExpPct(bearVal)}</span></div>
                   <span class="text-base sm:text-lg font-bold text-rose-800 dark:text-rose-300">${bear}</span>
                 </div>
                 <div class="px-3.5 py-2.5 rounded-xl bg-amber-500/15 border border-amber-500/35 flex items-center justify-between gap-2">
-                  <span class="text-xs text-amber-700 dark:text-amber-400 font-bold uppercase">◆ Base</span>
+                  <div class="flex items-center gap-2"><span class="text-xs text-amber-700 dark:text-amber-400 font-bold uppercase">◆ Base</span><span class="text-[11px] text-amber-700/80 dark:text-amber-300/80">${fmtExpPct(baseVal)}</span></div>
                   <span class="text-base sm:text-lg font-bold text-amber-800 dark:text-amber-300">${base}</span>
                 </div>
                 <div class="px-3.5 py-2.5 rounded-xl bg-emerald-500/15 border border-emerald-500/35 flex items-center justify-between gap-2">
-                  <span class="text-xs text-emerald-700 dark:text-emerald-400 font-bold uppercase">▲ Bull</span>
+                  <div class="flex items-center gap-2"><span class="text-xs text-emerald-700 dark:text-emerald-400 font-bold uppercase">▲ Bull</span><span class="text-[11px] text-emerald-700/80 dark:text-emerald-300/80">${fmtExpPct(bullVal)}</span></div>
                   <span class="text-base sm:text-lg font-bold text-emerald-800 dark:text-emerald-300">${bull}</span>
                 </div>
               </div>
