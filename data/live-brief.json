@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-28T08:16:00.785Z",
+  "generatedAt": "2026-11-28T09:19:38.843Z",
   "india": {
     "NIFTYBEES": {
       "symbol": "NIFTYBEES.NS",
@@ -4953,7 +4953,7 @@
       "w52Low": 22179.9,
       "w52High": 26373.2,
       "volume": 316500,
-      "marketTime": "2026-11-27T10:00:00.000Z",
+      "marketTime": "2026-11-27T10:01:37.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -5849,13 +5849,13 @@
       "price": 16.55,
       "prevClose": 16.84,
       "change": -0.29,
-      "changePct": -1.72,
+      "changePct": -1.75,
       "dayLow": 15.17,
       "dayHigh": 16.86,
       "w52Low": 8.86,
       "w52High": 28.91,
       "volume": 0,
-      "marketTime": "2026-11-27T10:00:00.000Z",
+      "marketTime": "2026-11-27T10:13:24.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -11423,7 +11423,7 @@
       "w52Low": 6316.91,
       "w52High": 7844.52,
       "volume": 2936150000,
-      "marketTime": "2026-11-27T21:00:00.000Z",
+      "marketTime": "2026-11-27T18:38:39.000Z",
       "candles": [
         {
           "time": "2026-08-28",
@@ -15160,10 +15160,10 @@
       "BTC": {
         "id": "bitcoin",
         "symbol": "BTC-USD",
-        "price": 59660,
-        "changePct": -3.53,
-        "marketCap": 1202272271071.5576,
-        "volume24h": 25961849304.71944,
+        "price": 59588,
+        "changePct": -3.39,
+        "marketCap": 1198404014829.6768,
+        "volume24h": 25399100780.540543,
         "candles": [
           {
             "time": "2026-08-31",
@@ -15792,20 +15792,20 @@
             "time": "2026-11-28",
             "open": 59866.07,
             "high": 60164.19,
-            "low": 59494.88,
-            "close": 59542.86
+            "low": 59487.94,
+            "close": 59517.8
           }
         ],
-        "dayLow": 59494.88,
+        "dayLow": 59487.94,
         "dayHigh": 60164.19
       },
       "ETH": {
         "id": "ethereum",
         "symbol": "ETH-USD",
-        "price": 1654.46,
-        "changePct": -4.64,
-        "marketCap": 202475273860.37158,
-        "volume24h": 9977207704.637207,
+        "price": 1650.4,
+        "changePct": -4.61,
+        "marketCap": 201999958138.20898,
+        "volume24h": 9878997587.973856,
         "candles": [
           {
             "time": "2026-08-31",
@@ -16435,7 +16435,7 @@
             "open": 1661.04,
             "high": 1669.16,
             "low": 1648.55,
-            "close": 1651.55
+            "close": 1648.95
           }
         ],
         "dayLow": 1648.55,
@@ -16444,10 +16444,10 @@
       "SOL": {
         "id": "solana",
         "symbol": "SOL-USD",
-        "price": 71.08,
-        "changePct": -2.93,
-        "marketCap": 42136912306.26237,
-        "volume24h": 2332901722.350372,
+        "price": 71.03,
+        "changePct": -3.42,
+        "marketCap": 42096686205.88491,
+        "volume24h": 2257210717.5145044,
         "candles": [
           {
             "time": "2026-08-31",
@@ -17076,20 +17076,20 @@
             "time": "2026-11-28",
             "open": 71.58,
             "high": 72.17,
-            "low": 70.96,
-            "close": 70.95
+            "low": 70.93,
+            "close": 70.92
           }
         ],
-        "dayLow": 70.96,
+        "dayLow": 70.93,
         "dayHigh": 72.17
       },
       "BNB": {
         "id": "binancecoin",
         "symbol": "BNB-USD",
-        "price": 551.19,
-        "changePct": -2.61,
-        "marketCap": 72501876937.85104,
-        "volume24h": 531037484.859027,
+        "price": 549.99,
+        "changePct": -2.45,
+        "marketCap": 72329725070.18275,
+        "volume24h": 521261470.8178568,
         "candles": [
           {
             "time": "2026-08-31",
@@ -17719,7 +17719,7 @@
             "open": 554.19,
             "high": 556.21,
             "low": 549.22,
-            "close": 550.5
+            "close": 549.76
           }
         ],
         "dayLow": 549.22,
@@ -17728,10 +17728,10 @@
       "XRP": {
         "id": "ripple",
         "symbol": "XRP-USD",
-        "price": 0.9418,
-        "changePct": -3.78,
-        "marketCap": 59863867620.59339,
-        "volume24h": 1673907993.8373227,
+        "price": 0.9404,
+        "changePct": -3.76,
+        "marketCap": 59737185766.240005,
+        "volume24h": 1604047027.0278175,
         "candles": [
           {
             "time": "2026-08-31",
@@ -18360,20 +18360,20 @@
             "time": "2026-11-28",
             "open": 0.948,
             "high": 0.954,
-            "low": 0.9415,
-            "close": 0.9406
+            "low": 0.9387,
+            "close": 0.9396
           }
         ],
-        "dayLow": 0.9415,
+        "dayLow": 0.9387,
         "dayHigh": 0.954
       },
       "DOGE": {
         "id": "dogecoin",
         "symbol": "DOGE-USD",
         "price": 0.0568,
-        "changePct": -2.62,
-        "marketCap": 8916430116.470642,
-        "volume24h": 389685925.7707803,
+        "changePct": -2.28,
+        "marketCap": 8921008283.591288,
+        "volume24h": 380281970.0901206,
         "candles": [
           {
             "time": "2026-08-31",
@@ -19003,7 +19003,7 @@
             "open": 0.0577,
             "high": 0.058,
             "low": 0.0566,
-            "close": 0.0567
+            "close": 0.0568
           }
         ],
         "dayLow": 0.0566,
@@ -19012,10 +19012,10 @@
       "ADA": {
         "id": "cardano",
         "symbol": "ADA-USD",
-        "price": 0.1462,
-        "changePct": -4.37,
-        "marketCap": 5495567149.657694,
-        "volume24h": 188294538.12800157,
+        "price": 0.1467,
+        "changePct": -4.02,
+        "marketCap": 5507506997.457161,
+        "volume24h": 184788998.15001786,
         "candles": [
           {
             "time": "2026-08-31",
@@ -19645,7 +19645,7 @@
             "open": 0.1483,
             "high": 0.1488,
             "low": 0.1455,
-            "close": 0.1459
+            "close": 0.1465
           }
         ],
         "dayLow": 0.1455,
@@ -19655,9 +19655,9 @@
         "id": "chainlink",
         "symbol": "LINK-USD",
         "price": 9.16,
-        "changePct": -4.48,
-        "marketCap": 7028987891.898289,
-        "volume24h": 226979004.27630186,
+        "changePct": -4.35,
+        "marketCap": 7027841358.657417,
+        "volume24h": 224191436.36347425,
         "candles": [
           {
             "time": "2026-08-31",
@@ -20320,7 +20320,7 @@
       "tag": "BBC WORLD",
       "title": "Zelensky criticises 'strange' Trump-Putin friendship in BBC interview",
       "summary": "Ukraine's president voices frustration with US and says it is not pushing Russia hard enough in peace talks to end the war.",
-      "time": "14h ago",
+      "time": "15h ago",
       "link": "https://www.bbc.co.uk/news/articles/c820q9wgrpyyo?at_medium=RSS&at_campaign=rss"
     },
     {
@@ -20328,7 +20328,7 @@
       "tag": "BBC WORLD",
       "title": "Spanish PM and rivals rally supporters in final pitch for votes",
       "summary": "Prime Minister Pedro Sánchez wants to defy the polls, and his main rivals accuse him of not telling the truth and of \"betrayal\".",
-      "time": "10h ago",
+      "time": "11h ago",
       "link": "https://www.bbc.co.uk/news/articles/c8wy5p4gdnwvo?at_medium=RSS&at_campaign=rss"
     },
     {
@@ -20352,7 +20352,7 @@
       "tag": "CNBC ECONOMY",
       "title": "Even the price of toys is on the rise. How Americans are scaling back holiday plans",
       "summary": "U.S. consumers face higher food, travel and gift costs in 2026 as inflation and Iran-war energy shocks pressure holiday budgets.",
-      "time": "11h ago",
+      "time": "12h ago",
       "link": "https://www.cnbc.com/2026/11/25/holiday-inflation-thanksgiving-travel-food-gifts.html"
     },
     {
@@ -20376,7 +20376,7 @@
       "tag": "CNBC MARKETS",
       "title": "The S&P 500 is in a correction. Bear markets and recessions don't always follow",
       "summary": "The November sell-off has so far pushed the S&P 500 into a correction. History shows that a correction doesn't always lead to a bear market, or a recession.",
-      "time": "19h ago",
+      "time": "20h ago",
       "link": "https://www.cnbc.com/2026/11/27/the-sp-500-is-in-a-correction-bear-markets-and-recessions-dont-always-follow.html"
     },
     {
@@ -20384,7 +20384,7 @@
       "tag": "ECON TIMES",
       "title": "India's FY28 fiscal deficit projected to stay unchanged at 4.3% of GDP: Deutsche Bank",
       "summary": "India's fiscal deficit for the financial year 2028 is expected to stay at 4.3 percent of GDP. The report highlights challenges in consolidation efforts due to rising expenditure and subsidy bills....",
-      "time": "3h ago",
+      "time": "4h ago",
       "link": "https://economictimes.indiatimes.com/news/economy/indicators/indias-fy28-fiscal-deficit-projected-to-stay-unchanged-at-4-3-of-gdp-deutsche-bank/articleshow/136238634.cms"
     },
     {
@@ -20400,7 +20400,7 @@
       "tag": "ET MARKETS",
       "title": "Bond market to stay cautious ahead of RBI policy: Equirus",
       "summary": "The bond market is expected to remain cautious due to persistent inflationary pressures and anticipated rate hikes. Analysts predict a 25 basis points hike in the RBI's upcoming monetary policy rev...",
-      "time": "2h ago",
+      "time": "3h ago",
       "link": "https://economictimes.indiatimes.com/markets/bonds/bond-market-to-stay-cautious-ahead-of-rbi-policy-equirus/articleshow/136240295.cms"
     },
     {
@@ -20416,7 +20416,7 @@
       "tag": "NASA",
       "title": "NASA’s NG-25 Mission to Launch Pioneering Space Crops Research",
       "summary": "NASA experiments, including a first-of-its-kind space crop production system, will travel to the International Space Station aboard Northrop Grumman’s 25th Commercial Resupply Services mission for...",
-      "time": "18h ago",
+      "time": "19h ago",
       "link": "https://science.nasa.gov/science-research/biological-physical-sciences/nasas-ng-25-mission-to-launch-pioneering-space-crops-research/"
     },
     {
@@ -20424,7 +20424,7 @@
       "tag": "MIT RESEARCH",
       "title": "Many languages, one common neural code",
       "summary": "Analyzing speakers of 21 languages, an MIT study using multilingual AI finds the human brain may represent meaning in much the same way.",
-      "time": "4d ago",
+      "time": "5d ago",
       "link": "https://news.mit.edu/2026/many-languages-one-common-neural-code-1123"
     },
     {
@@ -20432,7 +20432,7 @@
       "tag": "NASA",
       "title": "Artemis III Astronaut Andre Douglas Visits VAB",
       "summary": "NASA astronaut Andre Douglas, Artemis III mission specialist, stands inside an RS-25 engine test article during a visit to the Vehicle Assembly Building at NASA’s Kennedy Space Center in Florida on...",
-      "time": "17h ago",
+      "time": "18h ago",
       "link": "https://www.nasa.gov/image-article/artemis-iii-astronaut-andre-douglas-visits-vab/"
     },
     {
