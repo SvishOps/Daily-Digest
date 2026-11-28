@@ -11,15 +11,15 @@
   <script src="https://unpkg.com/lightweight-charts@4.2.1/dist/lightweight-charts.standalone.production.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
+            sans: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"IBM Plex Mono"', 'monospace'],
           }
         }
       }
@@ -67,22 +67,18 @@
     body {
       background-color: var(--bg-page);
       color: var(--text-primary);
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'IBM Plex Sans', system-ui, sans-serif;
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
       transition: background-color 0.25s ease, color 0.25s ease;
       min-height: 100vh;
     }
 
     html.dark body {
-      background-image:
-        radial-gradient(circle at 15% 0%, rgba(16, 185, 129, 0.07), transparent 36%),
-        radial-gradient(circle at 85% 6%, rgba(245, 158, 11, 0.06), transparent 36%);
+      background-image: radial-gradient(circle at 50% 0%, rgba(148, 163, 184, 0.04), transparent 48%);
     }
 
     html.light-beige body {
-      background-image:
-        radial-gradient(circle at 15% 0%, rgba(180, 142, 82, 0.1), transparent 38%),
-        radial-gradient(circle at 85% 6%, rgba(16, 185, 129, 0.06), transparent 38%);
+      background-image: radial-gradient(circle at 50% 0%, rgba(120, 100, 70, 0.05), transparent 48%);
     }
 
     .tabular-nums { font-variant-numeric: tabular-nums; }
@@ -555,8 +551,13 @@
         </div>
       </div>
 
+      <div class="pt-4 border-t divider-line space-y-2.5">
+        <div class="text-xs font-mono uppercase tracking-wider txt-muted font-bold">Session &amp; Macro Drivers</div>
+        <ul id="us-catalysts" class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm txt-secondary leading-relaxed"></ul>
+      </div>
+
       <!-- INTERACTIVE CHART -->
-      <div class="rounded-2xl inner-panel overflow-hidden">
+      <div class="chart-box rounded-xl inner-panel overflow-hidden">
         <div class="px-4 py-2.5 border-b divider-line flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
           <div class="flex items-center gap-2">
             <span id="us-chart-label" class="font-bold txt-primary">AMEX:SPY</span>
@@ -569,12 +570,7 @@
             <button type="button" data-tf="1Y" class="tf-btn seg-btn px-2 py-1 rounded-lg cursor-pointer">1Y</button>
           </div>
         </div>
-        <div id="us-chart-container" class="w-full h-[340px] sm:h-[380px] relative"></div>
-      </div>
-
-      <div class="pt-4 border-t divider-line space-y-2.5">
-        <div class="text-xs font-mono uppercase tracking-wider txt-muted font-bold">Session &amp; Macro Drivers</div>
-        <ul id="us-catalysts" class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm txt-secondary leading-relaxed"></ul>
+        <div id="us-chart-container" class="w-full h-[360px] sm:h-[400px] relative"></div>
       </div>
     </section>
 
@@ -699,8 +695,13 @@
         </div>
       </div>
 
+      <div class="pt-4 border-t divider-line space-y-2.5">
+        <div class="text-xs font-mono uppercase tracking-wider txt-muted font-bold">Crypto Market Drivers</div>
+        <ul id="crypto-catalysts" class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm txt-secondary leading-relaxed"></ul>
+      </div>
+
       <!-- INTERACTIVE CHART -->
-      <div class="rounded-2xl inner-panel overflow-hidden">
+      <div class="chart-box rounded-xl inner-panel overflow-hidden">
         <div class="px-4 py-2.5 border-b divider-line flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
           <div class="flex items-center gap-2">
             <span id="crypto-chart-label" class="font-bold txt-primary">BTC / USD</span>
@@ -713,12 +714,7 @@
             <button type="button" data-tf="1Y" class="tf-btn seg-btn px-2 py-1 rounded-lg cursor-pointer">1Y</button>
           </div>
         </div>
-        <div id="crypto-chart-container" class="w-full h-[340px] sm:h-[380px] relative"></div>
-      </div>
-
-      <div class="pt-4 border-t divider-line space-y-2.5">
-        <div class="text-xs font-mono uppercase tracking-wider txt-muted font-bold">Crypto Market Drivers</div>
-        <ul id="crypto-catalysts" class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm txt-secondary leading-relaxed"></ul>
+        <div id="crypto-chart-container" class="w-full h-[360px] sm:h-[400px] relative"></div>
       </div>
     </section>
 
@@ -843,8 +839,13 @@
         </div>
       </div>
 
+      <div class="pt-4 border-t divider-line space-y-2.5">
+        <div class="text-xs font-mono uppercase tracking-wider txt-muted font-bold">Commodity Drivers</div>
+        <ul id="comm-catalysts" class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm txt-secondary leading-relaxed"></ul>
+      </div>
+
       <!-- INTERACTIVE CHART -->
-      <div class="rounded-2xl inner-panel overflow-hidden">
+      <div class="chart-box rounded-xl inner-panel overflow-hidden">
         <div class="px-4 py-2.5 border-b divider-line flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
           <div class="flex items-center gap-2">
             <span id="comm-chart-label" class="font-bold txt-primary">XAU / USD</span>
@@ -857,12 +858,7 @@
             <button type="button" data-tf="1Y" class="tf-btn seg-btn px-2 py-1 rounded-lg cursor-pointer">1Y</button>
           </div>
         </div>
-        <div id="comm-chart-container" class="w-full h-[340px] sm:h-[380px] relative"></div>
-      </div>
-
-      <div class="pt-4 border-t divider-line space-y-2.5">
-        <div class="text-xs font-mono uppercase tracking-wider txt-muted font-bold">Commodity Drivers</div>
-        <ul id="comm-catalysts" class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm txt-secondary leading-relaxed"></ul>
+        <div id="comm-chart-container" class="w-full h-[360px] sm:h-[400px] relative"></div>
       </div>
     </section>
 
@@ -1805,13 +1801,11 @@
         ADA: 'BINANCE:ADAUSDT', LINK: 'BINANCE:LINKUSDT'
       };
       const commMap = {
-        GOLD: 'OANDA:XAUUSD', BRENT: 'TVC:UKOIL', WTI: 'TVC:USOIL',
-        SILVER: 'OANDA:XAGUSD', NATGAS: 'NYMEX:NG1!', COPPER: 'COMEX:HG1!'
+        GOLD: 'OANDA:XAUUSD', SILVER: 'OANDA:XAGUSD'
       };
-      if (marketKey === 'india') return indiaMap[tickerKey] || `BSE:${tickerKey}`;
-      if (marketKey === 'us') return usMap[tickerKey] || `NASDAQ:${tickerKey}`;
-      if (marketKey === 'crypto') return cryptoMap[tickerKey] || `BINANCE:${tickerKey}USDT`;
-      if (marketKey === 'commodities') return commMap[tickerKey] || tickerKey;
+      if (marketKey === 'us') return usMap[tickerKey] || null;
+      if (marketKey === 'crypto') return cryptoMap[tickerKey] || null;
+      if (marketKey === 'commodities') return commMap[tickerKey] || null;
       return null;
     }
 
@@ -1864,11 +1858,15 @@
       container.innerHTML = '';
 
       const tvSym = getTradingViewSymbol(marketKey, tickerKey || activeTickers[marketKey]);
-      if (tvSym) {
-        if (ohlcEl) ohlcEl.textContent = `${tvSym} • TradingView Live Terminal`;
-        renderTradingViewWidget(container, tvSym, tf);
+      const chartBox = container.closest('.chart-box');
+      if (!tvSym) {
+        if (chartBox) chartBox.classList.add('hidden');
         return;
       }
+      if (chartBox) chartBox.classList.remove('hidden');
+      if (ohlcEl) ohlcEl.textContent = `${tvSym} • TradingView Live Terminal`;
+      renderTradingViewWidget(container, tvSym, tf);
+      return;
 
       const tfSlice = { '1W': 10, '1M': 24, '3M': 60, '1Y': 90 };
       const allCandles = Array.isArray(realCandles) && realCandles.length >= 5
@@ -2538,7 +2536,12 @@
       else if (tabKey === 'intel') renderNewsCard();
     }
 
-    function applyTheme(light) {
+    function getAutoLightMode() {
+      const hr = new Date().getHours();
+      return hr >= 6 && hr < 18;
+    }
+
+    function applyTheme(light, skipRender = false) {
       isLightMode = light;
       const htmlEl = document.documentElement;
       if (light) {
@@ -2555,7 +2558,7 @@
         el.textContent = light ? '☾' : '☀';
       });
       // Refresh visible chart palette
-      if (['india', 'us', 'crypto', 'commodities'].includes(activeTab)) {
+      if (!skipRender && ['india', 'us', 'crypto', 'commodities'].includes(activeTab)) {
         setActiveTab(activeTab);
       }
     }
@@ -2619,8 +2622,20 @@
         btn.addEventListener('click', () => setActiveTab(btn.getAttribute('data-card-tab')));
       });
 
-      // Theme toggles
-      const toggleTheme = () => applyTheme(!isLightMode);
+      // Theme toggles (auto-switch by local time unless overridden in session)
+      const savedTheme = sessionStorage.getItem('dd_theme_override');
+      applyTheme(savedTheme ? savedTheme === 'light' : getAutoLightMode(), true);
+      setInterval(() => {
+        if (!sessionStorage.getItem('dd_theme_override')) {
+          const shouldLight = getAutoLightMode();
+          if (shouldLight !== isLightMode) applyTheme(shouldLight);
+        }
+      }, 60000);
+      const toggleTheme = () => {
+        const next = !isLightMode;
+        sessionStorage.setItem('dd_theme_override', next ? 'light' : 'dark');
+        applyTheme(next);
+      };
       const mobBtn = document.getElementById('theme-toggle-mobile');
       const deskBtn = document.getElementById('theme-toggle-desktop');
       if (mobBtn) mobBtn.addEventListener('click', toggleTheme);

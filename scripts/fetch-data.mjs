@@ -457,36 +457,22 @@ async function fetchNews() {
     allItems.push(...loaded);
   }
 
-  // STEM: Hacker News Algolia front page + BBC Science fallback
+  // STEM: ScienceDaily, Ars Technica Science, NASA, BBC Science
+  const stemFeeds = [
+    { tag: 'SCIENCEDAILY', url: 'https://www.sciencedaily.com/rss/top/science.xml' },
+    { tag: 'ARS SCIENCE', url: 'https://feeds.arstechnica.com/arstechnica/science' },
+    { tag: 'BBC SCIENCE', url: 'https://feeds.bbci.co.uk/news/science_and_environment/rss.xml' },
+  ];
   let stemItems = [];
-  try {
-    const hn = await fetchJson('https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=8');
-    for (const hit of hn?.hits || []) {
-      if (stemItems.length >= 4) break;
-      if (!hit.title) continue;
-      let domain = 'HACKER NEWS';
-      try {
-        if (hit.url) domain = new URL(hit.url).hostname.replace(/^www\./, '').toUpperCase();
-      } catch {}
-      stemItems.push({
-        cat: 'STEM',
-        tag: domain.slice(0, 22),
-        title: hit.title,
-        summary: `Trending on Hacker News (${hit.points ?? 0} pts, ${hit.num_comments ?? 0} comments).`,
-        time: relativeTimeLabel(hit.created_at),
-        link: hit.url || `https://news.ycombinator.com/item?id=${hit.objectID}`,
-      });
-    }
-  } catch (err) {
-    console.warn(`[warn] Hacker News fetch failed: ${err.message}`);
-  }
-
-  if (stemItems.length < 4) {
+  for (const sf of stemFeeds) {
+    if (stemItems.length >= 4) break;
     try {
-      const xml = await fetchText('https://feeds.bbci.co.uk/news/science_and_environment/rss.xml');
-      const bbcStem = parseRssItems(xml, 'STEM', 'BBC SCIENCE', 4 - stemItems.length);
-      stemItems.push(...bbcStem);
-    } catch {}
+      const xml = await fetchText(sf.url);
+      const parsed = parseRssItems(xml, 'STEM', sf.tag, 4 - stemItems.length);
+      stemItems.push(...parsed);
+    } catch (err) {
+      console.warn(`[warn] STEM RSS fetch failed (${sf.url}): ${err.message}`);
+    }
   }
 
   allItems.push(...stemItems);

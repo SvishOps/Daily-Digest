@@ -178,13 +178,11 @@
       ADA: 'BINANCE:ADAUSDT', LINK: 'BINANCE:LINKUSDT'
     };
     const commMap = {
-      GOLD: 'OANDA:XAUUSD', BRENT: 'TVC:UKOIL', WTI: 'TVC:USOIL',
-      SILVER: 'OANDA:XAGUSD', NATGAS: 'NYMEX:NG1!', COPPER: 'COMEX:HG1!'
+      GOLD: 'OANDA:XAUUSD', SILVER: 'OANDA:XAGUSD'
     };
-    if (cardKey === 'india') return indiaMap[tickerKey] || `BSE:${tickerKey}`;
-    if (cardKey === 'us') return usMap[tickerKey] || `NASDAQ:${tickerKey}`;
-    if (cardKey === 'crypto') return cryptoMap[tickerKey] || `BINANCE:${tickerKey}USDT`;
-    if (cardKey === 'commodities') return commMap[tickerKey] || tickerKey;
+    if (cardKey === 'us') return usMap[tickerKey] || null;
+    if (cardKey === 'crypto') return cryptoMap[tickerKey] || null;
+    if (cardKey === 'commodities') return commMap[tickerKey] || null;
     return null;
   }
 
@@ -405,16 +403,32 @@
     tryFetchLiveFx();
     setInterval(tryFetchLiveFx, 60000);
 
-    const applyTheme = (light) => {
+    const getAutoLight = () => {
+      const hr = new Date().getHours();
+      return hr >= 6 && hr < 18;
+    };
+    const applyTheme = (light, skipCb = false) => {
       isLight = light;
       document.documentElement.classList.toggle('dark', !light);
       document.documentElement.classList.toggle('light-beige', light);
       document.querySelectorAll('.theme-label').forEach((el) => { el.textContent = light ? 'Dark Mode' : 'Light Mode'; });
       document.querySelectorAll('.theme-icon').forEach((el) => { el.textContent = light ? '☾' : '☀'; });
-      if (onThemeChange) onThemeChange();
+      if (!skipCb && onThemeChange) onThemeChange();
     };
+    const savedTheme = sessionStorage.getItem('dd_theme_override');
+    applyTheme(savedTheme ? savedTheme === 'light' : getAutoLight(), true);
+    setInterval(() => {
+      if (!sessionStorage.getItem('dd_theme_override')) {
+        const shouldLight = getAutoLight();
+        if (shouldLight !== isLight) applyTheme(shouldLight);
+      }
+    }, 60000);
     document.querySelectorAll('.theme-toggle-btn').forEach((btn) => {
-      btn.addEventListener('click', () => applyTheme(!isLight));
+      btn.addEventListener('click', () => {
+        const next = !isLight;
+        sessionStorage.setItem('dd_theme_override', next ? 'light' : 'dark');
+        applyTheme(next);
+      });
     });
     return { renderFx };
   }
@@ -575,21 +589,6 @@
               </div>
             </div>
 
-            ${cardKey !== 'india' ? `
-            <div class="rounded-2xl inner-panel overflow-hidden">
-              <div class="px-4 py-2.5 border-b divider-line flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
-                <div class="flex items-center gap-2">
-                  <span class="font-bold txt-primary">${d.symbol}</span>
-                  <span id="card-chart-ohlc" class="txt-muted hidden sm:inline">TradingView Live Terminal</span>
-                </div>
-                <div class="flex items-center gap-1">
-                  ${['1W', '1M', '3M', '1Y'].map((tf) => `<button type="button" data-tf="${tf}" class="seg-btn ${tf === activeTf ? 'active' : ''} px-2.5 py-1 rounded-md cursor-pointer">${tf}</button>`).join('')}
-                </div>
-              </div>
-              <div id="card-chart-container" class="w-full h-[380px] sm:h-[420px]"></div>
-            </div>
-            ` : ''}
-
             <div class="pt-4 border-t divider-line space-y-2.5">
               <div class="text-xs font-mono uppercase tracking-wider txt-muted font-bold">Key Market Drivers</div>
               <ul class="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -607,6 +606,21 @@
                 }).join('')}
               </ul>
             </div>
+
+            ${getTradingViewSymbol(cardKey, currentTicker) ? `
+            <div class="rounded-xl inner-panel overflow-hidden">
+              <div class="px-4 py-2.5 border-b divider-line flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+                <div class="flex items-center gap-2">
+                  <span class="font-bold txt-primary">${d.symbol}</span>
+                  <span id="card-chart-ohlc" class="txt-muted hidden sm:inline">TradingView Live Terminal</span>
+                </div>
+                <div class="flex items-center gap-1">
+                  ${['1W', '1M', '3M', '1Y'].map((tf) => `<button type="button" data-tf="${tf}" class="seg-btn ${tf === activeTf ? 'active' : ''} px-2.5 py-1 rounded-md cursor-pointer">${tf}</button>`).join('')}
+                </div>
+              </div>
+              <div id="card-chart-container" class="w-full h-[380px] sm:h-[420px]"></div>
+            </div>
+            ` : ''}
           </div>
         `;
 
@@ -621,7 +635,7 @@
         root.querySelectorAll('[data-tf]').forEach((b) => {
           b.addEventListener('click', () => { activeTf = b.getAttribute('data-tf'); renderCurrent(); });
         });
-        if (cardKey !== 'india') {
+        if (getTradingViewSymbol(cardKey, currentTicker)) {
           renderChart('card-chart-container', 'card-chart-ohlc', d.symbol, d.price, d.candles, {
             bear: +(d.price * 0.975).toFixed(dec),
             base: +(d.price * 1.003).toFixed(dec),
