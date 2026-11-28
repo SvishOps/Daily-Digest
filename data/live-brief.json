@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-28T06:09:34.701Z",
+  "generatedAt": "2026-11-28T08:16:00.785Z",
   "india": {
     "NIFTYBEES": {
       "symbol": "NIFTYBEES.NS",
@@ -4953,7 +4953,7 @@
       "w52Low": 22179.9,
       "w52High": 26373.2,
       "volume": 316500,
-      "marketTime": "2026-11-27T10:01:37.000Z",
+      "marketTime": "2026-11-27T10:00:00.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -5849,13 +5849,13 @@
       "price": 16.55,
       "prevClose": 16.84,
       "change": -0.29,
-      "changePct": -1.75,
+      "changePct": -1.72,
       "dayLow": 15.17,
       "dayHigh": 16.86,
       "w52Low": 8.86,
       "w52High": 28.91,
       "volume": 0,
-      "marketTime": "2026-11-27T10:13:24.000Z",
+      "marketTime": "2026-11-27T10:00:00.000Z",
       "candles": [
         {
           "time": "2026-08-27",
@@ -11423,7 +11423,7 @@
       "w52Low": 6316.91,
       "w52High": 7844.52,
       "volume": 2936150000,
-      "marketTime": "2026-11-27T18:38:39.000Z",
+      "marketTime": "2026-11-27T21:00:00.000Z",
       "candles": [
         {
           "time": "2026-08-28",
@@ -13767,7 +13767,7 @@
       "change": 3.65,
       "changePct": 9.12,
       "dayLow": 41.08,
-      "dayHigh": 44.86,
+      "dayHigh": 44.84,
       "w52Low": 40.05,
       "w52High": 121.3,
       "volume": 48110,
@@ -15160,18 +15160,11 @@
       "BTC": {
         "id": "bitcoin",
         "symbol": "BTC-USD",
-        "price": 59683,
-        "changePct": -3.26,
-        "marketCap": 1200560489560.3323,
-        "volume24h": 26244534257.548218,
+        "price": 59660,
+        "changePct": -3.53,
+        "marketCap": 1202272271071.5576,
+        "volume24h": 25961849304.71944,
         "candles": [
-          {
-            "time": "2026-08-30",
-            "open": 78246.17,
-            "high": 79373.18,
-            "low": 77056.15,
-            "close": 77667.57
-          },
           {
             "time": "2026-08-31",
             "open": 77673.7,
@@ -15789,31 +15782,31 @@
             "close": 60494.71
           },
           {
+            "time": "2026-11-27",
+            "open": 60494.71,
+            "high": 62104.9,
+            "low": 58759.47,
+            "close": 59866.37
+          },
+          {
             "time": "2026-11-28",
             "open": 59866.07,
             "high": 60164.19,
-            "low": 59666.09,
-            "close": 59633.44
+            "low": 59494.88,
+            "close": 59542.86
           }
         ],
-        "dayLow": 59666.09,
+        "dayLow": 59494.88,
         "dayHigh": 60164.19
       },
       "ETH": {
         "id": "ethereum",
         "symbol": "ETH-USD",
-        "price": 1654.13,
-        "changePct": -4.83,
-        "marketCap": 202236294022.76956,
-        "volume24h": 9781239850.549631,
+        "price": 1654.46,
+        "changePct": -4.64,
+        "marketCap": 202475273860.37158,
+        "volume24h": 9977207704.637207,
         "candles": [
-          {
-            "time": "2026-08-30",
-            "open": 2457.69,
-            "high": 2532.96,
-            "low": 2389.47,
-            "close": 2417.94
-          },
           {
             "time": "2026-08-31",
             "open": 2417.9,
@@ -16431,31 +16424,31 @@
             "close": 1687.74
           },
           {
+            "time": "2026-11-27",
+            "open": 1687.74,
+            "high": 1750.48,
+            "low": 1633.46,
+            "close": 1661.08
+          },
+          {
             "time": "2026-11-28",
             "open": 1661.04,
             "high": 1669.16,
-            "low": 1652.51,
-            "close": 1652.88
+            "low": 1648.55,
+            "close": 1651.55
           }
         ],
-        "dayLow": 1652.51,
+        "dayLow": 1648.55,
         "dayHigh": 1669.16
       },
       "SOL": {
         "id": "solana",
         "symbol": "SOL-USD",
-        "price": 71.24,
-        "changePct": -2.4,
-        "marketCap": 42199149471.285515,
-        "volume24h": 2381188157.19156,
+        "price": 71.08,
+        "changePct": -2.93,
+        "marketCap": 42136912306.26237,
+        "volume24h": 2332901722.350372,
         "candles": [
-          {
-            "time": "2026-08-30",
-            "open": 105.65,
-            "high": 107.31,
-            "low": 100.69,
-            "close": 101.88
-          },
           {
             "time": "2026-08-31",
             "open": 101.88,
@@ -17073,31 +17066,31 @@
             "close": 70.93
           },
           {
+            "time": "2026-11-27",
+            "open": 70.93,
+            "high": 73.78,
+            "low": 70.32,
+            "close": 71.58
+          },
+          {
             "time": "2026-11-28",
             "open": 71.58,
             "high": 72.17,
-            "low": 71.17,
-            "close": 71.14
+            "low": 70.96,
+            "close": 70.95
           }
         ],
-        "dayLow": 71.17,
+        "dayLow": 70.96,
         "dayHigh": 72.17
       },
       "BNB": {
         "id": "binancecoin",
         "symbol": "BNB-USD",
-        "price": 551.35,
-        "changePct": -2.65,
-        "marketCap": 72504408509.06696,
-        "volume24h": 490655178.0981599,
+        "price": 551.19,
+        "changePct": -2.61,
+        "marketCap": 72501876937.85104,
+        "volume24h": 531037484.859027,
         "candles": [
-          {
-            "time": "2026-08-30",
-            "open": 692.6,
-            "high": 703.46,
-            "low": 681.38,
-            "close": 684.81
-          },
           {
             "time": "2026-08-31",
             "open": 684.8,
@@ -17715,31 +17708,31 @@
             "close": 553.16
           },
           {
+            "time": "2026-11-27",
+            "open": 553.16,
+            "high": 566.87,
+            "low": 543.56,
+            "close": 554.18
+          },
+          {
             "time": "2026-11-28",
             "open": 554.19,
             "high": 556.21,
-            "low": 551.16,
-            "close": 550.94
+            "low": 549.22,
+            "close": 550.5
           }
         ],
-        "dayLow": 551.16,
+        "dayLow": 549.22,
         "dayHigh": 556.21
       },
       "XRP": {
         "id": "ripple",
         "symbol": "XRP-USD",
-        "price": 0.9457,
-        "changePct": -2.32,
-        "marketCap": 60065655844.25022,
-        "volume24h": 1602413766.7387116,
+        "price": 0.9418,
+        "changePct": -3.78,
+        "marketCap": 59863867620.59339,
+        "volume24h": 1673907993.8373227,
         "candles": [
-          {
-            "time": "2026-08-30",
-            "open": 1.3967,
-            "high": 1.4308,
-            "low": 1.3423,
-            "close": 1.3595
-          },
           {
             "time": "2026-08-31",
             "open": 1.3594,
@@ -18357,31 +18350,31 @@
             "close": 0.9429
           },
           {
+            "time": "2026-11-27",
+            "open": 0.9429,
+            "high": 0.9838,
+            "low": 0.933,
+            "close": 0.948
+          },
+          {
             "time": "2026-11-28",
             "open": 0.948,
             "high": 0.954,
-            "low": 0.9443,
-            "close": 0.9443
+            "low": 0.9415,
+            "close": 0.9406
           }
         ],
-        "dayLow": 0.9443,
+        "dayLow": 0.9415,
         "dayHigh": 0.954
       },
       "DOGE": {
         "id": "dogecoin",
         "symbol": "DOGE-USD",
         "price": 0.0568,
-        "changePct": -2.1,
-        "marketCap": 8914635624.41279,
-        "volume24h": 389939952.9298736,
+        "changePct": -2.62,
+        "marketCap": 8916430116.470642,
+        "volume24h": 389685925.7707803,
         "candles": [
-          {
-            "time": "2026-08-30",
-            "open": 0.0853,
-            "high": 0.0864,
-            "low": 0.0812,
-            "close": 0.0821
-          },
           {
             "time": "2026-08-31",
             "open": 0.0821,
@@ -18999,31 +18992,31 @@
             "close": 0.0564
           },
           {
+            "time": "2026-11-27",
+            "open": 0.0564,
+            "high": 0.059,
+            "low": 0.0564,
+            "close": 0.0577
+          },
+          {
             "time": "2026-11-28",
             "open": 0.0577,
             "high": 0.058,
-            "low": 0.0568,
+            "low": 0.0566,
             "close": 0.0567
           }
         ],
-        "dayLow": 0.0568,
+        "dayLow": 0.0566,
         "dayHigh": 0.058
       },
       "ADA": {
         "id": "cardano",
         "symbol": "ADA-USD",
-        "price": 0.1456,
-        "changePct": -4.81,
-        "marketCap": 5475126016.063203,
-        "volume24h": 203443783.96888658,
+        "price": 0.1462,
+        "changePct": -4.37,
+        "marketCap": 5495567149.657694,
+        "volume24h": 188294538.12800157,
         "candles": [
-          {
-            "time": "2026-08-30",
-            "open": 0.2016,
-            "high": 0.2058,
-            "low": 0.1908,
-            "close": 0.1927
-          },
           {
             "time": "2026-08-31",
             "open": 0.1927,
@@ -19641,31 +19634,31 @@
             "close": 0.1484
           },
           {
+            "time": "2026-11-27",
+            "open": 0.1484,
+            "high": 0.1535,
+            "low": 0.1462,
+            "close": 0.1483
+          },
+          {
             "time": "2026-11-28",
             "open": 0.1483,
             "high": 0.1488,
-            "low": 0.1456,
-            "close": 0.1454
+            "low": 0.1455,
+            "close": 0.1459
           }
         ],
-        "dayLow": 0.1456,
+        "dayLow": 0.1455,
         "dayHigh": 0.1488
       },
       "LINK": {
         "id": "chainlink",
         "symbol": "LINK-USD",
-        "price": 9.14,
-        "changePct": -5.54,
-        "marketCap": 7011015391.716342,
-        "volume24h": 237684568.0652933,
+        "price": 9.16,
+        "changePct": -4.48,
+        "marketCap": 7028987891.898289,
+        "volume24h": 226979004.27630186,
         "candles": [
-          {
-            "time": "2026-08-30",
-            "open": 11.46,
-            "high": 11.76,
-            "low": 11.05,
-            "close": 11.16
-          },
           {
             "time": "2026-08-31",
             "open": 11.16,
@@ -20283,14 +20276,21 @@
             "close": 9.27
           },
           {
+            "time": "2026-11-27",
+            "open": 9.27,
+            "high": 9.69,
+            "low": 9.12,
+            "close": 9.36
+          },
+          {
             "time": "2026-11-28",
             "open": 9.36,
             "high": 9.4,
-            "low": 9.15,
-            "close": 9.13
+            "low": 9.1,
+            "close": 9.15
           }
         ],
-        "dayLow": 9.15,
+        "dayLow": 9.1,
         "dayHigh": 9.4
       }
     },
@@ -20320,23 +20320,15 @@
       "tag": "BBC WORLD",
       "title": "Zelensky criticises 'strange' Trump-Putin friendship in BBC interview",
       "summary": "Ukraine's president voices frustration with US and says it is not pushing Russia hard enough in peace talks to end the war.",
-      "time": "12h ago",
+      "time": "14h ago",
       "link": "https://www.bbc.co.uk/news/articles/c820q9wgrpyyo?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "cat": "WORLD",
-      "tag": "AL JAZEERA",
-      "title": "Israel kills two MSF staff in targeted strike on Gaza clinic",
-      "summary": "An Israeli strike on a clinic operated by Doctors Without Borders (MSF) in Gaza has killed two watchmen.",
-      "time": "4h ago",
-      "link": "https://www.aljazeera.com/video/newsfeed/2026/11/28/israel-kills-two-msf-staff-in-targeted-strike-on-gaza-clinic?traffic_source=rss"
     },
     {
       "cat": "WORLD",
       "tag": "BBC WORLD",
       "title": "Spanish PM and rivals rally supporters in final pitch for votes",
       "summary": "Prime Minister Pedro Sánchez wants to defy the polls, and his main rivals accuse him of not telling the truth and of \"betrayal\".",
-      "time": "8h ago",
+      "time": "10h ago",
       "link": "https://www.bbc.co.uk/news/articles/c8wy5p4gdnwvo?at_medium=RSS&at_campaign=rss"
     },
     {
@@ -20344,15 +20336,23 @@
       "tag": "BBC BUSINESS",
       "title": "Faisal Islam: Why Trump's new tariffs are less of a threat",
       "summary": "Other countries have rerouted trade in response to his first tariff salvo, now they are looking beyond Trump's tenure.",
-      "time": "1d ago",
+      "time": "2d ago",
       "link": "https://www.bbc.co.uk/news/articles/c6r7g4e3yep1o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "cat": "WORLD",
+      "tag": "BBC BUSINESS",
+      "title": "UK to pay 'participation' fee to deliver EU deals",
+      "summary": "Details of the contribution towards EU running costs have been revealed in new legal documents.",
+      "time": "1d ago",
+      "link": "https://www.bbc.co.uk/news/articles/ck2057x387ego?at_medium=RSS&at_campaign=rss"
     },
     {
       "cat": "US",
       "tag": "CNBC ECONOMY",
       "title": "Even the price of toys is on the rise. How Americans are scaling back holiday plans",
       "summary": "U.S. consumers face higher food, travel and gift costs in 2026 as inflation and Iran-war energy shocks pressure holiday budgets.",
-      "time": "8h ago",
+      "time": "11h ago",
       "link": "https://www.cnbc.com/2026/11/25/holiday-inflation-thanksgiving-travel-food-gifts.html"
     },
     {
@@ -20376,7 +20376,7 @@
       "tag": "CNBC MARKETS",
       "title": "The S&P 500 is in a correction. Bear markets and recessions don't always follow",
       "summary": "The November sell-off has so far pushed the S&P 500 into a correction. History shows that a correction doesn't always lead to a bear market, or a recession.",
-      "time": "17h ago",
+      "time": "19h ago",
       "link": "https://www.cnbc.com/2026/11/27/the-sp-500-is-in-a-correction-bear-markets-and-recessions-dont-always-follow.html"
     },
     {
@@ -20384,7 +20384,7 @@
       "tag": "ECON TIMES",
       "title": "India's FY28 fiscal deficit projected to stay unchanged at 4.3% of GDP: Deutsche Bank",
       "summary": "India's fiscal deficit for the financial year 2028 is expected to stay at 4.3 percent of GDP. The report highlights challenges in consolidation efforts due to rising expenditure and subsidy bills....",
-      "time": "1h ago",
+      "time": "3h ago",
       "link": "https://economictimes.indiatimes.com/news/economy/indicators/indias-fy28-fiscal-deficit-projected-to-stay-unchanged-at-4-3-of-gdp-deutsche-bank/articleshow/136238634.cms"
     },
     {
@@ -20397,6 +20397,14 @@
     },
     {
       "cat": "INDIA",
+      "tag": "ET MARKETS",
+      "title": "Bond market to stay cautious ahead of RBI policy: Equirus",
+      "summary": "The bond market is expected to remain cautious due to persistent inflationary pressures and anticipated rate hikes. Analysts predict a 25 basis points hike in the RBI's upcoming monetary policy rev...",
+      "time": "2h ago",
+      "link": "https://economictimes.indiatimes.com/markets/bonds/bond-market-to-stay-cautious-ahead-of-rbi-policy-equirus/articleshow/136240295.cms"
+    },
+    {
+      "cat": "INDIA",
       "tag": "ECON TIMES",
       "title": "Even 17% tariff under India-US trade deal may offer little competitive advantage to Indian exporters: FIEO",
       "summary": "Ajay Sahai from the Federation of Indian Export Organisations expressed concerns about a potential BTA with the US. He mentioned that even a 17 per cent tariff concession may not give Indian export...",
@@ -20404,19 +20412,11 @@
       "link": "https://economictimes.indiatimes.com/news/economy/foreign-trade/even-17-tariff-under-india-us-trade-deal-may-offer-little-competitive-advantage-to-indian-exporters-fieo/articleshow/136191482.cms"
     },
     {
-      "cat": "INDIA",
-      "tag": "ET MARKETS",
-      "title": "From war premium to demand concerns: What is driving the sharp fall in crude oil prices?",
-      "summary": "Crude oil prices have fallen sharply from their September highs as geopolitical risk premiums fade and concerns over oversupply and slowing demand take centre stage. Rising production from non-OPEC...",
-      "time": "1h ago",
-      "link": "https://economictimes.indiatimes.com/markets/commodities/news/from-war-premium-to-demand-concerns-what-is-driving-the-sharp-fall-in-crude-oil-prices/articleshow/136238953.cms"
-    },
-    {
       "cat": "STEM",
       "tag": "NASA",
       "title": "NASA’s NG-25 Mission to Launch Pioneering Space Crops Research",
       "summary": "NASA experiments, including a first-of-its-kind space crop production system, will travel to the International Space Station aboard Northrop Grumman’s 25th Commercial Resupply Services mission for...",
-      "time": "16h ago",
+      "time": "18h ago",
       "link": "https://science.nasa.gov/science-research/biological-physical-sciences/nasas-ng-25-mission-to-launch-pioneering-space-crops-research/"
     },
     {
@@ -20432,7 +20432,7 @@
       "tag": "NASA",
       "title": "Artemis III Astronaut Andre Douglas Visits VAB",
       "summary": "NASA astronaut Andre Douglas, Artemis III mission specialist, stands inside an RS-25 engine test article during a visit to the Vehicle Assembly Building at NASA’s Kennedy Space Center in Florida on...",
-      "time": "15h ago",
+      "time": "17h ago",
       "link": "https://www.nasa.gov/image-article/artemis-iii-astronaut-andre-douglas-visits-vab/"
     },
     {
