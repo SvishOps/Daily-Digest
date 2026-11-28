@@ -423,16 +423,21 @@ function parseRssItems(xmlText, cat, defaultTag, limit = 4) {
   return items;
 }
 
-const BREAKTHROUGH_RE = /\b(breakthrough|discover|quantum|fusion|ai|model|nasa|space|orbit|telescope|vaccine|crispr|gene|cancer|battery|semiconductor|chip|robot|physics|climate|solar|launch|moon|mars|neural|superconduct)\b/i;
-const MACRO_GEO_RE = /\b(tariff|inflation|fed|federal reserve|rbi|central bank|rate|gdp|sanction|treaty|summit|election|parliament|budget|oil|opec|trade|war|ceasefire|nato|eu|europe|china|ukraine|russia|iran|israel|gaza|middle east|diplomat|treasury|bond|econom|export|import|defense|nuclear|energy|bank|imf|world bank|policy|minister|president|prime minister|semiconductor|currency|rupee|dollar)\b/i;
-const NOISE_NEWS_RE = /\b(poison seller|apologises|tamasha|celebrity|kardashian|wedding|divorce|horoscope|movie|box office|netflix|spotify|murder|serial killer|rapist|football|soccer|cricket|nba|nfl|taylor swift)\b/i;
+const BREAKTHROUGH_RE = /\b(breakthrough|discover|quantum|fusion|ai|model|nasa|space|orbit|telescope|vaccine|crispr|gene|cancer|battery|semiconductor|chip|robot|physics|climate|solar|launch|moon|mars|neural|superconduct)\b/gi;
+const MACRO_GEO_RE = /\b(tariff|inflation|fed|federal reserve|fomc|rbi|central bank|interest rate|rate cut|rate hike|gdp|cpi|pce|sanction|treaty|summit|election|parliament|budget|fiscal|oil|opec|brent|wti|trade war|trade deal|war|ceasefire|nato|eu|european union|china|ukraine|russia|iran|israel|gaza|middle east|diplomat|treasury|yield|bond|econom|export|import|defense|defence|nuclear|energy|bank|imf|world bank|policy|minister|president|prime minister|semiconductor|currency|rupee|dollar|recession|deficit|geopolitic|stock|market|wall street|nifty|sensex)\b/gi;
+const NOISE_NEWS_RE = /\b(poison seller|apologises|tamasha|celebrity|kardashian|wedding|divorce|horoscope|movie|box office|netflix|spotify|murder|serial killer|rapist|football|soccer|cricket|nba|nfl|taylor swift|shoppers|black friday|macy's|dj their art|budget airline)\b/i;
+
+function scoreNewsText(text, re) {
+  const matches = text.match(re);
+  return matches ? new Set(matches.map((m) => m.toLowerCase())).size : 0;
+}
 
 function scoreAndPickNews(pool, scoreRe, limit = 4) {
   const clean = pool.filter((item) => !NOISE_NEWS_RE.test(`${item.title} ${item.summary}`));
   const source = clean.length >= limit ? clean : pool;
   source.sort((a, b) => {
-    const sa = scoreRe.test(`${a.title} ${a.summary}`) ? 1 : 0;
-    const sb = scoreRe.test(`${b.title} ${b.summary}`) ? 1 : 0;
+    const sa = scoreNewsText(`${a.title} ${a.summary}`, scoreRe);
+    const sb = scoreNewsText(`${b.title} ${b.summary}`, scoreRe);
     return sb - sa;
   });
   const seen = new Set();
@@ -453,23 +458,24 @@ async function fetchNews() {
       sources: [
         { tag: 'BBC WORLD', url: 'https://feeds.bbci.co.uk/news/world/rss.xml' },
         { tag: 'BBC BUSINESS', url: 'https://feeds.bbci.co.uk/news/business/rss.xml' },
+        { tag: 'AL JAZEERA', url: 'https://www.aljazeera.com/xml/rss/all.xml' },
         { tag: 'NPR WORLD', url: 'https://feeds.npr.org/1004/rss.xml' },
       ],
     },
     {
       cat: 'US',
       sources: [
+        { tag: 'CNBC MARKETS', url: 'https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=10000664' },
+        { tag: 'CNBC ECONOMY', url: 'https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=20910258' },
         { tag: 'CNBC', url: 'https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114' },
-        { tag: 'NPR', url: 'https://feeds.npr.org/1003/rss.xml' },
-        { tag: 'BBC US', url: 'https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml' },
       ],
     },
     {
       cat: 'INDIA',
       sources: [
         { tag: 'ECON TIMES', url: 'https://economictimes.indiatimes.com/news/economy/rssfeeds/1373380680.cms' },
+        { tag: 'ET MARKETS', url: 'https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms' },
         { tag: 'THE HINDU', url: 'https://www.thehindu.com/news/national/feeder/default.rss' },
-        { tag: 'BBC INDIA', url: 'https://feeds.bbci.co.uk/news/world/asia/india/rss.xml' },
       ],
     },
   ];

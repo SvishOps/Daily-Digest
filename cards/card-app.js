@@ -659,20 +659,42 @@
       } else if (cardKey === 'astro') {
         const signObj = ASTRO_SIGNS.find((s) => s.key === currentSign) || ASTRO_SIGNS[1];
         const isVedic = currentSys === 'VEDIC';
-        const fmtAstroShort = (offset) => {
-          try {
-            return new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kolkata', day: '2-digit', month: 'short' }).format(new Date(Date.now() + offset * 86400000)).toUpperCase();
-          } catch { return offset === 0 ? 'TODAY' : 'TOMORROW'; }
+        const isToday = currentDay === 'TODAY';
+        const dt = new Date(Date.now() + (isToday ? 0 : 86400000));
+        const fmtShort = () => {
+          try { return new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kolkata', day: '2-digit', month: 'short' }).format(dt).toUpperCase(); }
+          catch { return isToday ? 'TODAY' : 'TOMORROW'; }
         };
-        const todayShort = fmtAstroShort(0);
-        const tomShort = fmtAstroShort(1);
+        const todayShort = (() => { try { return new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kolkata', day: '2-digit', month: 'short' }).format(new Date()).toUpperCase(); } catch { return 'TODAY'; } })();
+        const tomShort = (() => { try { return new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kolkata', day: '2-digit', month: 'short' }).format(new Date(Date.now() + 86400000)).toUpperCase(); } catch { return 'TOMORROW'; } })();
+        const istIso = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Kolkata', year: 'numeric', month: '2-digit', day: '2-digit' }).format(dt);
+        const nakList = ['Ashwini','Bharani','Krittika','Rohini','Mrigashira','Ardra','Punarvasu','Pushya','Ashlesha','Magha','Purva Phalguni','Uttara Phalguni','Hasta','Chitra','Swati','Vishakha','Anuradha','Jyeshtha','Mula','Purva Ashadha','Uttara Ashadha','Shravana','Dhanishta','Shatabhisha','Purva Bhadrapada','Uttara Bhadrapada','Revati'];
+        const tithiList = ['Pratipada','Dwitiya','Tritiya','Chaturthi','Panchami','Shashthi','Saptami','Ashtami','Navami','Dashami','Ekadashi','Dwadashi','Trayodashi','Chaturdashi','Purnima','Pratipada','Dwitiya','Tritiya','Chaturthi','Panchami','Shashthi','Saptami','Ashtami','Navami','Dashami','Ekadashi','Dwadashi','Trayodashi','Chaturdashi','Amavasya'];
+        const daysJ2k = (dt.getTime() - Date.UTC(2000, 0, 1, 12, 0, 0)) / 86400000;
+        const sidDeg = ((218.316 + 13.176396 * daysJ2k - 23.85) % 360 + 360) % 360;
+        const nak = nakList[Math.floor(sidDeg / (360 / 27)) % 27];
+        const pada = (Math.floor((sidDeg % (360 / 27)) / (360 / 108)) % 4) + 1;
+        const synDays = (dt.getTime() - Date.UTC(2000, 0, 6, 18, 14, 0)) / 86400000;
+        const lPhase = ((synDays % 29.53058867) + 29.53058867) % 29.53058867;
+        const tIdx = Math.floor((lPhase / 29.53058867) * 30) % 30;
+        const tithi = `${tIdx < 15 ? 'Shukla' : 'Krishna'} ${tithiList[tIdx]}`;
+        const seedStr = `${istIso}:${currentSign}:${currentSys}`;
+        let h = 2166136261;
+        for (let i = 0; i < seedStr.length; i += 1) { h ^= seedStr.charCodeAt(i); h = Math.imul(h, 16777619); }
+        const pick = (arr, off) => arr[Math.abs(h + off * 7919) % arr.length];
+        const luckyNum = (Math.abs(h) % 9) + 1;
+        const colObj = pick([{ n: 'Emerald Green', c: 'bg-emerald-500' }, { n: 'Warm Gold', c: 'bg-amber-500' }, { n: 'Sky Blue', c: 'bg-sky-400' }, { n: 'Pearl Cream', c: 'bg-stone-200' }, { n: 'Coral Red', c: 'bg-rose-500' }], 5);
+        const careerTxt = pick(['Deep analytical work and structured execution bring strong progress today.', 'Ideal window for workflow upgrades, coding, and clearing pending deliverables.', 'Focus on quality control and finishing active commitments before adding new ones.'], 1);
+        const relTxt = pick(['Clear, patient communication resolves minor friction early; evening favors calm reflection.', 'Steady empathy strengthens close bonds; avoid overthinking small misunderstandings.', 'Warm conversations restore balance; step away from screens for an earlier wind-down.'], 2);
+        const healthTxt = pick(['Ground your schedule with steady hydration, posture breaks, and light movement.', 'Conserve energy by skipping unproductive debates and keeping meals regular.', 'High physical focus favors early workouts and structured deep-work blocks.'], 3);
+        const cautTxt = pick(['Favor pre-planned risk limits over impulsive midday decisions.', 'Double-check numbers, schedules, and commitments before signing off.', 'Avoid over-leveraging during volatile windows; patience pays off.'], 4);
         root.innerHTML = `
           <div class="space-y-6">
             <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 border-b divider-line pb-4">
               <div class="flex items-center gap-3.5">
                 <div class="w-12 h-12 rounded-2xl inner-panel flex items-center justify-center text-2xl">${signObj.glyph}</div>
                 <div>
-                  <span class="text-xs font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-semibold">${isVedic ? 'VEDIC MOON (CHANDRA RASHI)' : 'WESTERN SUN SIGN'} • ${currentDay === 'TODAY' ? todayShort : tomShort}</span>
+                  <span class="text-xs font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-semibold">${isVedic ? `VEDIC MOON • ${nak.toUpperCase()} (PADA ${pada})` : 'WESTERN SUN SIGN'} • ${fmtShort()}</span>
                   <h2 class="text-lg sm:text-xl font-bold txt-primary">${isVedic ? signObj.vedic : signObj.western}</h2>
                 </div>
               </div>
@@ -692,17 +714,17 @@
             </div>
 
             <div class="p-4 rounded-2xl inner-panel grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
-              <div><span class="block text-[11px] uppercase txt-muted">Planetary Ruler</span><strong class="txt-primary mt-0.5 block">${isVedic ? 'Shukra (Venus)' : 'Venus / Earth'}</strong></div>
-              <div><span class="block text-[11px] uppercase txt-muted">Tithi / Phase</span><strong class="txt-primary mt-0.5 block">${currentDay === 'TODAY' ? 'Krishna Paksha' : 'Shukla Transit'}</strong></div>
-              <div><span class="block text-[11px] uppercase txt-muted">Lucky Number</span><strong class="txt-primary mt-0.5 block">${currentDay === 'TODAY' ? '6' : '9'}</strong></div>
-              <div><span class="block text-[11px] uppercase txt-muted">Lucky Color</span><strong class="txt-primary mt-0.5 block flex items-center gap-1.5"><span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500"></span>Emerald Green</strong></div>
+              <div><span class="block text-[11px] uppercase txt-muted">${isVedic ? 'Nakshatra' : 'Planetary Ruler'}</span><strong class="txt-primary mt-0.5 block">${isVedic ? `${nak} (P${pada})` : 'Solar Transit'}</strong></div>
+              <div><span class="block text-[11px] uppercase txt-muted">Panchang Tithi</span><strong class="txt-primary mt-0.5 block">${tithi}</strong></div>
+              <div><span class="block text-[11px] uppercase txt-muted">Lucky Number</span><strong class="txt-primary mt-0.5 block">${luckyNum}</strong></div>
+              <div><span class="block text-[11px] uppercase txt-muted">Lucky Color</span><strong class="txt-primary mt-0.5 block flex items-center gap-1.5"><span class="inline-block w-2.5 h-2.5 rounded-full ${colObj.c}"></span>${colObj.n}</strong></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="p-5 rounded-2xl inner-panel space-y-2"><div class="flex items-center justify-between"><h3 class="font-bold txt-primary">Career &amp; Capital</h3><span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">FAVORABLE</span></div><p class="text-sm txt-secondary leading-relaxed">Prioritize disciplined execution, structured risk limits, and long-horizon compounding over impulsive trades.</p></div>
-              <div class="p-5 rounded-2xl inner-panel space-y-2"><div class="flex items-center justify-between"><h3 class="font-bold txt-primary">Relationships &amp; Alignment</h3><span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30">BALANCED</span></div><p class="text-sm txt-secondary leading-relaxed">Clear communication and patient listening resolve friction early; evening favors quiet reflection.</p></div>
-              <div class="p-5 rounded-2xl inner-panel space-y-2"><div class="flex items-center justify-between"><h3 class="font-bold txt-primary">Health &amp; Focus</h3><span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">STEADY</span></div><p class="text-sm txt-secondary leading-relaxed">Ground your schedule with steady hydration, deep-work blocks, and reduced late-night screen exposure.</p></div>
-              <div class="p-5 rounded-2xl inner-panel space-y-2"><div class="flex items-center justify-between"><h3 class="font-bold txt-primary">Key Window &amp; Caution</h3><span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/30">WATCH</span></div><p class="text-sm txt-secondary leading-relaxed">Avoid over-leveraging during midday volatility; finalize commitments after double-checking details.</p></div>
+              <div class="p-5 rounded-2xl inner-panel space-y-2"><div class="flex items-center justify-between"><h3 class="font-bold txt-primary">Career &amp; Capital</h3><span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">FAVORABLE</span></div><p class="text-sm txt-secondary leading-relaxed">${careerTxt}</p></div>
+              <div class="p-5 rounded-2xl inner-panel space-y-2"><div class="flex items-center justify-between"><h3 class="font-bold txt-primary">Relationships &amp; Alignment</h3><span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30">BALANCED</span></div><p class="text-sm txt-secondary leading-relaxed">${relTxt}</p></div>
+              <div class="p-5 rounded-2xl inner-panel space-y-2"><div class="flex items-center justify-between"><h3 class="font-bold txt-primary">Health &amp; Focus</h3><span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">STEADY</span></div><p class="text-sm txt-secondary leading-relaxed">${healthTxt}</p></div>
+              <div class="p-5 rounded-2xl inner-panel space-y-2"><div class="flex items-center justify-between"><h3 class="font-bold txt-primary">Key Window &amp; Caution</h3><span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/30">WATCH</span></div><p class="text-sm txt-secondary leading-relaxed">${cautTxt}</p></div>
             </div>
           </div>
         `;
